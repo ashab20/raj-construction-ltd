@@ -70,8 +70,6 @@
         </div>
         <!-- end page -->
 
-        <footer class="footer footer-alt">
-            2018 - 2021 © Hyper - Coderthemes.com
-        </footer>
+@include('layout.footer_content')
 
 @include('layout.footer')
