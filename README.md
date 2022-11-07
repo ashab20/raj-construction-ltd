@@ -1,66 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# **RAJ Construction Ltd**
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[https://cieden.com/real-estate-wizard-wireframes](https://cieden.com/real-estate-wizard-wireframes)
 
-## About Laravel
+Technology:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel Api /Laravel breeze template with react
+- React,react-router dom, context API, Dnd(drag and drop)
+- TailwindCss/Bootstrap
+- Mailing
+- Gallery
+- Calendar
+- Animation Video (Project / Design)
+- Responsive for mobile and tablet
+- Dynamic Settings (Menu, Logo, footer, sidebar)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Our Planning
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Users:
 
-## Learning Laravel
+    - Authentication
+      - roles @create
+      - Authentication field @crud:
+    - Designations @crud
+    - division
+    - district
+    - User details @create & update
+- Builder:
+  - Building
+    - Land
+      - land information
+      - land documents
+    - Design
+    - Floor (floor details)
+      - Flat
+        - Flat details
+        - Flat Budget
+      - Material
+        - Materials details
+        - Floor Budget
+      -
+  - Management
+    - Manage
+      - Team
+      - Employees
+      - Workers
+      - Working\_details
+    - Third Party
+      - Company
+- Properties:
+  - Price table per squire feet
+  - Property table
+  - Installment
+  - invoice
+- App Settings
+  - Logo
+  - Top Menu
+  - Side bars
+  - Footer
+  - Ads
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pages
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Authentications(Guest):
+  1. Login,
+  2. Registration,
+2. Users Settings (Admin)
+  1. Create User
+  2. All Users
+  3. Update Users
+  4.
+3. Profile (LogedInUser)
+  1. reset password,
+  2. forget password
+  3. Profile
+  4. Update Profile
+4. Management:
+  1. Manage settings
+  2. Team
+  3. Employee
+  4. worker
+5. Projects
+  1. Project list
+  2. Add project
+6. Properties
+  1.
+7. Settings
+  1. App settings
+  2. Ui Settings
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
