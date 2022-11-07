@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Log In | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-        
-        <!-- App css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/app-modern.min.css" rel="stylesheet" type="text/css" id="light-style" />
-        <link href="assets/css/app-modern-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
-
-    </head>
+@include('layout.header')
 
     <body class="loading authentication-bg" data-layout-config='{"darkMode":false}'>
         <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
@@ -33,14 +17,14 @@
                             <div class="card-body p-4">
                                 
                                 <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">Sign In</h4>
-                                    <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
+                                    <h4 class="text-dark-50 text-center mt-0 fw-bold">Reset Password</h4>
+                                    <p class="text-muted mb-4">Enter your password and create your new password.</p>
                                 </div>
 
                                 <form action="#">
 
                                     <div class="mb-3">
-                                        <label for="emailaddress" class="form-label">Email address</label>
+                                        <label for="emailaddress" class="form-label"></label>
                                         <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
                                     </div>
 
@@ -89,10 +73,4 @@
         <footer class="footer footer-alt">
             2018 - 2021 © Hyper - Coderthemes.com
         </footer>
-
-        <!-- bundle -->
-        <script src="assets/js/vendor.min.js"></script>
-        <script src="assets/js/app.min.js"></script>
-        
-    </body>
-</html>
+@include('layout.footer')
