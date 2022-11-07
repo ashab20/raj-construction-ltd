@@ -35,8 +35,18 @@ return new class extends Migration
                 'created_at'=>Carbon::now(),
             ],
             [
-                'role'=>'Admin',
-                'identify'=>'ADMIN',
+                'role'=>'Employee',
+                'identify'=>'EMPLOYEE',
+                'created_at'=>Carbon::now(),
+            ],
+            [
+                'role'=>'LanfOwner',
+                'identify'=>'LANDOWNER',
+                'created_at'=>Carbon::now(),
+            ],
+            [
+                'role'=>'Client',
+                'identify'=>'CLIENT',
                 'created_at'=>Carbon::now(),
             ],
         ]);
