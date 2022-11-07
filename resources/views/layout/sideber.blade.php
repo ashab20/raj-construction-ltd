@@ -3,7 +3,7 @@
 
             <div class="leftbar-user">
                 <a href="javascript: void(0);">
-                    <img src="{{ asset('public/assets/images/users/avatar-1.jpg') }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                    <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
                     <span class="leftbar-user-name">Dominic Keller</span>
                 </a>
             </div>

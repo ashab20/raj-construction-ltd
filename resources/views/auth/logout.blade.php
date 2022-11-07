@@ -11,7 +11,7 @@
                             <!-- Logo -->
                             <div class="card-header pt-4 pb-4 text-center bg-primary">
                                 <a href="index.html">
-                                    <span><img src="{{ asset('public/assets/images/logo.png') }}" alt="" height="18"></span>
+                                    <span><img src="{{ asset('assets/images/logo.png') }}" alt="" height="18"></span>
                                 </a>
                             </div>
 
