@@ -1,5 +1,4 @@
-# raj-construction-ltd
-Laravel project for real estate company.
+
 # **RAJ Construction Ltd**
 
 [https://cieden.com/real-estate-wizard-wireframes](https://cieden.com/real-estate-wizard-wireframes)
