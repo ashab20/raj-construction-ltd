@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('profile.resetpw');
+    return view('auth.login');
 });
 
 Route::get('register', function () {

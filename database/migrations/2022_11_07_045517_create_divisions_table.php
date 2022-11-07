@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('divison');
         
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('country')->onDelete('cascade')->change();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->change();
         
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();
+          
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();

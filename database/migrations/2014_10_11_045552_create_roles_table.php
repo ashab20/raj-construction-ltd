@@ -40,7 +40,7 @@ return new class extends Migration
                 'created_at'=>Carbon::now(),
             ],
             [
-                'role'=>'LanfOwner',
+                'role'=>'LandOwner',
                 'identify'=>'LANDOWNER',
                 'created_at'=>Carbon::now(),
             ],
