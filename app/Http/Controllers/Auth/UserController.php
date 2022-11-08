@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\Auth\User;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function userRegistration()
     {
         //
+        return view('auth.register');
     }
 
     /**
