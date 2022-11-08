@@ -23,7 +23,6 @@ return new class extends Migration
             $table->integer('total_floor_number')->default(1);
             $table->string('design_details');
 
-
             //default
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
