@@ -18,6 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('register', function () {
-    return view('profile.register');
+    return view('auth.register');
 });
 
