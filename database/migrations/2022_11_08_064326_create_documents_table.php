@@ -13,12 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('country');
-
+            $table->unsignedBigInteger('land_owner');
+            $table->integer('squire_feet')->default(1);
+            $table->string('house_no');
+            $table->string('block');
+            $table->integer('road_no')->default(1);
+            $table->string('address');
+            $table->unsignedBigInteger('documents_id');
+            $table->unsignedBigInteger('design_id');
+            $table->unsignedBigInteger('item_id');
             
+
+                //default
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -35,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('documents');
     }
 };
