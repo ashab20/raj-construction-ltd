@@ -21,22 +21,23 @@
                                     <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
                                 </div>
 
-                                <form action="#">
-
+                                <form action="{{ route('userstore')}}" method="POST">
+                                    @csrf
+                                    @method('POST')
                                     <div class="mb-3">
                                         <label for="fullname" class="form-label">Full Name</label>
-                                        <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required>
+                                        <input class="form-control" type="text" id="fullname" placeholder="Enter your name" required name="userFullName" value="{{ old('name')}}">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email">
+                                        <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email" name="userEmailAddress" value="{{ old('email')}}">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                            <input type="password" id="password" class="form-control" placeholder="Enter your password" name="userPassword" value="{{ old('password')}}>
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>

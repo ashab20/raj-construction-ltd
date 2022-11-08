@@ -9,4 +9,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[AuthUserController::class,'userRegistration']);
 
-Route::get('register', [AuthUserController::class,'userRegistration']);
+Route::get('register', [AuthUserController::class,'userRegistrationForm']);
+Route::post('user/registration', [AuthUserController::class,'userRegistrationStore'])->name('userstore');
