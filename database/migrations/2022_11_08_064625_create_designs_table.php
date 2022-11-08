@@ -16,6 +16,13 @@ return new class extends Migration
         Schema::create('designs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('land_id');
+            $table->unsignedBigInteger('designer_id');
+            $table->image('document');
+            $table->integer('building_squire_feet')->default(1);
+            $table->integer('total_floor_number')->default(1);
+            $table->string('design_details');
+
 
             //default
             $table->integer('status')->default(1);
