@@ -5,28 +5,42 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Auth\User;
 use Illuminate\Http\Request;
+use  App\Http\Requests\Auth\RegisterRequest;
+use Exception;
+use App\Http\Traits\ResponseTrait;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    // use ResponseTrait;
+
+    // *** Registration Form ***
+
+    public function userRegistrationForm()
     {
-        //
+        
+        return view('auth.register');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function userRegistration()
+   // *** Registration Store ***
+
+    public function userRegistrationStore(RegisterRequest $request)
     {
-        //
-        return view('auth.register');
+        // try{
+        // $store = new User();
+
+        // $store->name = $request->input('userFullName');
+        // $store->name = $request->userFullName;
+        // $store->email = $request->userEmailAddress;
+        // $store->password = $request->userEmailAddress;
+        // $store->role_id = $request->roles;
+        // $store->phone = $request->userPassword;
+
+        print_r($request);
+        // }
+        // catch (Exception $error){
+        //     dd($error);
+            // return redirect('/')->with($this->responseMsg(false,'error','Server error'));            
+        // }
     }
 
     /**
