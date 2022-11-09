@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use  App\Http\Requests\Auth\RegisterRequest;
 use Exception;
 use App\Http\Traits\ResponseTrait;
+use App\Models\Auth\Role;
 
 class UserController extends Controller
 {
@@ -17,8 +18,8 @@ class UserController extends Controller
 
     public function userRegistrationForm()
     {
-        
-        return view('auth.register');
+        $roles = Role::all();
+        return view('auth.register',compact('roles'));
     }
 
    // *** Registration Store ***
@@ -28,7 +29,7 @@ class UserController extends Controller
         try{
         $store = new User();
 
-        $store->name = $request->input('userFullName');
+        // $store->name = $request->input('userFullName');
         $store->name = $request->userFullName;
         $store->email = $request->userEmailAddress;
         $store->password = $request->userPassword;
