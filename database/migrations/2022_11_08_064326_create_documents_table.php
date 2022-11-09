@@ -26,7 +26,6 @@ return new class extends Migration
             $table->unsignedBigInteger('design_id')->nullable()->foreign()->references('id')->on('designs')->onDelete('cascade')->change();
             $table->decimal('total_budget',12,2);
             $table->decimal('total_cost',12,2);
-            $table->integer('squire_feet');
 
 
                 //default
