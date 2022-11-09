@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('designs', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('land_id');
-            $table->unsignedBigInteger('designer_id');
-            $table->string('document');
-            $table->integer('building_squire_feet')->default(1);
-            $table->integer('total_floor_number')->default(1);
-            $table->string('design_details');
+            // $table->unsignedBigInteger('land_id');            
+            // $table->foreign('land_id')->references('id')->on('lands')->onDelete('cascade')->change();
+            $table->string('docu_name');
+            $table->string('doc_attachment');
+            $table->string('description')->nullable();
 
-            //default
+                //default
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('designs');
+        Schema::dropIfExists('documents');
     }
 };

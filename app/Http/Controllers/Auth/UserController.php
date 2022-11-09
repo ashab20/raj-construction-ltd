@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
-    // use ResponseTrait;
+    use ResponseTrait;
 
     // *** Registration Form ***
 

@@ -14,12 +14,11 @@
                 <li class="side-nav-title side-nav-item">Navigation</li>
 
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                         <i class="uil-home-alt"></i>
-                        <span class="badge bg-info rounded-pill float-end">4</span>
                         <span> Dashboards </span>
                     </a>
-                    <div class="collapse" id="sidebarDashboards">
+                    {{-- <div class="collapse" id="sidebarDashboards">
                         <ul class="side-nav-second-level">
                             <li>
                                 <a href="dashboard-analytics.html">Analytics</a>
@@ -34,7 +33,7 @@
                                 <a href="dashboard-projects.html">Projects</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
 
                 <li class="side-nav-title side-nav-item">Apps</li>
@@ -56,40 +55,47 @@
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
                         <i class="uil-store"></i>
-                        <span> Ecommerce </span>
+                        <span> Floor</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEcommerce">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="apps-ecommerce-products.html">Products</a>
+                                <a href="apps-ecommerce-products.html">Add</a>
                             </li>
                             <li>
-                                <a href="apps-ecommerce-products-details.html">Products Details</a>
+                                <a href="apps-ecommerce-products-details.html">Floor Details</a>
                             </li>
                             <li>
-                                <a href="apps-ecommerce-orders.html">Orders</a>
-                            </li>
-                            <li>
-                                <a href="apps-ecommerce-orders-details.html">Order Details</a>
-                            </li>
-                            <li>
-                                <a href="apps-ecommerce-customers.html">Customers</a>
-                            </li>
-                            <li>
-                                <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
-                            </li>
-                            <li>
-                                <a href="apps-ecommerce-checkout.html">Checkout</a>
-                            </li>
-                            <li>
-                                <a href="apps-ecommerce-sellers.html">Sellers</a>
+                                <a href="apps-ecommerce-orders.html">Update</a>
                             </li>
                         </ul>
                     </div>
                 </li>
 
+
                 <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarDocument" aria-expanded="false" aria-controls="sidebarDocument" class="side-nav-link">
+                        <i class="uil-store"></i>
+                        <span> Document</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarDocument">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="{{ route('document.create')}}">Add</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('document.index')}}">Floor Details</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-orders.html">Update</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                {{-- <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
                         <span> Email </span>
@@ -105,9 +111,9 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
-                <li class="side-nav-item">
+                {{-- <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
                         <i class="uil-briefcase"></i>
                         <span> Projects </span>
@@ -634,7 +640,7 @@
                         </ul>
                     </div>
                 </li>
-            </ul>
+            </ul> --}}
 
             <!-- Help Box -->
             <div class="help-box help-box-light text-center">

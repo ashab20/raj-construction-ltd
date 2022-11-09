@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Builder\DocumentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
+Route::get('/', function () {
+    return view('dashboard');
+});
 
 // Route::get('register', function () {
 //     return view('auth.register');
 // });
 
+Route::resource('document',DocumentController::class);
