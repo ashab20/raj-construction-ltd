@@ -13,9 +13,9 @@ use App\Http\Controllers\Builder\DocumentController;
 |
 */
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 // Route::get('register', function () {
 //     return view('auth.register');

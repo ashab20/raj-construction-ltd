@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lands\Document;
+use Exception;
 use Illuminate\Http\Request;
 
 
@@ -38,7 +39,26 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $p= new Document();
+            $p->docu_name=$request->docuname;
+            $p->description=$request->description;
+
+            if($request->hasFile('docufile')){
+                $imageName = rand(111,999).time().'.'.$request->docufile->extension();  
+                $request->docufile->move(public_path('uploads/document'), $imageName);
+                $p->doc_attachment=$imageName;
+            }
+
+            $p->status=1;
+            if($p->save()){
+                return redirect('document')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            //dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -60,7 +80,8 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        $document = Document::paginate(10);
+        return view('document.edit',compact('document','product'));
     }
 
     /**

@@ -40,9 +40,14 @@
                                         @forelse ($document as $docu)
                                         <tr>
                                             <td scope="row">{{ ++$loop->index }}</td>
-                                            <td></td>
-                                            <td><img width="50px" src="{{ asset('uploads/category/'.$docu->image)}}" alt=""></td>
-                                        </tr>                                       
+                                            <td>{{ $docu->docu_name}}</td>
+                                            <td><img width="50px" src="{{ asset('uploads/document/'.$docu->doc_attachment)}}" alt=""></td>
+                                            <td>{{ $docu->description}}</td>
+                                            <td class="table-action">
+                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                            </td>
+                                        </tr>                                      
                                         @empty
                                             <tr>
                                                 <td colspan="5" class="text-center">No Data Found</td>
