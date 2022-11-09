@@ -7,54 +7,76 @@ use App\Models\Auth\User;
 use Illuminate\Http\Request;
 use  App\Http\Requests\Auth\RegisterRequest;
 use Exception;
-use App\Http\Traits\ResponseTrait;
+// use App\Traits\ResponseTrait;
+use App\Http\Controllers\Auth\UserTraits;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Auth\Role;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
-    // use ResponseTrait;
+    use UserTraits;
 
     // *** Registration Form ***
 
     public function userRegistrationForm()
     {
         $roles = Role::all();
-        return view('auth.register',compact('roles'));
+        return view('auth.register', compact('roles'));
     }
 
-   // *** Registration Store ***
+    // *** Registration Store ***
 
     public function userRegistrationStore(RegisterRequest $request)
     {
-        try{
-        $store = new User();
+        try {
+            $store = new User();
 
-        // $store->name = $request->input('userFullName');
-        $store->name = $request->userFullName;
-        $store->email = $request->userEmailAddress;
-        $store->password =  Crypt::encryptString($request->userPassword); 
-        $store->role_id = $request->userRoles;
-        $store->phone = $request->userPhoneNumber;
-        
-        if($store->save()){
-            return redirect('/')->with($this->responseMsg(true,false,'User successfully created'));
-        }
-        }
-        catch (Exception $error){
+            // $store->name = $request->input('userFullName');
+            $store->name = $request->userFullName;
+            $store->email = $request->userEmailAddress;
+            $store->password =  Crypt::encryptString($request->userPassword);
+            $store->role_id = $request->userRoles;
+            $store->phone = $request->userPhoneNumber;
+
+            if ($store->save()) {
+                return redirect('/')->with($this->resMessageHtml(true, false, 'User created successfully'));
+            }
+        } catch (Exception $error) {
             dd($error);
-            return redirect()->back()->with($this->responseMsg(false,'error','Server error'));            
+            return redirect()->back()->with($this->responseMsg(false, 'error', 'Server error'));
         }
     }
 
 
-    public function userLoginForm(){
+    public function userLoginForm()
+    {
         // Crypt::decryptString($encrypted);
         return view('auth.login');
     }
 
-    public function userLoginCheck(){
-        // Crypt::decryptString($encrypted);
+    public function userLoginCheck(LoginRequest $request)
+    {
+
+
+        try {
+            $user = User::where('email', $request->userEmailAddress->first());
+
+            // if ($user) {
+                // if(Hash::check($request->password , $user->password)){}
+                dd($user);
+                return redirect()->back()->with($this->responseMsg(false, 'error', 'Server error'));
+            // }
+            // $check->email = $request->userEmailAddress;
+            // $check->password =  Crypt::decryptString($check->password);
+
+            // if ($check) {
+            //     return redirect('/')->with($this->resMessageHtml(true, false, 'User created successfully'));
+            // }
+        } catch (Exception $error) {
+            dd($error);
+            return redirect()->back()->with($this->responseMsg(false, 'error', 'Server error'));
+        }
     }
 
     /**
