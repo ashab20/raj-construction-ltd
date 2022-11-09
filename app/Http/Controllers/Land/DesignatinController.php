@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Land;
 
-use App\Models\Lands\Land;
+
+
+use App\Models\Designatin;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class LandController extends Controller
+class DesignatinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +44,10 @@ class LandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Land  $land
+     * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function show(Land $land)
+    public function show(Designatin $designatin)
     {
         //
     }
@@ -52,10 +55,10 @@ class LandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Land  $land
+     * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Land $land)
+    public function edit(Designatin $designatin)
     {
         //
     }
@@ -64,10 +67,10 @@ class LandController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Land  $land
+     * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Land $land)
+    public function update(Request $request, Designatin $designatin)
     {
         //
     }
@@ -75,10 +78,10 @@ class LandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Land  $land
+     * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Land $land)
+    public function destroy(Designatin $designatin)
     {
         //
     }

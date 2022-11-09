@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Land;
 
+use App\Http\Controllers\Controller;
 use App\Models\Lands\Document;
 use Illuminate\Http\Request;
 
