@@ -19,20 +19,6 @@ Route::post('user/registration', [AuthUserController::class,'userRegistrationSto
 
 
 
-<<<<<<< HEAD
-// Route::group(['middleware'=>AdminMiddleware::class],function(){
-//     Route::prefix('admin')->group(function(){
-//         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
-//         /* settings */
-//         Route::resource('users',user::class,['as'=>'admin']);
-//         Route::resource('admin',admin::class,['as'=>'admin']);
-//         Route::resource('country',country::class,['as'=>'admin']);
-//         Route::resource('division',division::class,['as'=>'admin']);
-//         Route::resource('district',district::class,['as'=>'admin']);
-        
-//     });
-// });
-=======
 Route::group(['middleware'=>AdminMiddleware::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
@@ -40,4 +26,3 @@ Route::group(['middleware'=>AdminMiddleware::class],function(){
         
     });
 });
->>>>>>> d3ba6c39a684fbff0f84c1052db4a05f90e43ea8
