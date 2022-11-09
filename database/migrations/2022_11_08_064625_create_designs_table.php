@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('land_id');
             $table->unsignedBigInteger('designer_id');
-            $table->image('document');
+            $table->string('document');
             $table->integer('building_squire_feet')->default(1);
             $table->integer('total_floor_number')->default(1);
             $table->string('design_details');
