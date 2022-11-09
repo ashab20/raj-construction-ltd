@@ -22,10 +22,10 @@ return new class extends Migration
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->integer('squire_feet');
             $table->decimal('total_cost',12,2);
-            $table->unsignedBigInteger('flat_budget_id')->nullable();
-            $table->foreign('flat_budget_id')->references('id')->on('flat_budgets')->onDelete('cascade')->change();
-            $table->unsignedBigInteger('Material_details_id');
-            $table->foreign('Material_details_id')->references('id')->on('material_details')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('floor_budget_id');
+            $table->foreign('floor_budget_id')->references('id')->on('floor_budgets')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('material_detail_id');
+            $table->foreign('material_detail_id')->references('id')->on('material_details')->onDelete('cascade')->change();
             $table->decimal('sales_price',12,2);
 
             $table->integer('status')->default(1);

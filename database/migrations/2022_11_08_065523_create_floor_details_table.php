@@ -13,23 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('flat_budgets', function (Blueprint $table) {
+        Schema::create('floor_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('flat_details_id');
-            $table->foreign('flat_details_id')->references('id')->on('flat_details')->onDelete('cascade')->change();
-            $table->unsignedBigInteger('flat_budget_details_id');
-            $table->foreign('flat_budget_details_id')->references('id')->on('flat_budget_details')->onDelete('cascade')->change();
-            $table->integer('Total_working_day');
-            $table->integer('Total_worker');
-            $table->dateTime('issues_date');
-
+            $table->integer('total_squire_feet');
+            $table->decimal('total_cost',12,2);
+            $table->decimal('total_budget',12,2);
+            $table->unsignedBigInteger('material_id');
+            $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade')->change();
+            
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();
             $table->softDeletes();
+            
         });
     }
 
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flat_budgets');
+        Schema::dropIfExists('floor_details');
     }
 };

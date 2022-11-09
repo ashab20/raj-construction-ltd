@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('floor_budget_details', function (Blueprint $table) {
+        Schema::create('floor_budgets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('flat_details_id');
-            $table->foreign('flat_details_id')->references('id')->on('flat_details')->onDelete('cascade')->change();
-            $table->unsignedBigInteger('material_id');
-            $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade')->change();
-            $table->integer('budget_quantity');
-            $table->decimal('market_price',12,2);
-            $table->decimal('total_budget',12,2);
+            $table->unsignedBigInteger('floor_details_id');
+            $table->foreign('floor_details_id')->references('id')->on('floor_details')->onDelete('cascade')->change();
+            $table->integer('Total_working_day');
+            $table->integer('Total_worker');
             $table->dateTime('issues_date');
 
             $table->integer('status')->default(1);
@@ -41,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('floor_budget_details');
+        Schema::dropIfExists('floor_budgets');
     }
 };
