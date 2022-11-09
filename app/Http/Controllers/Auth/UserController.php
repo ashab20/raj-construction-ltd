@@ -9,6 +9,7 @@ use  App\Http\Requests\Auth\RegisterRequest;
 use Exception;
 use App\Http\Traits\ResponseTrait;
 use App\Models\Auth\Role;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -32,16 +33,28 @@ class UserController extends Controller
         // $store->name = $request->input('userFullName');
         $store->name = $request->userFullName;
         $store->email = $request->userEmailAddress;
-        $store->password = $request->userPassword;
-        $store->role_id = $request->roles;
-        $store->phone = $request->userPassword;
-
-        // print_r($request);
+        $store->password =  Crypt::encryptString($request->userPassword); 
+        $store->role_id = $request->userRoles;
+        $store->phone = $request->userPhoneNumber;
+        
+        if($store->save()){
+            return redirect('/')->with($this->responseMsg(true,false,'User successfully created'));
+        }
         }
         catch (Exception $error){
             dd($error);
-            return redirect('/')->with($this->responseMsg(false,'error','Server error'));            
+            return redirect()->back()->with($this->responseMsg(false,'error','Server error'));            
         }
+    }
+
+
+    public function userLoginForm(){
+        // Crypt::decryptString($encrypted);
+        return view('auth.login');
+    }
+
+    public function userLoginCheck(){
+        // Crypt::decryptString($encrypted);
     }
 
     /**

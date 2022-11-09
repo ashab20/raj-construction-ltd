@@ -24,12 +24,26 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> ['required','string'],
-            'email'=> ['required','string','email'],
-            'role_id'=> ['required','number'],
-            'status'=> ['required','number'],
-            'phone'=> ['number'],
-            'password'=> ['required','string','string']
+            'userFullName'=> ['required','string'],
+            'userEmailAddress'=> 'required|email|unique:users,email',
+            'userRoles'=> 'required',
+            'userPhoneNumber'=> 'required|numeric|unique:users,phone',
+            'userPassword'=> ['required','string']
         ];
     }
+   
+    public function messages()
+    {
+        return [
+            'required' => 'The :attribute field is required.',
+            'field', 'Something is wrong with this field!',
+            'same' => 'The :attribute and :other must match.',
+            'size' => 'The :attribute must be exactly :size.',
+            'between' => 'The :attribute value :input is not between :min - :max.',
+            'in' => 'The :attribute must be one of the following types: :values',
+            'max' => 'Your :attribute is too long!',
+            'min' => 'Your :attribute is too sort!'
+        ];
+    }
+   
 }
