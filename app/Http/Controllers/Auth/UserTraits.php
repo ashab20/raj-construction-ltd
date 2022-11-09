@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Traits;
+namespace App\Http\Controllers\Auth;
 
-trait ResponseTrait{
+trait UserTraits{
     public function resMessage($status=true, $error=null, $message=null){
         return [
             'response' =>[
