@@ -22,12 +22,7 @@ Route::post('user/registration', [AuthUserController::class,'userRegistrationSto
 Route::group(['middleware'=>AdminMiddleware::class],function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
-        /* settings */
-        Route::resource('users',user::class,['as'=>'admin']);
-        Route::resource('admin',admin::class,['as'=>'admin']);
-        Route::resource('country',country::class,['as'=>'admin']);
-        Route::resource('division',division::class,['as'=>'admin']);
-        Route::resource('district',district::class,['as'=>'admin']);
+       
         
     });
 });
