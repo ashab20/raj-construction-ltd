@@ -13,16 +13,18 @@ Route::get('/',[AuthUserController::class,'userLoginForm'])->name('userlogin');
 Route::post('/',[AuthUserController::class,'userLoginCheck'])->name('userlogin');
 
 
-Route::get('register', [AuthUserController::class,'userRegistrationForm']);
+Route::get('register', [AuthUserController::class,'userRegistrationForm'])->name('userstore');
 
-Route::post('user/registration', [AuthUserController::class,'userRegistrationStore'])->name('userstore');
+Route::post('register', [AuthUserController::class,'userRegistrationStore'])->name('userstore');
+Route::post('logout', [AuthUserController::class,'logOut'])->name('logout');
 
 
 
-Route::group(['middleware'=>AdminMiddleware::class],function(){
-    Route::prefix('admin')->group(function(){
-        Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
+
+// Route::group(['middleware'=>AdminMiddleware::class],function(){
+//     Route::prefix('admin')->group(function(){
+//         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
        
         
-    });
-});
+//     });
+// });

@@ -69,7 +69,7 @@ class UserController extends Controller
             if ($user) {
                 if ($request->userPassword === Crypt::decryptString($user->password)) {
                     $this->userSessionData($user);
-                    return redirect()->route($user->role->identity.'.dashboard')->with($this->resMessageHtml(true, null, 'Successfully login'));
+                    return redirect()->route('dashboard')->with($this->resMessageHtml(true, null, 'Successfully login'));
                     // return redirect()->route($user->role->identity.'.dashboard')->with($this->resMessageHtml(true,null,'Successfully login'));
                 } else
                     return redirect()->route('userlogin')->with($this->resMessageHtml(false, 'error', 'wrong cradential! Please try Again'));
