@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Land;
 
-
-
-use App\Models\Designatin;
+use App\Http\Controllers\Controller;
+use App\Models\Lands\Designatin;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class DesignatinController extends Controller
 {
