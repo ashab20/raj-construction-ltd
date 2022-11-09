@@ -26,27 +26,27 @@ return new class extends Migration
         DB::table('roles')->insert([
             [
                 'role'=>'Admin',
-                'identify'=>'ADMIN',
+                'identify'=>'admin',
                 'created_at'=>Carbon::now(),
             ],
             [
                 'role'=>'Moderator',
-                'identify'=>'MODERATOR',
+                'identify'=>'moderator',
                 'created_at'=>Carbon::now(),
             ],
             [
                 'role'=>'Employee',
-                'identify'=>'EMPLOYEE',
+                'identify'=>'employee',
                 'created_at'=>Carbon::now(),
             ],
             [
                 'role'=>'LandOwner',
-                'identify'=>'LANDOWNER',
+                'identify'=>'landowner',
                 'created_at'=>Carbon::now(),
             ],
             [
                 'role'=>'Client',
-                'identify'=>'CLIENT',
+                'identify'=>'client',
                 'created_at'=>Carbon::now(),
             ],
         ]);

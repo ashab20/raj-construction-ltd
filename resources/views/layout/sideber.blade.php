@@ -4,7 +4,11 @@
             <div class="leftbar-user">
                 <a href="javascript: void(0);">
                     <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
-                    <span class="leftbar-user-name">Dominic Keller</span>
+                    <span class="leftbar-user-name">
+                        @php
+                            decrypt(session()->get('userId'))
+                        @endphp
+                    </span>
                 </a>
             </div>
 
