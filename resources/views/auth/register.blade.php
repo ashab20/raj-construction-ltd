@@ -13,9 +13,6 @@
                                 <span><img src="{{ asset('public/assets/images/logo.png') }}" alt="" height="18"></span>
                             </a>
                         </div>
-                        <?php
-                        print_r($roles);
-                        ?>
                         <div class="card-body p-4">
 
                             <div class="text-center w-75 m-auto">
