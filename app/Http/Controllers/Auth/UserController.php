@@ -51,7 +51,7 @@ class UserController extends Controller
 
     public function userLoginForm()
     {
-        // Crypt::decryptString($encrypted);
+
         return view('auth.login');
     }
 
@@ -60,23 +60,52 @@ class UserController extends Controller
 
 
         try {
-            $user = User::where('email', $request->userEmailAddress->first());
-
-            // if ($user) {
-                // if(Hash::check($request->password , $user->password)){}
-                dd($user);
-                return redirect()->back()->with($this->responseMsg(false, 'error', 'Server error'));
-            // }
-            // $check->email = $request->userEmailAddress;
-            // $check->password =  Crypt::decryptString($check->password);
-
-            // if ($check) {
-            //     return redirect('/')->with($this->resMessageHtml(true, false, 'User created successfully'));
-            // }
+            $user = User::where('email', $request->userEmailAddress)->first();
+            // $test =[
+            //     'usrpass'=> Crypt::decryptString($user->password),
+            //     'dbpass'=>$request->userPassword,
+            // ];
+            // dd($user->role);
+            if ($user) {
+                if ($request->userPassword === Crypt::decryptString($user->password)) {
+                    $this->userSessionData($user);
+                    return redirect()->route('dashboard')->with($this->resMessageHtml(true, null, 'Successfully login'));
+                    // return redirect()->route($user->role->identity.'.dashboard')->with($this->resMessageHtml(true,null,'Successfully login'));
+                } else
+                    return redirect()->route('userlogin')->with($this->resMessageHtml(false, 'error', 'wrong cradential! Please try Again'));
+            } else {
+                return redirect()->route('userlogin')->with($this->resMessageHtml(false, 'error', 'wrong cradential!. Or no user found!'));
+            }
         } catch (Exception $error) {
             dd($error);
-            return redirect()->back()->with($this->responseMsg(false, 'error', 'Server error'));
+            return redirect()->route('userlogin')->with($this->resMessageHtml(false, 'error', 'wrong cradential!'));
         }
+    }
+
+
+    public function userSessionData($user)
+    {
+        // get secret text from env. 2nd value is the default value
+        $secret = env('APP_SECRET', 'rabibashabjahidconstractionltd');
+
+        return request()->session()->put(
+            [
+                'userId' =>Crypt::encryptString($user->id) . $secret,
+                'userName' => Crypt::encryptString($user->name) . $secret,
+                'role' => Crypt::encryptString($user->role->role) . $secret,
+                'roleIdentity' => Crypt::encryptString($user->role->identity) . $secret,
+                'language' => Crypt::encryptString($user->language) . $secret,
+                'companyId' => Crypt::encryptString($user->company_id) . $secret,
+                'image' => $user->image ? $user->image : 'no-image.png'
+            ]
+        );
+    }
+
+
+    public function logOut()
+    {
+        request()->session()->flush();
+        return redirect('/')->with($this->resMessageHtml(false, 'error', 'currentUserId()'));
     }
 
     /**

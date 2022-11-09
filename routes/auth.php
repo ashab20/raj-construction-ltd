@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 // \Providers\RouteServiceProvider
 
 // * User login
-Route::get('/',[AuthUserController::class,'userLoginForm']);
-Route::post('/user/login',[AuthUserController::class,'userLoginCheck'])->name('userlogin');
+Route::get('/',[AuthUserController::class,'userLoginForm'])->name('userlogin');
+Route::post('/',[AuthUserController::class,'userLoginCheck'])->name('userlogin');
 
 
 Route::get('register', [AuthUserController::class,'userRegistrationForm']);
