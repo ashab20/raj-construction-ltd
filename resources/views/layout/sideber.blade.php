@@ -99,6 +99,29 @@
                     </div>
                 </li>
 
+
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarDocument" aria-expanded="false" aria-controls="sidebarDocument" class="side-nav-link">
+                        <i class="uil-store"></i>
+                        <span> Design</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarDocument">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="{{ route('document.create')}}">Add</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('document.index')}}">Design Details</a>
+                            </li>
+                            <li>
+                                <a href="apps-ecommerce-orders.html">Update</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 {{-- <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
