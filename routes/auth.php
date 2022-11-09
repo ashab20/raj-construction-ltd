@@ -19,6 +19,7 @@ Route::post('user/registration', [AuthUserController::class,'userRegistrationSto
 
 
 
+<<<<<<< HEAD
 // Route::group(['middleware'=>AdminMiddleware::class],function(){
 //     Route::prefix('admin')->group(function(){
 //         Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
@@ -31,3 +32,12 @@ Route::post('user/registration', [AuthUserController::class,'userRegistrationSto
         
 //     });
 // });
+=======
+Route::group(['middleware'=>AdminMiddleware::class],function(){
+    Route::prefix('admin')->group(function(){
+        Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
+       
+        
+    });
+});
+>>>>>>> d3ba6c39a684fbff0f84c1052db4a05f90e43ea8
