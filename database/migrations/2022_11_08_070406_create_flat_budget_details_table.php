@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('flat_budget_details', function (Blueprint $table) {
+        Schema::create('floor_budget_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('flat_details_id');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('budget_quantity');
             $table->decimal('market_price',12,2);
             $table->decimal('total_budget',12,2);
-            $table->dateTime('issues_date')->default(new DateTime());
+            $table->dateTime('issues_date');
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
@@ -41,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flat_budget_details');
+        Schema::dropIfExists('floor_budget_details');
     }
 };

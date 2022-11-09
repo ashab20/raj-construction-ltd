@@ -26,6 +26,20 @@
 
                                 <div class="mb-3">
                                     <label for="fullname" class="form-label">Full Name</label>
+
+                                    <select class="form-control select2" data-toggle="select2">
+                                        <option>Select</option>
+                                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                                            <option value="AK">Alaska</option>
+                                            <option value="HI">Hawaii</option>
+                                        </optgroup>
+                                        <optgroup label="Pacific Time Zone">
+                                            <option value="CA">California</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="WA">Washington</option>
+                                        </optgroup>
+                                    </select>
                                     <select name="" id="">
                                         <option value="">Select Roles</option>
                                         @forelse($roles as $role)

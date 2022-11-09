@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('flat_budget_details_id')->references('id')->on('flat_budget_details')->onDelete('cascade')->change();
             $table->integer('Total_working_day');
             $table->integer('Total_worker');
-            $table->dateTime('issues_date')->default(new DateTime());
+            $table->dateTime('issues_date');
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
