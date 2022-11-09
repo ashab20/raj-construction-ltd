@@ -25,22 +25,22 @@ class UserController extends Controller
 
     public function userRegistrationStore(RegisterRequest $request)
     {
-        // try{
-        // $store = new User();
+        try{
+        $store = new User();
 
-        // $store->name = $request->input('userFullName');
-        // $store->name = $request->userFullName;
-        // $store->email = $request->userEmailAddress;
-        // $store->password = $request->userEmailAddress;
-        // $store->role_id = $request->roles;
-        // $store->phone = $request->userPassword;
+        $store->name = $request->input('userFullName');
+        $store->name = $request->userFullName;
+        $store->email = $request->userEmailAddress;
+        $store->password = $request->userPassword;
+        $store->role_id = $request->roles;
+        $store->phone = $request->userPassword;
 
-        print_r($request);
-        // }
-        // catch (Exception $error){
-        //     dd($error);
-            // return redirect('/')->with($this->responseMsg(false,'error','Server error'));            
-        // }
+        // print_r($request);
+        }
+        catch (Exception $error){
+            dd($error);
+            return redirect('/')->with($this->responseMsg(false,'error','Server error'));            
+        }
     }
 
     /**

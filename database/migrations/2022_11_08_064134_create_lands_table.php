@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('lands', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            
                //default
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
