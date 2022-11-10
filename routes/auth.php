@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\UserController as AuthUserController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Builder\DocumentController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -10,21 +10,30 @@ use Illuminate\Support\Facades\Route;
 // \Providers\RouteServiceProvider
 
 // * User login
-Route::get('/',[AuthUserController::class,'userLoginForm'])->name('userlogin');
-Route::post('/',[AuthUserController::class,'userLoginCheck'])->name('userlogin');
+Route::get('/', [AuthController::class, 'userLoginForm'])->name('userlogin');
+Route::post('/', [AuthController::class, 'userLoginCheck'])->name('userlogin');
 
 
-Route::get('register', [AuthUserController::class,'userRegistrationForm'])->name('userstore');
+Route::get('register', [UserController::class, 'userRegistrationForm'])->name('userstore');
 
-Route::post('register', [AuthUserController::class,'userRegistrationStore'])->name('userstore');
-Route::get('logout', [AuthUserController::class,'logOut'])->name('logout');
+Route::post('register', [UserController::class, 'userRegistrationStore'])->name('userstore');
+
+Route::get('logout', [AuthController::class, 'logOut'])->name('logout');
 
 
 
 
-Route::group(['middleware'=>AdminMiddleware::class],function(){
-    Route::prefix('admin')->group(function(){
-        
+Route::group(['middleware' => AdminMiddleware::class], function () {
+    Route::prefix('admin')->group(function () {
+
+        // Create Users
+        Route::get('members', [UserController::class,'index'])->name('members');
+
+        Route::get('members/add', [UserController::class,'adduserform'])->name('addmembers');
+
+        Route::post('members/add', [UserController::class,'adduserstore'])->name('members');
+
+
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('admin.dashboard');
@@ -33,7 +42,11 @@ Route::group(['middleware'=>AdminMiddleware::class],function(){
             return view('profile.account');
         })->name('admin.account');
 
-        Route::resource('/document',DocumentController::class);
-        
+
+        Route::resource('/document', DocumentController::class);
+
+        // Constructions
+
+
     });
 });

@@ -47,13 +47,44 @@
                 <li class="side-nav-item">
                     <a href="apps-chat.html" class="side-nav-link">
                         <i class="uil-comments-alt"></i>
-                        <span> {{__('Dashaboards')}} </span>
+                        <span> {{__('Dashaboard')}} </span>
+                    </a>
+                </li>
+                <li class="side-nav-item">
+                    <a href="#" class="side-nav-link">
+                        <i class="uil-comments-alt"></i>
+                        <span> {{__('Quick Search')}} </span>
                     </a>
                 </li>
 
                 <li class="side-nav-title side-nav-item">Construstions</li>
 
-              
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
+                        <i class="uil-clipboard-alt"></i>
+                        <span> {{ __('Projects')}}</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarTasks">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="apps-tasks.html">
+                                    {{__('Lands')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="apps-tasks-details.html">
+                                    {{__('Documents')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="apps-kanban.html">
+                                    {{__('Designs')}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
               
                 <li class="side-nav-item">
@@ -139,7 +170,7 @@
                     <div class="collapse" id="sidebarEmail">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="apps-email-inbox.html">
+                                <a href="{{route('members')}}">
                                     {{ _('All Members')}}
                                 </a>
                             </li>
