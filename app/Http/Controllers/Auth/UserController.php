@@ -121,9 +121,10 @@ class UserController extends Controller
      * @param  \App\Models\Auth\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $members)
     {
         //
+        return view('Users.edit',$members);
     }
 
     /**
