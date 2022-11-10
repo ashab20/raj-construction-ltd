@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\UserController as AuthUserController;
 use App\Http\Controllers\Builder\DocumentController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Land\LandController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +34,8 @@ Route::group(['middleware'=>AdminMiddleware::class],function(){
         })->name('admin.account');
 
         Route::resource('/document',DocumentController::class);
+        
+        Route::resource('/land',LandController::class);
         
     });
 });

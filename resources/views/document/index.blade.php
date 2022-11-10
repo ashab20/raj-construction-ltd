@@ -31,7 +31,7 @@
                                         <tr>
                                             <th>#SL</th>
                                             <th>Name</th>
-                                            <th>File</th>
+                                            <th>Document</th>
                                             <th>Description</th>
                                             <th>Action</th>
                                         </tr>
@@ -45,10 +45,12 @@
                                             <td>{{ $docu->description}}</td>
                                             <td class="table-action">
                                                 <a href="{{ route('document.edit',$docu->id)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
-                                                <form id="form{{$docu->id}}" method="post">
+                                                <a href="javascript:void()" onclick="$('#form{{$docu->id}}').submit()">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a>
+                                                <form id="form{{$docu->id}}" action="{{ route('document.destroy',$docu->id)}}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('document.destroy',$docu->id)}}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                 </form>
                                             </td>
                                         </tr>                                      

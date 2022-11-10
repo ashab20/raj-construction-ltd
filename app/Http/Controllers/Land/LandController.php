@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Land;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lands\Land;
+use Exception;
 use Illuminate\Http\Request;
 
 class LandController extends Controller
@@ -16,7 +17,7 @@ class LandController extends Controller
     public function index()
     {
         $Lands=Land::paginate(10);
-        return view('Land.index',compact('Lands'));
+        return view('land.index',compact('Lands'));
     }
 
     /**
@@ -37,7 +38,25 @@ class LandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $land= new Land();
+            $identity = decrypt(session()->get('roleIdentity'));
+            $land->docu_name=$request->docuname;
+            $land->description=$request->description;
+
+            if($request->hasFile('docufile')){
+                $imageName = rand(111,999).time().'.'.$request->docufile->extension();  
+                $request->docufile->move(public_path('uploads/document'), $imageName);
+                $land->doc_attachment=$imageName;
+            }
+            $land->status=1;
+            if($land->save()){
+                return redirect($identity.'/land')->with($this->resMessageHtml(true, false, 'Document created successfully'));
+            }
+        }
+        catch(Exception $e){
+            return redirect()->back()->with($this->responseMsg(false, 'error', 'Cannot create document'));
+        }
     }
 
     /**

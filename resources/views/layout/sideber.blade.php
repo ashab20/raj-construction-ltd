@@ -70,9 +70,6 @@
                             <li>
                                 <a href="apps-ecommerce-products-details.html">Floor Details</a>
                             </li>
-                            <li>
-                                <a href="apps-ecommerce-orders.html">Update</a>
-                            </li>
                         </ul>
                     </div>
                 </li>
@@ -91,6 +88,24 @@
                             </li>
                             <li>
                                 <a href="{{ route('document.index')}}">Floor Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarland" aria-expanded="false" aria-controls="sidebarland" class="side-nav-link">
+                        <i class="uil-store"></i>
+                        <span>Land</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarland">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="#">Add</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('land.index')}}">Floor Details</a>
                             </li>
                         </ul>
                     </div>

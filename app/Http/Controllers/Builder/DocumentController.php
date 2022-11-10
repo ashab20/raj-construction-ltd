@@ -44,6 +44,7 @@ class DocumentController extends Controller
     {
         try{
             $docu= new Document();
+            $identity = decrypt(session()->get('roleIdentity'));
             $docu->docu_name=$request->docuname;
             $docu->description=$request->description;
 
@@ -58,7 +59,7 @@ class DocumentController extends Controller
 
             $docu->status=1;
             if($docu->save()){
-                return redirect('/')->with($this->resMessageHtml(true, false, 'Document created successfully'));
+                return redirect($identity.'/document')->with($this->resMessageHtml(true, false, 'Document created successfully'));
             }
         }
         catch(Exception $e){
@@ -85,8 +86,8 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        $documents = Document::paginate(10);
-        return view('document.edit',compact('documents','document'));
+        
+        return view('document.edit',compact('document'));
     }
 
     /**
