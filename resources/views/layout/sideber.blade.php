@@ -116,23 +116,34 @@
                     </div>
                 </li>
 
-                {{-- <li class="side-nav-item">
+                <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
-                        <span> Email </span>
+                        <span>{{__('Members')}}</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEmail">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="apps-email-inbox.html">Inbox</a>
+                                <a href="apps-email-inbox.html">
+                                    {{ _('All Members')}}
+                                </a>
                             </li>
                             <li>
-                                <a href="apps-email-read.html">Read Email</a>
+                                <a href="apps-email-read.html">{{ _('Admins')}}</a>
+                            </li>
+                            <li>
+                                <a href="apps-email-read.html">{{ _('Employees')}}</a>
+                            </li>
+                            <li>
+                                <a href="apps-email-read.html">{{ _('Clients')}}</a>
+                            </li>
+                            <li>
+                                <a href="apps-email-read.html">{{ _('Workers')}}</a>
                             </li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
 
                 {{-- <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
@@ -664,7 +675,7 @@
             </ul> --}}
 
             <!-- Help Box -->
-            <div class="help-box help-box-light text-center">
+            {{-- <div class="help-box help-box-light text-center">
                 <a href="javascript: void(0);" class="float-end close-btn text-body">
                     <i class="mdi mdi-close"></i>
                 </a>
@@ -672,7 +683,7 @@
                 <h5 class="mt-3">Unlimited Access</h5>
                 <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
                 <a href="javascript: void(0);" class="btn btn-outline-primary btn-sm">Upgrade</a>
-            </div>
+            </div> --}}
             <!-- end Help Box -->
             <!-- End Sidebar -->
 
