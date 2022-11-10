@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $members = User::all();
-        return view('Users.members',compact('members'));
+        return view('Users.members');
     }
 
 

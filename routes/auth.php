@@ -29,9 +29,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         // Create Users
         Route::get('members', [UserController::class,'index'])->name('members');
 
-        Route::get('members/add', [UserController::class,'adduserform'])->name('addmembers');
-
-        Route::post('members/add', [UserController::class,'adduserstore'])->name('members');
+        Route::resource('members/add', UserController::class);
 
 
         Route::get('/dashboard', function () {
