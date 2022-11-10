@@ -15,33 +15,47 @@
             <!--- Sidemenu -->
             <ul class="side-nav">
 
-                <li class="side-nav-title side-nav-item">Navigation</li>
-
+                
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                         <i class="uil-home-alt"></i>
-                        <span> Dashboards </span>
+                        <span> My Accounts </span>
+                        <span class="menu-arrow"></span>
                     </a>
-                    {{-- <div class="collapse" id="sidebarDashboards">
+                    <div class="collapse" id="sidebarDashboards">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="dashboard-analytics.html">Analytics</a>
+                                <a href="dashboard-analytics.html">Profile</a>
                             </li>
                             <li>
-                                <a href="dashboard-crm.html">CRM</a>
+                                <a href="dashboard-crm.html">
+                                    Change Password
+                                </a>
                             </li>
                             <li>
-                                <a href="index.html">Ecommerce</a>
+                                <a href="index.html">
+                                    Update Profile
+                                </a>
                             </li>
                             <li>
                                 <a href="dashboard-projects.html">Projects</a>
                             </li>
                         </ul>
-                    </div> --}}
+                    </div>
+                </li>
+                <li class="side-nav-title side-nav-item">Quick Access</li>
+                <li class="side-nav-item">
+                    <a href="apps-chat.html" class="side-nav-link">
+                        <i class="uil-comments-alt"></i>
+                        <span> {{__('Dashaboards')}} </span>
+                    </a>
                 </li>
 
-                <li class="side-nav-title side-nav-item">Apps</li>
+                <li class="side-nav-title side-nav-item">Construstions</li>
 
+              
+
+              
                 <li class="side-nav-item">
                     <a href="apps-calendar.html" class="side-nav-link">
                         <i class="uil-calender"></i>
@@ -131,44 +145,63 @@
                     </div>
                 </li>
 
-                {{-- <li class="side-nav-item">
+                <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
-                        <span> Email </span>
+                        <span>{{__('Members')}}</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEmail">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="apps-email-inbox.html">Inbox</a>
+                                <a href="apps-email-inbox.html">
+                                    {{ _('All Members')}}
+                                </a>
                             </li>
                             <li>
-                                <a href="apps-email-read.html">Read Email</a>
+                                <a href="apps-email-read.html">{{ _('Admins')}}</a>
+                            </li>
+                            <li>
+                                <a href="apps-email-read.html">{{ _('Employees')}}</a>
+                            </li>
+                            <li>
+                                <a href="apps-email-read.html">{{ _('Clients')}}</a>
+                            </li>
+                            <li>
+                                <a href="apps-email-read.html">{{ _('Workers')}}</a>
                             </li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
+                <li class="side-nav-title side-nav-item">Apps</li>
 
-                {{-- <li class="side-nav-item">
+                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
                         <i class="uil-briefcase"></i>
-                        <span> Projects </span>
+                        <span> {{__('Locations')}} </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarProjects">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="apps-projects-list.html">List</a>
+                                <a href="apps-projects-list.html">
+                                    {{__('Coutries')}}
+                                </a>
                             </li>
                             <li>
-                                <a href="apps-projects-details.html">Details</a>
+                                <a href="apps-projects-details.html">
+                                    {{__('Divions/State')}}
+                                </a>
                             </li>
                             <li>
-                                <a href="apps-projects-gantt.html">Gantt <span class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span></a>
+                                <a href="apps-projects-gantt.html">
+                                    {{_('Districts')}} 
+                                    <span class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span>
+                                </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="apps-projects-add.html">Create Project <span class="badge rounded-pill badge-success-lighten font-10 float-end">New</span></a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
@@ -176,10 +209,10 @@
                 <li class="side-nav-item">
                     <a href="apps-social-feed.html" class="side-nav-link">
                         <i class="uil-rss"></i>
-                        <span> Social Feed </span>
+                        <span> {{_('Designations')}} </span>
                     </a>
                 </li>
-
+{{--
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
@@ -679,7 +712,7 @@
             </ul> --}}
 
             <!-- Help Box -->
-            <div class="help-box help-box-light text-center">
+            {{-- <div class="help-box help-box-light text-center">
                 <a href="javascript: void(0);" class="float-end close-btn text-body">
                     <i class="mdi mdi-close"></i>
                 </a>
@@ -687,7 +720,7 @@
                 <h5 class="mt-3">Unlimited Access</h5>
                 <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
                 <a href="javascript: void(0);" class="btn btn-outline-primary btn-sm">Upgrade</a>
-            </div>
+            </div> --}}
             <!-- end Help Box -->
             <!-- End Sidebar -->
 
