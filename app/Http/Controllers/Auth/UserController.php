@@ -99,8 +99,9 @@ class UserController extends Controller
 
     public function logOut()
     {
+        // $userId = Crypt::decrypt(session()->get('userId'));
         request()->session()->flush();
-        return redirect('/')->with($this->resMessageHtml(false, 'error', 'currentUserId()'));
+        return redirect('/')->with($this->resMessageHtml(false, false, 'Please Login to get access'));
     }
 
     /**

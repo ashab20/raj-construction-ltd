@@ -16,7 +16,7 @@ Route::post('/',[AuthUserController::class,'userLoginCheck'])->name('userlogin')
 Route::get('register', [AuthUserController::class,'userRegistrationForm'])->name('userstore');
 
 Route::post('register', [AuthUserController::class,'userRegistrationStore'])->name('userstore');
-Route::post('logout', [AuthUserController::class,'logOut'])->name('logout');
+Route::get('logout', [AuthUserController::class,'logOut'])->name('logout');
 
 
 

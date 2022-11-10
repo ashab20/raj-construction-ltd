@@ -230,7 +230,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{route('admin.account')}}" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-circle me-1"></i>
                         <span>{{ __('My Account')}}</span>
                     </a>
@@ -254,7 +254,7 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{route('logout')}}" class="dropdown-item notify-item">
                         <i class="mdi mdi-logout me-1"></i>
                         <span>{{__('Logout')}}</span>
                     </a>
