@@ -38,9 +38,8 @@
                                             <input type="text" id="docuname" value="{{ old('docuname',$document->docu_name)}}" name="docuname" class="form-control">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="docuname" class="form-label">Document Name</label>
-                                            <input type="file" id="image" class="form-control"
-                                              placeholder="Image" name="image">
+                                            <label for="docufile" class="form-label">Document Name</label>
+                                            <input type="file" id="docufile" class="form-control" name="docufile">
                                         </div>
 
                                         <div class="mb-3">

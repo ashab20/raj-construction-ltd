@@ -99,6 +99,7 @@ class DocumentController extends Controller
     public function update(Request $request, Document $document)
     {
         try{
+            $identity = decrypt(session()->get('roleIdentity'));
             $docu= $document;
             $docu->docu_name=$request->docuname;
             $docu->description=$request->description;
@@ -110,12 +111,11 @@ class DocumentController extends Controller
             }
             $docu->status=1;
             if($docu->save()){
-                return redirect('document')->with('success','Data saved');
-                return redirect('/')->with($this->resMessageHtml(true, false, 'User created successfully'));
+                return redirect($identity.'/document')->with('success','Data saved');
             }
         }
         catch(Exception $e){
-            //dd($e);
+            dd($e);
             return back()->withInput();
         }
     }
@@ -128,6 +128,7 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        $document->delete();
+        return redirect()->back();
     }
 }

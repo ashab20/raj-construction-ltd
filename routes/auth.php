@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\UserController as AuthUserController;
+use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::group(['middleware'=>AdminMiddleware::class],function(){
             return view('profile.account');
         })->name('admin.account');
 
-
+        Route::resource('/document',DocumentController::class);
         
     });
 });

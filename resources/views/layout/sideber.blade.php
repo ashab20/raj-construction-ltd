@@ -92,9 +92,6 @@
                             <li>
                                 <a href="{{ route('document.index')}}">Floor Details</a>
                             </li>
-                            <li>
-                                <a href="#">Update</a>
-                            </li>
                         </ul>
                     </div>
                 </li>
@@ -114,9 +111,6 @@
                             </li>
                             <li>
                                 <a href="{{ route('document.index')}}">Design Details</a>
-                            </li>
-                            <li>
-                                <a href="apps-ecommerce-orders.html">Update</a>
                             </li>
                         </ul>
                     </div>
