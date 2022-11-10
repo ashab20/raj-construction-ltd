@@ -28,13 +28,12 @@ class AdminMiddleware
             return redirect()->route('logOut');
 
         }else{
-            $identity = $request->session()->get('roleIdentity').env('APP_SECRET');
-            dd($identity);
-            $user=User::findOrFail($request->session()->get('userId'));
+            
+            $user=User::findOrFail(decrypt(session()->get('userId')));
             app()->setLocale($user->language); // language
             if(!$user){
                 return redirect()->route('logOut');
-            }else if($request->session()->get('roleIdentity') != 'ADMIN'){
+            }else if(decrypt(session()->get('roleIdentity')) != 'admin'){
                 return redirect()->back()->with($this->resMessageHtml(false,'error','Access Denied'));
             }else{
                 return $next($request);

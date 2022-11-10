@@ -61,15 +61,10 @@ class UserController extends Controller
 
         try {
             $user = User::where('email', $request->userEmailAddress)->first();
-            // $test =[
-            //     'usrpass'=> Crypt::decryptString($user->password),
-            //     'dbpass'=>$request->userPassword,
-            // ];
-            // dd($user->role);
             if ($user) {
                 if ($request->userPassword === Crypt::decryptString($user->password)) {
                     $this->userSessionData($user);
-                    return redirect()->route('dashboard')->with($this->resMessageHtml(true, null, 'Successfully login'));
+                    return redirect()->route($user->role->identify.'.dashboard')->with($this->resMessageHtml(true, null, 'Successfully login'));
                     // return redirect()->route($user->role->identity.'.dashboard')->with($this->resMessageHtml(true,null,'Successfully login'));
                 } else
                     return redirect()->route('userlogin')->with($this->resMessageHtml(false, 'error', 'wrong cradential! Please try Again'));
@@ -90,12 +85,12 @@ class UserController extends Controller
 
         return request()->session()->put(
             [
-                'userId' =>Crypt::encryptString($user->id. $secret),
-                'userName' => Crypt::encryptString($user->name) . $secret,
-                'role' => Crypt::encryptString($user->role->role) . $secret,
-                'roleIdentity' => Crypt::encryptString($user->role->identity) . $secret,
-                'language' => Crypt::encryptString($user->language) . $secret,
-                'companyId' => Crypt::encryptString($user->company_id) . $secret,
+                'userId' =>encrypt($user->id),
+                'userName' => encrypt($user->name) ,
+                'role' => encrypt($user->role->role) ,
+                'roleIdentity' => encrypt($user->role->identify) ,
+                'language' => encrypt($user->language) ,
+                'companyId' => encrypt($user->company_id) ,
                 'image' => $user->image ? $user->image : 'no-image.png'
             ]
         );
