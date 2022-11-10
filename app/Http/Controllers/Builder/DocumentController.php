@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Document\AddRequest;
 use App\Models\Lands\Document;
 use Exception;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddRequest $request)
     {
         try{
             $p= new Document();
