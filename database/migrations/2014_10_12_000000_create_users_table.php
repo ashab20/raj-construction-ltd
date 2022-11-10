@@ -21,6 +21,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->char('password');
             $table->unsignedBigInteger('role_id');
+
+            $table->unsignedBigInteger('designation_id')->nullable()->foreign()->references('id')->on('designatins')->onDelete('cascade')->change();
+
+            $table->string('avatar')->nullable();
             $table->string('language')->default('en');
             $table->integer('status')->default(1);
             $table->rememberToken();

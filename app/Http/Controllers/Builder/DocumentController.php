@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Builder;
 
+use App\Http\Controllers\Auth\ResponseTraids;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Document\AddRequest;
 use App\Http\Traits\ResponseTraits;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
-    use ResponseTraits;
+    use ResponseTraids;
     /**
      * Display a listing of the resource.
      *
