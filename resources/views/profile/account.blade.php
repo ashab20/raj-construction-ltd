@@ -2,7 +2,6 @@
 
 @section('content')
 
-<body class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'>
 
 
 <!-- Start Content-->
