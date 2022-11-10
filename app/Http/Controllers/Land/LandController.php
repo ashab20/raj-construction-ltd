@@ -41,21 +41,28 @@ class LandController extends Controller
         try{
             $land= new Land();
             $identity = decrypt(session()->get('roleIdentity'));
-            $land->docu_name=$request->docuname;
-            $land->description=$request->description;
-
-            if($request->hasFile('docufile')){
-                $imageName = rand(111,999).time().'.'.$request->docufile->extension();  
-                $request->docufile->move(public_path('uploads/document'), $imageName);
-                $land->doc_attachment=$imageName;
+            $land->squire_feet = $request->squireFeet;
+            $land->house_no = $request->houseNo;
+            $land->block = $request->block;
+            $land->road_no = $request->roadNo;
+            $land->address = $request->address;
+            if($request->hasFile('designId')){
+                $imageName = rand(111,999).time().'.'.$request->designId->extension();  
+                $request->designId->move(public_path('uploads/land'), $imageName);
+                $land->design_id = $imageName;
             }
-            $land->status=1;
+
+            $land->total_budget = $request->totalBudget;
+            $land->total_cost = $request->totalCost;
+
+            $land->status = 1;
             if($land->save()){
-                return redirect($identity.'/land')->with($this->resMessageHtml(true, false, 'Document created successfully'));
+                return redirect($identity.'/land')->with('success','Data saved');
             }
         }
         catch(Exception $e){
-            return redirect()->back()->with($this->responseMsg(false, 'error', 'Cannot create document'));
+            dd($e);
+            return back()->withInput();
         }
     }
 

@@ -101,7 +101,7 @@
                                 <a href="{{ route('document.create')}}">Add</a>
                             </li>
                             <li>
-                                <a href="{{ route('document.index')}}">Floor Details</a>
+                                <a href="{{ route('document.index')}}">Document Details</a>
                             </li>
                         </ul>
                     </div>
@@ -116,10 +116,10 @@
                     <div class="collapse" id="sidebarland">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="#">Add</a>
+                                <a href="{{ route('land.create')}}">Add</a>
                             </li>
                             <li>
-                                <a href="{{ route('land.index')}}">Floor Details</a>
+                                <a href="{{ route('land.index')}}">Land Details</a>
                             </li>
                         </ul>
                     </div>

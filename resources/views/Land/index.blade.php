@@ -35,7 +35,6 @@
                                             <th>Block</th>
                                             <th>Road No.</th>
                                             <th>Address</th>
-                                            <th>Document</th>
                                             <th>Design</th>
                                             <th>Total Budget</th>
                                             <th>Total Cost</th>
@@ -44,18 +43,17 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($Lands as $land)
-                                        <tr>squire_feet 	 	 	 	 	 	 	 
+                                        <tr>	 	 	 	 	 	 	 
                                             <td scope="row">{{ ++$loop->index }}</td>
                                             <td>{{ $land->squire_feet}}</td>
                                             <td>{{ $land->house_no}}</td>
                                             <td>{{ $land->block}}</td>
                                             <td>{{ $land->road_no}}</td>
                                             <td>{{ $land->address}}</td>
-                                            <td>{{ $land->design_id}}</td>
+                                            <td><img width="50px" src="{{ asset('uploads/land/'.$land->design_id)}}" alt=""></td>
                                             <td>{{ $land->total_budget}}</td>
                                             <td>{{ $land->total_cost}}</td>
-                                            <td><img width="50px" src="{{ asset('uploads/document/'.$land->doc_attachment)}}" alt=""></td>
-                                            <td>{{ $land->description}}</td>
+                                            
                                             <td class="table-action">
                                                 <a href="{{ route('document.edit',$land->id)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
                                                 <a href="javascript:void()" onclick="$('#form{{$land->id}}').submit()">
@@ -69,7 +67,7 @@
                                         </tr>                                      
                                         @empty
                                             <tr>
-                                                <td colspan="11" class="text-center">No Data Found</td>
+                                                <td colspan="10" class="text-center">No Data Found</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
