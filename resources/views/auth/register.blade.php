@@ -83,7 +83,8 @@
                                     <span class="password-eye"></span>
                                 </div>
                                 @error('password')
-                                <div class="invalid-tooltip">{{$message}}</div>
+                                <div class="invalid-tooltip">           {{$message}}
+                                </div>
                                 @enderror
                             </div>
                         </div>

@@ -93,7 +93,7 @@
                                 <a href="{{ route('document.index')}}">Floor Details</a>
                             </li>
                             <li>
-                                <a href="{{ route('document.edit')}}">Update</a>
+                                <a href="#">Update</a>
                             </li>
                         </ul>
                     </div>
