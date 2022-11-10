@@ -4,7 +4,7 @@ namespace App\Http\Requests\Document;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class AddRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,18 +24,10 @@ class AddRequest extends FormRequest
     public function rules()
     {
         return [
-            'docuname' =>'required',
-            'docufile' => 'required|mimes:jpg,jpeg,png,bmp,tiff,gif|max:4096'
-        ];
-    }
-
-    /**
-     * Custome message
-     */
-
-    public function message(){
-        return [
-            'required' => "The :attribute field is required"
+            'category' =>'required',
+            'productName' =>'required',
+            'price' =>'required',
+            'image' =>'mimes:jpg,jpeg,png,bmp,tiff,gif |max:4096'
         ];
     }
 }

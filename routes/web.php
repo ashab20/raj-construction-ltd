@@ -21,4 +21,3 @@ use App\Http\Controllers\Builder\DocumentController;
 //     return view('auth.register');
 // });
 
-Route::resource('document',DocumentController::class);

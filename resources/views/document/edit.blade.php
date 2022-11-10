@@ -30,21 +30,22 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('document.update')}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('document.update',$document->id)}}">
                                         @csrf
+                                        @method('patch')
                                         <div class="mb-3">
                                             <label for="docuname" class="form-label">Document Name</label>
-                                            <input type="text" id="docuname" name="docuname" class="form-control">
+                                            <input type="text" id="docuname" value="{{ old('docuname',$document->docu_name)}}" name="docuname" class="form-control">
                                         </div>
-
                                         <div class="mb-3">
-                                            <label for="docufile" class="form-label">Upload document</label>
-                                            <input type="file" id="docufile" class="form-control" name="docufile">
+                                            <label for="docuname" class="form-label">Document Name</label>
+                                            <input type="file" id="image" class="form-control"
+                                              placeholder="Image" name="image">
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="example-textarea" class="form-label">Description(optional)</label>
-                                            <textarea class="form-control" id="example-textarea" name="description" rows="5"></textarea>
+                                            <textarea class="form-control" id="example-textarea" name="description" rows="5">{{ old('description',$document->description)}}</textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
 

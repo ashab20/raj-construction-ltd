@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Document\AddRequest;
+use App\Http\Traits\ResponseTraits;
 use App\Models\Lands\Document;
 use Exception;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -41,24 +43,26 @@ class DocumentController extends Controller
     public function store(AddRequest $request)
     {
         try{
-            $p= new Document();
-            $p->docu_name=$request->docuname;
-            $p->description=$request->description;
+            $docu= new Document();
+            $docu->docu_name=$request->docuname;
+            $docu->description=$request->description;
 
             if($request->hasFile('docufile')){
                 $imageName = rand(111,999).time().'.'.$request->docufile->extension();  
                 $request->docufile->move(public_path('uploads/document'), $imageName);
-                $p->doc_attachment=$imageName;
+                $docu->doc_attachment=$imageName;
+            }
+            else{
+                return redirect()->back()->with($this->responseMsg(false, 'error', 'Document created unsuccessfully'));
             }
 
-            $p->status=1;
-            if($p->save()){
-                return redirect('document')->with('success','Data saved');
+            $docu->status=1;
+            if($docu->save()){
+                return redirect('/')->with($this->resMessageHtml(true, false, 'Document created successfully'));
             }
         }
         catch(Exception $e){
-            //dd($e);
-            return back()->withInput();
+            return redirect()->back()->with($this->responseMsg(false, 'error', 'Cannot create document'));
         }
     }
 
@@ -94,7 +98,26 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        //
+        try{
+            $docu= $document;
+            $docu->docu_name=$request->docuname;
+            $docu->description=$request->description;
+
+            if($request->hasfile('docufile')){
+                $imageName = rand(111,999).time().'.'.$request->docufile->extension();  
+                $request->docufile->move(public_path('uploads/document'), $imageName);
+                $docu->doc_attachment=$imageName;
+            }
+            $docu->status=1;
+            if($docu->save()){
+                return redirect('document')->with('success','Data saved');
+                return redirect('/')->with($this->resMessageHtml(true, false, 'User created successfully'));
+            }
+        }
+        catch(Exception $e){
+            //dd($e);
+            return back()->withInput();
+        }
     }
 
     /**

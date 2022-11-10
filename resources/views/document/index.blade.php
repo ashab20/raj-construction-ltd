@@ -44,7 +44,7 @@
                                             <td><img width="50px" src="{{ asset('uploads/document/'.$docu->doc_attachment)}}" alt=""></td>
                                             <td>{{ $docu->description}}</td>
                                             <td class="table-action">
-                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                <a href="{{ route('document.edit',$docu->id)}}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                                 <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                             </td>
                                         </tr>                                      
