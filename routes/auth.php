@@ -40,7 +40,6 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         })->name('admin.account');
 
 
-
         Route::resource('/document',DocumentController::class);
         Route::resource('/land',LandController::class);
         
