@@ -89,7 +89,7 @@
                                 <a href="{{ route('document.index')}}">Floor Details</a>
                             </li>
                             <li>
-                                <a href="apps-ecommerce-orders.html">Update</a>
+                                <a href="{{ route('document.edit')}}">Update</a>
                             </li>
                         </ul>
                     </div>

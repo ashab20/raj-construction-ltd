@@ -81,7 +81,7 @@ class DocumentController extends Controller
     public function edit(Document $document)
     {
         $document = Document::paginate(10);
-        return view('document.edit',compact('document','product'));
+        return view('document.edit',compact('document'));
     }
 
     /**
