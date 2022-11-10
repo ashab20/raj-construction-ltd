@@ -24,6 +24,10 @@ class UserController extends Controller
         return view('Users.members');
     }
 
+    public function create()
+    {
+        //
+    }
 
     // 
 
