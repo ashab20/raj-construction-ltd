@@ -15,33 +15,47 @@
             <!--- Sidemenu -->
             <ul class="side-nav">
 
-                <li class="side-nav-title side-nav-item">Navigation</li>
-
+                
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                         <i class="uil-home-alt"></i>
-                        <span> Dashboards </span>
+                        <span> My Accounts </span>
+                        <span class="menu-arrow"></span>
                     </a>
-                    {{-- <div class="collapse" id="sidebarDashboards">
+                    <div class="collapse" id="sidebarDashboards">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="dashboard-analytics.html">Analytics</a>
+                                <a href="dashboard-analytics.html">Profile</a>
                             </li>
                             <li>
-                                <a href="dashboard-crm.html">CRM</a>
+                                <a href="dashboard-crm.html">
+                                    Change Password
+                                </a>
                             </li>
                             <li>
-                                <a href="index.html">Ecommerce</a>
+                                <a href="index.html">
+                                    Update Profile
+                                </a>
                             </li>
                             <li>
                                 <a href="dashboard-projects.html">Projects</a>
                             </li>
                         </ul>
-                    </div> --}}
+                    </div>
+                </li>
+                <li class="side-nav-title side-nav-item">Quick Access</li>
+                <li class="side-nav-item">
+                    <a href="apps-chat.html" class="side-nav-link">
+                        <i class="uil-comments-alt"></i>
+                        <span> {{__('Dashaboards')}} </span>
+                    </a>
                 </li>
 
-                <li class="side-nav-title side-nav-item">Apps</li>
+                <li class="side-nav-title side-nav-item">Construstions</li>
 
+              
+
+              
                 <li class="side-nav-item">
                     <a href="apps-calendar.html" class="side-nav-link">
                         <i class="uil-calender"></i>
@@ -144,7 +158,8 @@
                         </ul>
                     </div>
                 </li>
-                <li class="side-nav-title side-nav-item">Settings</li>
+                <li class="side-nav-title side-nav-item">Apps</li>
+
                  <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
                         <i class="uil-briefcase"></i>
