@@ -38,6 +38,8 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
             return view('profile.account');
         })->name('admin.account');
 
+
+
         Route::resource('/document',DocumentController::class);
         
     });
