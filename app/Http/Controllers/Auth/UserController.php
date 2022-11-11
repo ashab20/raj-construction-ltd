@@ -73,7 +73,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         try {
             $store = new User();
@@ -107,9 +107,9 @@ class UserController extends Controller
      * @param  \App\Models\Auth\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $member)
     {
-        //
+        return view('profile.account',compact('member'));
         
     }
 
@@ -151,7 +151,7 @@ class UserController extends Controller
             
             if($request->hasFile('userAvatar')){
                 $imageName = rand(111,999).time().'.'.$request->userAvatar->extension();  
-                $request->userAvatar->move(public_path('uploads/document'), $imageName);
+                $request->userAvatar->move(public_path('uploads/profile'), $imageName);
                 $store->avatar=$imageName;
             }
 

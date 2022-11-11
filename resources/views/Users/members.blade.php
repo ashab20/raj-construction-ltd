@@ -13,12 +13,13 @@
         <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
-                    <li class="breadcrumb-item active">Customers</li>
+                    <li class="breadcrumb-item"><a href="{{ route('member.index')}}">{{__('Home')}}</a></li>
+                    <li class="breadcrumb-item active">
+                        {{__('Members')}}
+                    </li>
                 </ol>
             </div>
-            <h4 class="page-title">Customers</h4>
+            <h4 class="page-title">Members</h4>
         </div>
     </div>
 </div>     
@@ -57,7 +58,7 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Location</th>
+                                <th>Role</th>
                                 <th>Create Date</th>
                                 <th>Status</th>
                                 <th style="width: 75px;">Action</th>
@@ -73,8 +74,8 @@
                                     </div>
                                 </td>
                                 <td class="table-user">
-                                    <img src="{{ asset('uploads/document/'.$member->avatar)}}" alt="table-user" class="me-2 rounded-circle">
-                                    <a href="javascript:void(0);" class="text-body fw-semibold">
+                                    <img src="{{ asset('uploads/profile/'.$member->avatar)}}" alt="table-user" class="me-2 rounded-circle">
+                                    <a href="{{route('member.show',$member) }}" class="text-body fw-semibold">
                                         {{$member->name}}
                                     </a>
                                 </td>

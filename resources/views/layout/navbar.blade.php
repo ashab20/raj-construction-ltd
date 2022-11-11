@@ -16,7 +16,7 @@
         <ul class="list-unstyled topbar-menu float-end mb-0">
 
             <li class="dropdown notification-list d-xl-none">
-                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="dripicons-search noti-icon"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
@@ -207,8 +207,13 @@
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
-                    <span class="account-user-avatar"> 
-                        <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
+                    <span class="account-user-avatar">
+                        @if(Session::has('avatar'))
+                        <img src="{{ asset('uploads/profile/'. Session::get('avatar'))}}" alt="user-image" class="rounded-circle">           
+                                               
+                        @else
+                                    <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
+                        @endif 
                     </span>
                     <span>
                         <span class="account-user-name">
@@ -230,7 +235,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="{{route('admin.account')}}" class="dropdown-item notify-item">
+                    <a href="{{route('member.show',Crypt::decrypt(Session::get('userId')))}}" class="dropdown-item notify-item">
                         <i class="mdi mdi-account-circle me-1"></i>
                         <span>{{ __('My Account')}}</span>
                     </a>
