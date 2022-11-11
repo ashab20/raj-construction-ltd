@@ -52,9 +52,9 @@
         
         <div class="tab-content">
             <div class="tab-pane show active" id="floating-preview">
-                <form action="{{ route('members.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('member.update',$member)}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('POST')
+                    @method('PATCH')
 
                 <div class="row mt-4">
                     <div class="col-lg-6">
@@ -62,11 +62,13 @@
                             @error('userFullName')
                     <div class="invalid-tooltip">{{$message}}</div>
                     @enderror
-                            <input type="text" class="form-control" id="floatingInput" placeholder="John Duo" required name="userFullName" value="{{ old('userFullName')}}">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="John Duo" required name="userFullName" 
+                            value="{{ $member->name}}">
                             <label for="floatingInput">{{__('Full Name')}}:</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="userEmailAddress" value="{{ old('userEmailAddress')}}">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="userEmailAddress"
+                            value="{{ $member->email}}">
                             <label for="floatingInput">Email address</label>
                         </div>
                       
@@ -78,14 +80,20 @@
                             <div class="col-md">
                             <div class="form-floating">
                                 <select class="form-select" name="userRoles" id="floatingSelect" aria-label="Floating label select example">
-                                    <option selected value="{{old('userRoles')}}">{{__('Select Roles')}}</option>
-                                    {{-- @forelse($roles as $role)
-                                    <option value="{{$role->id}}">
+                                    @forelse($roles as $role)
+                                    @if ($role->role===$member->role)
+                                    <option value="{{$role->id}}" selected>
                                         {{__($role->role)}}
                                     </option>
+                                    @else
+                                        <option value="{{$role->id}}">
+                                        {{__($role->role)}}
+                                    </option>
+                                    @endif
+                                    
                                     @empty
                                     <option value="">{{__('No Data Founds')}}</option>
-                                    @endforelse --}}
+                                    @endforelse
                                 </select>
                                 <label for="floatingSelect">
                                     {{__('User Role')}}
@@ -95,13 +103,24 @@
                             <div class="col-md">
                                 <div class="form-floating">
                                     <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                        <option selected>Select Designation</option>
+                                        
                                         @forelse($designation as $desig)
-                                        <option value="{{$desig->id}}">
-                                            {{__($desig->designation)}}
-                                        </option>
+                                        @if ($desig->designation===$member->designation)
+
+                                            <option value="{{$desig->id}}" selected>
+                                                {{__($desig->designation)}}
+                                            </option>
+                                        @else
+                                            <option value="{{$desig->id}}">
+                                                {{__($desig->designation)}}
+                                            </option>
+                                   
+                                        @endif
+                                            <option value="{{$desig->id}}">
+                                                {{__($desig->designation)}}
+                                            </option>
                                         @empty
-                                        <option value="">{{__('No Data Founds')}}</option>
+                                            <option value="">{{__('No Data Founds')}}</option>
                                         @endforelse
                                     </select>
                                     <label for="floatingSelectGrid">{{__('Designation')}}</label>
@@ -114,7 +133,8 @@
                 
                     <div class="col-lg-6">
                         <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="floatingInput" placeholder="+88-018-000-000" name="userPhoneNumber" value="{{ old('userPhoneNumber')}}">
+                            <input type="tel" class="form-control" id="floatingInput" placeholder="+88-018-000-000" name="userPhoneNumber" 
+                            value="{{ $member->phone}}">
                             <label for="floatingInput">{{__('Phone')}}</label>
                         </div>
                        
@@ -138,10 +158,8 @@
                 </div>
                 <div class="row justify-content-center mt-4">
                     <div class="d-flex justify-content-around" style="width:15rem; ">
-
-                        <button class="btn btn-warning text-center justify-content-center" type="reset">{{__('Reset')}} </button>
                         
-                        <button class="btn btn-primary text-center justify-content-center" type="submit">{{__('Create')}} </button>
+                        <button class="btn btn-primary text-center justify-content-center" type="submit">{{__('Uodate')}} </button>
                     </div>
                 </div>
                 </form>

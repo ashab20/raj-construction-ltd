@@ -91,16 +91,13 @@ class UserController extends Controller
                 $request->userAvatar->move(public_path('uploads/document'), $imageName);
                 $store->avatar=$imageName;
             }
-            else{
-                return redirect()->back()->with($this->responseMsg(false, 'error', 'Document created unsuccessfully'));
-            }
 
             if ($store->save()) {
-                return redirect(route('members.index'))->with($this->resMessageHtml(true, false, 'User created successfully'));
+                return redirect(route('member.index'))->with($this->resMessageHtml(true, false, 'User created successfully'));
             }
         } catch (Exception $error) {
             dd($error);
-            return redirect()->back()->with($this->responseMsg(false, 'error', 'Server error'));
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Server error'));
         }
     }
 
@@ -113,6 +110,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
+        
     }
 
     /**
@@ -121,10 +119,13 @@ class UserController extends Controller
      * @param  \App\Models\Auth\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $members)
+    public function edit(User $member)
     {
-        //
-        return view('Users.edit',$members);
+        // dd($members);
+        // Crypt::decrypt()
+        $roles = Role::all();
+        $designation = Designatin::all();
+        return view('Users.edit',compact(['member','roles','designation']));
     }
 
     /**
@@ -134,9 +135,34 @@ class UserController extends Controller
      * @param  \App\Models\Auth\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $member)
     {
-        //
+        
+        try {
+            $store = $member;
+            $store->name = $request->userFullName;
+            $store->email = $request->userEmailAddress;
+            $store->role_id = $request->userRoles;
+            $store->phone = $request->userPhoneNumber;
+            // $store->avatar = $request->userAvatar;
+            
+            if($request->userPassword !== "")              
+                $store->password =  Crypt::encryptString($request->userPassword);
+            
+            if($request->hasFile('userAvatar')){
+                $imageName = rand(111,999).time().'.'.$request->userAvatar->extension();  
+                $request->userAvatar->move(public_path('uploads/document'), $imageName);
+                $store->avatar=$imageName;
+            }
+
+            if ($store->save()) {
+                return redirect(route('member.index'))->with($this->resMessageHtml(true, false, 'member has been updated'));
+            }
+        } catch (Exception $error) {
+            dd($error);
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Server error'));
+        }
+        
     }
 
     /**
@@ -145,8 +171,10 @@ class UserController extends Controller
      * @param  \App\Models\Auth\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $member)
     {
         //
+        $member->delete();
+        return redirect()->back();
     }
 }

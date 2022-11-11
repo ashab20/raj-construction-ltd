@@ -28,7 +28,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
     Route::prefix('admin')->group(function () {
 
         // Create Users
-        Route::resource('members', UserController::class);
+        Route::resource('member', UserController::class);
 
 
         Route::get('/dashboard', function () {

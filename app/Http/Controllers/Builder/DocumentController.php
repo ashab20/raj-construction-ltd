@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Builder;
 
-use App\Http\Controllers\Auth\ResponseTraids;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Document\AddRequest;
+use App\Http\Traits\ResponseTraits;
 use App\Models\Lands\Document;
 use Exception;
 use Illuminate\Http\Request;
 
-
 class DocumentController extends Controller
 {
-    use ResponseTraids;
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +54,7 @@ class DocumentController extends Controller
                 $docu->doc_attachment=$imageName;
             }
             else{
-                return redirect()->back()->with($this->responseMsg(false, 'error', 'Document created unsuccessfully'));
+                return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Document created unsuccessfully'));
             }
 
             $docu->status=1;
@@ -63,7 +63,7 @@ class DocumentController extends Controller
             }
         }
         catch(Exception $e){
-            return redirect()->back()->with($this->responseMsg(false, 'error', 'Cannot create document'));
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot create document'));
         }
     }
 
