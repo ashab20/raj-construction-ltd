@@ -23,16 +23,27 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title">Document</h4>
-                        <div class="tab-content">
-                            <div class="tab-pane show active" id="state-saving-preview">
-                                <table id="state-saving-datatable" class="table activate-select dt-responsive nowrap">
-                                    <thead>
+                        <div class="row mb-2">
+                            <div class="col-sm-4">
+                                <a href="{{route('document.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Document</a>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="text-sm-end">
+                                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
+                                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                                    <button type="button" class="btn btn-light mb-2">Export</button>
+                                </div>
+                            </div><!-- end col-->
+                        </div>
+        
+                        <div class="table-responsive">
+                            <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                                         <tr>
                                             <th>#SL</th>
                                             <th>Name</th>
                                             <th>Document</th>
                                             <th>Description</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -43,6 +54,14 @@
                                             <td>{{ $docu->docu_name}}</td>
                                             <td><img width="50px" src="{{ asset('uploads/document/'.$docu->doc_attachment)}}" alt=""></td>
                                             <td>{{ $docu->description}}</td>
+                                            <td>
+                                                @if ($docu->status === 1)
+                                                <span class="badge badge-success-lighten">Active</span>
+                                                @else                                   
+                                                    <span class="badge badge-danger-lighten">Blocked</span>
+                                                
+                                                @endif
+                                            </td>
                                             <td class="table-action">
                                                 <a href="{{ route('document.edit',$docu->id)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
                                                 <a href="javascript:void()" onclick="$('#form{{$docu->id}}').submit()">
