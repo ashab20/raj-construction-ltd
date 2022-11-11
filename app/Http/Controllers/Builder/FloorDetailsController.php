@@ -79,7 +79,7 @@ class FloorDetailsController extends Controller
      */
     public function edit(FloorDetails $floorDetails)
     {
-        //
+        return view('floorDetails.edit',compact('floorDetails'));
     }
 
     /**
@@ -91,7 +91,23 @@ class FloorDetailsController extends Controller
      */
     public function update(Request $request, FloorDetails $floorDetails)
     {
-        //
+        try{
+            $identity = decrypt(session()->get('roleIdentity'));
+            $fdetails= $floorDetails;
+            $fdetails->floor_no = $request->floorNo;
+            $fdetails->total_squire_feet = $request->tsFeet;
+            $fdetails->total_cost = $request->tCost;
+            $fdetails->total_budget = $request->tBudget;
+            $fdetails->material_id = $request->mId;
+
+            if($fdetails->save()){
+                return redirect($identity.'/floorDetails')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot update floor details'));
+        }
     }
 
     /**

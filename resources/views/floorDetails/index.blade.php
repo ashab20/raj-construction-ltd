@@ -66,7 +66,7 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('land.edit',$fDetails->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
+                                            <a href="{{ route('floorDetails.edit',$fDetails->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
                                             <a href="javascript:void()" onclick="$('#form{{$fDetails->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
