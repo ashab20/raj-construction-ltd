@@ -13,6 +13,7 @@
         <!-- demo app -->
         <script src="{{ asset('assets/js/pages/demo.dashboard.js') }}"></script>
         <!-- end demo js-->
-        
+        @stack('scripts')
+        <script src="{{ asset('assets/js/main.js') }}"></script>
     </body>
 </html>
