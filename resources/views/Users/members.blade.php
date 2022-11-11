@@ -1,5 +1,12 @@
 @extends('app')
 
+@push('style')
+   <!-- third party css -->
+   <link href="{{asset('assets/css/vendor/dataTables.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+   <link href="{{asset('assets/css/vendor/responsive.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+   <!-- third party css end -->   
+@endpush
+
 @section('content')
 
 
@@ -158,3 +165,13 @@
 </div> <!-- content-page -->
 
 @endsection
+
+@push('scripts')
+    <script src="{{asset('assets/js/vendor/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/dataTables.bootstrap5.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/responsive.bootstrap5.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendor/dataTables.checkboxes.min.js')}}"></script>
+
+    <script src="{{asset('assets/js/pages/demo.customers.js')}}"></script>
+@endpush
