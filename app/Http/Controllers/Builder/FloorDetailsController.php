@@ -79,9 +79,9 @@ class FloorDetailsController extends Controller
      * @param  \App\Models\FloorDetails  $floorDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(FloorDetails $floorDetail)
+    public function edit(FloorDetails $floorDetails)
     {
-        return view('floorDetails.edit',compact('floorDetail'));
+        return view('floorDetails.edit',compact('floorDetails'));
     }
 
     /**
@@ -95,14 +95,14 @@ class FloorDetailsController extends Controller
     {
         try{
             $identity = decrypt(session()->get('roleIdentity'));
-            $fdetails= $floorDetails;
-            $fdetails->floor_no = $request->floorNo;
-            $fdetails->total_squire_feet = $request->tsFeet;
-            $fdetails->total_cost = $request->tCost;
-            $fdetails->total_budget = $request->tBudget;
-            $fdetails->material_id = $request->mId;
+            $fd= $floorDetails;
+            $fd->floor_no = $request->floorNo;
+            $fd->total_squire_feet = $request->tsFeet;
+            $fd->total_cost = $request->tCost;
+            $fd->total_budget = $request->tBudget;
+            $fd->material_id = $request->mId;
 
-            if($fdetails->save()){
+            if($fd->save()){
                 return redirect($identity.'/floorDetails')->with('success','Data saved');
             }
         }

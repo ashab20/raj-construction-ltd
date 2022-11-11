@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Builder;
 
+use App\Http\Controllers\Controller;
 use App\Models\FlatDetail;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class FlatDetailController extends Controller
      */
     public function index()
     {
-        //
+        $fdetail=FlatDetail::paginate(10);
+        return view('flatDetail.index',compact('fdetail'));
     }
 
     /**

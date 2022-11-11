@@ -12,10 +12,10 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                    <li class="breadcrumb-item active">Floor</li>
+                    <li class="breadcrumb-item active">Flat</li>
                 </ol>
             </div>
-            <h4 class="page-title">Floor</h4>
+            <h4 class="page-title">Flat</h4>
         </div>
     </div>
 </div>      
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{route('floorDetails.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Floor</a>
+                            <a href="{{route('flatDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Flat</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
@@ -41,8 +41,12 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
-                                        <th>Floor No.</th>
-                                        <th>Total Squire Feet</th>
+                                        <th>Squire Feet</th>
+                                        <th>House No.</th>
+                                        <th>Block</th>
+                                        <th>Road No.</th>
+                                        <th>Address</th>
+                                        <th>Design</th>
                                         <th>Total Budget</th>
                                         <th>Total Cost</th>
                                         <th>Satus</th>
@@ -50,15 +54,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($floorDetails as $floorDetail)
-                                    <tr>	 	 	 	 	 	 
+                                    @forelse ($fdetail as $fd)
+                                    <tr>	 	 	 	 	 	 	 
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $floorDetail->floor_no}}</td>
-                                        <td>{{ $floorDetail->total_squire_feet}}</td>
-                                        <td>{{ $floorDetail->total_budget}}</td>
-                                        <td>{{ $floorDetail->total_cost}}</td>
+                                        <td>{{ $fd->squire_feet}}</td>
+                                        <td>{{ $fd->house_no}}</td>
+                                        <td>{{ $fd->block}}</td>
+                                        <td>{{ $fd->road_no}}</td>
+                                        <td>{{ $fd->address}}</td>
+                                        {{-- <td><img width="50px" src="{{ asset('uploads/land/'.$land->design_id)}}" alt=""></td> --}}
+                                        <td>{{ $fd->total_budget}}</td>
+                                        <td>{{ $fd->total_cost}}</td>
                                         <td>
-                                            @if ($floorDetail->status === 1)
+                                            @if ($fd->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
                                             @else                                   
                                                 <span class="badge badge-danger-lighten">Blocked</span>
@@ -66,11 +74,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('floorDetails.edit',$floorDetail->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
-                                            <a href="javascript:void()" onclick="$('#form{{$floorDetail->id}}').submit()">
+                                            <a href="{{ route('land.edit',$land->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
+                                            <a href="javascript:void()" onclick="$('#form{{$land->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$floorDetail->id}}" action="{{ route('land.destroy',$floorDetail->id)}}" method="post">
+                                            <form id="form{{$land->id}}" action="{{ route('land.destroy',$land->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

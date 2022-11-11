@@ -88,6 +88,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{ route('flatDetail.index')}}">
+                                    {{__('Flat')}}
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('document.index')}}">
                                     {{__('Documents')}}
                                 </a>

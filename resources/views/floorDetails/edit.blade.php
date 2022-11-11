@@ -12,10 +12,10 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                            <li class="breadcrumb-item active">Land Edit</li>
+                            <li class="breadcrumb-item active">Create</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Land Edit</h4>
+                    <h4 class="page-title">Floor Details Create</h4>
                 </div>
             </div>
         </div>      
@@ -29,43 +29,33 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('floorDetails.update',$floorDetail)}}">
+                                    <form class="form" method="POST" enctype="multipart/form-data" action="{{ route('floorDetails.update',$floorDetails->id)}}">
                                         @csrf
                                         @method('patch')
                                         <div class="mb-3">
-                                            <label for="squireFeet" class="form-label">Squire Feet</label>
-                                            <input type="text" value="{{ old('squireFeet',$floorDetail->squire_feet)}}" id="squireFeet" name="squireFeet" class="form-control">
+                                            <label for="floorNo" class="form-label">Floor No.</label>
+                                            <input type="text" id="floorNo" name="floorNo" value="{{ $floorDetails->floor_no }}" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="tsFeet" class="form-label">Total Squire Feet</label>
+                                            <input type="text" id="tsFeet" name="tsFeet" value="{{ $floorDetails->total_squire_feet }}" class="form-control">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="houseNo" class="form-label">House No.</label>
-                                            <input type="text" value="{{ old('houseNo',$floorDetail->house_no)}}" id="houseNo" class="form-control" name="houseNo">
+                                            <label for="tBudget" class="form-label">Total Budget</label>
+                                            <input type="text" id="tBudget" name="tBudget" value="{{ $floorDetails->total_cost }}" class="form-control">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="block" class="form-label">Block</label>
-                                            <input type="text" value="{{ old('block',$floorDetail->block)}}" id="block" class="form-control" name="block">
+                                            <label for="tCost" class="form-label">Total Cost</label>
+                                            <input type="text" id="tCost" name="tCost" value="{{ $floorDetails->total_budget }}" class="form-control">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="roadNo" class="form-label">Road No.</label>
-                                            <input type="text" value="{{ old('roadNo',$floorDetail->road_no)}}" id="roadNo" class="form-control" name="roadNo">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="form-label">Address</label>
-                                            <input type="text" value="{{ old('address',$floorDetail->address)}}" id="address" class="form-control" name="address">
-                                        </div>
+
                                         {{-- <div class="mb-3">
-                                            <label for="designId" class="form-label">Design</label>
-                                            <input type="file" id="designId" class="form-control" name="designId">
+                                            <label for="mId" class="form-label">Materials</label>
+                                            <input type="text" id="mId" class="form-control" name="mId">
                                         </div> --}}
-                                        <div class="mb-3">
-                                            <label for="totalBudget" class="form-label">Total Budget</label>
-                                            <input type="text" value="{{ old('totalBudget',$floorDetail->total_budget)}}" id="totalBudget" class="form-control" name="totalBudget">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="totalCost" class="form-label">Total Cost</label>
-                                            <input type="text" value="{{ old('totalCost',$floorDetail->total_cost)}}" id="totalCost" class="form-control" name="totalCost">
-                                        </div>
+
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div> <!-- end col -->
