@@ -3,8 +3,14 @@
 
             <div class="leftbar-user">
                 <a href="javascript: void(0);">
-                    <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
-                    <span class="leftbar-user-name">
+                    @if(Session::has('avatar'))
+                    <img src="{{  asset('uploads/profile/'.Session::get('avatar')) }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                                           
+                    @else
+                                <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                                @endif
+                                <span class="leftbar-user-name">
+                    
                         @if(Session::has('userName'))
                                 {{ Crypt::decrypt(Session::get('userName')) }}
                         @endif

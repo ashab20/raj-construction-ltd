@@ -34,10 +34,15 @@
     <div class="col-xl-4 col-lg-5">
         <div class="card text-center">
             <div class="card-body">
-                <img src="assets/images/users/avatar-1.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                @if(Session::has('avatar'))
+                <img src="{{ asset('uploads/profile/'. Session::get('avatar'))}}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">              
+                                       
+                @else
+                            <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
+                @endif
 
-                <h4 class="mb-0 mt-2">Dominic Keller</h4>
-                <p class="text-muted font-14">Founder</p>
+                <h4 class="mb-0 mt-2">{{$member->name}}</h4>
+                <p class="text-muted font-14">{{$member->role->role}}</p>
 
                 <button type="button" class="btn btn-success btn-sm mb-2">Follow</button>
                 <button type="button" class="btn btn-danger btn-sm mb-2">Message</button>
@@ -395,7 +400,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="firstname" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
+                                        <input type="text" class="form-control" id="firstname" placeholder="Enter first name" value="{{$member->name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -419,7 +424,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="useremail" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" id="useremail" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="useremail" placeholder="Enter email" value="{{$member->email}}">
                                         <span class="form-text text-muted"><small>If you want to change email please <a href="javascript: void(0);">click</a> here.</small></span>
                                     </div>
                                 </div>
