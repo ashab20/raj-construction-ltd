@@ -74,7 +74,11 @@
                                     </div>
                                 </td>
                                 <td class="table-user">
+                                    @if ($member->avatar !== "")
                                     <img src="{{ asset('uploads/profile/'.$member->avatar)}}" alt="table-user" class="me-2 rounded-circle">
+                                    @else
+                                    <img src="{{ asset('uploads/profile/avatar.webp')}}" alt="table-user" class="me-2 rounded-circle">
+                                    @endif
                                     <a href="{{route('member.show',$member) }}" class="text-body fw-semibold">
                                         {{$member->name}}
                                     </a>
