@@ -208,7 +208,7 @@
                 <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     <span class="account-user-avatar">
-                        @if(Session::has('avatar'))
+                        @if(Session::has('avatar') !== "")
                         <img src="{{ asset('uploads/profile/'. Session::get('avatar'))}}" alt="user-image" class="rounded-circle">           
                                                
                         @else
