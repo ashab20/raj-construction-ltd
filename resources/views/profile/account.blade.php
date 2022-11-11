@@ -48,20 +48,34 @@
                 <button type="button" class="btn btn-danger btn-sm mb-2">Message</button>
 
                 <div class="text-start mt-3">
-                    <h4 class="font-13 text-uppercase">About Me :</h4>
+                    <h4 class="font-13 text-uppercase">{{__('About Me')}}:</h4>
                     <p class="text-muted font-13 mb-3">
                         Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the
                         1500s, when an unknown printer took a galley of type.
                     </p>
-                    <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ms-2">Geneva
-                            D. McKnight</span></p>
+                    <p class="text-muted mb-2 font-13"><strong>{{__('Full Name')}} :</strong>
+                        <span class="ms-2">
+                            {{$member->name}}
+                        </span>
+                    </p>
 
-                    <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ms-2">(123)
-                            123 1234</span></p>
+                    <p class="text-muted mb-2 font-13"><strong>{{__('Mobile')}} :</strong>
+                        <span class="ms-2">
+                            {{$member->phone}}
+                        </span>
+                    </p>
 
-                    <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ms-2 ">user@email.domain</span></p>
+                    <p class="text-muted mb-2 font-13"><strong>{{__('Email')}} :</strong>
+                        <span class="ms-2 ">
+                            {{$member->email}}
+                        </span>
+                    </p>
 
-                    <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ms-2">USA</span></p>
+                    <p class="text-muted mb-1 font-13"><strong>{{__('Location')}} :</strong>
+                        <span class="ms-2">
+                            USA
+                        </span>
+                    </p>
                 </div>
 
                 <ul class="social-list list-inline mt-3 mb-0">
@@ -395,63 +409,216 @@
                     <div class="tab-pane" id="settings">
                         <!-- *** @ user data*** -->
                         <form>
-                            <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
+                            <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> {{__('Personal Info')}}</h5>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="userbio" class="form-label">{{__('Bio')}}</label>
+                                        <textarea class="form-control" id="userbio" rows="4" placeholder="Write something..."></textarea>
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="firstname" class="form-label">First Name</label>
+                                        <label for="firstname" class="form-label">{{__('First Name')}} :</label>
                                         <input type="text" class="form-control" id="firstname" placeholder="Enter first name" value="{{$member->name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="lastname" class="form-label">Last Name</label>
+                                        <label for="lastname" class="form-label">{{__('Last Name')}}</label>
                                         <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="userbio" class="form-label">Bio</label>
-                                        <textarea class="form-control" id="userbio" rows="4" placeholder="Write something..."></textarea>
-                                    </div>
-                                </div> <!-- end col -->
-                            </div> <!-- end row -->
+                           
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="useremail" class="form-label">Email Address</label>
+                                        <label for="useremail" class="form-label">{{__('Email Address')}} :</label>
                                         <input type="email" class="form-control" id="useremail" placeholder="Enter email" value="{{$member->email}}">
                                         <span class="form-text text-muted"><small>If you want to change email please <a href="javascript: void(0);">click</a> here.</small></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="userpassword" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                        <label for="userpassword" class="form-label">{{__('Phone')}} :</label>
+                                        <input type="tel" class="form-control" id="userpassword" placeholder="Enter password" value="{{$member->phone}}">
                                         <span class="form-text text-muted"><small>If you want to change password please <a href="javascript: void(0);">click</a> here.</small></span>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
 
-                            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-office-building me-1"></i> Company Info</h5>
+                            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-office-building me-1"></i> {{__('Company Info')}}</h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="companyname" class="form-label">Company Name</label>
+                                        <label for="companyname" class="form-label">
+                                            {{__('Father\'s Name')}} :
+                                        </label>
                                         <input type="text" class="form-control" id="companyname" placeholder="Enter company name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="cwebsite" class="form-label">Website</label>
+                                        <label for="cwebsite" class="form-label">
+                                            {{__('Mother\'s Name')}} :
+                                        </label>
                                         <input type="text" class="form-control" id="cwebsite" placeholder="Enter website url">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="companyname" class="form-label">
+                                            {{__('Designation')}} :
+                                        </label>
+                                        <input type="text" class="form-control" id="companyname" placeholder="Enter company name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="inputState" class="form-label">{{__('Gender')}}</label>
+                                        <select id="inputState" class="form-select">
+                                            <option>{{_('Select Gender')}}</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Others</option>
+                                        </select>
+                                    </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+                            <hr> 
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="inputAddress" class="form-label">{{__('Present Address')}}</label>
+                                        <textarea class="form-control" rows="6" id="inputAddress" placeholder="1234 Main St"> 
+
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                    <label for="inputState" class="form-label">{{__('Country')}}</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>{{_('Select Country')}}</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputState" class="form-label">{{__('Division')}}</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>{{_('Select Division')}}</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputState" class="form-label">{{__('District')}}</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>{{_('Select District')}}</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+
+                                   <hr>       
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="inputAddress" class="form-label">{{__('Permanent Address')}}</label>
+                                        <textarea class="form-control" rows="6" id="inputAddress" placeholder="1234 Main St"> 
+
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                    <label for="inputState" class="form-label">{{__('Country')}}</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>{{_('Select Country')}}</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputState" class="form-label">{{__('Division')}}</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>{{_('Select Division')}}</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputState" class="form-label">{{__('District')}}</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>{{_('Select District')}}</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                </div> <!-- end col -->
+                            </div> <!-- end row -->
+
+                                          
+                            <div class="mb-3">
+                                <label for="inputAddress" class="form-label">{{__('Present Address')}}</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="inputAddress2" class="form-label">Address 2</label>
+                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                            </div>
+                                        
+                            <div class="row g-2">
+                                <div class="mb-3 col-md-4">
+                                    <label for="inputState" class="form-label">Country</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>Choose</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-4">
+                                    <label for="inputState" class="form-label">Division</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>Choose</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-4">
+                                    <label for="inputState" class="form-label">District</label>
+                                    <select id="inputState" class="form-select">
+                                        <option>Choose</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                    </select>
+                                </div>
+                                {{-- <div class="mb-3 col-md-2">
+                                    <label for="inputZip" class="form-label">Zip</label>
+                                    <input type="text" class="form-control" id="inputZip">
+                                </div> --}}
+                            </div>
 
                             <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth me-1"></i> Social</h5>
                             <div class="row">

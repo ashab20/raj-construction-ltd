@@ -25,7 +25,7 @@ class UserDetails extends RoutingController
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**

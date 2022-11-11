@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->string('father_name');
             $table->string('mother_name');
+            $table->string('bio',500)->nullable();
+            $table->string('gender',20)->nullable();
   
             $table->unsignedBigInteger('countries_id')->foreign()->references('id')->on('countries')->onDelete('cascade')->change();
 
