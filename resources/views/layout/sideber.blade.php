@@ -68,12 +68,12 @@
                     <div class="collapse" id="sidebarTasks">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="apps-tasks.html">
+                                <a href="{{ route('land.index')}}">
                                     {{__('Lands')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="apps-tasks-details.html">
+                                <a href="{{ route('document.index')}}">
                                     {{__('Documents')}}
                                 </a>
                             </li>
@@ -137,26 +137,6 @@
                         </ul>
                     </div>
                 </li>
-
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarland" aria-expanded="false" aria-controls="sidebarland" class="side-nav-link">
-                        <i class="uil-store"></i>
-                        <span>Land</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarland">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{ route('land.create')}}">Add</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('land.index')}}">Land Details</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-
 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarDocument" aria-expanded="false" aria-controls="sidebarDocument" class="side-nav-link">

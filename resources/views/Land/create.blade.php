@@ -23,7 +23,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Land</h4>
                     <hr>
 
                     <div class="tab-content">
