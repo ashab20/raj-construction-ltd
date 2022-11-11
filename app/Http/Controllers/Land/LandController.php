@@ -17,7 +17,7 @@ class LandController extends Controller
     public function index()
     {
         $Lands=Land::paginate(10);
-        return view('land.index',compact('Lands'));
+        return view('land.membertest',compact('Lands'));
     }
 
     /**
