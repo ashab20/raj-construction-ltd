@@ -94,7 +94,9 @@
                 <div class="modal fade" id="event-modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form class="needs-validation" name="event-form" id="form-event" novalidate onsubmit="handleSubmit()">
+                            <form class="needs-validation" name="event-form" id="form-event" novalidate  method="POST" action="">
+                                @csrf
+                                @method('POST')
                                 <div class="modal-header py-3 px-4 border-bottom-0">
                                     <h5 class="modal-title" id="modal-title">Add Country</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modelAction()"></button>
@@ -116,7 +118,8 @@
                                         </div>
                                         <div class="col-6 text-end">
                                             <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal" onclick="modelAction()">Close</button>
-                                            <button type="submit" class="btn btn-success" id="btn-save-event">Save</button>
+                                            <button type="submit" class="btn btn-success" id="" 
+                                            onsubmit="handleSubmit(e)">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -180,14 +183,13 @@
         function handleSubmit(e){
             e.preventDefault();
 
-        var name = $(this).find('input[name=country]').val();
-
-        $.ajax({
-            type: "POST",
-            url: host+'/comment/add',
-        }).done(function( msg ) {
-            alert( msg );
-        });
+        console.log(e);
+        // $.ajax({
+        //     type: "POST",
+        //     url: host+'/comment/add',
+        // }).done(function( msg ) {
+        //     alert( msg );
+        // });
 
         }
 
