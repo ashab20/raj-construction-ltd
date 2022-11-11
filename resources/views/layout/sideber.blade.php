@@ -78,8 +78,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="apps-kanban.html">
-                                    {{__('Designs')}}
+                                <a href="{{ route('floorDetails.index')}}">
+                                    {{__('Floor')}}
                                 </a>
                             </li>
                         </ul>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Builder\DocumentController;
+use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Land\LandController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         Route::resource('/document',DocumentController::class);
         Route::resource('/land',LandController::class);
+        Route::resource('/floorDetails',FloorDetailsController::class);
         
     });
 });

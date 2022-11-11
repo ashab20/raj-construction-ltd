@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Builder;
 
+use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTraits;
+use Exception;
 use App\Models\FloorDetails;
 use Illuminate\Http\Request;
 
 class FloorDetailsController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,8 @@ class FloorDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $floorDetails=FloorDetails::paginate(10);
+        return view('floorDetails.index',compact('floorDetails'));
     }
 
     /**
@@ -24,7 +29,7 @@ class FloorDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('floorDetails.create');
     }
 
     /**
@@ -35,7 +40,24 @@ class FloorDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $fdetails= new FloorDetails();
+            $identity = decrypt(session()->get('roleIdentity'));
+            $fdetails->floor_no=$request->floorNo;
+            $fdetails->total_squire_feet=$request->tsFeet;
+            $fdetails->total_cost=$request->tCost;
+            $fdetails->total_budget=$request->tBudget;
+            $fdetails->material_id=$request->mId;
+
+            $fdetails->status=1;
+            if($fdetails->save()){
+                return redirect($identity.'/floorDetails')->with($this->resMessageHtml(true, false, 'Fllor details created successfully'));
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot create floor details'));
+        }
     }
 
     /**

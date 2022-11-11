@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('floor_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('floor_no');
             $table->integer('total_squire_feet');
             $table->decimal('total_cost',12,2);
             $table->decimal('total_budget',12,2);
