@@ -50,15 +50,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($floorDetails as $fDetails)
+                                    @forelse ($floorDetails as $floorDetail)
                                     <tr>	 	 	 	 	 	 
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $fDetails->floor_no}}</td>
-                                        <td>{{ $fDetails->total_squire_feet}}</td>
-                                        <td>{{ $fDetails->total_budget}}</td>
-                                        <td>{{ $fDetails->total_cost}}</td>
+                                        <td>{{ $floorDetail->floor_no}}</td>
+                                        <td>{{ $floorDetail->total_squire_feet}}</td>
+                                        <td>{{ $floorDetail->total_budget}}</td>
+                                        <td>{{ $floorDetail->total_cost}}</td>
                                         <td>
-                                            @if ($fDetails->status === 1)
+                                            @if ($floorDetail->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
                                             @else                                   
                                                 <span class="badge badge-danger-lighten">Blocked</span>
@@ -66,11 +66,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('floorDetails.edit',$fDetails->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
-                                            <a href="javascript:void()" onclick="$('#form{{$fDetails->id}}').submit()">
+                                            <a href="{{ route('floorDetails.edit',$floorDetail)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
+                                            <a href="javascript:void()" onclick="$('#form{{$floorDetail->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$fDetails->id}}" action="{{ route('land.destroy',$fDetails->id)}}" method="post">
+                                            <form id="form{{$floorDetail->id}}" action="{{ route('land.destroy',$floorDetail->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

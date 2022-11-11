@@ -54,7 +54,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         Route::resource('/document',DocumentController::class);
         Route::resource('/land',LandController::class);
-        Route::resource('/floorDetails',FloorDetailsController::class);
+        Route::resource('floorDetails',FloorDetailsController::class);
         
     });
 });

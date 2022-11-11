@@ -77,9 +77,9 @@ class FloorDetailsController extends Controller
      * @param  \App\Models\FloorDetails  $floorDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(FloorDetails $floorDetails)
+    public function edit(FloorDetails $floorDetail)
     {
-        return view('floorDetails.edit',compact('floorDetails'));
+        return view('floorDetails.edit',compact('floorDetail'));
     }
 
     /**
