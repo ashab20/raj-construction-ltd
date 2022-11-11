@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <div class="row mb-2">
                             <div class="col-sm-4">
-                                <button  class="btn btn-danger mb-2" onclick="$('#event-modal').toggleClass('d-block show')">
+                                <button  class="btn btn-danger mb-2" onclick="modelAction()">
                                     <i class="mdi mdi-plus-circle me-2"></i> 
                                     {{__('Add Country')}}
                                 </button>
@@ -57,6 +57,7 @@
                                             <th>Phone Number</th>
                                             <th>Date of Birth</th>
                                             <th>Active?</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,6 +72,16 @@
                                                     <label for="switch1" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
                                                 </div>
                                             </td>
+                                            <td class="d-flex">
+                                                <a 
+                                                href="#"
+                                                 class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                 <form action="#" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="action-icon btn"><i class="mdi mdi-delete"></i></button>
+                                                 </form>
+                                            </td>
                                         </tr>                                        
                                     </tbody>
                                                                            
@@ -83,17 +94,17 @@
                 <div class="modal fade" id="event-modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                            <form class="needs-validation" name="event-form" id="form-event" novalidate onsubmit="handleSubmit()">
                                 <div class="modal-header py-3 px-4 border-bottom-0">
-                                    <h5 class="modal-title" id="modal-title">Event</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="$('#event-modal').removeClass('d-block show')"></button>
+                                    <h5 class="modal-title" id="modal-title">Add Country</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modelAction()"></button>
                                 </div>
                                 <div class="modal-body px-4 pb-4 pt-0">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="mb-3">
-                                                <label class="control-label form-label">Country</label>
-                                                <input class="form-control" placeholder="Insert Event Name" type="text" name="title" id="event-title" required />
+                                                <label class="control-label form-label">Country Name</label>
+                                                <input class="form-control" placeholder="Insert Event Name" type="text" name="country" id="event-title" required />
                                                 <div class="invalid-feedback">Please provide a valid event name</div>
                                             </div>
                                         </div>
@@ -104,7 +115,7 @@
                                             <button type="button" class="btn btn-danger" id="btn-delete-event">Delete</button>
                                         </div>
                                         <div class="col-6 text-end">
-                                            <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal" onclick="modelAction()">Close</button>
                                             <button type="submit" class="btn btn-success" id="btn-save-event">Save</button>
                                         </div>
                                     </div>
@@ -158,5 +169,31 @@
 
      <!-- demo app -->
      <script src="{{asset('assets/js/pages/demo.calendar.js')}}"></script>
+
+     <script>
+        
+        function modelAction(){
+            $('#event-modal').toggleClass('d-block show');
+            $('body').toggleClass('modal-open');
+        }
+
+        function handleSubmit(e){
+            e.preventDefault();
+
+        var name = $(this).find('input[name=country]').val();
+
+        $.ajax({
+            type: "POST",
+            url: host+'/comment/add',
+        }).done(function( msg ) {
+            alert( msg );
+        });
+
+        }
+
+        
+
+
+     </script>
 
 @endpush
