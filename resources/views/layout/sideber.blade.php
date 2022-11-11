@@ -120,7 +120,7 @@
                 </li>
 
 
-                <li class="side-nav-item">
+                {{-- <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarDocument" aria-expanded="false" aria-controls="sidebarDocument" class="side-nav-link">
                         <i class="uil-store"></i>
                         <span> Document</span>
@@ -136,21 +136,21 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarDocument" aria-expanded="false" aria-controls="sidebarDocument" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="#sidebarDesign" aria-expanded="false" aria-controls="sidebarDesign" class="side-nav-link">
                         <i class="uil-store"></i>
                         <span> Design</span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarDocument">
+                    <div class="collapse" id="sidebarDesign">
                         <ul class="side-nav-second-level">
                             <li>
                                 <a href="{{ route('document.create')}}">Add</a>
                             </li>
                             <li>
-                                <a href="{{ route('document.index')}}">Design Details</a>
+                                <a href="#">Design Details</a>
                             </li>
                         </ul>
                     </div>
