@@ -7,6 +7,7 @@ use App\Http\Traits\ResponseTraits;
 use Exception;
 use App\Models\FloorDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class FloorDetailsController extends Controller
 {
@@ -48,6 +49,7 @@ class FloorDetailsController extends Controller
             $fdetails->total_cost=$request->tCost;
             $fdetails->total_budget=$request->tBudget;
             $fdetails->material_id=$request->mId;
+            $fdetails->created_by=Crypt::decrypt(session()->get('userId'));
 
             $fdetails->status=1;
             if($fdetails->save()){

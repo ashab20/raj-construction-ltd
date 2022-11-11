@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Location\District;
 use App\Models\Location\Division;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class DistrictController extends Controller
 {
@@ -29,6 +30,9 @@ class DistrictController extends Controller
     public function create()
     {
         //
+        
+        $ur = Crypt::decrypt(session()->get('userId'));
+        dd($ur);
     }
 
     /**
