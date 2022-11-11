@@ -99,8 +99,14 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('members.edit',$member)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                    <a 
+                                    href="{{route('member.edit',$member)}}"
+                                     class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                     <form action="{{}}">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn p-1"><i class="mdi mdi-delete"></i></button>
+                                     </form>
                                 </td>
                             </tr>
                             @empty
