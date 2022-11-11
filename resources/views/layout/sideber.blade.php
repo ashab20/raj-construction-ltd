@@ -74,6 +74,17 @@
                     <div class="collapse" id="sidebarTasks">
                         <ul class="side-nav-second-level">
                             <li>
+                                <a href="{{ route('project.index')}}">
+                                    {{__('Projects')}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="apps-projects-gantt.html">Gantt <span class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span></a>
+                            </li>
+                            <li>
+                                <a href="{{route('project.create')}}">{{__('Create Project')}} <span class="badge rounded-pill badge-success-lighten font-10 float-end">New</span></a>
+                            </li>
+                            <li>
                                 <a href="{{ route('land.index')}}">
                                     {{__('Lands')}}
                                 </a>

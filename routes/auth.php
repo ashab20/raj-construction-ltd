@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Land\LandController;
+use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         // Create Users
         Route::resource('member', UserController::class);
+        Route::resource('project', ProjectsController::class);
 
 
         Route::get('/dashboard', function () {
