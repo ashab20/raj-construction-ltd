@@ -90,16 +90,14 @@
                                 <td>
                                     @if ($member->status === 1)
                                     <span class="badge badge-success-lighten">Active</span>
-                                    @else
-                                   
+                                    @else                                   
                                         <span class="badge badge-danger-lighten">Blocked</span>
                                     
                                     @endif
                                 </td>
-
                                 <td>
                                     <a href="{{route('members.edit',$member)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                    <a href="javascript:void(0);" class="action-icon"><i class="mdi mdi-delete"></i></a>
                                 </td>
                             </tr>
                             @empty

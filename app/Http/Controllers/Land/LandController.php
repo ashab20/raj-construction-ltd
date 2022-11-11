@@ -17,7 +17,7 @@ class LandController extends Controller
     public function index()
     {
         $Lands=Land::paginate(10);
-        return view('land.membertest',compact('Lands'));
+        return view('land.index',compact('Lands'));
     }
 
     /**
@@ -85,7 +85,7 @@ class LandController extends Controller
      */
     public function edit(Land $land)
     {
-        //
+        return view('land.edit',compact('land'));
     }
 
     /**
@@ -97,7 +97,31 @@ class LandController extends Controller
      */
     public function update(Request $request, Land $land)
     {
-        //
+        try{
+            $identity = decrypt(session()->get('roleIdentity'));
+            $lands= $land;
+            $land->squire_feet = $request->squireFeet;
+            $land->house_no = $request->houseNo;
+            $land->block = $request->block;
+            $land->road_no = $request->roadNo;
+            $land->address = $request->address;
+
+            if($request->hasFile('designId')){
+                $imageName = rand(111,999).time().'.'.$request->designId->extension();  
+                $request->designId->move(public_path('uploads/land'), $imageName);
+                $land->design_id = $imageName;
+            }
+            $land->total_budget = $request->totalBudget;
+            $land->total_cost = $request->totalCost;
+
+            if($lands->save()){
+                return redirect($identity.'/land')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -108,6 +132,7 @@ class LandController extends Controller
      */
     public function destroy(Land $land)
     {
-        //
+        $land->delete();
+        return redirect()->back();
     }
 }
