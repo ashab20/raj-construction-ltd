@@ -439,35 +439,38 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="useremail" class="form-label">{{__('Email Address')}} :</label>
-                                        <input type="email" class="form-control" id="useremail" placeholder="Enter email" value="{{$member->email}}">
+                                        <input type="email" class="form-control" id="useremail" placeholder="Enter email" value="{{$member->email}}" readonly>
                                         <span class="form-text text-muted"><small>If you want to change email please <a href="javascript: void(0);">click</a> here.</small></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="userpassword" class="form-label">{{__('Phone')}} :</label>
-                                        <input type="tel" class="form-control" id="userpassword" placeholder="Enter password" value="{{$member->phone}}">
+                                        <input type="tel" class="form-control" id="userpassword" placeholder="Enter password" value="{{$member->phone}}" readonly>
                                         <span class="form-text text-muted"><small>If you want to change password please <a href="javascript: void(0);">click</a> here.</small></span>
                                     </div>
                                 </div> <!-- end col -->
+                                <span class="d-flex justify-content-end float-end">
+                                    <a href="#" class="btn btn-warning float-end">{{__('Change Password')}} ?</a>
+                                </span>
                             </div> <!-- end row -->
 
                             <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-office-building me-1"></i> {{__('Company Info')}}</h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="companyname" class="form-label">
+                                        <label for="fathername" class="form-label">
                                             {{__('Father\'s Name')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="companyname" placeholder="Enter company name">
+                                        <input type="text" class="form-control" id="fathername" placeholder="Enter father's name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="cwebsite" class="form-label">
+                                        <label for="mothername" class="form-label">
                                             {{__('Mother\'s Name')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="cwebsite" placeholder="Enter website url">
+                                        <input type="text" class="form-control" id="mothername" placeholder="Enter mother's name">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -475,10 +478,10 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="companyname" class="form-label">
+                                        <label for="designation" class="form-label">
                                             {{__('Designation')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="companyname" placeholder="Enter company name">
+                                        <input type="text" class="form-control" id="designation" placeholder="Enter designation" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -574,51 +577,6 @@
                                 </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
-
-                                          
-                            <div class="mb-3">
-                                <label for="inputAddress" class="form-label">{{__('Present Address')}}</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="inputAddress2" class="form-label">Address 2</label>
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                                        
-                            <div class="row g-2">
-                                <div class="mb-3 col-md-4">
-                                    <label for="inputState" class="form-label">Country</label>
-                                    <select id="inputState" class="form-select">
-                                        <option>Choose</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-4">
-                                    <label for="inputState" class="form-label">Division</label>
-                                    <select id="inputState" class="form-select">
-                                        <option>Choose</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-4">
-                                    <label for="inputState" class="form-label">District</label>
-                                    <select id="inputState" class="form-select">
-                                        <option>Choose</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
-                                    </select>
-                                </div>
-                                {{-- <div class="mb-3 col-md-2">
-                                    <label for="inputZip" class="form-label">Zip</label>
-                                    <input type="text" class="form-control" id="inputZip">
-                                </div> --}}
-                            </div>
 
                             <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth me-1"></i> Social</h5>
                             <div class="row">

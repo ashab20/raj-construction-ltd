@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Location;
 
+use App\Http\Controllers\Controller;
 use App\Models\Location\District;
+use App\Models\Location\Division;
 use Illuminate\Http\Request;
 
 class DistrictController extends Controller
@@ -15,6 +17,8 @@ class DistrictController extends Controller
     public function index()
     {
         //
+        $districts = District::all();
+        return view('Locations.countries',compact('districts'));
     }
 
     /**

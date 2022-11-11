@@ -210,17 +210,17 @@
                     <div class="collapse" id="sidebarProjects">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="apps-projects-list.html">
+                                <a href="{{ route('country.index')}}">
                                     {{__('Coutries')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="apps-projects-details.html">
+                                <a href="{{route('division.index')}}">
                                     {{__('Divions/State')}}
                                 </a>
                             </li>
                             <li>
-                                <a href="apps-projects-gantt.html">
+                                <a href="{{route('district.index')}}">
                                     {{_('Districts')}} 
                                     <span class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span>
                                 </a>

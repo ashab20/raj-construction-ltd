@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Location;
 
+use App\Http\Controllers\Controller;
+use App\Models\Location\District;
 use App\Models\Location\Division;
 use Illuminate\Http\Request;
 
@@ -15,6 +17,8 @@ class DivisionController extends Controller
     public function index()
     {
         //
+        $divisions = Division::all();
+        return view('Locations.countries',compact('divisions'));
     }
 
     /**

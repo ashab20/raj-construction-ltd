@@ -4,7 +4,10 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\Builder\FloorDetailsController;
+use App\Http\Controllers\Location\CountryController;
 use App\Http\Controllers\Land\LandController;
+use App\Http\Controllers\Location\DistrictController;
+use App\Http\Controllers\Location\DivisionController;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +31,11 @@ Route::get('logout', [AuthController::class, 'logOut'])->name('logout');
 
 Route::group(['middleware' => AdminMiddleware::class], function () {
     Route::prefix('admin')->group(function () {
+
+        // Locations
+        Route::resource('country', CountryController::class);
+        Route::resource('division', DivisionController::class);
+        Route::resource('district', DistrictController::class);
 
         // Create Users
         Route::resource('member', UserController::class);

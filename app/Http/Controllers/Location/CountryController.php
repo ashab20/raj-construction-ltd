@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Location;
 
-use App\Models\Location\country;
+use App\Http\Controllers\Controller;
+use App\Models\Location\Country;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -14,7 +15,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $coutries = Country::all();
+        return view('Locations.countries',compact('coutries'));
     }
 
     /**
