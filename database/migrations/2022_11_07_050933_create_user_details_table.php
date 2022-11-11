@@ -22,9 +22,7 @@ return new class extends Migration
 
             $table->string('father_name');
             $table->string('mother_name');
-            $table->unsignedBigInteger('designation_id')->foreign()->references('id')->on('designatins')->onDelete('cascade')->change();
-
-            $table->string('avatar')->nullable();
+  
             $table->unsignedBigInteger('countries_id')->foreign()->references('id')->on('countries')->onDelete('cascade')->change();
 
             $table->unsignedBigInteger('divisions_id')->foreign()->references('id')->on('divisions')->onDelete('cascade')->change();

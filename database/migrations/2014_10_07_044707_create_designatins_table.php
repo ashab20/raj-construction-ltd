@@ -22,8 +22,6 @@ return new class extends Migration
              $table->integer('status')->default(1);
              $table->unsignedBigInteger('created_by');
              $table->unsignedBigInteger('updated_by')->nullable();
-             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
-             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();
              $table->softDeletes();
         });
     }

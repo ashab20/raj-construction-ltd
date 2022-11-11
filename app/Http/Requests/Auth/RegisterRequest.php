@@ -24,14 +24,15 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'userFullName'=> ['required','string'],
-            'userEmailAddress'=> 'required|email|unique:users,email',
-            'userRoles'=> 'required',
-            'userPhoneNumber'=> 'required|numeric|unique:users,phone',
-            'userPassword'=> ['required','string']
+            'userFullName' => ['required', 'string'],
+            'userEmailAddress' => 'required|email|unique:users,email',
+            'userRoles' => 'required',
+            'userPhoneNumber' => 'required|numeric|unique:users,phone',
+            'userPassword' => ['required', 'string'],
+            'userAvatar' => 'mimes:jpg,jpeg,png|max:4096',
         ];
     }
-   
+
     public function messages()
     {
         return [
@@ -42,8 +43,8 @@ class RegisterRequest extends FormRequest
             'between' => 'The :attribute value :input is not between :min - :max.',
             'in' => 'The :attribute must be one of the following types: :values',
             'max' => 'Your :attribute is too long!',
-            'min' => 'Your :attribute is too sort!'
+            'min' => 'Your :attribute is too sort!',
+            'mimes' => 'Only JPG or PNG are allowed'
         ];
     }
-   
 }

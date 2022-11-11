@@ -11,6 +11,7 @@ use Exception;
 use App\Http\Controllers\Auth\UserTraits;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Auth\Role;
+use App\Models\Lands\Designatin;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
@@ -21,13 +22,15 @@ class UserController extends Controller
     public function index()
     {
         $members = User::all();
-        return view('Users.members');
+        return view('Users.members',compact('members'));
     }
 
     public function create()
     {
         //
-        return view('');
+        $roles = Role::all();
+        $designation = Designatin::all();
+        return view('Users.create', compact(['roles', 'designation']));
     }
 
     // 
@@ -53,6 +56,7 @@ class UserController extends Controller
             $store->password =  Crypt::encryptString($request->userPassword);
             $store->role_id = $request->userRoles;
             $store->phone = $request->userPhoneNumber;
+            
 
             if ($store->save()) {
                 return redirect('/')->with($this->resMessageHtml(true, false, 'User created successfully'));
@@ -71,7 +75,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $store = new User();
+
+            // $store->name = $request->input('userFullName');
+            $store->name = $request->userFullName;
+            $store->email = $request->userEmailAddress;
+            $store->password =  Crypt::encryptString($request->userPassword);
+            $store->role_id = $request->userRoles;
+            $store->phone = $request->userPhoneNumber;
+            // $store->avatar = $request->userAvatar;
+
+            if($request->hasFile('userAvatar')){
+                $imageName = rand(111,999).time().'.'.$request->userAvatar->extension();  
+                $request->userAvatar->move(public_path('uploads/document'), $imageName);
+                $store->avatar=$imageName;
+            }
+            else{
+                return redirect()->back()->with($this->responseMsg(false, 'error', 'Document created unsuccessfully'));
+            }
+
+            if ($store->save()) {
+                return redirect(route('members.index'))->with($this->resMessageHtml(true, false, 'User created successfully'));
+            }
+        } catch (Exception $error) {
+            dd($error);
+            return redirect()->back()->with($this->responseMsg(false, 'error', 'Server error'));
+        }
     }
 
     /**
@@ -91,9 +121,10 @@ class UserController extends Controller
      * @param  \App\Models\Auth\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $members)
     {
         //
+        return view('Users.edit',$members);
     }
 
     /**

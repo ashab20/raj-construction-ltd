@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Builder;
 
+use App\Http\Controllers\Auth\ResponseTraids;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Document\AddRequest;
 use App\Http\Controllers\Auth\ResponseTraids;
