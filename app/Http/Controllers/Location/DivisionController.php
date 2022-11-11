@@ -18,7 +18,7 @@ class DivisionController extends Controller
     {
         //
         $divisions = Division::all();
-        return view('Locations.countries',compact('divisions'));
+        return view('Locations.divisions',compact('divisions'));
     }
 
     /**

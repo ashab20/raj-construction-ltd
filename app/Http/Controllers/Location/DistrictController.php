@@ -18,7 +18,7 @@ class DistrictController extends Controller
     {
         //
         $districts = District::all();
-        return view('Locations.countries',compact('districts'));
+        return view('Locations.districts',compact('districts'));
     }
 
     /**
