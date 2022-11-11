@@ -30,7 +30,7 @@
             <div class="card-body">
                 <div class="row mb-2">
                     <div class="col-sm-4">
-                        <a href="{{route('members.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Member</a>
+                        <a href="{{route('member.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Member</a>
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
@@ -42,6 +42,9 @@
                 </div>
 
                 <div class="table-responsive">
+                    @if(Session::has('response'))
+                    {!!Session::get('response')['message']!!}
+                    @endif
                     <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                         <thead>
                             <tr>
@@ -98,8 +101,14 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{route('members.edit',$member)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                    <a 
+                                    href="{{route('member.edit',$member)}}"
+                                     class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                     <form action="{{route('member.delete',$member)}}">
+                                        @csrf
+                                        @method('delete')
+                                        <button><i class="mdi mdi-delete"></i></button>
+                                     </form>
                                 </td>
                             </tr>
                             @empty

@@ -52,7 +52,7 @@
         
         <div class="tab-content">
             <div class="tab-pane show active" id="floating-preview">
-                <form action="{{ route('members.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('member.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
 

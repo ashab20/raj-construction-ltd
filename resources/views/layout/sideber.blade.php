@@ -185,7 +185,7 @@
                     <div class="collapse" id="sidebarEmail">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="{{route('members.index')}}">
+                                <a href="{{route('member.index')}}">
                                     {{ _('All Members')}}
                                 </a>
                             </li>
