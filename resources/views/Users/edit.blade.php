@@ -79,13 +79,13 @@
                             <div class="form-floating">
                                 <select class="form-select" name="userRoles" id="floatingSelect" aria-label="Floating label select example">
                                     <option selected value="{{old('userRoles')}}">{{__('Select Roles')}}</option>
-                                    @forelse($roles as $role)
-                            <option value="{{$role->id}}">
-                                {{__($role->role)}}
-                            </option>
-                            @empty
-                            <option value="">{{__('No Data Founds')}}</option>
-                            @endforelse
+                                    {{-- @forelse($roles as $role)
+                                    <option value="{{$role->id}}">
+                                        {{__($role->role)}}
+                                    </option>
+                                    @empty
+                                    <option value="">{{__('No Data Founds')}}</option>
+                                    @endforelse --}}
                                 </select>
                                 <label for="floatingSelect">
                                     {{__('User Role')}}
