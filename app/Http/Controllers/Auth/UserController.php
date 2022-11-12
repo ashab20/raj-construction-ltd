@@ -97,12 +97,18 @@ class UserController extends Controller
             }
 
             if ($store->save()) {
+                $UserDetails = New UserDetails();
                 if($request->designation){
-
-                    $UserDetails = New UserDetails();
-                    $UserDetails->designation = $request->designation;
-                    $UserDetails->save();  
+                    $UserDetails->designation_id = $request->designation;
+                    $UserDetails->created_by = Crypt::decrypt(session()->get('userId'));
+                }else{
+                    $UserDetails->created_by = $store->id;
+                    
                 }
+                
+                $UserDetails->status = 1;  
+                $UserDetails->user_id = $store->id;
+                $UserDetails->save();  
                 return redirect(route('member.index'))->with($this->resMessageHtml(true, false, 'User created successfully'));
             }
         } catch (Exception $error) {
