@@ -53,7 +53,7 @@ class FloorDetailsController extends Controller
 
             $fdetails->status=1;
             if($fdetails->save()){
-                return redirect($identity.'/floorDetails')->with($this->resMessageHtml(true, false, 'Fllor details created successfully'));
+                return redirect($identity.'/floorDetails')->with($this->resMessageHtml(true, false, 'Floor details created successfully'));
             }
         }
         catch(Exception $e){
@@ -79,8 +79,10 @@ class FloorDetailsController extends Controller
      * @param  \App\Models\FloorDetails  $floorDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(FloorDetails $floorDetails)
+    public function edit($id)
     {
+
+        $floorDetails=FloorDetails::find(decrypt($id));
         return view('floorDetails.edit',compact('floorDetails'));
     }
 
@@ -91,11 +93,11 @@ class FloorDetailsController extends Controller
      * @param  \App\Models\FloorDetails  $floorDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FloorDetails $floorDetails)
+    public function update(Request $request, $id)
     {
         try{
             $identity = decrypt(session()->get('roleIdentity'));
-            $fd= $floorDetails;
+            $fd = FloorDetails::find($id);
             $fd->floor_no = $request->floorNo;
             $fd->total_squire_feet = $request->tsFeet;
             $fd->total_cost = $request->tCost;
