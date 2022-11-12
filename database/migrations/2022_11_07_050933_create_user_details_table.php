@@ -20,16 +20,28 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
 
-            $table->string('father_name');
-            $table->string('mother_name');
+            $table->unsignedBigInteger('designatin_id')->foreign()->references('id')->on('designatins')->onDelete('cascade')->change();
+
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
             $table->string('bio',500)->nullable();
             $table->string('gender',20)->nullable();
-  
-            $table->unsignedBigInteger('countries_id')->foreign()->references('id')->on('countries')->onDelete('cascade')->change();
+            $table->string('resume')->nullable();
+//   present address
+            $table->string('present_address')->nullable();
+            $table->unsignedBigInteger('present_countrie_id')->foreign()->references('id')->on('countries')->onDelete('cascade')->change()->nullable();
 
-            $table->unsignedBigInteger('divisions_id')->foreign()->references('id')->on('divisions')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('present_division_id')->foreign()->references('id')->on('divisions')->onDelete('cascade')->change()->nullable();
 
-            $table->unsignedBigInteger('districts_id')->foreign()->references('id')->on('districts')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('present_district_id')->foreign()->references('id')->on('districts')->onDelete('cascade')->change()->nullable();
+            
+            // permanent address
+            $table->string('permanent_address')->nullable();
+            $table->unsignedBigInteger('permanent_countrie_id')->foreign()->references('id')->on('countries')->onDelete('cascade')->change();
+
+            $table->unsignedBigInteger('permanent_division_id')->foreign()->references('id')->on('divisions')->onDelete('cascade')->change();
+
+            $table->unsignedBigInteger('permanent_district_id')->foreign()->references('id')->on('districts')->onDelete('cascade')->change();
 
             // default
             $table->integer('status')->default(1);

@@ -69,6 +69,7 @@ class DivisionController extends Controller
     public function show(Division $division)
     {
         //
+        $division = Division::findOrFail($division)->first();
     }
 
     /**

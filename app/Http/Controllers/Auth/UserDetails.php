@@ -36,7 +36,8 @@ class UserDetails extends RoutingController
      */
     public function store(Request $request)
     {
-        //
+        $store = new UserDetails();
+        
     }
 
     /**

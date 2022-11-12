@@ -48,4 +48,9 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Models\Auth\Role');
     }
+    public function userdetails(){
+        return $this->hasMany('App\Models\Auth\UserDetails');
+    }
+
+
 }

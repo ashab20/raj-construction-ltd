@@ -11,7 +11,8 @@ use Exception;
 use App\Http\Controllers\Auth\UserTraits;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Auth\Role;
-use App\Models\Lands\Designatin;
+use App\Models\Auth\UserDetails;
+use App\Models\Lands\Designation;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         //
         $roles = Role::all();
-        $designation = Designatin::all();
+        $designation = Designation::all();
         return view('Users.create', compact(['roles', 'designation']));
     }
 
@@ -96,6 +97,12 @@ class UserController extends Controller
             }
 
             if ($store->save()) {
+                if($request->designation){
+
+                    $UserDetails = New UserDetails();
+                    $UserDetails->designation = $request->designation;
+                    $UserDetails->save();  
+                }
                 return redirect(route('member.index'))->with($this->resMessageHtml(true, false, 'User created successfully'));
             }
         } catch (Exception $error) {
@@ -127,7 +134,7 @@ class UserController extends Controller
         // dd($members);
         // Crypt::decrypt()
         $roles = Role::all();
-        $designation = Designatin::all();
+        $designation = Designation::all();
         return view('Users.edit',compact(['member','roles','designation']));
     }
 

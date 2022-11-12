@@ -94,7 +94,7 @@
                         </div>
                             <div class="col-md">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="designation">
                                         <option selected>Select Designation</option>
                                         @forelse($designation as $desig)
                                         <option value="{{$desig->id}}">

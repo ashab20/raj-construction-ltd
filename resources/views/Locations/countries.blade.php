@@ -71,7 +71,7 @@
                                         <td>{{$country->country}}</td>
                                         <td>{{$country->divisions->count()}}</td>
                                         <td>
-                                        
+                                            
                                         </td>
                                         <td>
                                             <!-- Switch-->

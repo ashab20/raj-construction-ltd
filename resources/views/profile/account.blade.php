@@ -317,6 +317,7 @@
                                     <p class="text-muted"><small>about 2 minuts ago</small></p>
                                 </div>
                             </div>
+                            
                             <p>Story based around the idea of time lapse, animation to post soon!</p>
 
                             <img src="assets/images/small/small-1.jpg" alt="post-img" class="rounded me-1" height="60" />
@@ -408,13 +409,25 @@
 
                     <div class="tab-pane" id="settings">
                         <!-- *** @ user data*** -->
-                        <form>
+                       @php
+                           $userData = DB::table('user_details')->where('user_id',decrypt(session()->get('userId')))->first();
+                       @endphp
+                        <form action="" method="POST" >
+                            @csrf
+                            @method('POST')
                             <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> {{__('Personal Info')}}</h5>
+                             <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName">
+                             {{-- <input type="text"  value="{{Input::get('id')}}" id="authName"> --}}
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label for="userbio" class="form-label">{{__('Bio')}}</label>
-                                        <textarea class="form-control" id="userbio" rows="4" placeholder="Write something..."></textarea>
+                                        <textarea class="form-control" id="userbio" rows="4" placeholder="Write something...">
+                                            @if(isset($userData) && $userData->bio)
+                                                {{$userData->bio}}
+                                                @endif
+
+                                        </textarea>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -462,7 +475,7 @@
                                         <label for="fathername" class="form-label">
                                             {{__('Father\'s Name')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="fathername" placeholder="Enter father's name">
+                                        <input type="text" class="form-control" id="fathername" placeholder="Enter father's name" value="{{$userData->father_name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -470,7 +483,7 @@
                                         <label for="mothername" class="form-label">
                                             {{__('Mother\'s Name')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="mothername" placeholder="Enter mother's name">
+                                        <input type="text" class="form-control" id="mothername" placeholder="Enter mother's name" value="{{$userData->mother_name}}">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -479,9 +492,25 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="designation" class="form-label">
-                                            {{__('Designation')}} :
-                                        </label>
-                                        <input type="text" class="form-control" id="designation" placeholder="Enter designation" readonly>
+                                            {{__('Designation')}} : </label>
+                                            @if(decrypt(session()->get('roleIdentity')) === 'admin')
+                                            {{-- <select id="inputState" class="form-select">
+                                                <option>{{_('Designation')}}</option>
+                                                @php
+                                                 $designations = DB::table('designatins')   
+                                                @endphp
+                                                    @forelse ($designations as $designation)
+                                                    <option value="">
+                                                        {{$designation->designation}}
+                                                    </option>
+                                                    @empty
+                                                    <option>No data Found!</option>
+                                                    @endforelse
+                                            </select> --}}
+                                            @else
+                                            <input readonly type="text" class="form-control" id="mothername" value="">
+                                            @endif
+                                           
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -502,36 +531,62 @@
                                     <div class="mb-3">
                                         <label for="inputAddress" class="form-label">{{__('Present Address')}}</label>
                                         <textarea class="form-control" rows="6" id="inputAddress" placeholder="1234 Main St"> 
-
+                                            
                                         </textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                     <label for="inputState" class="form-label">{{__('Country')}}</label>
-                                    <select id="inputState" class="form-select">
+                                    <select id="inputState" class="form-select" >
+                                        @php
+                                            $countires = DB::table('countries')->get();
+                                                
+                                        @endphp
                                         <option>{{_('Select Country')}}</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+                                        @forelse ($countires as $country)
+                                        <option value="{{$country->id}}">{{$country->country}}</option>
+                                            
+                                        @empty
+                                        <option>No data Found</option>
+                                            
+                                        @endforelse
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputState" class="form-label">{{__('Division')}}</label>
-                                    <select id="inputState" class="form-select">
+                                    <select id="divisons" class="form-select">
+                                        @php
+                                        $divisions = DB::table('divisions')->get();
+                                        
+                                        @endphp
                                         <option>{{_('Select Division')}}</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+
+                                    @forelse ($divisions as $division)
+                                    <option value="{{$division->id}}">{{$division->divison}}</option>
+                                        
+                                    @empty
+                                    <option>No data Found</option>
+                                        
+                                    @endforelse
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="inputState" class="form-label">{{__('District')}}</label>
                                     <select id="inputState" class="form-select">
+                                        @php
+                                        $districts = DB::table('districts')->get();
+                                        
+                                        @endphp
                                         <option>{{_('Select District')}}</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+
+                                    @forelse ($districts as $district)
+                                    <option value="{{$district->id}}">{{$district->district}}</option>
+                                        
+                                    @empty
+                                    <option>No data Found</option>
+                                        
+                                    @endforelse
                                     </select>
                                 </div>
                                 </div> <!-- end col -->
@@ -686,3 +741,34 @@
 <!-- END Container -->
 
 @endsection
+
+@push('scripts')
+
+<script>
+
+    // function selectedCountry(value){
+    //     let divisons = $('#divisons');
+    //     let authName = $('#authName').val();
+
+
+    //     $.ajaxSetup({
+    //         headers: {
+    //             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+    //         }
+    //     });
+
+    //     const host = `${window.location.origin}/${authName}/division/${value}`;
+  
+    //     $.ajax({
+    //         type: "GET",
+    //         url: host,
+    //         // dataType: "dataType",
+    //         success: function (response) {
+    //             console.log(response);
+    //         }
+    //     });
+    // }
+</script>
+
+@endpush
+

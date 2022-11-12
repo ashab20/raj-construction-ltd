@@ -29,7 +29,7 @@
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="dashboard-analytics.html">Profile</a>
+                                <a href="{{route('member.show',Crypt::decrypt(Session::get('userId')))}}" >Profile</a>
                             </li>
                             <li>
                                 <a href="dashboard-crm.html">
