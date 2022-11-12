@@ -167,10 +167,10 @@
                     <div class="collapse" id="sidebarDesign">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="{{ route('document.create')}}">Add</a>
+                                <a href="{{ route('design.create')}}">Add</a>
                             </li>
                             <li>
-                                <a href="#">Design Details</a>
+                                <a href="{{ route('design.index')}}">Design Details</a>
                             </li>
                         </ul>
                     </div>
