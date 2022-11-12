@@ -70,7 +70,7 @@
                                             <a href="javascript:void()" onclick="$('#form{{$floorDetail->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$floorDetail->id}}" action="{{ route('land.destroy',$floorDetail->id)}}" method="post">
+                                            <form id="form{{$floorDetail->id}}" action="{{ route('floorDetails.destroy',$floorDetail->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>
