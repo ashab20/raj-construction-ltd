@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Location;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTraits;
 use App\Models\Location\Country;
+use Exception;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +40,20 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+
+            $store = new Country();
+            $store->country = $request->countryName;
+            $store->created_by = decrypt(session()->get('userId'));
+            $store->status = 1;
+            if ($store->save()) {
+                return redirect()->back()->with($this->resMessageHtml(true, false, 'Country data saved'));
+            }
+        }catch(Exception $error){
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot create floor details'));
+
+        }
+        
     }
 
     /**
@@ -60,6 +76,9 @@ class CountryController extends Controller
     public function edit(country $country)
     {
         //
+        $coutries = Country::all();
+        $countryData  = $country;
+        return view('Locations.countries',compact(['coutries','countryData']));
     }
 
     /**
@@ -71,7 +90,19 @@ class CountryController extends Controller
      */
     public function update(Request $request, country $country)
     {
-        //
+        try{
+            $identity = decrypt(session()->get('roleIdentity'));
+            $store = $country;
+            $store->country = $request->countryName;
+            $store->created_by = decrypt(session()->get('userId'));
+            $store->status = 1;
+            if ($store->save()) {
+                return redirect($identity.'/country')->with($this->resMessageHtml(true, false, 'Country data updated'));
+            }
+        }catch(Exception $error){
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot update'));
+
+        }
     }
 
     /**
@@ -83,5 +114,8 @@ class CountryController extends Controller
     public function destroy(country $country)
     {
         //
+        $country->delete();
+        return redirect()->back();
     }
-}
+    }
+
