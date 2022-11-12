@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Location;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTraits;
+use App\Models\Location\Country;
 use App\Models\Location\District;
 use App\Models\Location\Division;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
 class DistrictController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +21,10 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        //
+        $countries = Country::all();
+        $divisions = Division::all();
         $districts = District::all();
-        return view('Locations.districts',compact('districts'));
+        return view('Locations.districts',compact(['districts','countries','divisions']));
     }
 
     /**
@@ -44,6 +49,22 @@ class DistrictController extends Controller
     public function store(Request $request)
     {
         //
+        
+        try{
+
+            $store = new District();
+            $store->district = $request->districtName;
+            $store->division_id = $request->divisionName;
+            $store->created_by = decrypt(session()->get('userId'));
+            $store->status = 1;
+            if ($store->save()) {
+                return redirect()->back()->with($this->resMessageHtml(true, false, 'Country data saved'));
+            }
+        }catch(Exception $error){
+            dd($error);
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot create insert divison data'));
+
+        }
     }
 
     /**
@@ -65,7 +86,11 @@ class DistrictController extends Controller
      */
     public function edit(District $district)
     {
-        //
+        $divisions = Division::all();
+        $districts = District::all();
+        $districtData  = $district;
+        return view('Locations.districts',compact(['districts','divisions','districtData']));
+    
     }
 
     /**
@@ -77,7 +102,20 @@ class DistrictController extends Controller
      */
     public function update(Request $request, District $district)
     {
-        //
+        try{
+            $identity = decrypt(session()->get('roleIdentity'));
+            $update = $district;
+            $update->district = $request->districtName;
+            $update->division_id = $request->divisionName;
+            $update->created_by = decrypt(session()->get('userId'));
+            $update->status = 1;
+            if ($update->save()) {
+                return redirect($identity.'/district')->with($this->resMessageHtml(true, false, 'district data updated'));
+            }
+        }catch(Exception $error){
+            return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot update district name'));
+
+        }
     }
 
     /**
@@ -88,6 +126,7 @@ class DistrictController extends Controller
      */
     public function destroy(District $district)
     {
-        //
+        $district->delete();
+        return redirect()->back();
     }
 }
