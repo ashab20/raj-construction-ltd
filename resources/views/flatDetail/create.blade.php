@@ -29,42 +29,25 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('flatDetail.store')}}">
+                                    <form class="form" method="post" action="{{ route('flatDetail.store')}}">
                                         @csrf
-                                        @method('patch')
                                         <div class="mb-3">
                                             <label for="squireFeet" class="form-label">Squire Feet</label>
                                             <input type="text" id="squireFeet" name="squireFeet" class="form-control">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="houseNo" class="form-label">House No.</label>
-                                            <input type="text" id="houseNo" class="form-control" name="houseNo">
+                                            <label for="tbudget" class="form-label">Total Budget</label>
+                                            <input type="text" id="tbudget" class="form-control" name="tbudget">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="block" class="form-label">Block</label>
-                                            <input type="text" id="block" class="form-control" name="block">
+                                            <label for="tcost" class="form-label">Total Cost</label>
+                                            <input type="text" id="tcost" class="form-control" name="tcost">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="roadNo" class="form-label">Road No.</label>
-                                            <input type="text" id="roadNo" class="form-control" name="roadNo">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="form-label">Address</label>
-                                            <input type="text" id="address" class="form-control" name="address">
-                                        </div>
-                                        {{-- <div class="mb-3">
-                                            <label for="designId" class="form-label">Design</label>
-                                            <input type="file" id="designId" class="form-control" name="designId">
-                                        </div> --}}
-                                        <div class="mb-3">
-                                            <label for="totalBudget" class="form-label">Total Budget</label>
-                                            <input type="text" id="totalBudget" class="form-control" name="totalBudget">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="totalCost" class="form-label">Total Cost</label>
-                                            <input type="text" id="totalCost" class="form-control" name="totalCost">
+                                            <label for="salePrice" class="form-label">Sales Price</label>
+                                            <input type="text" id="salePrice" class="form-control" name="salePrice">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
