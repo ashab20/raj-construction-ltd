@@ -11,11 +11,11 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active">Land Create</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
+                            <li class="breadcrumb-item active">Flat Create</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Land Create</h4>
+                    <h4 class="page-title">Flat Create</h4>
                 </div>
             </div>
         </div>      
@@ -29,8 +29,9 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('land.store')}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('flatDetail.store')}}">
                                         @csrf
+                                        @method('patch')
                                         <div class="mb-3">
                                             <label for="squireFeet" class="form-label">Squire Feet</label>
                                             <input type="text" id="squireFeet" name="squireFeet" class="form-control">

@@ -41,30 +41,30 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
+                                        <th>Flat Name</th>
+                                        <th>Client Name</th>
                                         <th>Squire Feet</th>
-                                        <th>House No.</th>
-                                        <th>Block</th>
-                                        <th>Road No.</th>
-                                        <th>Address</th>
-                                        <th>Design</th>
                                         <th>Total Budget</th>
                                         <th>Total Cost</th>
+                                        <th>Materials Details</th>
+                                        <th>Sales Price</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($fdetail as $fd)
-                                    <tr>	 	 	 	 	 	 	 
+                                    <tr>
+                                        {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
+                                        <td>{{ $fd->flat_id}}</td>
+                                        <td>{{ $fd->client_id}}</td>
                                         <td>{{ $fd->squire_feet}}</td>
-                                        <td>{{ $fd->house_no}}</td>
-                                        <td>{{ $fd->block}}</td>
-                                        <td>{{ $fd->road_no}}</td>
-                                        <td>{{ $fd->address}}</td>
                                         {{-- <td><img width="50px" src="{{ asset('uploads/land/'.$land->design_id)}}" alt=""></td> --}}
                                         <td>{{ $fd->total_budget}}</td>
                                         <td>{{ $fd->total_cost}}</td>
+                                        <td>{{ $fd->material_detail_id}}</td>
+                                        <td>{{ $fd->sales_price}}</td>
                                         <td>
                                             @if ($fd->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
@@ -74,11 +74,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('land.edit',$land->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
-                                            <a href="javascript:void()" onclick="$('#form{{$land->id}}').submit()">
+                                            <a href="{{ route('flatDetail.edit',$fd->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
+                                            <a href="javascript:void()" onclick="$('#form{{$fd->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$land->id}}" action="{{ route('land.destroy',$land->id)}}" method="post">
+                                            <form id="form{{$fd->id}}" action="{{ route('flatDetail.destroy',$fd->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>
@@ -86,7 +86,7 @@
                                     </tr>                                      
                                     @empty
                                         <tr>
-                                            <td colspan="10" class="text-center">No Data Found</td>
+                                            <td colspan="11" class="text-center">No Data Found</td>
                                         </tr>
                                     @endforelse
                                 </tbody>

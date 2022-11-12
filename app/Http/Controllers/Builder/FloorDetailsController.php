@@ -120,8 +120,9 @@ class FloorDetailsController extends Controller
      * @param  \App\Models\FloorDetails  $floorDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FloorDetails $floorDetails)
+    public function destroy($id)
     {
-        //
+        FloorDetails::find($id)->delete();
+        return redirect()->back();
     }
 }
