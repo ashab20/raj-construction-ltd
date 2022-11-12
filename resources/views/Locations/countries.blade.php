@@ -56,6 +56,7 @@
                             <table class="table table-centered mb-0">
                                 <thead>
                                     <tr>
+                                        <th>SL</th>
                                         <th>Country Name</th>
                                         <th>Number of Division</th>
                                         <th>Number of Districts</th>
@@ -66,9 +67,12 @@
                                 <tbody>
                                 @forelse ($coutries as $country)
                                     <tr>
+                                        <td>{{++$loop->index}}</td>
                                         <td>{{$country->country}}</td>
-                                        <td></td>
-                                        <td>July 24, 1950</td>
+                                        <td>{{$country->divisions->count()}}</td>
+                                        <td>
+                                        
+                                        </td>
                                         <td>
                                             <!-- Switch-->
                                             <div>
@@ -89,7 +93,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td>
+                                        <td colspan="5">
                                             No data Founds!
                                         </td>
                                     </tr>
@@ -232,37 +236,37 @@
         console.log(country);
     }
 
-    function handleSubmit() {
-        // e.preventDefault();
-        let countryName = $('#countryName').val();
-        let authName = $('#authName').val();
-        // console.log(countryName);
-        const host = `${window.location.origin}`;
-        const data = {
-            countryName,
-            _token: '<?php echo csrf_token() ?>',
-            _method:'PATCH',
-        }
+    // function handleSubmit() {
+    //     // e.preventDefault();
+    //     let countryName = $('#countryName').val();
+    //     let authName = $('#authName').val();
+    //     // console.log(countryName);
+    //     const host = `${window.location.origin}`;
+    //     const data = {
+    //         countryName,
+    //         _token: '<?php echo csrf_token() ?>',
+    //         _method:'PATCH',
+    //     }
 
-        // console.log('host',host);
+    //     // console.log('host',host);
 
-        $.ajax({
-            method: 'GET',
-            // headers:{
-            //     _token : '<?php echo csrf_token() ?>',
-             //       _method:'PATCH',
-            //},
-            url: host + `/${authName}/country/store`,
-            data,
-            success: function(data) {
-                console.log(data);
-            },
-            error: function(data) {
-                console.log(data);
-            }
-        });
+    //     $.ajax({
+    //         method: 'GET',
+    //         // headers:{
+    //         //     _token : '<?php echo csrf_token() ?>',
+    //          //       _method:'PATCH',
+    //         //},
+    //         url: host + `/${authName}/country/store`,
+    //         data,
+    //         success: function(data) {
+    //             console.log(data);
+    //         },
+    //         error: function(data) {
+    //             console.log(data);
+    //         }
+    //     });
 
-    }
+    // }
 </script>
 
 @endpush

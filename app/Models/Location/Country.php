@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
+
+    public function divisions(){
+        return $this->hasMany('App\Models\Location\Division');
+    }
+
+   
 }
