@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Builder;
 
 use App\Models\Builder\Design;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 
 

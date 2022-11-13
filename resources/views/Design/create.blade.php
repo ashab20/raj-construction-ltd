@@ -34,7 +34,7 @@
                                         @csrf
                                         
                                         <div class="mb-3">
-                                            <label for="desiname" class="form-label">Designer Name</label>
+                                            <label for="desiname" class="form-label">Designer Id</label>
                                             <input type="text" id="desiname" name="desiname" class="form-control">
                                         </div>
                                         <div class="col-3">

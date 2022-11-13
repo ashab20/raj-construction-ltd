@@ -40,8 +40,8 @@
                         <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                                     <thead>
                                         <tr>
-                                            <th>#SL</th>
-                                            <th>Designer Name</th>
+                                            <th>SL No</th>
+                                            <th>Designer Id</th>
                                             <th>Document</th>
                                             <th>Building squire feet</th>
                                             <th>Total floor number</th>
@@ -68,7 +68,7 @@
                                             @endif
                                         </td>
                                             <td class="table-action">
-                                                <a href="{{ route('design.edit',$dsign->id)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
+                                                <a href="{{ route('design.edit',encrypt($dsign->id))}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
                                                 <a href="javascript:void()" onclick="$('#form{{$dsign->id}}').submit()">
                                                     <i class="mdi mdi-delete"></i>
                                                 </a>

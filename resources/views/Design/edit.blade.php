@@ -13,6 +13,8 @@
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
                             <li class="breadcrumb-item active">Form Elements</li>
+
+                            <li class="breadcrumb-item active">Design Edit</li>
                         </ol>
                     </div>
                     <h4 class="page-title">Form Elements</h4>
@@ -30,30 +32,30 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('design.update',$design->id)}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('design.update',$designDetails->id)}}">
                                         @csrf
                                         @method('patch')
                                         <div class="mb-3">
                                             <label for="desiname" class="form-label">Designer Name</label>
-                                            <input type="text" value="{{ old('desiname',$design->designer_id)}}" id="desiname" name="desiname" class="form-control">
+                                            <input type="text" value="{{ old('desiname',$designDetails->designer_id)}}" id="desiname" name="desiname" class="form-control">
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label for="document">Document</label>
-                                                <input class="form-control" value="{{ old('document',$design->document)}}" name="document" id="document" type="file">
+                                                <input class="form-control" value="{{ old('document',$designDetails->document)}}" name="document" id="document" type="file">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="bsfeet" class="form-label">Building squire feet</label>
-                                            <input type="number" value="{{ old('bsfeet',$design->building_squire_feet)}}" id="bsfeet" name="bsfeet" class="form-control">
+                                            <input type="number" value="{{ old('bsfeet',$designDetails->building_squire_feet)}}" id="bsfeet" name="bsfeet" class="form-control">
                                         </div>
                                         <div class="mb-3">
                                             <label for="tfnumber" class="form-label">Total floor number</label>
-                                            <input type="number" value="{{ old('tfnumber',$design->total_floor_number)}}" id="tfnumber" name="tfnumber" class="form-control">
+                                            <input type="number" value="{{ old('tfnumber',$designDetails->total_floor_number)}}" id="tfnumber" name="tfnumber" class="form-control">
                                         </div>
                                         <div class="mb-3">
                                             <label for="designdetails" class="form-label">design details</label>
-                                            <textarea class="form-control"  id="designdetails" name="designdetails" rows="5">{{ old('designdetails',$design->design_details)}}</textarea>
+                                            <textarea class="form-control"  id="designdetails" name="designdetails" rows="5">{{ old('designdetails',$designDetails->design_details)}}</textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
 
