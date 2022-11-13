@@ -5,7 +5,7 @@
 
 <div class="content-page">
     <div class="content">
-        
+
         <!-- start page title -->
         <div class="row">
             <div class="col-12">
@@ -20,8 +20,10 @@
                     <h4 class="page-title">Create Project</h4>
                 </div>
             </div>
-        </div>     
-        <!-- end page title --> 
+        </div>
+
+
+        <!-- end page title -->
 
         <div class="row">
             <div class="col-12">
@@ -31,12 +33,12 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="mb-3">
-                                    <label for="projectname" class="form-label">Name</label>
-                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name">
+                                    <label for="projectname" class="form-label">{{__('Project Name')}}</label>
+                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="project-overview" class="form-label">Overview</label>
+                                    <label for="project-overview" class="form-label">{{__('Overview')}}</label>
                                     <textarea class="form-control" id="project-overview" rows="5" placeholder="Enter some brief about project.."></textarea>
                                 </div>
 
@@ -52,18 +54,16 @@
                                 </div>
 
                                 <div class="mb-0">
-                                    <label for="project-overview" class="form-label">Team Members</label>
-                                    
+                                    <label for="project-overview" class="form-label">{{__('Land Owner Name')}} :</label>
+
                                     <select class="form-control select2" data-toggle="select2">
-                                        <option>Select</option>
-                                        <option value="AZ">Mary Scott</option>
-                                        <option value="CO">Holly Campbell</option>
-                                        <option value="ID">Beatrice Mills</option>
-                                        <option value="MT">Melinda Gills</option>
-                                        <option value="NE">Linda Garza</option>
-                                        <option value="NM">Randy Ortez</option>
-                                        <option value="ND">Lorene Block</option>
-                                        <option value="UT">Mike Baker</option>
+                                        <option>{{__('Select Name')}}</option>
+                                        @forelse($landOwner as $onwer)
+                                        <option value="AZ">{{$onwer->name}} - {{$onwer?->email}} - {{$onwer?->phone}}</option>
+
+                                        @empty
+                                            <option value="CO">{{('No data found!')}}</option>
+                                        @endforelse
                                     </select>
 
                                     <div class="mt-2" id="tooltip-container">
@@ -97,8 +97,7 @@
                                     <label for="projectname" class="mb-0">Avatar</label>
                                     <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
 
-                                    <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
-                                        data-upload-preview-template="#uploadPreviewTemplate">
+                                    <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
                                         <div class="fallback">
                                             <input name="file" type="file" />
                                         </div>
@@ -151,7 +150,7 @@
             </div> <!-- end col-->
         </div>
         <!-- end row-->
-        
+
     </div> <!-- End Content -->
 
     <!-- Footer Start -->
@@ -159,7 +158,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> © Hyper - Coderthemes.com
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-end footer-links d-none d-md-block">

@@ -90,13 +90,14 @@ class CountryController extends Controller
      */
     public function update(Request $request, country $country)
     {
+        
         try{
             $identity = decrypt(session()->get('roleIdentity'));
-            $store = $country;
-            $store->country = $request->countryName;
-            $store->created_by = decrypt(session()->get('userId'));
-            $store->status = 1;
-            if ($store->save()) {
+            $update = $country;
+            $update->country = $request->countryName;
+            $update->created_by = decrypt(session()->get('userId'));
+            $update->status = 1;
+            if ($update->save()) {
                 return redirect($identity.'/country')->with($this->resMessageHtml(true, false, 'Country data updated'));
             }
         }catch(Exception $error){
