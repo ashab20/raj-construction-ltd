@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Projects;
 
 use App\Http\Controllers\Controller;
+use App\Models\Auth\User;
+use App\Models\Projects\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ProjectsController extends Controller
 {
@@ -14,7 +17,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+
+        
         return view('Projects.list');
     }
 
@@ -25,8 +29,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
-        return view('Projects.create');
+        $landOwner = User::where('role_id', 4)->get();
+        return view('Projects.create',compact('landOwner'));
     }
 
     /**

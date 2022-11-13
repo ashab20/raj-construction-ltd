@@ -15,8 +15,8 @@ class AuthController extends Controller
 
     public function userLoginForm()
     {
-        if(session()->get('userId') && session()->get('userId') !== null ){
-            return redirect()->route(Crypt::decrypt(session()->get('roleIdentity')).'.dashboard');
+        if (session()->get('userId') && session()->get('userId') !== null) {
+            return redirect()->route(Crypt::decrypt(session()->get('roleIdentity')) . '.dashboard');
         }
         return view('auth.login');
     }
@@ -52,6 +52,7 @@ class AuthController extends Controller
             [
                 'userId' => encrypt($user->id),
                 'userName' => encrypt($user->name),
+                'roleID' => encrypt($user->role->id),
                 'role' => encrypt($user->role->role),
                 'roleIdentity' => encrypt($user->role->identify),
                 'language' => encrypt($user->language),

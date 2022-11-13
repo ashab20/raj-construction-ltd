@@ -13,28 +13,33 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lands', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
-            $table->integer('squire_feet')->default(1);
-            $table->string('house_no');
-            $table->string('block')->nullable();
-            $table->integer('road_no')->nullable();
-            $table->string('address');
+
+            $table->string('project_name');
+            $table->string('project_overview');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+            $table->decimal('budget',15,2);
             
-            $table->unsignedBigInteger('document_id')->nullable();$table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade')->change();
+            // $table->string('image')->nullable();
+            
+            // $table->bigIncrements('team_id')->nullable();
+            // $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->change();
+
+            $table->bigIncrements('user_id')->comment('Ower id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
 
             $table->unsignedBigInteger('design_id')->nullable();
             $table->foreign('design_id')->references('id')->on('designs')->onDelete('cascade')->change();
-            $table->decimal('total_budget',12,2);
-            $table->decimal('total_cost',12,2);
 
-            
-               //default
+            $table->unsignedBigInteger('document_id')->nullable();
+            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade')->change();
+
+            // default
             $table->integer('status')->default(1);
-            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();
@@ -49,6 +54,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lands');
+        Schema::dropIfExists('projects');
     }
 };
