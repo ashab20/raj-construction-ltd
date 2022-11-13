@@ -40,10 +40,29 @@ class UserDetails extends RoutingController
     {
         try{
             // user_id 	designation_id 	father_name 	mother_name 	bio 	gender 	resume 	present_address 	present_country_id 	present_division_id 	present_district_id 	permanent_address 	permanent_country_id 	permanent_division_id 	permanent_district_id 	status
+
             
             $store = new UserDetails();
             $store->bio = $request->userBio;
-            $store->father_name = $request->userFatherName;
+            $store->father_name = $request->fathername;
+            $store->mother_name = $request->mothername;
+            $store->gender = $request->usergender;
+            $store->designation_id = $request->designation;
+            
+            if($request->resume){
+                $store->resume = $request->resume;
+            }
+
+            $store->present_address = $request->preaddress;
+            $store->present_country_id = $request->country;
+            $store->present_division_id = $request->division;
+            $store->present_district_id = $request->district;
+            $store->permanent_address = $request->peraddress;
+            $store->permanent_country_id = $request->slectcountry;
+            $store->permanent_division_id = $request->slectdivision;
+            $store->permanent_district_id = $request->slectdistrict;
+            $store->status = 1;
+            dd($store);
 
         }catch(Exception $err){
 

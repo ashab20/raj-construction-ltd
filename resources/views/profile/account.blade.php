@@ -423,7 +423,7 @@
                                     <div class="mb-3">
                                         <label for="userbio" class="form-label">{{__('Bio')}}</label>
                                         <textarea class="form-control" id="userbio" rows="4"
-                                        name="userBio"
+                                        name="userbio"
                                         placeholder="Write something...">
                                         
                                             {{$userData?->bio}}
@@ -487,7 +487,7 @@
                                         <label for="mothername" class="form-label">
                                             {{__('Mother\'s Name')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="mothername" placeholder="Enter mother's name" value="{{$userData?->mother_name}}">
+                                        <input type="text" class="form-control" id="mothername" name="mothername" placeholder="Enter mother's name" value="{{$userData?->mother_name}}">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -512,15 +512,15 @@
                                                     @endforelse
                                             </select> --}}
                                             @else
-                                            <input readonly type="text" class="form-control" id="mothername" value="">
+                                            <input readonly type="text" class="form-control" id="mothername" name="designation" value="">
                                             @endif
                                            
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="inputState" class="form-label">{{__('Gender')}}</label>
-                                        <select id="inputState" class="form-select">
+                                        <label for="usergender" class="form-label">{{__('Gender')}}</label>
+                                        <select id="usergender" name="usergender"class="form-select">
                                             <option>{{_('Select Gender')}}</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
@@ -533,20 +533,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="inputAddress" class="form-label">{{__('Present Address')}}</label>
-                                        <textarea class="form-control" rows="6" id="inputAddress" placeholder="1234 Main St"> 
+                                        <label for="preaddress" class="form-label">{{__('Present Address')}}</label>
+                                        <textarea class="form-control" rows="6" id="preaddress" name="preaddress" placeholder="1234 Main St"> 
                                             
                                         </textarea>
                                     </div>
                                 </div>
+                                 @php
+                                    $countires = DB::table('countries')->get();
+
+                                 @endphp
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                    <label for="inputState" class="form-label">{{__('Country')}}</label>
-                                    <select id="inputState" class="form-select" >
-                                        @php
-                                            $countires = DB::table('countries')->get();
-                                                
-                                        @endphp
+                                    <label for="country" class="form-label">{{__('Country')}}</label>
+                                    <select id="inputState" name="country"class="form-select" >
+                                       
                                         <option>{{_('Select Country')}}</option>
                                         @forelse ($countires as $country)
                                         <option value="{{$country->id}}">{{$country->country}}</option>
@@ -556,14 +557,15 @@
                                             
                                         @endforelse
                                     </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="inputState" class="form-label">{{__('Division')}}</label>
-                                    <select id="divisons" class="form-select">
-                                        @php
-                                        $divisions = DB::table('divisions')->get();
+                                </div>  
+                                @php
+                                    $divisions = DB::table('divisions')->get();
                                         
-                                        @endphp
+                                @endphp
+                                <div class="mb-3">
+                                    <label for="division" class="form-label">{{__('Division')}}</label>
+                                    <select id="divisons" name="division" class="form-select">
+                                      
                                         <option>{{_('Select Division')}}</option>
 
                                     @forelse ($divisions as $division)
@@ -575,13 +577,14 @@
                                     @endforelse
                                     </select>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="inputState" class="form-label">{{__('District')}}</label>
-                                    <select id="inputState" class="form-select">
-                                        @php
-                                        $districts = DB::table('districts')->get();
+                                @php
+                                    $districts = DB::table('districts')->get();
                                         
-                                        @endphp
+                                @endphp
+                                <div class="mb-3">
+                                    <label for="district" class="form-label">{{__('District')}}</label>
+                                    <select id="district" name="district" class="form-select">
+                                        
                                         <option>{{_('Select District')}}</option>
 
                                     @forelse ($districts as $district)
@@ -600,38 +603,52 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="inputAddress" class="form-label">{{__('Permanent Address')}}</label>
-                                        <textarea class="form-control" rows="6" id="inputAddress" placeholder="1234 Main St"> 
+                                        <label for="peraddress" class="form-label">{{__('Permanent Address')}}</label>
+                                        <textarea class="form-control" name="peraddress" rows="6" id="inputAddress" placeholder="1234 Main St"> 
 
                                         </textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                    <label for="inputState" class="form-label">{{__('Country')}}</label>
-                                    <select id="inputState" class="form-select">
+                                    <label for="slectcountry" class="form-label">{{__('Country')}}</label>
+                                    <select id="slectcountry" name="slectcountry" class="form-select">
                                         <option>{{_('Select Country')}}</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+                                        @forelse ($countires as $country)
+                                        <option value="{{$country->id}}">{{$country->country}}</option>
+                                            
+                                        @empty
+                                        <option>No data Found</option>
+                                            
+                                        @endforelse
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputState" class="form-label">{{__('Division')}}</label>
-                                    <select id="inputState" class="form-select">
-                                        <option>{{_('Select Division')}}</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+                                    <label for="slectdivision" class="form-label">{{__('Division')}}</label>
+                                    <select id="slectdivision" name="slectdivision" class="form-select">
+                                    <option>{{_('Select Division')}}</option>
+
+                                        @forelse ($divisions as $division)
+                                        <option value="{{$division->id}}">{{$division->divison}}</option>
+    
+                                        @empty
+                                            <option>No data Found</option>
+    
+                                        @endforelse
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="inputState" class="form-label">{{__('District')}}</label>
-                                    <select id="inputState" class="form-select">
+                                    <label for="slectdistrict" class="form-label">{{__('District')}}</label>
+                                    <select id="slectdistrict" name="slectdistrict" class="form-select">
                                         <option>{{_('Select District')}}</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+
+                                        @forelse ($districts as $district)
+                                            <option value="{{$district->id}}">{{$district->district}}</option>
+    
+                                            @empty
+                                            <option>No data Found</option>
+    
+                                            @endforelse
                                     </select>
                                 </div>
                                 </div> <!-- end col -->
