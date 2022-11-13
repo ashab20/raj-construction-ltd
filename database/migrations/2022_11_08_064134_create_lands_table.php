@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('house_no');
             $table->string('block')->nullable();
             $table->integer('road_no')->nullable();
-            $table->string('address');
             
             $table->unsignedBigInteger('document_id')->nullable();$table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade')->change();
 
