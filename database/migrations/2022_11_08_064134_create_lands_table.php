@@ -18,7 +18,9 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
-            $table->integer('squire_feet')->default(1);
+            $table->integer('land_area')->default(1);
+            $table->integer('building_area')->default(1);
+            $table->integer('building_height')->default(1);
             $table->string('house_no');
             $table->string('block')->nullable();
             $table->integer('road_no')->nullable();
