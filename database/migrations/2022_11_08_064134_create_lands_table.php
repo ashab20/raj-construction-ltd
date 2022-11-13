@@ -16,8 +16,13 @@ return new class extends Migration
         Schema::create('lands', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
+            
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
+
             $table->integer('land_area');
             $table->string('plot_area_counter',40);
             $table->integer('building_area');
