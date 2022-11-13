@@ -22,6 +22,9 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->decimal('budget',15,2)->default(0);
+            
+            $table->unsignedBigInteger('stage_id')->default(1);
+            $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade')->change();
 
             // $table->string('image')->nullable();
             

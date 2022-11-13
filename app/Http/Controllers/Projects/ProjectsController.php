@@ -45,9 +45,22 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+        // project_name 	project_overview 	start_date 	end_date 	budget 	user_id 	status
         try{
             $store = new Project();
             $store->project_name = $request->projectNameInputField;
+            $store->project_overview = $request->projectNameInputField;
+
+            $store->start_date = $request->projectNameInputField;
+            $store->end_date = $request->projectNameInputField;
+            $store->budget = $request->projectNameInputField;
+            $store->user_id = $request->projectNameInputField;
+            $store->stage = 'startup';
+            $store->status = $request->projectNameInputField;
+
+            // design tables
+
+            // lands table
 
         }catch(Exception $err){
             return redirect()->route('')->with($this->resMessageHtml(false,'error','Cannot create Project, Please try again'));
