@@ -18,9 +18,12 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
-            $table->integer('land_area')->default(1);
-            $table->integer('building_area')->default(1);
-            $table->integer('building_height')->default(1);
+            $table->integer('land_area');
+            $table->string('plot_area_counter',40);
+            $table->integer('building_area');
+            $table->string('Building_area_counter')->default('squire feet',40);
+            $table->integer('building_height');
+            $table->string('Building_height_counter')->default('miter',40);
             $table->string('house_no');
             $table->string('block')->nullable();
             $table->integer('road_no')->nullable();
@@ -30,7 +33,17 @@ return new class extends Migration
             $table->unsignedBigInteger('design_id')->nullable();
             $table->foreign('design_id')->references('id')->on('designs')->onDelete('cascade')->change();
             $table->decimal('total_budget',12,2);
-            $table->decimal('total_cost',12,2);
+            $table->decimal('total_cost',12,2)->nullable();
+
+            // locations
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->change()->nullable();
+
+            $table->unsignedBigInteger('division_id')->nullable();
+            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade')->change()->nullable();
+
+            $table->unsignedBigInteger('district_id')->nullable();
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade')->change()->nullable();
 
             
                //default

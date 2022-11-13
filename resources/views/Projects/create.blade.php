@@ -31,8 +31,7 @@
                     <div class="card-body">
                         <form action="">
                          
-                        <div class="row">
-                            
+                        <div class="row">                            
                                 <div class="col-xl-6 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
                                     <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField">
@@ -41,7 +40,7 @@
                                 <div class="mb-0 col-xl-6 col-6">
                                     <label for="project-overview" class="form-label">{{__('Land Owner Name')}} :</label>
 
-                                    <select class="form-control select2" data-toggle="select2">
+                                    <select class="form-control select2" data-toggle="select2" name="landownerdata">
                                         <option value="">{{__('Select Name')}}</option>
                                         @forelse($landOwner as $onwer)
                                         <option value="{{$onwer->id}}">{{$onwer->name}} - {{$onwer?->email}} - {{$onwer?->phone}}</option>
@@ -80,17 +79,22 @@
                                 <!-- Date View -->
                                 <div class="col-xl-6 mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">{{__('Start Date')}}</label>
-                                    <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker1" data-date-format="d-M-yyyy" data-date-autoclose="true">
+                                    <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker1" data-date-format="d-M-yyyy" data-date-autoclose="true"
+                                    name="parojectStarDate"
+                                    >
                                 </div>
                                 <div class="col-xl-6 position-relative" id="datepicker2">
                                     <label class="form-label">{{__('Due Date')}}</label>
-                                    <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
+                                    <input type="text" class="form-control" data-provide="datepicker" 
+                                    name="parojectEndDate"
+                                    data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-6 mb-3">
                                     <label for="project-overview" class="form-label">{{__('Overview')}}</label>
-                                    <textarea class="form-control" id="project-overview" rows="5" placeholder="Enter some brief about project.."></textarea>
+                                    <textarea class="form-control" id="project-overview"
+                                    name="projectOverview" rows="5" placeholder="Enter some brief about project.."></textarea>
                                 </div>
                                  <!-- Date View -->
                                  <div class="col-xl-6">
@@ -102,7 +106,7 @@
                                     <div class="mb-3 mt-3 mt-xl-0">
                                         <label for="projectname" class="mb-0">Project Image</label>
                                         
-                                            <input class="form-control" type="file" id="inputGroupFile04">
+                                            <input class="form-control" type="file" id="inputGroupFile04" name="projectImage">
                                             <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
                                     </div>
                                  </div>
@@ -110,28 +114,28 @@
                              <!-- end col-->
                         </div>
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
-
+{{-- Lands --}}
                             <div class="row">
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
-                                    <input type="text" id="squireFeet" name="squireFeet" class="form-control">
-                                    <select name="areaCounter" id="" class="form-control">
+                                    <input type="text" id="squireFeet" name="ploatArea" class="form-control">
+                                    <select name="ploatAreaCounter" id="" class="form-control">
                                         <option value="" selected>Squire Feet</option>
                                         <option value="">Miter</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Building Area')}} :</label>
-                                    <input type="text" id="squireFeet" name="squireFeet" class="form-control">
-                                    <select name="BUildingCounter" id="" class="form-control">
+                                    <input type="text" id="squireFeet" name="BuildingArea" class="form-control">
+                                    <select name="BuildingAreaCounter" id="" class="form-control">
                                         <option value="Squire Feet" selected>Squire Feet</option>
                                         <option value="Miter">Miter</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Building Height')}} :</label>
-                                    <input type="text" id="squireFeet" name="squireFeet" class="form-control">
-                                    <select name="BUildingCounter" id="" class="form-control">
+                                    <input type="text" id="squireFeet" name="BuildingHeight" class="form-control">
+                                    <select name="BuildingHeightCounter" id="" class="form-control">
                                         <option value="Miter" selected>Miter</option>
                                         <option value="Squire Feet">Squire Feet</option>
                                     </select>
