@@ -9,7 +9,7 @@ use App\Http\Controllers\Builder\FlatDetailController;
 use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
 use App\Http\Controllers\Location\CountryController;
-use App\Http\Controllers\Land\LandController;
+use App\Http\Controllers\Lands\LandController;
 use App\Http\Controllers\Location\DistrictController;
 use App\Http\Controllers\Location\DivisionController;
 use App\Http\Controllers\Projects\ProjectsController;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Land;
+namespace App\Http\Controllers\Lands;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lands\Land;
@@ -17,7 +17,7 @@ class LandController extends Controller
     public function index()
     {
         $Lands=Land::paginate(10);
-        return view('land.index',compact('Lands'));
+        return view('Lands.index',compact('Lands'));
     }
 
     /**
@@ -27,7 +27,7 @@ class LandController extends Controller
      */
     public function create()
     {
-        return view('Land.create');
+        return view('Lands.create');
     }
 
     /**
@@ -85,7 +85,7 @@ class LandController extends Controller
      */
     public function edit(Land $land)
     {
-        return view('land.edit',compact('land'));
+        return view('lands.edit',compact('land'));
     }
 
     /**
