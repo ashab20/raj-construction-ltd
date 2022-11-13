@@ -82,9 +82,9 @@
                                     <label class="form-label">{{__('Start Date')}}</label>
                                     <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker1" data-date-format="d-M-yyyy" data-date-autoclose="true">
                                 </div>
-                                <div class="col-xl-6 mb-3">
-                                    <label for="project-budget" class="form-label">{{__('Budget')}}</label>
-                                    <input type="text" id="project-budget" class="form-control" name="totalBudget" placeholder="Enter project budget">
+                                <div class="col-xl-6 position-relative" id="datepicker2">
+                                    <label class="form-label">{{__('Due Date')}}</label>
+                                    <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
                                 </div>
                             </div>
                             <div class="row">
@@ -94,9 +94,10 @@
                                 </div>
                                  <!-- Date View -->
                                  <div class="col-xl-6">
-                                    <div class="mb-3 position-relative" id="datepicker2">
-                                        <label class="form-label">{{__('Due Date')}}</label>
-                                        <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
+                                    
+                                    <div class="mb-3">
+                                        <label for="project-budget" class="form-label">{{__('Budget')}}</label>
+                                        <input type="text" id="project-budget" class="form-control" name="totalBudget" placeholder="Enter project budget">
                                     </div>
                                     <div class="mb-3 mt-3 mt-xl-0">
                                         <label for="projectname" class="mb-0">Project Image</label>
@@ -225,7 +226,7 @@
                         <!-- end row -->
                         <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Document')}} :</h5>
                         <div class="row">
-                            <div class="col-xl-6 mb-3">
+                            <div class="col-xl-6 mb-3 mt-xl-0">
                                 <label for="project-overview" class="form-label">{{__('Overview')}}</label>
                                 <p class="text-muted font-14">Brief about the document</p>
                                 <textarea class="form-control" id="project-overview" rows="7" placeholder="Enter some brief about project.."></textarea>
@@ -258,8 +259,12 @@
                                                         <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
                                                     </div>
                                                     <div class="col ps-0">
-                                                        <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
-                                                        <p class="mb-0" data-dz-size></p>
+                                                        <span class="d-flex justify-content-between">
+                                                            <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
+                                                            <p class="mb-0" data-dz-size></p>
+
+                                                        </span>
+                                                        <input type="text" name="documentText" class="form-control" placeholder="Enter image name">
                                                     </div>
                                                     <div class="col-auto">
                                                         <!-- Button -->
