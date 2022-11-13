@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Land;
+namespace App\Http\Controllers\Lands;
 
 use App\Http\Controllers\Controller;
-use App\Models\Lands\Designatin;
+use App\Models\Lands\Designation;
 use Illuminate\Http\Request;
 
 class DesignatinController extends Controller
@@ -45,7 +45,7 @@ class DesignatinController extends Controller
      * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function show(Designatin $designatin)
+    public function show(Designation $designatin)
     {
         //
     }
@@ -56,7 +56,7 @@ class DesignatinController extends Controller
      * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Designatin $designatin)
+    public function edit(Designation $designatin)
     {
         //
     }
@@ -68,7 +68,7 @@ class DesignatinController extends Controller
      * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Designatin $designatin)
+    public function update(Request $request, Designation $designatin)
     {
         //
     }
@@ -79,7 +79,7 @@ class DesignatinController extends Controller
      * @param  \App\Models\Designatin  $designatin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Designatin $designatin)
+    public function destroy(Designation $designatin)
     {
         //
     }

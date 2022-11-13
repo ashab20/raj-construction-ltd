@@ -142,6 +142,7 @@
                                     <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
                                 </div>
                             </div> <!-- end col-->
+                            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-office-building me-1"></i> {{__('Land Information')}}</h5>
                         </div>
                         <!-- end row -->
 
@@ -178,3 +179,14 @@
 
 
 @endsection
+
+@push('scripts')
+
+
+
+ <!-- plugin js -->
+ <script src="{{asset('assets/js/vendor/dropzone.min.js')}}"></script>
+ <!-- init js -->
+ <script src="{{asset('assets/js/ui/component.fileupload.js')}}"></script>
+
+ @endpush
