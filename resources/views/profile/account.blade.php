@@ -422,15 +422,17 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label for="userbio" class="form-label">{{__('Bio')}}</label>
-                                        <textarea class="form-control" id="userbio" rows="4" placeholder="Write something...">
-                                            @if(isset($userData) && $userData->bio)
-                                                {{$userData->bio}}
-                                                @endif
+                                        <textarea class="form-control" id="userbio" rows="4"
+                                        name="userBio"
+                                        placeholder="Write something...">
+                                        
+                                            {{$userData?->bio}}
 
                                         </textarea>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
+                            <!-- ! users table -->
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -475,7 +477,9 @@
                                         <label for="fathername" class="form-label">
                                             {{__('Father\'s Name')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="fathername" placeholder="Enter father's name" value="{{$userData->father_name}}">
+                                        <input type="text" class="form-control" id="fathername" 
+                                        name="userFatherName"
+                                        placeholder="Enter father's name" value="{{$userData?->father_name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -483,7 +487,7 @@
                                         <label for="mothername" class="form-label">
                                             {{__('Mother\'s Name')}} :
                                         </label>
-                                        <input type="text" class="form-control" id="mothername" placeholder="Enter mother's name" value="{{$userData->mother_name}}">
+                                        <input type="text" class="form-control" id="mothername" placeholder="Enter mother's name" value="{{$userData?->mother_name}}">
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->

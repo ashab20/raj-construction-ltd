@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as RoutingController;
+use PhpParser\Node\Stmt\TryCatch;
 
 class UserDetails extends RoutingController
 {
@@ -36,7 +38,16 @@ class UserDetails extends RoutingController
      */
     public function store(Request $request)
     {
-        $store = new UserDetails();
+        try{
+            // user_id 	designation_id 	father_name 	mother_name 	bio 	gender 	resume 	present_address 	present_country_id 	present_division_id 	present_district_id 	permanent_address 	permanent_country_id 	permanent_division_id 	permanent_district_id 	status
+            
+            $store = new UserDetails();
+            $store->bio = $request->userBio;
+            $store->father_name = $request->userFatherName;
+
+        }catch(Exception $err){
+
+        }
         
     }
 
