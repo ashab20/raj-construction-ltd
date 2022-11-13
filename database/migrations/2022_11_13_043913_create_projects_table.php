@@ -18,29 +18,25 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('project_name');
-            $table->string('project_overview');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->decimal('budget',15,2);
-            
+            $table->string('project_overview',500)->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->decimal('budget',15,2)->default(0);
+
             // $table->string('image')->nullable();
             
             // $table->bigIncrements('team_id')->nullable();
             // $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->change();
 
-            $table->bigIncrements('user_id')->comment('Ower id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
+       
 
-            $table->unsignedBigInteger('design_id')->nullable();
-            $table->foreign('design_id')->references('id')->on('designs')->onDelete('cascade')->change();
-
-            $table->unsignedBigInteger('document_id')->nullable();
-            $table->foreign('document_id')->references('id')->on('documents')->onDelete('cascade')->change();
 
             // default
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();
             $table->softDeletes();

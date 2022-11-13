@@ -34,7 +34,7 @@
                             <div class="col-xl-6">
                                 <div class="mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
-                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name">
+                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField">
                                 </div>
 
                                 <div class="mb-3">

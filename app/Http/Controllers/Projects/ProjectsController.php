@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Projects;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTraits;
 use App\Models\Auth\User;
 use App\Models\Projects\Project;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Crypt;
 
 class ProjectsController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +45,13 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $store = new Project();
+            $store->project_name = $request->projectNameInputField;
+
+        }catch(Exception $err){
+            return redirect()->route('')->with($this->resMessageHtml(false,'error','Cannot create Project, Please try again'));
+        }
     }
 
     /**
