@@ -6,10 +6,12 @@ use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\Builder\DesignController;
 use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
+use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
 use App\Http\Controllers\Location\CountryController;
 use App\Http\Controllers\Land\LandController;
 use App\Http\Controllers\Location\DistrictController;
 use App\Http\Controllers\Location\DivisionController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +61,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/floorDetails',FloorDetailsController::class);
         Route::resource('/flatDetail',FlatDetailController::class);
         Route::resource('/design',DesignController::class);
+        Route::resource('/material',BuilderMaterialController::class);
         
     });
 });

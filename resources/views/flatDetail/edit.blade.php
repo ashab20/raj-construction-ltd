@@ -29,7 +29,7 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('land.update',$flatDetail->id)}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('flatDetail.update',$flatDetail->id)}}">
                                         @csrf
                                         @method('patch')
                                         <div class="mb-3">

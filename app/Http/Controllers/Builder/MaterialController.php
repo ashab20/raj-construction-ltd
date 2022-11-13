@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Builder;
 
+use App\Http\Controllers\Controller;
 use App\Models\Builder\Material;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

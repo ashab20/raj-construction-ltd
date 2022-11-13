@@ -74,7 +74,7 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('flatDetail.edit',$fd->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>                                            
+                                            <a href="{{ route('flatDetail.edit',$fd->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
                                             <a href="javascript:void()" onclick="$('#form{{$fd->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
@@ -86,7 +86,7 @@
                                     </tr>                                      
                                     @empty
                                         <tr>
-                                            <td colspan="11" class="text-center">No Data Found</td>
+                                            <td colspan="11" class="text-center">No Data Found <td>
                                         </tr>
                                     @endforelse
                                 </tbody>

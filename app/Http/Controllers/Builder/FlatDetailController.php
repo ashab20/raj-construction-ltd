@@ -119,6 +119,7 @@ class FlatDetailController extends Controller
      */
     public function destroy(FlatDetail $flatDetail)
     {
-        //
+        $flatDetail->delete();
+        return redirect()->back();
     }
 }
