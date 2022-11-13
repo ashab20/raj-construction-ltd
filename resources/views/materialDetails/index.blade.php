@@ -41,11 +41,11 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
+                                        <th>Brand Name</th>
                                         <th>Quantity</th>
                                         <th>Cost per item</th>
                                         <th>Total Cost</th>
-                                        <th>Brand Name</th>
-                                        <th>Voucher</th>
+                                        {{-- <th>Voucher</th> --}}
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
@@ -55,11 +55,15 @@
                                     <tr>
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
+                                        <td>{{ $mDetail->brand_name}}</td>
                                         <td>{{ $mDetail->quantity}}</td>
                                         <td>{{ $mDetail->cost_per_items}}</td>
-                                        <td>{{ $mDetail->total_cost}}</td>
-                                        <td>{{ $mDetail->brand_name}}</td>
-                                        <td>{{ $mDetail->voucher_image}}</td>
+                                        <td>{{ $mDetail->quantity * $mDetail->cost_per_items}}</td>
+
+                                        {{-- <td>
+                                            <img width="50px" src="{{ asset('uploads/materialDetails/'.$mDetail->voucher_image)}}" alt="">
+                                        </td> --}}
+
                                         <td>
                                             @if ($mDetail->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
@@ -69,11 +73,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('material.edit',$mDetail->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="{{ route('materialDetails.edit',$mDetail->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
                                             <a href="javascript:void()" onclick="$('#form{{$mDetail->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$mDetail->id}}" action="{{ route('material.destroy',$mDetail->id)}}" method="post">
+                                            <form id="form{{$mDetail->id}}" action="{{ route('materialDetails.destroy',$mDetail->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

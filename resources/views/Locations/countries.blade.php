@@ -76,7 +76,7 @@
                                         <td>
                                             <!-- Switch-->
                                             <div>
-                                                @if($country->status=== 1)
+                                                @if($country->status === 1)
                                                 <input type="checkbox" id="switch1" checked data-switch="success" />
                                                 <label for="switch1" data-on-label="Yes" data-off-label="No" class="mb-0 d-block"></label>
                                                 @endif

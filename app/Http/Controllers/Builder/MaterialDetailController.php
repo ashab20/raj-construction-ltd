@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\MaterialDetail;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class MaterialDetailController extends Controller
 {
@@ -26,7 +28,7 @@ class MaterialDetailController extends Controller
      */
     public function create()
     {
-        //
+        return view('materialDetails.create');
     }
 
     /**
@@ -37,7 +39,29 @@ class MaterialDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $materialDetail=new MaterialDetail();
+            $identity = decrypt(session()->get('roleIdentity'));
+            $materialDetail->brand_name = $request->brandName;
+            $materialDetail->quantity = $request->quantity;
+            $materialDetail->cost_per_items = $request->costPerItems;
+
+            // if($request->hasFile('voucherImage')){
+            //     $imageName = rand(111,999).time().'.'.$request->voucherImage->extension();  
+            //     $request->voucherImage->move(public_path('uploads/materialDetails'), $imageName);
+            //     $materialDetail->voucher_image=$imageName;
+            // }
+
+            $materialDetail->created_by=Crypt::decrypt(session()->get('userId'));
+            $materialDetail->status = 1;
+            if($materialDetail->save()){
+                return redirect($identity.'/materialDetails')->with('success','Data saved');
+            }
+        }
+        catch(Exception $error){
+            dd($error);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -59,7 +83,7 @@ class MaterialDetailController extends Controller
      */
     public function edit(MaterialDetail $materialDetail)
     {
-        //
+        return view('materialDetails.edit',compact('materialDetail'));
     }
 
     /**
@@ -71,7 +95,22 @@ class MaterialDetailController extends Controller
      */
     public function update(Request $request, MaterialDetail $materialDetail)
     {
-        //
+        try{
+            $mDetail = $materialDetail;
+            $identity = decrypt(session()->get('roleIdentity'));
+            $mDetail->brand_name = $request->brandName;
+            $mDetail->quantity = $request->quantity;
+            $mDetail->cost_per_items = $request->costPerItems;
+
+            $mDetail->updated_by=Crypt::decrypt(session()->get('userId'));
+            if($mDetail->save()){
+                return redirect($identity.'/materialDetails')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -82,6 +121,7 @@ class MaterialDetailController extends Controller
      */
     public function destroy(MaterialDetail $materialDetail)
     {
-        //
+        $materialDetail->delete();
+        return redirect()->back();
     }
 }

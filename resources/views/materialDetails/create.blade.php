@@ -29,17 +29,24 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" action="{{ route('material.store')}}">
+                                    <form class="form" method="post" action="{{ route('materialDetails.store')}}">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="materialName" class="form-label">Material Name</label>
-                                            <input type="text" id="materialName" name="materialName" class="form-control">
+                                            <label for="brandName" class="form-label">Brand Name</label>
+                                            <input type="text" id="brandName" name="brandName" class="form-control">
                                         </div>
-
                                         <div class="mb-3">
-                                            <label for="qname" class="form-label">Quantity Name</label>
-                                            <input type="text" id="qname" class="form-control" name="qname">
+                                            <label for="quantity" class="form-label">Quantity</label>
+                                            <input type="text" id="quantity" name="quantity" class="form-control">
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="costPerItems" class="form-label">Cost per item</label>
+                                            <input type="text" id="costPerItems" name="costPerItems" class="form-control">
+                                        </div>
+                                        {{-- <div class="mb-3">
+                                            <label for="voucherImage" class="form-label">Voucher</label>
+                                            <input type="file" id="voucherImage" class="form-control" name="voucherImage">
+                                        </div> --}}
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div> <!-- end col -->

@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('material_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('material_id');
+            $table->unsignedBigInteger('material_id')->nullable();
             $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade')->change();
             $table->integer('quantity');
             $table->decimal('cost_per_items',12,2);
-            $table->decimal('total_cost',12,2);
+            $table->decimal('total_cost',12,2)->nullable();
             $table->string('brand_name');
-            $table->string('voucher_image');
+            $table->unsignedBigInteger('voucher_image_id')->nullable();
+            // $table->foreign('voucher_image_id')->references('id')->on('voucher')->onDelete('cascade')->change();
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
