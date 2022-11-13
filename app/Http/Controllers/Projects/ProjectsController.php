@@ -55,7 +55,7 @@ class ProjectsController extends Controller
             $store->end_date = $request->projectNameInputField;
             $store->budget = $request->projectNameInputField;
             $store->user_id = $request->projectNameInputField;
-            $store->stage = 'startup';
+            $store->stage_id = 1;
             $store->status = $request->projectNameInputField;
 
             // design tables
