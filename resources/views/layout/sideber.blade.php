@@ -102,10 +102,26 @@
                                     {{__('Floor')}}
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('material.index')}}">
-                                    {{__('Material')}}
+                            <li class="side-nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebarMaterial" aria-expanded="false" aria-controls="sidebarMaterial" class="side-nav-link">
+                                    <i class="uil-clipboard-alt"></i>
+                                    <span> {{ __('Materials')}}</span>
+                                    <span class="menu-arrow"></span>
                                 </a>
+                                <div class="collapse" id="sidebarMaterial">
+                                    <ul class="side-nav-second-level">
+                                        <li>
+                                            <a href="{{ route('material.index')}}">
+                                                {{__('Material')}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('materialDetails.index')}}">
+                                                {{__('Material Details')}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>

@@ -41,23 +41,27 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
-                                        <th>Material Name</th>
-                                        <th>Quantity Name</th>
-                                        <th>Builder Name</th>
+                                        <th>Quantity</th>
+                                        <th>Cost per item</th>
+                                        <th>Total Cost</th>
+                                        <th>Brand Name</th>
+                                        <th>Voucher</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($materials as $material)
+                                    @forelse ($materialDetail as $mDetail)
                                     <tr>
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $material->material_name}}</td>
-                                        <td>{{ $material->quantity_name}}</td>
-                                        <td>{{ $material->builder_options_id}}</td>
+                                        <td>{{ $mDetail->quantity}}</td>
+                                        <td>{{ $mDetail->cost_per_items}}</td>
+                                        <td>{{ $mDetail->total_cost}}</td>
+                                        <td>{{ $mDetail->brand_name}}</td>
+                                        <td>{{ $mDetail->voucher_image}}</td>
                                         <td>
-                                            @if ($material->status === 1)
+                                            @if ($mDetail->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
                                             @else                                   
                                                 <span class="badge badge-danger-lighten">Blocked</span>
@@ -65,11 +69,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('material.edit',$material->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
-                                            <a href="javascript:void()" onclick="$('#form{{$material->id}}').submit()">
+                                            <a href="{{ route('material.edit',$mDetail->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="javascript:void()" onclick="$('#form{{$mDetail->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$material->id}}" action="{{ route('material.destroy',$material->id)}}" method="post">
+                                            <form id="form{{$mDetail->id}}" action="{{ route('material.destroy',$mDetail->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>
