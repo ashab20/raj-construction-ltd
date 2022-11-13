@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Builder;
 
-use App\Models\MaterialDetail;
+use App\Http\Controllers\Controller;
+use App\Models\Builder\MaterialDetail;
 use Illuminate\Http\Request;
 
 class MaterialDetailController extends Controller
@@ -14,7 +15,8 @@ class MaterialDetailController extends Controller
      */
     public function index()
     {
-        //
+        $materialDetail=MaterialDetail::paginate(10);
+        return view('materialDetails.index'.compact('materialDetail'));
     }
 
     /**

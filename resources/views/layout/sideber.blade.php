@@ -102,6 +102,11 @@
                                     {{__('Floor')}}
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('material.index')}}">
+                                    {{__('Material')}}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('material_name');
             $table->string('quantity_name');
 
-            $table->unsignedBigInteger('builder_options_id');
+            $table->unsignedBigInteger('builder_options_id')->nullable();
             $table->foreign('builder_options_id')->references('id')->on('builder_options')->onDelete('cascade')->change();
 
             $table->integer('status')->default(1);
-            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();

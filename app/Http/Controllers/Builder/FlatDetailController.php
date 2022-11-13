@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
-use App\Models\FlatDetail;
+use App\Models\Builder\FlatDetail as BuilderFlatDetail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -17,7 +17,7 @@ class FlatDetailController extends Controller
      */
     public function index()
     {
-        $fdetail=FlatDetail::paginate(10);
+        $fdetail=BuilderFlatDetail::paginate(10);
         return view('flatDetail.index',compact('fdetail'));
     }
 
@@ -41,7 +41,7 @@ class FlatDetailController extends Controller
     {
         try{
             // squire_feet 	total_cost 	floor_budget_id 	material_detail_id 	sales_price 
-            $fd=new FlatDetail();
+            $fd=new BuilderFlatDetail();
             $identity = decrypt(session()->get('roleIdentity'));
             $fd->squire_feet = $request->squireFeet;
             // $fd->floor_budget_id = $request->tbudget;
@@ -66,7 +66,7 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(FlatDetail $flatDetail)
+    public function show(BuilderFlatDetail $flatDetail)
     {
         //
     }
@@ -77,7 +77,7 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(FlatDetail $flatDetail)
+    public function edit(BuilderFlatDetail $flatDetail)
     {
         return view('flatDetail.edit',compact('flatDetail'));
     }
@@ -89,10 +89,9 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FlatDetail $flatDetail)
+    public function update(Request $request, BuilderFlatDetail $flatDetail)
     {
         try{
-            // squire_feet 	total_cost 	floor_budget_id 	material_detail_id 	sales_price 
             $fd = $flatDetail;
             $identity = decrypt(session()->get('roleIdentity'));
             $fd->squire_feet = $request->squireFeet;
@@ -117,7 +116,7 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FlatDetail $flatDetail)
+    public function destroy(BuilderFlatDetail $flatDetail)
     {
         $flatDetail->delete();
         return redirect()->back();
