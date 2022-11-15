@@ -42,6 +42,7 @@
                                     <tr>
                                         <th>#SL</th>
                                         <th>Brand Name</th>
+                                        <th>Material Name</th>
                                         <th>Quantity</th>
                                         <th>Cost per item</th>
                                         <th>Total Cost</th>
@@ -56,6 +57,7 @@
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         <td>{{ $mDetail->brand_name}}</td>
+                                        <td>{{ $mDetail->material?->material_name}}</td>
                                         <td>{{ $mDetail->quantity}}</td>
                                         <td>{{ $mDetail->cost_per_items}}</td>
                                         <td>{{ $mDetail->quantity * $mDetail->cost_per_items}}</td>

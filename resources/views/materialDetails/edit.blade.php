@@ -33,6 +33,17 @@
                                         @csrf
                                         @method('patch')
                                         <div class="mb-3">
+                                            <label for="materialName">Material Name</label>
+                                            <select class="form-control" name="materialName" id="materialName">
+                                                <option value="">Select Material Name</option>
+                                                @forelse($matName as $mName)
+                                                    <option value="{{$mName->id}}" {{ old('materialName',$materialDetail->material_id)==$mName->id?"selected":""}}> {{ $mName->material_name}}</option>
+                                                @empty
+                                                    <option value="">No data found</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="brandName" class="form-label">Material Name</label>
                                             <input type="text" value="{{ old('brandName',$materialDetail->brand_name)}}" id="brandName" name="brandName" class="form-control">
                                         </div>

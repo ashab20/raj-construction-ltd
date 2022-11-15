@@ -32,6 +32,17 @@
                                     <form class="form" method="post" action="{{ route('materialDetails.store')}}">
                                         @csrf
                                         <div class="mb-3">
+                                            <label for="materialName">Material Name</label>
+                                            <select class="form-control" name="materialName" id="materialName">
+                                                <option value="">Select Name</option>
+                                                @forelse($matName as $mName)
+                                                    <option value="{{$mName->id}}" {{ old('materialName')==$mName->id?"selected":""}}> {{ $mName->material_name}}</option>
+                                                @empty
+                                                    <option value="">No data found</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="brandName" class="form-label">Brand Name</label>
                                             <input type="text" id="brandName" name="brandName" class="form-control">
                                         </div>

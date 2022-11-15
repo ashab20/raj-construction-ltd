@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class MaterialDetail extends Model
 {
     use HasFactory,SoftDeletes;
+
+    public function material(){
+        return $this->belongsTo(Material::class);
+    }
 }

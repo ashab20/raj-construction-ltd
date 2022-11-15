@@ -102,7 +102,7 @@
                                     {{__('Floor')}}
                                 </a>
                             </li>
-                            <li class="side-nav-item">
+                            <li>
                                 <a data-bs-toggle="collapse" href="#sidebarMaterial" aria-expanded="false" aria-controls="sidebarMaterial" class="side-nav-link">
                                     <i class="uil-clipboard-alt"></i>
                                     <span> {{ __('Materials')}}</span>
@@ -160,24 +160,6 @@
                     </div>
                 </li>
 
-
-                {{-- <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarDocument" aria-expanded="false" aria-controls="sidebarDocument" class="side-nav-link">
-                        <i class="uil-store"></i>
-                        <span> Document</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarDocument">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{ route('document.create')}}">Add</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('document.index')}}">Document Details</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarDesign" aria-expanded="false" aria-controls="sidebarDesign" class="side-nav-link">

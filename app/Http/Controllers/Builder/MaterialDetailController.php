@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
+use App\Models\Builder\Material;
 use App\Models\Builder\MaterialDetail;
 use Exception;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class MaterialDetailController extends Controller
      */
     public function create()
     {
-        return view('materialDetails.create');
+        $matName=Material::all();
+        return view('materialDetails.create',compact('matName'));
     }
 
     /**
@@ -41,6 +43,7 @@ class MaterialDetailController extends Controller
     {
         try{
             $materialDetail=new MaterialDetail();
+            $materialDetail->material_id=$request->materialName;
             $identity = decrypt(session()->get('roleIdentity'));
             $materialDetail->brand_name = $request->brandName;
             $materialDetail->quantity = $request->quantity;
@@ -83,7 +86,8 @@ class MaterialDetailController extends Controller
      */
     public function edit(MaterialDetail $materialDetail)
     {
-        return view('materialDetails.edit',compact('materialDetail'));
+        $matName=Material::all();
+        return view('materialDetails.edit',compact('materialDetail','matName'));
     }
 
     /**
@@ -98,6 +102,7 @@ class MaterialDetailController extends Controller
         try{
             $mDetail = $materialDetail;
             $identity = decrypt(session()->get('roleIdentity'));
+            $mDetail->material_id=$request->materialName;
             $mDetail->brand_name = $request->brandName;
             $mDetail->quantity = $request->quantity;
             $mDetail->cost_per_items = $request->costPerItems;
