@@ -53,15 +53,15 @@ class LandController extends Controller
             }
 
             $land->total_budget = $request->totalBudget;
-            $land->total_cost = $request->totalCost;
+            $land->total_cost = $request->totalCost; 
 
             $land->status = 1;
             if($land->save()){
                 return redirect($identity.'/land')->with('success','Data saved');
             }
         }
-        catch(Exception $e){
-            dd($e);
+        catch(Exception $error){
+            dd($error);
             return back()->withInput();
         }
     }

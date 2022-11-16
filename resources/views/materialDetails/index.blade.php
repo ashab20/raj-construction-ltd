@@ -46,7 +46,7 @@
                                         <th>Quantity</th>
                                         <th>Cost per item</th>
                                         <th>Total Cost</th>
-                                        {{-- <th>Voucher</th> --}}
+                                        <th>Voucher</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
@@ -62,9 +62,9 @@
                                         <td>{{ $mDetail->cost_per_items}}</td>
                                         <td>{{ $mDetail->quantity * $mDetail->cost_per_items}}</td>
 
-                                        {{-- <td>
-                                            <img width="50px" src="{{ asset('uploads/materialDetails/'.$mDetail->voucher_image)}}" alt="">
-                                        </td> --}}
+                                        <td>
+                                            <img width="50px" src="{{ asset('uploads/materialVoucher/'.$mDetail->voucher_image)}}" alt="">
+                                        </td>
 
                                         <td>
                                             @if ($mDetail->status === 1)
