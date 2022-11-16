@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Projects;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTraits;
 use App\Models\Auth\User;
+use App\Models\Lands\Document;
 use App\Models\Lands\Land;
 use App\Models\Projects\Project;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
@@ -23,7 +25,7 @@ class ProjectsController extends Controller
     public function index()
     {
 
-        
+
         return view('Projects.list');
     }
 
@@ -35,7 +37,7 @@ class ProjectsController extends Controller
     public function create()
     {
         $landOwner = User::where('role_id', 4)->get();
-        return view('Projects.create',compact('landOwner'));
+        return view('Projects.create', compact('landOwner'));
     }
 
     /**
@@ -47,42 +49,61 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         // project_name 	project_overview 	start_date 	end_date 	budget 	user_id 	status
-        try{
-            dd($request);
-            $project = new Project();
-            $project->project_name = $request->projectNameInputField;
-            // $project->project_name = $request->landownerdata;
-            $project->project_overview = $request->projectOverview;
+        // dd($request->projectImage);
 
-            $project->start_date = $request->parojectStarDate;
-            $project->end_date = $request->parojectEndDate;
-            $project->budget = $request->totalBudget;
-            $project->project_image = $request->projectImage;
-            $project->user_id = $request->landownerdata;
-            $project->stage_id = 1;
-            $project->status = $request->projectNameInputField;
 
-            // lands table
-            // user_id 	squire_feet 	house_no 	block 	road_no 	address 	document_id 	design_id 	total_budget 	total_cost 	status
+        try {
 
-            $land = new Land();
-            $land->land_area = $request->ploatArea;
-            $land->plot_area_counter = $request->plotAreaCounter;
-            $land->building_area = $request->BuildingArea;
-            $land->Building_area_counter = $request->BuildingAreaCounter;
-            $land->building_height = $request->BuildingHeight;
-            $land->Building_height_counter = $request->BuildingHeightCounter;
-            $land->house_no = $request->squireFeet;
-            $land->road_no = $request->squireFeet;
-            $land->total_budget = $request->squireFeet;
-            $land->country_id = $request->squireFeet;
-            $land->division_id = $request->squireFeet;
-            $land->district_id = $request->squireFeet;
+            DB::transaction(function () use ($request) {
 
-            // design tables
+                $project = new Project();
+                $project->project_name = $request->projectNameInputField;
+                // $project->project_name = $request->landownerdata;
+                $project->project_overview = $request->projectOverview;
 
-        }catch(Exception $err){
-            return redirect()->route('')->with($this->resMessageHtml(false,'error','Cannot create Project, Please try again'));
+                $project->start_date = $request->parojectStarDate;
+                $project->end_date = $request->parojectEndDate;
+                $project->budget = $request->totalBudget;
+                $project->user_id = $request->landownerdata;
+                $project->stage_id = 1;
+                $project->status = 1;
+                $project->created_by = Crypt::decrypt(session()->get('userId'));
+                if ($request->hasFile('projectImage')) {
+                    // dd($request->projectImage);
+                    $imageName = rand(111, 999) . time() . '.' . $request->projectImage->extension();
+                    $request->projectImage->move(public_path('uploads/projects'), $imageName);
+                    $project->project_image = $imageName;
+                }
+                // lands table
+                // user_id 	squire_feet 	house_no 	block 	road_no 	address 	document_id 	design_id 	total_budget 	total_cost 	status
+
+                $land = new Land();
+                $land->land_area = $request->plotArea;
+                $land->plot_area_counter = $request->plotAreaCounter;
+                $land->building_area = $request->BuildingArea;
+                $land->Building_area_counter = $request->BuildingAreaCounter;
+                $land->building_height = $request->BuildingHeight;
+                $land->Building_height_counter = $request->BuildingHeightCounter;
+                $land->house_no = $request->houseNo;
+                $land->block = $request->block;
+                $land->road_no = $request->roadNo;
+                // $land->total_budget = $request->squireFeet;
+                $land->created_by = Crypt::decrypt(session()->get('userId'));
+                $land->country_id = $request->country;
+                $land->division_id = $request->division;
+                $land->district_id = $request->district;             
+
+                if($project->save()){
+                    $land->project_id =  $project->id;
+                    $land->save();
+                    return redirect(Crypt::decrypt(session()->get('roleIdentity')).'/project')->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                }
+
+            });
+        } catch (Exception $err) {
+            dd($err);
+            DB::rollBack();
+            return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Project, Please try again'));
         }
     }
 
