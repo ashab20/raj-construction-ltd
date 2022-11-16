@@ -52,7 +52,7 @@
                 <!-- project card -->
                 <div class="card d-block">
                     <!-- project-thumbnail -->
-                    <img class="card-img-top" src="{{asset('/uploads/projects'.$project->project_image)}}" alt="project image cap">
+                    <img class="card-img-top" src="{{asset('/uploads/projects/'.$project->project_image)}}" alt="project image cap">
                     <div class="card-img-overlay">
                         @if($project->stage->stage === 'Pending')
                         <div class="badge bg-secondary text-light p-1">{{$project->stage->stage}}</div>
@@ -63,6 +63,21 @@
                     </div>
 
                     <div class="card-body position-relative">
+                        <div class="dropdown card-widgets">
+                            <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="dripicons-dots-3"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a>
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a>
+                            </div>
+                        </div>
                         <!-- project title-->
                         <h4 class="mt-0">
                             <a href="apps-projects-details.html" class="text-title">
