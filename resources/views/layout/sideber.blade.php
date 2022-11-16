@@ -98,13 +98,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('floorDetails.index')}}">
-                                    {{__('Floor')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="collapse" href="#sidebarMaterial" aria-expanded="false" aria-controls="sidebarMaterial" class="side-nav-link">
-                                    <i class="uil-clipboard-alt"></i>
+                                <a data-bs-toggle="collapse" href="#sidebarMaterial" aria-expanded="false" aria-controls="sidebarMaterial">
                                     <span> {{ __('Materials')}}</span>
                                     <span class="menu-arrow"></span>
                                 </a>
@@ -118,6 +112,26 @@
                                         <li>
                                             <a href="{{ route('materialDetails.index')}}">
                                                 {{__('Material Details')}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="collapse" href="#sidebarFloor">
+                                    <span>{{__('Floor')}}</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse ml-3" id="sidebarFloor">
+                                    <ul class="side-nav-second-level">
+                                        <li>
+                                            <a href="{{ route('floorDetails.index')}}">
+                                                {{__('Floor Details')}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('floorBudget.index')}}">
+                                                {{__('Floor Budget')}}
                                             </a>
                                         </li>
                                     </ul>
@@ -141,25 +155,6 @@
                         <span> Chat </span>
                     </a>
                 </li>
-
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce" class="side-nav-link">
-                        <i class="uil-store"></i>
-                        <span> Floor</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEcommerce">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="apps-ecommerce-products.html">Add</a>
-                            </li>
-                            <li>
-                                <a href="apps-ecommerce-products-details.html">Floor Details</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarDesign" aria-expanded="false" aria-controls="sidebarDesign" class="side-nav-link">
