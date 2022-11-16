@@ -240,12 +240,27 @@
                     </div>
                 </li>
 
+                
+
                 <li class="side-nav-item">
-                    <a href="apps-social-feed.html" class="side-nav-link">
+                    
+                    <a data-bs-toggle="collapse" href="#sidebarDesign" aria-expanded="false" aria-controls="sidebarDesign" class="side-nav-link">
                         <i class="uil-rss"></i>
-                        <span> {{_('Designations')}} </span>
+                        <span> Designations</span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarDesign">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a href="{{ route('designation.create')}}">Add</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('designation.index')}}">Designations Details</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+                
 {{--
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
