@@ -76,16 +76,22 @@
                         <label for="projectname" class="mb-0">Project Image</label>
                         <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
 
-                        <div action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
-                            <div class="fallback">
-                                <input name="documentFiles[]" type="file" />
-                            </div>
+                        <!-- File Upload -->
+<div action="{{route('document.store')}}" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+data-upload-preview-template="#uploadPreviewTemplate" enctype="multipart/form-data>
+@csrf
 
-                            <div class="dz-message needsclick">
-                                <i class="h3 text-muted dripicons-cloud-upload"></i>
-                                <h4>Drop files here or click to upload.</h4>
-                            </div>
-                        </div>
+<div class="fallback">
+    <input name="file" type="file" multiple />
+</div>
+
+<div class="dz-message needsclick">
+    <i class="h1 text-muted dripicons-cloud-upload"></i>
+    <h3>Drop files here or click to upload.</h3>
+    <span class="text-muted font-13">(This is just a demo dropzone. Selected files are
+        <strong>not</strong> actually uploaded.)</span>
+</div>
+</div>
 
                         <!-- Preview -->
                         <div class="dropzone-previews mt-3" id="file-previews"></div>
@@ -148,6 +154,8 @@
  <script src="{{asset('assets/js/vendor/dropzone.min.js')}}"></script>
  <!-- init js -->
  <script src="{{asset('assets/js/ui/component.fileupload.js')}}"></script>
+ {{-- drop zone --}}
+ <script src="{{asset('assets/js/dropzone/dropzone.min.js')}}"></script>
 
  @endpush
 

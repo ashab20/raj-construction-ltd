@@ -24,8 +24,8 @@ class AddRequest extends FormRequest
     public function rules()
     {
         return [
-            'docuname' =>'required',
-            'docufile' => 'required|mimes:jpg,jpeg,png,bmp,tiff,gif|max:4096'
+            // 'docuname' =>'required',
+            // 'docufile' => 'required|mimes:jpg,jpeg,png,bmp,tiff,gif|max:4096'
         ];
     }
 

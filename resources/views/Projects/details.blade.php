@@ -173,7 +173,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title mb-3">Files</h5>
+                        <span class="d-flex justify-content-between">
+                            <h5 class="card-title mb-3">{{__('Documents')}}</h5>
+                            <a href="{{route('document.create')}}" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i>Add</a>
+                        </span>
 
                         <div class="card mb-1 shadow-none border">
                             <div class="p-2">

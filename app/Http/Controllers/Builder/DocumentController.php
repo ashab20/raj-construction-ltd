@@ -20,8 +20,8 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $document=Document::paginate(10);
-        return view('document.index',compact('document'));
+        $document = Document::paginate(10);
+        return view('document.index', compact('document'));
     }
 
     /**
@@ -42,27 +42,28 @@ class DocumentController extends Controller
      */
     public function store(AddRequest $request)
     {
-        try{
-            $docu= new Document();
+        dd($request);
+        try {
+            $docu = new Document();
             $identity = decrypt(session()->get('roleIdentity'));
-            $docu->docu_name=$request->docuname;
-            $docu->description=$request->description;
+            $docu->docu_name = $request->docuname;
+            $docu->description = $request->description;
 
-            if($request->hasFile('docufile')){
-                $imageName = rand(111,999).time().'.'.$request->docufile->extension();  
+            if ($request->hasFile('docufile')) {
+                $imageName = rand(111, 999) . time() . '.' . $request->docufile->extension();
                 $request->docufile->move(public_path('uploads/document'), $imageName);
-                $docu->doc_attachment=$imageName;
+                $docu->doc_attachment = $imageName;
             }
-            else{
-                return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Document created unsuccessfully'));
-            }
+            // else{
+            //     return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Document created unsuccessfully'));
+            // }
 
-            $docu->status=1;
-            if($docu->save()){
-                return redirect($identity.'/document')->with($this->resMessageHtml(true, false, 'Document created successfully'));
+            $docu->status = 1;
+            if ($docu->save()) {
+                return redirect($identity . '/document')->with($this->resMessageHtml(true, false, 'Document created successfully'));
             }
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
+            dd($e);
             return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot create document'));
         }
     }
@@ -86,8 +87,8 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        
-        return view('document.edit',compact('document'));
+
+        return view('document.edit', compact('document'));
     }
 
     /**
@@ -99,23 +100,22 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        try{
+        try {
             $identity = decrypt(session()->get('roleIdentity'));
-            $docu= $document;
-            $docu->docu_name=$request->docuname;
-            $docu->description=$request->description;
+            $docu = $document;
+            $docu->docu_name = $request->docuname;
+            $docu->description = $request->description;
 
-            if($request->hasfile('docufile')){
-                $imageName = rand(111,999).time().'.'.$request->docufile->extension();  
+            if ($request->hasfile('docufile')) {
+                $imageName = rand(111, 999) . time() . '.' . $request->docufile->extension();
                 $request->docufile->move(public_path('uploads/document'), $imageName);
-                $docu->doc_attachment=$imageName;
+                $docu->doc_attachment = $imageName;
             }
-            $docu->status=1;
-            if($docu->save()){
-                return redirect($identity.'/document')->with('success','Data saved');
+            $docu->status = 1;
+            if ($docu->save()) {
+                return redirect($identity . '/document')->with('success', 'Data saved');
             }
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             dd($e);
             return back()->withInput();
         }
