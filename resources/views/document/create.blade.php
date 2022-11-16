@@ -1,5 +1,6 @@
 @extends('app')
 
+
 @section('content')
 <div class="content-page">
 <div class="content">

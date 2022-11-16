@@ -1,7 +1,13 @@
 @extends('app')
 
-@section('content')
 
+@push('style')
+<link href="{{ asset('assets/css/vendor/simplemde.min.css')}}" rel="stylesheet" type="text/css" />
+@endpush
+
+
+
+@section('content')
 
 <div class="content-page">
     <div class="content">
@@ -94,28 +100,28 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xl-6 mb-3">
-                                    <label for="project-overview" class="form-label">{{__('Overview')}}</label>
-                                    <textarea class="form-control" id="project-overview"
-                                    name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('projectOverview')}}</textarea>
-                                </div>
-                                 <!-- Date View -->
-                                 <div class="col-xl-6">
+                                {{-- <div class="col-xl-6"> --}}
                                     
-                                    <div class="mb-3">
+                                    <div class="col-xl-6 mb-3">
                                         <label for="project-budget" class="form-label">{{__('Budget')}}</label>
                                         <input type="text" id="project-budget" class="form-control" name="totalBudget" placeholder="Enter project budget"
                                         value="{{ old('totalBudget')}}">
                                     </div>
-                                    <div class="mb-3 mt-3 mt-xl-0">
+                                    <div class="col-xl-6 mb-3 mt-3 mt-xl-0">
                                         <label for="projectname" class="mb-0">Project Image</label>
                                         
                                             <input class="form-control" type="file" id="inputGroupFile04" name="projectImage"
                                             value="{{old('projectImage')}}">
                                             <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
                                     </div>
-                                 </div>
-
+                                 {{-- </div> --}}
+                            </div>
+                            <div class="row">
+                                <div class=" mb-3">
+                                    <label for="project-overview" class="form-label">{{__('Overview')}}</label>
+                                    <textarea class="form-control" id="simplemde1"
+                                    name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('projectOverview')}}</textarea>
+                                </div>
                              <!-- end col-->
                         </div>
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
@@ -283,6 +289,12 @@
  <script src="{{asset('assets/js/vendor/dropzone.min.js')}}"></script>
  <!-- init js -->
  <script src="{{asset('assets/js/ui/component.fileupload.js')}}"></script>
+
+                                                     <!-- SimpleMDE js -->
+<script src="{{asset('assets/js/vendor/simplemde.min.js')}}"></script>
+<!-- SimpleMDE demo -->
+<script src="{{asset('assets/js/pages/demo.simplemde.js')}}"></script>
+                                                
 
 
  

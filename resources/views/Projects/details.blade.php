@@ -274,3 +274,13 @@
 
 
 @endsection
+
+
+@push('scripts')
+  <!-- third party js -->
+  <script src="assets/js/vendor/Chart.bundle.min.js"></script>
+  <!-- third party js ends -->
+
+  <!-- demo app -->
+  <script src="assets/js/pages/demo.project-detail.js"></script>
+@endpush
