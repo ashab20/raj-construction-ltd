@@ -25,8 +25,8 @@ class ProjectsController extends Controller
     public function index()
     {
 
-
-        return view('Projects.list');
+        $projects = Project::paginate(10);
+        return view('Projects.list',compact('projects'));
     }
 
     /**
