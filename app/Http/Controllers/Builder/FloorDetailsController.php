@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTraits;
+use App\Models\Builder\FloorDetails;
 use Exception;
-use App\Models\FloorDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 

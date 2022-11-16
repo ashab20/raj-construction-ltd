@@ -14,6 +14,8 @@ class Project extends Model
     use HasFactory,SoftDeletes;
 
     public function stage(){
-        return $this->hasMany(Stage::class);
+        return $this->belongsTo(Stage::class);
     }
 }
+
+

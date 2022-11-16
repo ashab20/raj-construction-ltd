@@ -105,7 +105,7 @@
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
                 <!-- ? Popup Add Country Start -->
-                <!-- Add New Event MODAL -->
+                <!-- Add New Country MODAL -->
                 <div class="modal fade" id="country-modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">

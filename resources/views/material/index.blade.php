@@ -43,7 +43,6 @@
                                         <th>#SL</th>
                                         <th>Material Name</th>
                                         <th>Quantity Name</th>
-                                        <th>Builder Name</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
@@ -55,7 +54,6 @@
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         <td>{{ $material->material_name}}</td>
                                         <td>{{ $material->quantity_name}}</td>
-                                        <td>{{ $material->builder_options_id}}</td>
                                         <td>
                                             @if ($material->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
@@ -77,7 +75,7 @@
                                     </tr>                                      
                                     @empty
                                         <tr>
-                                            <td colspan="11" class="text-center">No Data Found <td>
+                                            <td colspan="5" class="text-center">No Data Found <td>
                                         </tr>
                                     @endforelse
                                 </tbody>

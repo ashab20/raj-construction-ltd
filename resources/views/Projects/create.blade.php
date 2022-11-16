@@ -81,17 +81,16 @@
                                 <!-- Date View -->
                                 <div class="col-xl-6 mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">{{__('Start Date')}}</label>
-                                    <input type="text" class="form-control" data-provide="datepicker" data-date-container="#datepicker1" data-date-format="d-M-yyyy" data-date-autoclose="true"
+                                    <input type="date" class="form-control" 
                                     name="parojectStarDate"
                                     value="{{ old('parojectStarDate')}}"
                                     >
                                 </div>
                                 <div class="col-xl-6 position-relative" id="datepicker2">
                                     <label class="form-label">{{__('Due Date')}}</label>
-                                    <input type="text" class="form-control" data-provide="datepicker" 
+                                    <input type="date" class="form-control"  
                                     name="parojectEndDate"
-                                    value="{{ old('parojectEndDate')}}"
-                                    data-date-container="#datepicker2" data-date-format="d-M-yyyy" data-date-autoclose="true">
+                                    value="{{ old('parojectEndDate')}}" >
                                 </div>
                             </div>
                             <div class="row">
@@ -120,14 +119,14 @@
                              <!-- end col-->
                         </div>
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
-{{-- Lands --}}
+<!-- Lands -->
                             <div class="row">
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
-                                    <input type="number" id="squireFeet" name="ploatArea" class="form-control" value="{{old('ploatArea')}}">
-                                    <select name="ploatAreaCounter" id="" class="form-control">
-                                        <option value="" selected>Squire Feet</option>
-                                        <option value="">Miter</option>
+                                    <input type="number" id="squireFeet" name="plotArea" class="form-control" value="{{old('plotArea')}}">
+                                    <select name="plotAreaCounter" id="" class="form-control">
+                                        <option value="Squire Feet" selected>Squire Feet</option>
+                                        <option value="Miter">Miter</option>
                                     </select>
                                 </div>
                                 <div class="mb-3 col-xl-4 form-row">
@@ -164,12 +163,12 @@
                            
                             <div class="row">
 
-                                {{-- <div class="col-xl-6 mb-3">
+                                <!-- <div class="col-xl-6 mb-3">
                                     <label for="address" class="form-label">Address</label>
                                     <p class="text-muted font-14">{{__('( House no, Road, Block etc. )')}}</p>
                                     <textarea class="form-control" id="project-overview" rows="5" placeholder="Enter address" name="address"></textarea>
-                                </div> --}}
-                                {{-- <div class="col-xl-6"> --}}
+                                </div> -->
+                                <!-- <div class="col-xl-6"> -->
                                     @php
                                     $countires = DB::table('countries')->get();
 
@@ -230,73 +229,15 @@
                             </div>
                             {{-- <div class="mb-3">
                                 <label for="designId" class="form-label">Design</label>
-                                <input type="file" id="designId" class="form-control" name="designId">
+                                <input type="files" id="designId" class="form-control" name="designId">
                             </div> --}}
                         </div>
                         <!-- end row -->
-                        <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Document')}} :</h5>
-                        <div class="row">
-                            <div class="col-xl-6 mb-3 mt-xl-0">
-                                <label for="project-overview" class="form-label">{{__('Overview')}}</label>
-                                <p class="text-muted font-14">Brief about the document</p>
-                                <textarea class="form-control" id="project-overview" rows="7" placeholder="Enter some brief about project.."></textarea>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="mb-3 mt-3 mt-xl-0">
-                                    <label for="projectname" class="mb-0">Project Image</label>
-                                    <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
+                        <!-- Plot Documents -->
+                        <div class="col-10 offset-1 d-flex justify-content-end">
 
-                                    <div action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
-                                        <div class="fallback">
-                                            <input name="file" type="file"  />
-                                        </div>
-
-                                        <div class="dz-message needsclick">
-                                            <i class="h3 text-muted dripicons-cloud-upload"></i>
-                                            <h4>Drop files here or click to upload.</h4>
-                                        </div>
-                                    </div>
-
-                                    <!-- Preview -->
-                                    <div class="dropzone-previews mt-3" id="file-previews"></div>
-
-                                    <!-- file preview template -->
-                                    <div class="d-none" id="uploadPreviewTemplate">
-                                        <div class="card mt-1 mb-0 shadow-none border">
-                                            <div class="p-2">
-                                                <div class="row align-items-center">
-                                                    <div class="col-auto">
-                                                        <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
-                                                    </div>
-                                                    <div class="col ps-0">
-                                                        <span class="d-flex justify-content-between">
-                                                            <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
-                                                            <p class="mb-0" data-dz-size></p>
-
-                                                        </span>
-                                                        <input type="text" name="documentText" class="form-control" placeholder="Enter image name">
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <!-- Button -->
-                                                        <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                                                            <i class="dripicons-cross"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end file preview template -->
-                                </div>
-
-                               
-                            </div> <!-- end col-->
-
-                            <div class="col-10 offset-1 d-flex justify-content-end">
-    
-                                <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
-                                <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
-                            </div>
+                            <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
+                            <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
                         </div>
                     </form>
 
@@ -343,4 +284,47 @@
  <!-- init js -->
  <script src="{{asset('assets/js/ui/component.fileupload.js')}}"></script>
 
+
+ 
+<script>
+    function modelAction() {
+        $('#division-modal').toggleClass('d-block show');
+        $('body').toggleClass('modal-open');
+
+    }
+
+    // function handleSubmit() {
+    //     // e.preventDefault();
+    //     let countryName = $('#countryName').val();
+    //     let authName = $('#authName').val();
+    //     // console.log(countryName);
+    //     const host = `${window.location.origin}`;
+    //     const data = {
+    //         countryName,
+    //         _token: '<?php echo csrf_token() ?>',
+    //         _method:'PATCH',
+    //     }
+
+        // console.log('host',host);
+
+    //     $.ajax({
+    //         method: 'GET',
+            // headers:{
+            //     _token : '<?php echo csrf_token() ?>',
+             //       _method:'PATCH',
+            //},
+    //         url: host + `/${authName}/country/store`,
+    //         data,
+    //         success: function(data) {
+    //             console.log(data);
+    //         },
+    //         error: function(data) {
+    //             console.log(data);
+    //         }
+    //     });
+
+    // }
+</script>
  @endpush
+
+ 

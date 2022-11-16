@@ -22,8 +22,7 @@ return new class extends Migration
             $table->decimal('cost_per_items',12,2);
             $table->decimal('total_cost',12,2)->nullable();
             $table->string('brand_name');
-            $table->unsignedBigInteger('voucher_image_id')->nullable();
-            // $table->foreign('voucher_image_id')->references('id')->on('voucher')->onDelete('cascade')->change();
+            $table->string('voucher_image');
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');

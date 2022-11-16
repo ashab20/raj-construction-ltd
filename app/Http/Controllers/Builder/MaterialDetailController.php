@@ -42,18 +42,19 @@ class MaterialDetailController extends Controller
     public function store(Request $request)
     {
         try{
+           
             $materialDetail=new MaterialDetail();
-            $materialDetail->material_id=$request->materialName;
             $identity = decrypt(session()->get('roleIdentity'));
+            $materialDetail->material_id=$request->materialName;
             $materialDetail->brand_name = $request->brandName;
             $materialDetail->quantity = $request->quantity;
             $materialDetail->cost_per_items = $request->costPerItems;
 
-            // if($request->hasFile('voucherImage')){
-            //     $imageName = rand(111,999).time().'.'.$request->voucherImage->extension();  
-            //     $request->voucherImage->move(public_path('uploads/materialDetails'), $imageName);
-            //     $materialDetail->voucher_image=$imageName;
-            // }
+            if($request->hasFile('voucherImage')){
+                $imageName = rand(111,999).time().'.'.$request->voucherImage->extension();  
+                $request->voucherImage->move(public_path('uploads/materialVoucher'), $imageName);
+                $materialDetail->voucher_image=$imageName;
+            }
 
             $materialDetail->created_by=Crypt::decrypt(session()->get('userId'));
             $materialDetail->status = 1;
@@ -107,6 +108,11 @@ class MaterialDetailController extends Controller
             $mDetail->quantity = $request->quantity;
             $mDetail->cost_per_items = $request->costPerItems;
 
+            if($request->hasFile('voucherImage')){
+                $imageName = rand(111,999).time().'.'.$request->voucherImage->extension();  
+                $request->voucherImage->move(public_path('uploads/materialVoucher'), $imageName);
+                $materialDetail->voucher_image=$imageName;
+            }
             $mDetail->updated_by=Crypt::decrypt(session()->get('userId'));
             if($mDetail->save()){
                 return redirect($identity.'/materialDetails')->with('success','Data saved');

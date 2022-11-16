@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{route('materialDetails.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Materials</a>
+                            <a href="{{route('floorBudget.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Materials</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
@@ -52,22 +52,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($materialDetail as $mDetail)
+                                    @forelse ($floorbudget as $fBudget)
                                     <tr>
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $mDetail->brand_name}}</td>
-                                        <td>{{ $mDetail->material?->material_name}}</td>
-                                        <td>{{ $mDetail->quantity}}</td>
-                                        <td>{{ $mDetail->cost_per_items}}</td>
-                                        <td>{{ $mDetail->quantity * $mDetail->cost_per_items}}</td>
+                                        <td>{{ $fBudget->brand_name}}</td>
+                                        <td>{{ $fBudget->material?->material_name}}</td>
+                                        <td>{{ $fBudget->quantity}}</td>
+                                        <td>{{ $fBudget->cost_per_items}}</td>
+                                        <td>{{ $fBudget->quantity * $fBudget->cost_per_items}}</td>
 
                                         <td>
-                                            <img width="50px" src="{{ asset('uploads/materialVoucher/'.$mDetail->voucher_image)}}" alt="">
+                                            <img width="50px" src="{{ asset('uploads/materialVoucher/'.$fBudget->voucher_image)}}" alt="">
                                         </td>
 
                                         <td>
-                                            @if ($mDetail->status === 1)
+                                            @if ($fBudget->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
                                             @else                                   
                                                 <span class="badge badge-danger-lighten">Blocked</span>
@@ -75,11 +75,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('materialDetails.edit',$mDetail->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
-                                            <a href="javascript:void()" onclick="$('#form{{$mDetail->id}}').submit()">
+                                            <a href="{{ route('materialDetails.edit',$fBudget->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="javascript:void()" onclick="$('#form{{$fBudget->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$mDetail->id}}" action="{{ route('materialDetails.destroy',$mDetail->id)}}" method="post">
+                                            <form id="form{{$fBudget->id}}" action="{{ route('materialDetails.destroy',$fBudget->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

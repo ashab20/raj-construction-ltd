@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
             
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
@@ -37,7 +37,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('design_id')->nullable();
             $table->foreign('design_id')->references('id')->on('designs')->onDelete('cascade')->change();
-            $table->decimal('total_budget',12,2);
+            $table->decimal('total_budget',12,2)->nullable();
             $table->decimal('total_cost',12,2)->nullable();
 
             // locations

@@ -7,6 +7,7 @@ use App\Http\Controllers\Builder\DesignController;
 use App\Http\Controllers\Builder\DesignationController;
 use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
+use App\Http\Controllers\Builder\FloorbudgetController;
 use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
 use App\Http\Controllers\Location\CountryController;
@@ -66,6 +67,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         Route::resource('/material',BuilderMaterialController::class);
         Route::resource('/materialDetails',MaterialDetailController::class);
+        Route::resource('/floorBudget',FloorbudgetController::class);
         
     });
 });
