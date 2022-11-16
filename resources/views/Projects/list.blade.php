@@ -80,7 +80,7 @@
                         </div>
                         <!-- project title-->
                         <h4 class="mt-0">
-                            <a href="apps-projects-details.html" class="text-title">
+                            <a href="{{route('project.show',$project)}}" class="text-title">
                                 {{$project->project_name}}
                             </a>
                         </h4>

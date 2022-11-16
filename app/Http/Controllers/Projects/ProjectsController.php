@@ -116,6 +116,7 @@ class ProjectsController extends Controller
     public function show($id)
     {
         //
+        return view('Projects.details');
     }
 
     /**
