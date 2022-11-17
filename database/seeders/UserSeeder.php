@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
     {
         $users =  [
             [
-                'name' => Str::random(10),
-                'email' => Str::random(10) . '@gmail.com',
+                'name' => 'Ashab Uddin',
+                'email' => 'ashab@gmail.com',
                 'phone' => '01' . Str::random(9),
                 'password' => Crypt::encrypt('12345678'),
                 'role_id' => 1,
