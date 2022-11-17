@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Builder;
 
 use App\Models\Builder\Design;
 use App\Http\Controllers\Controller;
+use App\Models\Auth\User;
 use Exception;
 use Illuminate\Http\Request;
 
 
 class DesignController extends Controller
 {
+    public function __invoke(Request $request,$id)
+    {
+        $employee = User::where('role_id',3);
+        return view('Design.create',compact('id','employee'));      
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +33,10 @@ class DesignController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        
-        return view('Design.create');
+        // dd($id);
+        return view('Design.create',compact('id'));
     }
 
     /**
@@ -52,6 +59,8 @@ class DesignController extends Controller
             $design->building_squire_feet=$request->bsfeet;
             $design->total_floor_number=$request->tfnumber;
             $design->design_details=$request->designdetails;
+            $design->project_id=$request->project;
+            $design->created_by=decrypt(session()->get('userId'));
             
             $design->status = 1;
             if($design->save()){

@@ -121,7 +121,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <!-- item-->
-                                    <a href="{{ route('design.create?id=$project->id')}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Add New Design</a>
+                                    <a href="{{ route('design.create',encrypt($project->id))}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Add New Design</a>
                                     <a href="#" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>

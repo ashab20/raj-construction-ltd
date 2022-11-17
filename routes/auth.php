@@ -49,7 +49,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         
         Route::get('/adms', [RoleRouteController::class,'admins'])->name('admins');
 
-        Route::get ('/moderators',[RoleRouteController::class,'moderators'])->name('admin.moderators');
+        Route::get('/moderators',[RoleRouteController::class,'moderators'])->name('admin.moderators');
 
         Route::resource('project', ProjectsController::class);
 
@@ -70,8 +70,8 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/flatDetail',FlatDetailController::class);
         // design
         Route::get('/design',DesignController::class,'index');
-        Route::get('/design/create/{:id}',DesignController::class,'create');
-        Route::get('/design/store',DesignController::class,'store');
+        Route::get('/design/create/{id}',DesignController::class,'create')->name('design.create');
+        Route::post('/design/store',DesignController::class,'store')->name('design.store');
         
         
         Route::resource('/designation',DesignationController::class);        

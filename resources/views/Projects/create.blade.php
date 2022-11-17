@@ -39,12 +39,11 @@
                             @csrf
                             @method('post')
                          
-                        <div class="row">                            
+                            <div class="row">                            
                                 <div class="col-xl-6 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
                                     <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}">
                                 </div>
-
                                 <div class="mb-0 col-xl-6 col-6">
                                     <label for="project-overview" class="form-label">{{__('Land Owner Name')}} :</label>
 
@@ -57,32 +56,7 @@
                                             <option value="">{{('No data found!')}}</option>
                                         @endforelse
                                     </select>
-
-                                    {{-- <div class="mt-2" id="tooltip-container">
-                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block">
-                                            <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                        </a>
-
-                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Michael Zenaty" class="d-inline-block">
-                                            <img src="assets/images/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                        </a>
-
-                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="James Anderson" class="d-inline-block">
-                                            <img src="assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                        </a>
-
-                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Lorene Block" class="d-inline-block">
-                                            <img src="assets/images/users/avatar-4.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                        </a>
-
-                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Mike Baker" class="d-inline-block">
-                                            <img src="assets/images/users/avatar-5.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                        </a>
-                                    </div> --}}
-
                                 </div>
-
-                           
                             <div class="row">
                                 <!-- Date View -->
                                 <div class="col-xl-6 mb-3 position-relative" id="datepicker1">
