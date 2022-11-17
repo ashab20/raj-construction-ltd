@@ -66,7 +66,12 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/land',LandController::class);
         Route::resource('/floorDetails',FloorDetailsController::class);
         Route::resource('/flatDetail',FlatDetailController::class);
-        Route::resource('/design',DesignController::class);        
+        // design
+        Route::get('/design',DesignController::class,'index');
+        Route::get('/design/create/{:id}',DesignController::class,'create');
+        Route::get('/design/store',DesignController::class,'store');
+        
+        
         Route::resource('/designation',DesignationController::class);        
 
         Route::resource('/material',BuilderMaterialController::class);

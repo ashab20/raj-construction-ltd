@@ -18,7 +18,7 @@ class DesignController extends Controller
     public function index()
     {
         $design=Design::paginate(10);
-        return view('design.index',compact('design'));
+        return view('Design.index',compact('design'));
     }
 
     /**
@@ -28,6 +28,7 @@ class DesignController extends Controller
      */
     public function create()
     {
+        
         return view('Design.create');
     }
 
@@ -84,7 +85,7 @@ class DesignController extends Controller
     public function edit($id)
     {
         $designDetails=Design::find(decrypt($id));
-        return view('design.edit',compact('designDetails'));
+        return view('Design.edit',compact('designDetails'));
     }
 
     /**

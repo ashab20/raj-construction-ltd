@@ -53,7 +53,7 @@
 
 
 
-                           {!! Str::markdown($project->project_overview) !!}
+                            {!! Str::markdown($project->project_overview) !!}
                         </div>
 
                         <div class="row">
@@ -111,9 +111,8 @@
                 <div class="card">
                     <div class="card-body">
                         @php
-                        $desings = DB::table('designs')->first();
+                            $desings = DB::table('designs')->first();
                         @endphp
-                        {{$desings}}
                         <span class="d-flex justify-content-between">
                             <h4 class="mt-0 mb-3">Building Design</h4>
                             <div class="dropdown float-end">
@@ -122,7 +121,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                    <a href="{{ route('design.create?id=$project->id')}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Add New Design</a>
+                                    <a href="#" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
                                     <!-- item-->

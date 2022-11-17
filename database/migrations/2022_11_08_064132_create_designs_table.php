@@ -16,7 +16,14 @@ return new class extends Migration
         Schema::create('designs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('designer_id')->nullable();
+
+            $table->unsignedBigInteger('designe_id')->nullable()->comment('Designer id');
+            $table->foreign('designer_id')->references('id')->on('users')->onDelete('cascade')->change();
+            
+
+            $table->unsignedBigInteger('project_id')->nullable()->comment('Project id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
+
             $table->string('document');
             $table->integer('building_squire_feet')->default(1);
             $table->integer('total_floor_number')->default(1);

@@ -52,7 +52,12 @@
                 <!-- project card -->
                 <div class="card d-block">
                     <!-- project-thumbnail -->
-                    <img class="card-img-top" src="{{asset('/uploads/projects/'.$project->project_image)}}" alt="project image cap">
+                    @if($project->project_image)
+                    <img class="" src="{{asset('/uploads/projects/'.$project->project_image)}}" alt="project image cap"  width="100%" height="250px">
+                    @else
+                    <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class=" opacity-25 height="250px">
+
+                    @endif
                     <div class="card-img-overlay">
                         @if($project->stage->stage === 'Pending')
                         <div class="badge bg-secondary text-light p-1">{{$project->stage->stage}}</div>
