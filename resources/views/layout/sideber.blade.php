@@ -135,6 +135,26 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li>
+                                <a data-bs-toggle="collapse" href="#sidebarBuilder">
+                                    <span>{{__('Builder')}}</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse ml-3" id="sidebarBuilder">
+                                    <ul class="side-nav-second-level">
+                                        <li>
+                                            <a href="{{ route('builder.index')}}">
+                                                {{__('Builder Details')}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('floorBudget.index')}}">
+                                                {{__('Add Builder')}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </li>

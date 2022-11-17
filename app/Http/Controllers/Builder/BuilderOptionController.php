@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Builder;
 
+use App\Http\Controllers\Controller;
 use App\Models\Builder\BuilderOption;
 use Illuminate\Http\Request;
+use Exception;
 
 class BuilderOptionController extends Controller
 {
@@ -14,7 +16,8 @@ class BuilderOptionController extends Controller
      */
     public function index()
     {
-        //
+        $builders=BuilderOption::paginate(10);
+        return view('builder.index',compact('builders'));
     }
 
     /**
@@ -24,7 +27,7 @@ class BuilderOptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('builder.create');  
     }
 
     /**
@@ -35,7 +38,23 @@ class BuilderOptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $builder=new BuilderOption();
+            $identity = decrypt(session()->get('roleIdentity'));
+            
+            $builder->created_by=decrypt(session()->get('userId'));
+            $builder->name=$request->buildername;
+           
+            
+            $builder->status = 1;
+            if($builder->save()){
+                return redirect($identity.'/builder')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
