@@ -73,7 +73,7 @@
                         </thead>
                         <tbody>
                             @forelse ($members as $member)
-                         <!-- @if($member->role->identify === 'landowner')                               -->
+                         
                             <tr>
                                 <td>
                                     <div class="form-check">
@@ -122,7 +122,7 @@
                                      </form>
                                 </td>
                             </tr>
-                        <!-- @endif -->
+                        
                             @empty
                             <tr>
                                 <td colspan="8">

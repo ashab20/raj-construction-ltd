@@ -94,6 +94,9 @@ class UserController extends Controller
                 $imageName = rand(111,999).time().'.'.$request->userAvatar->extension();  
                 $request->userAvatar->move(public_path('uploads/document'), $imageName);
                 $store->avatar=$imageName;
+            }else{
+                $store->avatar='avatar.png';
+                
             }
 
             if ($store->save()) {
