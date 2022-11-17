@@ -49,6 +49,8 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         
         Route::get('/adms', [RoleRouteController::class,'admins'])->name('admins');
 
+        Route::get ('/moderators',[RoleRouteController::class,'moderators'])->name('admin.moderators');
+
         Route::resource('project', ProjectsController::class);
 
 
