@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\RoleRouteController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\Builder\DesignController;
@@ -45,6 +46,9 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         // Create Users
         Route::resource('member', UserController::class);
+        
+        Route::get('/adms', [RoleRouteController::class,'admins'])->name('admins');
+
         Route::resource('project', ProjectsController::class);
 
 

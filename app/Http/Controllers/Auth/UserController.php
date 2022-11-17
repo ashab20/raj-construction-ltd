@@ -25,6 +25,12 @@ class UserController extends Controller
         $members = User::all();
         return view('Users.members',compact('members'));
     }
+    // ? GET all members
+    // public function admins()
+    // {
+    //     $admins = User::findOrFail('role_id',1);
+    //     return view('Users.admins',compact('admins'));
+    // }
 
     public function create()
     {

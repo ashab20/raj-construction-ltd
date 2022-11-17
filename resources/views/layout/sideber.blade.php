@@ -186,7 +186,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="apps-email-read.html">{{ _('Admins')}}</a>
+                                <a href="{{route('admins')}}">{{ _('Admins')}}</a>
                             </li>
                             <li>
                                 <a href="apps-email-read.html">{{ _('Employees')}}</a>
