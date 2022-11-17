@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('project_name');
-            $table->string('project_overview',500)->nullable();
+            $table->string('project_overview',5000)->nullable();
             $table->date('start_date');
             $table->date('end_date');
             $table->decimal('budget',15,2)->default(0);
