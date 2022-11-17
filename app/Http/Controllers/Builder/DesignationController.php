@@ -88,7 +88,19 @@ class DesignationController extends Controller
      */
     public function update(Request $request, Designation $designation)
     {
-        //
+        try{
+            $identity = decrypt(session()->get('roleIdentity'));
+            $designation = designation::find($designation);
+            $designation->designation=$request->degi_name;
+            $designation->status = 1;
+            if($designation->save()){
+                return redirect($identity.'/designation')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**

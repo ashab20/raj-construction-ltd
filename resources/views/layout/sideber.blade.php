@@ -234,17 +234,13 @@
                         </ul>
                     </div>
                 </li>
-
-                
-
-                <li class="side-nav-item">
-                    
-                    <a data-bs-toggle="collapse" href="#sidebarDesign" aria-expanded="false" aria-controls="sidebarDesign" class="side-nav-link">
+                <li class="side-nav-item"> 
+                    <a data-bs-toggle="collapse" href="#sidebarDesignation" aria-expanded="false" aria-controls="sidebarDesignation" class="side-nav-link">
                         <i class="uil-rss"></i>
                         <span> Designations</span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarDesign">
+                    <div class="collapse" id="sidebarDesignation">
                         <ul class="side-nav-second-level">
                             <li>
                                 <a href="{{ route('designation.create')}}">Add</a>
