@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\UserTraits;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Auth\Role;
 use App\Models\Auth\UserDetails;
-use App\Models\Lands\Designation;
+use App\Models\Builder\Designation;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller

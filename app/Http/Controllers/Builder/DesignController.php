@@ -14,7 +14,7 @@ class DesignController extends Controller
     public function __invoke(Request $request,$id)
     {
         $employee = User::where('role_id',3);
-        return view('Design.create',compact('id','employee'));      
+        return view('Design.create',compact(['id','employee']));      
         
     }
     /**
