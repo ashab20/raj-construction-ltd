@@ -41,12 +41,10 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
-                                        <th>Brand Name</th>
-                                        <th>Material Name</th>
-                                        <th>Quantity</th>
-                                        <th>Cost per item</th>
-                                        <th>Total Cost</th>
-                                        <th>Voucher</th>
+                                        <th>Floor Number</th>
+                                        <th>Total Working Day</th>
+                                        <th>Total Worker</th>
+                                        <th>Issues Date</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
@@ -54,17 +52,14 @@
                                 <tbody>
                                     @forelse ($floorbudget as $fBudget)
                                     <tr>
+                                        
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $fBudget->brand_name}}</td>
-                                        <td>{{ $fBudget->material?->material_name}}</td>
-                                        <td>{{ $fBudget->quantity}}</td>
-                                        <td>{{ $fBudget->cost_per_items}}</td>
-                                        <td>{{ $fBudget->quantity * $fBudget->cost_per_items}}</td>
-
-                                        <td>
-                                            <img width="50px" src="{{ asset('uploads/materialVoucher/'.$fBudget->voucher_image)}}" alt="">
-                                        </td>
+                                        {{-- <td>{{ $fBudget->floor_details_id}}</td> --}}
+                                        <td>{{ $fBudget->floordetails?->floor_no}}</td>
+                                        <td>{{ $fBudget->Total_working_day}}</td>
+                                        <td>{{ $fBudget->Total_worker}}</td>
+                                        <td>{{ $fBudget->issues_date}}</td>
 
                                         <td>
                                             @if ($fBudget->status === 1)

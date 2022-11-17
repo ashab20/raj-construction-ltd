@@ -42,7 +42,6 @@ class MaterialDetailController extends Controller
     public function store(Request $request)
     {
         try{
-           
             $materialDetail=new MaterialDetail();
             $identity = decrypt(session()->get('roleIdentity'));
             $materialDetail->material_id=$request->materialName;

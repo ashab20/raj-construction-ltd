@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('floor_budgets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('floor_details_id');
+            $table->unsignedBigInteger('floor_details_id')->nullable();
             $table->foreign('floor_details_id')->references('id')->on('floor_details')->onDelete('cascade')->change();
             $table->integer('Total_working_day');
             $table->integer('Total_worker');

@@ -30,9 +30,9 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('designation.store')}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('designation.update',$designation)}}">
                                         @csrf
-                                        
+                                        @method('patch')
                                         <div class="mb-3">
                                             <label for="sl" class="form-label">SL No </label>
                                             <input type="number" id="sl" name="sl" class="form-control">

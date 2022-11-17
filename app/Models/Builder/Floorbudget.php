@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Floorbudget extends Model
 {
     use HasFactory,SoftDeletes;
+
+    public function floorDetails(){
+        return $this->belongsTo(FloorDetails::class);
+    }
 }

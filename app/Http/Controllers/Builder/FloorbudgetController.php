@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Floorbudget;
+use App\Models\Builder\FloorDetails;
 use Illuminate\Http\Request;
 
 class FloorbudgetController extends Controller
@@ -16,7 +17,7 @@ class FloorbudgetController extends Controller
     public function index()
     {
         $floorbudget=Floorbudget::paginate(10);
-        return view('floorBudget.index',compact('floorbudget'));
+        return view('floorBudget.index',compact('floorbudget','fdetail'));
     }
 
     /**
@@ -26,7 +27,7 @@ class FloorbudgetController extends Controller
      */
     public function create()
     {
-        //
+        // $floorbudget=FloorDetails::paginate(10);
     }
 
     /**

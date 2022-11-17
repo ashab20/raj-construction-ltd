@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class FloorDetails extends Model
 {
     use HasFactory,SoftDeletes;
+
+    // public function floorDetails(){
+    //     return $this->hasMany(FloorDetails::class);
+    // }
 }

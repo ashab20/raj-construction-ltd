@@ -39,9 +39,10 @@ class DesignationController extends Controller
     public function store(Request $request)
     {
         try{
-            $designation=new designation;
+            $designation=new Designation();
             $identity = decrypt(session()->get('roleIdentity'));
             
+            $designation->created_by=decrypt(session()->get('userId'));
             $designation->designation=$request->degi_name;
            
             
@@ -89,8 +90,9 @@ class DesignationController extends Controller
     public function update(Request $request, Designation $designation)
     {
         try{
+            $designation = $designation;
             $identity = decrypt(session()->get('roleIdentity'));
-            $designation = designation::find($designation);
+            $designation->updated_by=decrypt(session()->get('userId'));
             $designation->designation=$request->degi_name;
             $designation->status = 1;
             if($designation->save()){
