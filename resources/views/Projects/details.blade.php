@@ -4,7 +4,7 @@
 
 <div class="content-page">
     <div class="content">
-        
+
         <!-- start page title -->
         <div class="row">
             <div class="col-12">
@@ -19,8 +19,8 @@
                     <h4 class="page-title">Project Details</h4>
                 </div>
             </div>
-        </div>     
-        <!-- end page title --> 
+        </div>
+        <!-- end page title -->
 
         <div class="row">
             <div class="col-xxl-8 col-lg-6">
@@ -111,48 +111,37 @@
                         </div>
 
                     </div> <!-- end card-body-->
-                    
+
                 </div> <!-- end card-->
 
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 mb-3">Comments (258)</h4>
-
-                        <textarea class="form-control form-control-light mb-2" placeholder="Write message" id="example-textarea" rows="3"></textarea>
-                        <div class="text-end">
-                            <div class="btn-group mb-2">
-                                <button type="button" class="btn btn-link btn-sm text-muted font-18"><i class="dripicons-paperclip"></i></button>
-                            </div>
-                            <div class="btn-group mb-2 ms-2">
-                                <button type="button" class="btn btn-primary btn-sm">Submit</button>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-start mt-2">
-                            <img class="me-3 avatar-sm rounded-circle" src="assets/images/users/avatar-3.jpg" alt="Generic placeholder image">
-                            <div class="w-100 overflow-hidden">
-                                <h5 class="mt-0">Jeremy Tomlinson</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                                in faucibus.
-                        
-                                <div class="d-flex align-items-start mt-3">
-                                    <a class="pe-3" href="#">
-                                        <img src="assets/images/users/avatar-4.jpg" class="avatar-sm rounded-circle" alt="Generic placeholder image">
-                                    </a>
-                                    <div class="w-100 overflow-hidden">
-                                        <h5 class="mt-0">Kathleen Thomas</h5>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-                                        vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                        felis in faucibus.
-                                    </div>
+                        @php
+                            $desings = DB::table('designs')->first();
+                        @endphp
+                        {{$desings}}
+                        <span class="d-flex justify-content-between">
+                            <h4 class="mt-0 mb-3">Building Design</h4>
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="dripicons-dots-3"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a>
                                 </div>
                             </div>
-                        </div>
+                        </span>
 
-                        <div class="text-center mt-2">
-                            <a href="javascript:void(0);" class="text-danger">Load more </a>
-                        </div>
+                       <div class="border border-1 opacity-25">
+                            <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%">
+                       </div>
                     </div> <!-- end card-body-->
                 </div>
                 <!-- end card-->
@@ -165,7 +154,7 @@
                         <div dir="ltr">
                             <div class="mt-3 chartjs-chart" style="height: 320px;">
                                 <canvas id="line-chart-example"></canvas>
-                            </div>    
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,7 +240,7 @@
             </div>
         </div>
         <!-- end row -->
-        
+
     </div> <!-- End Content -->
 
     <!-- Footer Start -->
@@ -259,7 +248,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> © Hyper - Coderthemes.com
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-end footer-links d-none d-md-block">
@@ -280,10 +271,10 @@
 
 
 @push('scripts')
-  <!-- third party js -->
-  <script src="assets/js/vendor/Chart.bundle.min.js"></script>
-  <!-- third party js ends -->
+<!-- third party js -->
+<script src="assets/js/vendor/Chart.bundle.min.js"></script>
+<!-- third party js ends -->
 
-  <!-- demo app -->
-  <script src="assets/js/pages/demo.project-detail.js"></script>
+<!-- demo app -->
+<script src="assets/js/pages/demo.project-detail.js"></script>
 @endpush
