@@ -101,6 +101,7 @@
                                 </tbody>
 
                             </table>
+                            {{$coutries->links()}}
                         </div>
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->

@@ -18,7 +18,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $coutries = Country::all();
+        $coutries = Country::paginate(20);
         return view('Locations.countries',compact('coutries'));
     }
 
