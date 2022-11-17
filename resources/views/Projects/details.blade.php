@@ -44,23 +44,17 @@
                         </div>
                         <!-- project title-->
                         <h3 class="mt-0">
-                            App design and development
+                            {{$project->project_name}}
                         </h3>
                         <div class="badge bg-secondary text-light mb-3">Ongoing</div>
 
-                        <h5>Project Overview:</h5>
+                        <h5>{{__('Project Overview')}}:</h5>
+                        <div data-simplebar data-simplebar-primary style="max-height: 250px;">
 
-                        <p class="text-muted mb-2">
-                            With supporting text below as a natural lead-in to additional contenposuere erat a ante. Voluptates, illo, iste itaque voluptas
-                            corrupti ratione reprehenderit magni similique? Tempore, quos delectus asperiores libero voluptas quod perferendis! Voluptate,
-                            quod illo rerum? Lorem ipsum dolor sit amet.
-                        </p>
 
-                        <p class="text-muted mb-4">
-                            Voluptates, illo, iste itaque voluptas corrupti ratione reprehenderit magni similique? Tempore, quos delectus asperiores
-                            libero voluptas quod perferendis! Voluptate, quod illo rerum? Lorem ipsum dolor sit amet. With supporting text below
-                            as a natural lead-in to additional contenposuere erat a ante.
-                        </p>
+
+                           {!! Str::markdown($project->project_overview) !!}
+                        </div>
 
                         <div class="row">
                             <div class="col-md-4">
@@ -117,7 +111,7 @@
                 <div class="card">
                     <div class="card-body">
                         @php
-                            $desings = DB::table('designs')->first();
+                        $desings = DB::table('designs')->first();
                         @endphp
                         {{$desings}}
                         <span class="d-flex justify-content-between">
@@ -139,9 +133,13 @@
                             </div>
                         </span>
 
-                       <div class="border border-1 opacity-25">
-                            <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%">
-                       </div>
+                        <div class="border border-1 ">
+
+                            <p clas="text-muted text-center">
+                                No Design Found!
+                            </p>
+                            <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class="opacity-25">
+                        </div>
                     </div> <!-- end card-body-->
                 </div>
                 <!-- end card-->
