@@ -28,6 +28,12 @@ class ProjectsController extends Controller
         $projects = Project::paginate(10);
         return view('Projects.list',compact('projects'));
     }
+    public function overview()
+    {
+
+        $projects = Project::paginate(10);
+        return view('Projects.list',compact('projects'));
+    }
 
     /**
      * Show the form for creating a new resource.

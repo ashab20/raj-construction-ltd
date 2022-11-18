@@ -18,37 +18,37 @@ class DivisionsSeeder extends Seeder
         $divisions =  [
             [
                 'divison' => 'Dhaka',
-                'country_id'=> 20,
+                'country_id'=> 19,
                 'created_by' => 1,
                 'status' => 1,
             ],
             [
                 'divison' => 'Chittagong',
-                'country_id'=> 20,
+                'country_id'=> 19,
                 'status' => 1,
                 'created_by' => 1,
             ],
             [
                 'divison' => 'Rajshahi',
-                'country_id'=> 20,
+                'country_id'=> 19,
                 'status' => 1,
                 'created_by' => 1,
             ],
             [
                 'divison' => 'Barishal',
-                'country_id'=> 20,
+                'country_id'=> 19,
                 'created_by' => 1,
                 'status' => 1,
             ],
             [
                 'divison' => 'Maymonshinho',
-                'country_id'=> 20,
+                'country_id'=> 19,
                 'created_by' => 1,
                 'status' => 1,
             ],
             [
                 'divison' => 'Kulna',
-                'country_id'=> 20,
+                'country_id'=> 19,
                 'created_by' => 1,
                 'status' => 1,
             ],

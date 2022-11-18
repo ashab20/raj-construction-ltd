@@ -62,7 +62,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
             return view('dashboard');
         })->name('admin.dashboard');
 
-        // Route::get('/account?id={$id}', function ($id) {
+        // Route::get('/account/{id}', function ($id) {
         //     return view('profile.account');
         // })->name('account');
 

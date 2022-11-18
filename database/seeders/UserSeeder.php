@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
                 'email' => 'jahid@gmail.com',
                 'phone' => '01356' . Str::random(9),
                 'password' => Crypt::encrypt('12345678'),
-                'role_id' => 2,
+                'role_id' => 1,
                 'language' => 'en',
                 'status' => 1,
             ],
