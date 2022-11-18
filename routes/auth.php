@@ -12,6 +12,7 @@ use App\Http\Controllers\Builder\FlatDetailController;
 use App\Http\Controllers\Builder\FloorbudgetController;
 use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
+use App\Http\Controllers\Constructions\ConstructControlller;
 use App\Http\Controllers\Location\CountryController;
 use App\Http\Controllers\Lands\LandController;
 use App\Http\Controllers\Location\DistrictController;
@@ -47,13 +48,15 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         // Create Users
         Route::resource('member', UserController::class);
-        
-        Route::get('/adms', [RoleRouteController::class,'admins'])->name('admins');
 
-        Route::get('/moderators',[RoleRouteController::class,'moderators'])->name('admin.moderators');
+        Route::get('/adms', [RoleRouteController::class, 'admins'])->name('admins');
+
+        Route::get('/moderators', [RoleRouteController::class, 'moderators'])->name('admin.moderators');
 
         Route::resource('project', ProjectsController::class);
 
+        // constructions
+        Route::get('/construction', ConstructControlller::class)->name('construct.index');
 
         Route::get('/dashboard', function () {
             return view('dashboard');
@@ -65,22 +68,22 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
 
 
-        Route::resource('/document',DocumentController::class);
-        Route::resource('/land',LandController::class);
-        Route::resource('/floorDetails',FloorDetailsController::class);
-        Route::resource('/flatDetail',FlatDetailController::class);
-        // design
-        Route::get('/design',DesignController::class,'index');
-        Route::get('/design/create/{id}',DesignController::class,'create')->name('design.create');
-        Route::post('/design/store',DesignController::class,'store')->name('design.store');
-        
-        
-        Route::resource('/designation',DesignationController::class);        
-        Route::resource('/builder',BuilderOptionController::class);        
+        Route::resource('/document', DocumentController::class);
+        Route::resource('/land', LandController::class);
+        Route::resource('/floorDetails', FloorDetailsController::class);
+        Route::resource('/flatDetail', FlatDetailController::class);
 
-        Route::resource('/material',BuilderMaterialController::class);
-        Route::resource('/materialDetails',MaterialDetailController::class);
-        Route::resource('/floorBudget',FloorbudgetController::class);
-        
+        // design
+        Route::get('/design', DesignController::class, 'index');
+        Route::get('/design/create/{id}', DesignController::class, 'create')->name('design.create');
+        Route::post('/design/store', DesignController::class, 'store')->name('design.store');
+
+
+        Route::resource('/designation', DesignationController::class);
+        Route::resource('/builder', BuilderOptionController::class);
+
+        Route::resource('/material', BuilderMaterialController::class);
+        Route::resource('/materialDetails', MaterialDetailController::class);
+        Route::resource('/floorBudget', FloorbudgetController::class);
     });
 });
