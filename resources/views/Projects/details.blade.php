@@ -28,7 +28,7 @@
                     <button type="button" class="btn btn-secondary"><i class="dripicons-view-apps"></i></button>
                 </div>
                 <div class="btn-group mb-3 d-none d-sm-inline-block">
-                    <button type="button" class="btn btn-link text-muted"><i class="dripicons-checklist"></i></button>
+                    <a href="{{route('admin.project.overview')}}" type="button" class="btn btn-link text-muted"><i class="dripicons-checklist"></i></a>
                 </div>
             </div>
             <div class="col-sm-8">
