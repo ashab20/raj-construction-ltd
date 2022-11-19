@@ -91,9 +91,26 @@ class FloorbudgetController extends Controller
      * @param  \App\Models\Builder\Floorbudget  $floorbudget
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Floorbudget $floorbudget)
+    public function update(Request $request, Floorbudget $floorBudget)
     {
-        //
+        try{
+            $floorbudget = $floorBudget;
+            $identity = decrypt(session()->get('roleIdentity'));
+            $floorbudget->floor_details_id = $request->floorNo;
+            $floorbudget->Total_working_day = $request->tworkingday;
+            $floorbudget->Total_worker = $request->tworker;
+            $floorbudget->issues_date = $request->issueDate;
+
+            $floorbudget->updated_by=Crypt::decrypt(session()->get('userId'));
+            $floorbudget->status = 1;
+            if($floorbudget->save()){
+                return redirect($identity.'/floorBudget')->with('success','Data saved');
+            }
+        }
+        catch(Exception $error){
+            dd($error);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -102,8 +119,9 @@ class FloorbudgetController extends Controller
      * @param  \App\Models\Builder\Floorbudget  $floorbudget
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Floorbudget $floorbudget)
+    public function destroy(Floorbudget $floorBudget)
     {
-        //
+        $floorBudget->delete();
+        return redirect()->back();
     }
 }

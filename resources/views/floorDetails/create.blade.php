@@ -12,10 +12,10 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                            <li class="breadcrumb-item active">Create</li>
+                            <li class="breadcrumb-item active">Floor Create</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Floor Details Create</h4>
+                    <h4 class="page-title">Floor Create</h4>
                 </div>
             </div>
         </div>      

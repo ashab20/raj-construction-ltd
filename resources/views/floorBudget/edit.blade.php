@@ -12,10 +12,10 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                            <li class="breadcrumb-item active">Material Update</li>
+                            <li class="breadcrumb-item active">Floor Budget Update</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Material Update</h4>
+                    <h4 class="page-title">Floor Budget Update</h4>
                 </div>
             </div>
         </div>      
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label for="issueDate" class="form-label">Issues Date</label>
-                                                <input type="date" value="{{ old('issueDate',$floorBudget->issues_date)}}" id="issueDate" name="issueDate" class="form-control">
+                                                <input type="datetime-local" value="{{ old('issueDate',$floorBudget->issues_date)}}" id="issueDate" name="issueDate" class="form-control">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>

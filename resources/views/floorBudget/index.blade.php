@@ -66,6 +66,7 @@
                                         </td>
                                         <td class="table-action">
                                             <a href="{{ route('floorBudget.edit',$fBudget->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                                
                                             <a href="javascript:void()" onclick="$('#form{{$fBudget->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
@@ -73,6 +74,7 @@
                                                 @csrf
                                                 @method('delete')
                                             </form>
+                                            
                                         </td>
                                     </tr>                                      
                                     @empty
