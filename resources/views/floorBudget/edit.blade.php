@@ -29,40 +29,35 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('materialDetails.update',$materialDetail->id)}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('floorBudget.update',$floorBudget->id)}}">
                                         @csrf
                                         @method('patch')
                                         <div class="row">
-                                            <div class="mb-3">
-                                                <label for="materialName">Material Name</label>
-                                                <select class="form-control" name="materialName" id="materialName">
-                                                    <option value="">Select Material Name</option>
-                                                    @forelse($matName as $mName)
-                                                        <option value="{{$mName->id}}" {{ old('materialName',$materialDetail->material_id)==$mName->id?"selected":""}}> {{ $mName->material_name}}</option>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="floorNo" class="form-label">Floor No.</label>
+                                                <select class="form-control" name="floorNo" id="floorNo">
+                                                    <option value="">Select floor no.</option>
+                                                    @forelse($fbudgets as $fbudget)
+                                                        <option value="{{$fbudget->id}}" {{ old('floorNo',$floorBudget->floor_details_id)==$fbudget->id?"selected":""}}> {{ $fbudget->floor_no}}</option>
                                                     @empty
                                                         <option value="">No data found</option>
                                                     @endforelse
                                                 </select>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="brandName" class="form-label">Material Name</label>
-                                                <input type="text" value="{{ old('brandName',$materialDetail->brand_name)}}" id="brandName" name="brandName" class="form-control">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="tworkingday" class="form-label">Total Working Day</label>
+                                                <input type="text" value="{{ old('tworkingday',$floorBudget->Total_working_day)}}" id="tworkingday" name="tworkingday" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="mb-3">
-                                                <label for="quantity" class="form-label">Material Name</label>
-                                                <input type="text" value="{{ old('quantity',$materialDetail->quantity)}}" id="quantity" name="quantity" class="form-control">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="tworker" class="form-label">Total Worker</label>
+                                                <input type="text" value="{{ old('tworker',$floorBudget->Total_worker)}}" id="tworker" name="tworker" class="form-control">
                                             </div>
-
-                                            <div class="mb-3">
-                                                <label for="costPerItems" class="form-label">Quantity Name</label>
-                                                <input type="text" value="{{ old('costPerItems',$materialDetail->cost_per_items)}}" id="costPerItems" class="form-control" name="costPerItems">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="issueDate" class="form-label">Issues Date</label>
+                                                <input type="date" value="{{ old('issueDate',$floorBudget->issues_date)}}" id="issueDate" name="issueDate" class="form-control">
                                             </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="voucherImage" class="form-label">Voucher</label>
-                                            <input type="file" id="voucherImage" class="form-control" name="voucherImage">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
