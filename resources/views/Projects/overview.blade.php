@@ -67,7 +67,6 @@
                         </div> <!-- end card-body -->
                     </div> <!-- end card -->
                 </div> <!-- end col -->
-
                 <div class="col-lg-6 col-xl-3">
                     <div class="card">
                         <div class="card-body">
