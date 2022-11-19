@@ -56,7 +56,7 @@
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         {{-- <td>{{ $fBudget->floor_details_id}}</td> --}}
-                                        <td>{{ $fBudget->floordetails?->floor_no}}</td>
+                                        {{-- <td>{{ $fBudget->floordetails?->floor_no}}</td> --}}
                                         <td>{{ $fBudget->Total_working_day}}</td>
                                         <td>{{ $fBudget->Total_worker}}</td>
                                         <td>{{ $fBudget->issues_date}}</td>
