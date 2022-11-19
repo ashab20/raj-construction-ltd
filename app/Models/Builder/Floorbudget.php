@@ -10,7 +10,7 @@ class FloorBudget extends Model
 {
     use HasFactory,SoftDeletes;
 
-    // public function floorDetail(){
-    //     return $this->belongsTo(FloorDetails::class);
-    // }
+    public function floorDetail(){
+        return $this->belongsTo(FloorDetails::class,'floor_details_id','id');
+    }
 }
