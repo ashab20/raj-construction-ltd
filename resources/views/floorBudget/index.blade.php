@@ -12,10 +12,10 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                    <li class="breadcrumb-item active">Material Details</li>
+                    <li class="breadcrumb-item active">Floor Budget</li>
                 </ol>
             </div>
-            <h4 class="page-title">Material Details</h4>
+            <h4 class="page-title">Floor Budget</h4>
         </div>
     </div>
 </div>      
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{route('floorBudget.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Materials</a>
+                            <a href="{{route('floorBudget.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Floor Budget</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
