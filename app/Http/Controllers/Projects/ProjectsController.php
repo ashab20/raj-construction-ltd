@@ -28,12 +28,7 @@ class ProjectsController extends Controller
         $projects = Project::paginate(10);
         return view('Projects.list',compact('projects'));
     }
-    public function overview()
-    {
 
-        $projects = Project::paginate(10);
-        return view('Projects.list',compact('projects'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -57,10 +52,10 @@ class ProjectsController extends Controller
         // project_name 	project_overview 	start_date 	end_date 	budget 	user_id 	status
         // dd($request->projectImage);
 
-
+        DB::beginTransaction();
         try {
 
-            DB::transaction(function () use ($request) {
+            //DB::transaction(function () use ($request) {
 
                 $project = new Project();
                 $project->project_name = $request->projectNameInputField;
@@ -101,11 +96,16 @@ class ProjectsController extends Controller
 
                 if($project->save()){
                     $land->project_id =  $project->id;
-                    $land->save();
-                    return redirect(Crypt::decrypt(session()->get('roleIdentity')).'/project')->with($this->resMessageHtml(true, false, 'Project created successfully'));
-                }
+                    if($land->save()){
 
-            });
+                    
+                    DB::commit();
+                   // return redirect(route('project.index'))->refresh()->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                    return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                    }
+                }
+                
+            //});
         } catch (Exception $err) {
             dd($err);
             DB::rollBack();

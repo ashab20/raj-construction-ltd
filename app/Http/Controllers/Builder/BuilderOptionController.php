@@ -17,7 +17,7 @@ class BuilderOptionController extends Controller
     public function index()
     {
         $builders=BuilderOption::paginate(10);
-        return view('builder.index',compact('builders'));
+        return view('Builder.index',compact('builders'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BuilderOptionController extends Controller
      */
     public function create()
     {
-        return view('builder.create');  
+        return view('Builder.create');  
     }
 
     /**
@@ -76,7 +76,7 @@ class BuilderOptionController extends Controller
      */
     public function edit(BuilderOption $builder)
     {
-        return view ('builder.edit',compact('builder'));
+        return view ('Builder.edit',compact('builder'));
     }
 
     /**
@@ -88,13 +88,13 @@ class BuilderOptionController extends Controller
      */
     public function update(Request $request, BuilderOption $builder)
     {
-        //dd(decrypt(session()->get('userId')));
         
+        $identity = decrypt(session()->get('roleIdentity'));
+        $user = decrypt(session()->get('userId'));
         try{
-            $builder = $builder;
-            $builder = decrypt(session()->get('roleIdentity'));
-            $builder->updated_by =decrypt(session()->get('userId'));
-            $builder->builder=$request->buildername;
+            $builder->name = $request->buildername;
+            $builder->updated_by = $user;
+            // $builder->builder=$request->buildername;
             $builder->status = 1;
             if($builder->save()){
                 return redirect($identity.'/builder')->with('success','Data saved');

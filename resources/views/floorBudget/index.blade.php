@@ -12,10 +12,10 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                    <li class="breadcrumb-item active">Material Details</li>
+                    <li class="breadcrumb-item active">Floor Budget</li>
                 </ol>
             </div>
-            <h4 class="page-title">Material Details</h4>
+            <h4 class="page-title">Floor Budget</h4>
         </div>
     </div>
 </div>      
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{route('floorBudget.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Materials</a>
+                            <a href="{{route('floorBudget.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Floor Budget</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
@@ -41,7 +41,7 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
-                                        <th>Floor Number</th>
+                                        <th>Floor No.</th>
                                         <th>Total Working Day</th>
                                         <th>Total Worker</th>
                                         <th>Issues Date</th>
@@ -52,32 +52,29 @@
                                 <tbody>
                                     @forelse ($floorbudget as $fBudget)
                                     <tr>
-                                        
-                                        {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        {{-- <td>{{ $fBudget->floor_details_id}}</td> --}}
-                                        <td>{{ $fBudget->floordetails?->floor_no}}</td>
+                                        <td>{{ $fBudget->floorDetail?->floor_no}}</td>
                                         <td>{{ $fBudget->Total_working_day}}</td>
                                         <td>{{ $fBudget->Total_worker}}</td>
                                         <td>{{ $fBudget->issues_date}}</td>
-
                                         <td>
                                             @if ($fBudget->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
                                             @else                                   
                                                 <span class="badge badge-danger-lighten">Blocked</span>
-                                            
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('materialDetails.edit',$fBudget->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="{{ route('floorBudget.edit',$fBudget->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                                
                                             <a href="javascript:void()" onclick="$('#form{{$fBudget->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$fBudget->id}}" action="{{ route('materialDetails.destroy',$fBudget->id)}}" method="post">
+                                            <form id="form{{$fBudget->id}}" action="{{ route('floorBudget.destroy',$fBudget->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>
+                                            
                                         </td>
                                     </tr>                                      
                                     @empty

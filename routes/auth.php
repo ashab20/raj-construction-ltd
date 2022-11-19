@@ -17,6 +17,7 @@ use App\Http\Controllers\Location\CountryController;
 use App\Http\Controllers\Lands\LandController;
 use App\Http\Controllers\Location\DistrictController;
 use App\Http\Controllers\Location\DivisionController;
+use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -53,7 +54,9 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         Route::get('/moderators', [RoleRouteController::class, 'moderators'])->name('admin.moderators');
 
-        Route::resource('project', ProjectsController::class);
+        Route::resource('/details/project', ProjectsController::class);
+
+        Route::get('/overeview/ptoject', CommonProject::class,'overview')->name('admin.project.overview');
 
         // constructions
         Route::get('/construction', ConstructControlller::class)->name('construct.index');
