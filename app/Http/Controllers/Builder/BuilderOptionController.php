@@ -74,9 +74,9 @@ class BuilderOptionController extends Controller
      * @param  \App\Models\Builder\BuilderOption  $builderOption
      * @return \Illuminate\Http\Response
      */
-    public function edit(BuilderOption $builderOption)
+    public function edit(BuilderOption $builder)
     {
-        //
+        return view ('builder.edit',compact('builder'));
     }
 
     /**
@@ -86,9 +86,24 @@ class BuilderOptionController extends Controller
      * @param  \App\Models\Builder\BuilderOption  $builderOption
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BuilderOption $builderOption)
+    public function update(Request $request, BuilderOption $builder)
     {
-        //
+        //dd(decrypt(session()->get('userId')));
+        dd($builder);
+        try{
+            $builder = $builder;
+            $builder = decrypt(session()->get('roleIdentity'));
+            $builder-> updated_by = decrypt(session()->get('userId'));
+            $builder->builder=$request->buildername;
+            $builder->status = 1;
+            if($builder->save()){
+                return redirect($identity.'/builder')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -97,8 +112,9 @@ class BuilderOptionController extends Controller
      * @param  \App\Models\Builder\BuilderOption  $builderOption
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BuilderOption $builderOption)
+    public function destroy(BuilderOption $builder)
     {
-        //
+        $builder->delete();
+        return redirect()->route('builder.index');
     }
 }
