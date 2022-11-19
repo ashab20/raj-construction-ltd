@@ -89,11 +89,11 @@ class BuilderOptionController extends Controller
     public function update(Request $request, BuilderOption $builder)
     {
         //dd(decrypt(session()->get('userId')));
-        dd($builder);
+        
         try{
             $builder = $builder;
             $builder = decrypt(session()->get('roleIdentity'));
-            $builder-> updated_by = decrypt(session()->get('userId'));
+            $builder->updated_by =decrypt(session()->get('userId'));
             $builder->builder=$request->buildername;
             $builder->status = 1;
             if($builder->save()){
