@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class CommonProject extends Controller
 {
-    public function __invoke()
+    public function index(Project $project)
     {
          $projects = Project::paginate(10);
-        //  print_r($projects);
-        return view('Projects.overview',compact('projects'));
+        //  print_r($project);
+        return view('Projects.overview',compact('project'));
     }
 }

@@ -28,7 +28,7 @@
                     <button type="button" class="btn btn-secondary"><i class="dripicons-view-apps"></i></button>
                 </div>
                 <div class="btn-group mb-3 d-none d-sm-inline-block">
-                    <a href="{{route('admin.project.overview')}}" type="button" class="btn btn-link text-muted"><i class="dripicons-checklist"></i></a>
+                    <a href="{{route('admin.project.overview',$project)}}" type="button" class="btn btn-link text-muted"><i class="dripicons-checklist"></i></a>
                 </div>
             </div>
             <div class="col-sm-8">
@@ -37,7 +37,7 @@
                         <button type="button" class="btn btn-primary">Overview</button>
                     </div>
                     <div class="btn-group mb-3 ms-1">
-                        <a href="{{route('construct.index')}}" class="btn btn-light">Construction</a>
+                        <a href="{{route('construct.index',$project)}}" class="btn btn-light">Construction</a>
                         <button type="button" class="btn btn-light">Managment</button>
                     </div>
                 </div>
@@ -178,11 +178,11 @@
                                         <div class="card-body">
                                             <div class="row align-items-center">
                                                 <div class="">
-                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Budget</h5>
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Estimate Budget</h5>
                                                     <h3 class="my-2 py-1 d-flex">
-                                                        9,184
+                                                        {{$project->budget}}
                                                         <p class="mt-2 p-1 text-muted small">
-                                                            (Mitter)
+                                                            ({{__('BDT')}})
                                                         </p>
                                                     </h3>
                                                 </div>

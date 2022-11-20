@@ -59,10 +59,10 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         // project
         Route::resource('/details/project', ProjectsController::class);
 
-        Route::get('/overeview/ptoject', CommonProject::class,'overview')->name('admin.project.overview');
+        Route::get('/overeview/project/{project}', [CommonProject::class,'index'])->name('admin.project.overview');
 
         // constructions
-        Route::get('/construction', ConstructControlller::class)->name('construct.index');
+        Route::get('/construction/{project}', [ConstructControlller::class,'index'])->name('construct.index');
 
         Route::get('/dashboard', function () {
             return view('dashboard');

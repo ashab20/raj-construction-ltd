@@ -2,597 +2,463 @@
 
 @section('content')
 
-<!-- Start Content-->
-<div class="container-fluid">
 
-    <div class="content-page">
-        <div class="content">
-
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                <li class="breadcrumb-item active">CRM</li>
-                            </ol>
-                        </div>
-                        <h4 class="page-title">CRM</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- end page title -->
-
-
-            <div class="row mb-2">
-                <div class="col-sm-4">
-                    <div class="btn-group mb-3 ms-2 d-sm-inline-block">
-                        <a href="#" class="btn btn-link text-muted"><i class="dripicons-view-apps"></i></a>
-                    </div>
-                    <div class="btn-group mb-3 d-sm-inline-block">
-                        <a href="{{route('admin.project.overview')}}" type="button" class="btn   btn-secondary"><i class="dripicons-checklist"></i></a>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="text-sm-end">
-                        <div class="btn-group mb-3">
-                            <button type="button" class="btn btn-primary">Overview</button>
-                        </div>
-                       
-                        <div class="btn-group mb-3 ms-1">
-                            <a href="{{route('construct.index')}}" class="btn btn-light">Construction</a>
-                            <button type="button" class="btn btn-light">Managment</button>
-                        </div>
-                    </div>
-                </div><!-- end col-->
-            </div>
-            <div class="row">
-                <div class="row col-xl-10">
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Land Area</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Building Area</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                </div>
-                <div class="row col-xl-10">
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Start Date</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">End Date</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Due Date</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                </div>
-                <div class="row col-xl-10">
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Budget</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Cost</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                    <div class="col-lg-4 col-xl-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="">
-                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
-                                        <h3 class="my-2 py-1 d-flex">
-                                            9,184
-                                            <p class="mt-2 p-1 text-muted small">
-                                                (Mitter)
-                                            </p>
-                                        </h3>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end card-body -->
-                        </div> <!-- end card -->
-                    </div> <!-- end col -->
-                </div>
-
-            </div>
-            <!-- end row -->
-
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Today</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Yesterday</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Last Week</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Last Month</a>
-                                </div>
-                            </div>
-
-                            <h4 class="header-title mb-1">Campaigns</h4>
-
-                            <div id="dash-campaigns-chart" class="apex-charts" data-colors="#f9c851,#536de6,#10c469"></div>
-
-                            <div class="row text-center mt-2">
-                                <div class="col-md-4">
-                                    <i class="mdi mdi-send widget-icon rounded-circle bg-light-lighten text-muted"></i>
-                                    <h3 class="fw-normal mt-3">
-                                        <span>6,510</span>
-                                    </h3>
-                                    <p class="text-muted mb-0 mb-2"><i class="mdi mdi-checkbox-blank-circle text-warning"></i> Total Sent</p>
-                                </div>
-                                <div class="col-md-4">
-                                    <i class="mdi mdi-flag-variant widget-icon rounded-circle bg-light-lighten text-muted"></i>
-                                    <h3 class="fw-normal mt-3">
-                                        <span>3,487</span>
-                                    </h3>
-                                    <p class="text-muted mb-0 mb-2"><i class="mdi mdi-checkbox-blank-circle text-primary"></i> Reached</p>
-                                </div>
-                                <div class="col-md-4">
-                                    <i class="mdi mdi-email-open widget-icon rounded-circle bg-light-lighten text-muted"></i>
-                                    <h3 class="fw-normal mt-3">
-                                        <span>1,568</span>
-                                    </h3>
-                                    <p class="text-muted mb-0 mb-2"><i class="mdi mdi-checkbox-blank-circle text-success"></i> Opened</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end card body-->
-                    </div>
-                    <!-- end card -->
-                </div>
-                <!-- end col-->
-
-                <div class="col-lg-7">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Today</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Yesterday</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Last Week</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Last Month</a>
-                                </div>
-                            </div>
-
-                            <h4 class="header-title mb-3">Revenue</h4>
-
-                            <div class="chart-content-bg">
-                                <div class="row text-center">
-                                    <div class="col-md-6">
-                                        <p class="text-muted mb-0 mt-3">Current Month</p>
-                                        <h2 class="fw-normal mb-3">
-                                            <span>$42,025</span>
-                                        </h2>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="text-muted mb-0 mt-3">Previous Month</p>
-                                        <h2 class="fw-normal mb-3">
-                                            <span>$74,651</span>
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div dir="ltr">
-                                <div id="dash-revenue-chart" class="apex-charts" data-colors="#10c469,#ff5b5b"></div>
-                            </div>
-
-                        </div>
-                        <!-- end card body-->
-                    </div>
-                    <!-- end card -->
-                </div>
-                <!-- end col-->
-            </div>
-            <!-- end row-->
-
-
-            <div class="row">
-                <div class="col-xl-4 col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                </div>
-                            </div>
-                            <h4 class="header-title mb-3">Top Performing</h4>
-
-                            <div class="table-responsive">
-                                <table class="table table-striped table-sm table-nowrap table-centered mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>User</th>
-                                            <th>Leads</th>
-                                            <th>Deals</th>
-                                            <th>Tasks</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <h5 class="font-15 mb-1 fw-normal">Jeremy Young</h5>
-                                                <span class="text-muted font-13">Senior Sales Executive</span>
-                                            </td>
-                                            <td>187</td>
-                                            <td>154</td>
-                                            <td>49</td>
-                                            <td class="table-action">
-                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5 class="font-15 mb-1 fw-normal">Thomas Krueger</h5>
-                                                <span class="text-muted font-13">Senior Sales Executive</span>
-                                            </td>
-                                            <td>235</td>
-                                            <td>127</td>
-                                            <td>83</td>
-                                            <td class="table-action">
-                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5 class="font-15 mb-1 fw-normal">Pete Burdine</h5>
-                                                <span class="text-muted font-13">Senior Sales Executive</span>
-                                            </td>
-                                            <td>365</td>
-                                            <td>148</td>
-                                            <td>62</td>
-                                            <td class="table-action">
-                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5 class="font-15 mb-1 fw-normal">Mary Nelson</h5>
-                                                <span class="text-muted font-13">Senior Sales Executive</span>
-                                            </td>
-                                            <td>753</td>
-                                            <td>159</td>
-                                            <td>258</td>
-                                            <td class="table-action">
-                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5 class="font-15 mb-1 fw-normal">Kevin Grove</h5>
-                                                <span class="text-muted font-13">Senior Sales Executive</span>
-                                            </td>
-                                            <td>458</td>
-                                            <td>126</td>
-                                            <td>73</td>
-                                            <td class="table-action">
-                                                <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> <!-- end table-responsive-->
-
-                        </div> <!-- end card-body-->
-                    </div> <!-- end card-->
-                </div>
-                <!-- end col-->
-
-                <div class="col-xl-4 col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                </div>
-                            </div>
-                            <h4 class="header-title mb-4">Recent Leads</h4>
-
-                            <div class="d-flex align-items-start">
-                                <img class="me-3 rounded-circle" src="assets/images/users/avatar-2.jpg" width="40" alt="Generic placeholder image">
-                                <div class="w-100 overflow-hidden">
-                                    <span class="badge badge-warning-lighten float-end">Cold lead</span>
-                                    <h5 class="mt-0 mb-1">Risa Pearson</h5>
-                                    <span class="font-13">richard.john@mail.com</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-start mt-3">
-                                <img class="me-3 rounded-circle" src="assets/images/users/avatar-3.jpg" width="40" alt="Generic placeholder image">
-                                <div class="w-100 overflow-hidden">
-                                    <span class="badge badge-danger-lighten float-end">Lost lead</span>
-                                    <h5 class="mt-0 mb-1">Margaret D. Evans</h5>
-                                    <span class="font-13">margaret.evans@rhyta.com</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-start mt-3">
-                                <img class="me-3 rounded-circle" src="assets/images/users/avatar-4.jpg" width="40" alt="Generic placeholder image">
-                                <div class="w-100 overflow-hidden">
-                                    <span class="badge badge-success-lighten float-end">Won lead</span>
-                                    <h5 class="mt-0 mb-1">Bryan J. Luellen</h5>
-                                    <span class="font-13">bryuellen@dayrep.com</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-start mt-3">
-                                <img class="me-3 rounded-circle" src="assets/images/users/avatar-5.jpg" width="40" alt="Generic placeholder image">
-                                <div class="w-100 overflow-hidden">
-                                    <span class="badge badge-warning-lighten float-end">Cold lead</span>
-                                    <h5 class="mt-0 mb-1">Kathryn S. Collier</h5>
-                                    <span class="font-13">collier@jourrapide.com</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-start mt-3">
-                                <img class="me-3 rounded-circle" src="assets/images/users/avatar-1.jpg" width="40" alt="Generic placeholder image">
-                                <div class="w-100 overflow-hidden">
-                                    <span class="badge badge-warning-lighten float-end">Cold lead</span>
-                                    <h5 class="mt-0 mb-1">Timothy Kauper</h5>
-                                    <span class="font-13">thykauper@rhyta.com</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-start mt-3">
-                                <img class="me-3 rounded-circle" src="assets/images/users/avatar-6.jpg" width="40" alt="Generic placeholder image">
-                                <div class="w-100 overflow-hidden">
-                                    <span class="badge badge-success-lighten float-end">Won lead</span>
-                                    <h5 class="mt-0 mb-1">Zara Raws</h5>
-                                    <span class="font-13">austin@dayrep.com</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- end card-body -->
-                    </div>
-                    <!-- end card-->
-                </div>
-                <!-- end col -->
-
-                <div class="col-xl-4 col-lg-6">
-                    <div class="card cta-box bg-primary text-white">
-                        <div class="card-body">
-                            <div class="d-flex align-items-start align-items-center">
-                                <div class="w-100 overflow-hidden">
-                                    <h2 class="mt-0"><i class="mdi mdi-bullhorn-outline"></i>&nbsp;</h2>
-                                    <h3 class="m-0 fw-normal cta-box-title">Enhance your <b>Campaign</b> for better outreach <i class="mdi mdi-arrow-right"></i></h3>
-                                </div>
-                                <img class="ms-3" src="assets/images/email-campaign.svg" width="120" alt="Generic placeholder image">
-                            </div>
-                        </div>
-                        <!-- end card-body -->
-                    </div>
-                    <!-- end card-->
-
-                    <!-- Todo-->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="dropdown float-end">
-                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                </div>
-                            </div>
-                            <h4 class="header-title mb-2">Todo</h4>
-
-                            <div class="todoapp">
-                                <div data-simplebar style="max-height: 224px">
-                                    <ul class="list-group list-group-flush todo-list" id="todo-list"></ul>
-                                </div>
-                            </div> <!-- end .todoapp-->
-
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card-->
-
-                </div>
-                <!-- end col -->
-            </div>
-            <!-- end row-->
-
-
-        </div> <!-- End Content -->
-
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> © Hyper - Coderthemes.com
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- end Footer -->
-
-    </div> <!-- content-page -->
-
-</div> <!-- end wrapper-->
-</div>
-<!-- END Container -->
-
-<!-- Footer Start -->
-<footer class="footer">
-    <div class="container-fluid">
+<div class="content-page">
+    <div class="content">
+        
+        <!-- start page title -->
         <div class="row">
-            <div class="col-md-6">
-                <script>
-                    document.write(new Date().getFullYear())
-                </script> © Hyper - Coderthemes.com
-            </div>
-            <div class="col-md-6">
-                <div class="text-md-end footer-links d-none d-md-block">
-                    <a href="javascript: void(0);">About</a>
-                    <a href="javascript: void(0);">Support</a>
-                    <a href="javascript: void(0);">Contact Us</a>
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
+                            <li class="breadcrumb-item active">Gantt</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Projects</h4>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
-<!-- end Footer -->
+        <!-- end page title -->
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <!-- start projects-->
+                    <div class="col-xxl-3 col-lg-4">
+                        <div class="pe-xl-3">
+                            <h5 class="mt-0 mb-3">Projects</h5>
+                            <!-- start search box -->
+                            <div class="app-search">
+                                <form>
+                                    <div class="mb-2 position-relative">
+                                        <input type="text" class="form-control"
+                                            placeholder="search by name..." />
+                                        <span class="mdi mdi-magnify search-icon"></span>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- end search box -->
+
+                            <div class="row">
+                                <div class="col">
+                                    <div data-simplebar style="max-height: 535px;">
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-2 p-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span class="avatar-title bg-success-lighten rounded-circle text-success">
+                                                        <i class='uil uil-moonset font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Overview
+                                                        <span class="badge badge-success-lighten ms-1">On Track</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj101
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex bg-light p-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-success-lighten rounded-circle text-success">
+                                                        <i class='uil uil-moon-eclipse font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Project Informations
+                                                        <span class="badge badge-success-lighten ms-1">On
+                                                            Track</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj102
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex bg-light p-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-success-lighten rounded-circle text-success">
+                                                        <i class='uil uil-moon-eclipse font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Test
+                                                        <span class="badge badge-success-lighten ms-1">On
+                                                            Track</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj102
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-1 px-2 py-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-warning-lighten rounded-circle text-warning">
+                                                        <i class='uil uil-moon font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Design
+                                                        <span
+                                                            class="badge badge-warning-lighten ms-1">Locked</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj104
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-1 px-2 py-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-warning-lighten rounded-circle text-warning">
+                                                        <i class='uil uil-mountains font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Estimate Budget
+                                                        <span class="badge badge-warning-lighten ms-1">Locked</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj103
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-1 px-2 py-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-warning-lighten rounded-circle text-warning">
+                                                        <i class='uil uil-moon font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Project Managment
+                                                        <span
+                                                            class="badge badge-warning-lighten ms-1">Locked</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj104
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        
+
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-1 px-2 py-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-danger-lighten rounded-circle text-danger">
+                                                        <i class='uil uil-ship font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Worker List
+                                                        <span
+                                                            class="badge badge-danger-lighten ms-1">Delayed</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj106
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-1 px-2 py-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-success-lighten rounded-circle text-success">
+                                                        <i class='uil uil-subway-alt font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Darwin
+                                                        <span class="badge badge-success-lighten ms-1">On
+                                                            Track</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj107
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-1 px-2 py-2">
+                                                <div class="avatar-sm d-table">
+                                                    <span
+                                                        class="avatar-title bg-danger-lighten rounded-circle text-danger">
+                                                        <i class='uil uil-gold font-24'></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2">
+                                                    <h5 class="mt-0 mb-0">
+                                                        Eagle
+                                                        <span class="badge badge-danger-lighten ms-1">Delayed</span>
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        ID: proj108
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end projects -->
+
+                    <!-- gantt view -->
+                    <div class="col-xxl-9 mt-4 mt-xl-0 col-lg-8">
+                        <div class="ps-xl-3">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <a href="javascript: void(0);" class="btn btn-success btn-sm mb-2">Add New Task</a>
+                                </div>
+                                <div class="col text-sm-end">
+                                    <div class="btn-group btn-group-sm mb-2" data-bs-toggle="buttons" id="modes-filter">
+                                        <label class="btn btn-primary d-none d-sm-inline-block">
+                                            <input  class="btn-check" type="radio" name="modes" id="qday" value="Quarter Day"> Quarter Day
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input  class="btn-check" type="radio" name="modes" id="hday" value="Half Day"> Half Day
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input  class="btn-check" type="radio" name="modes" id="day" value="Day"> Day
+                                        </label>
+                                        <label class="btn btn-primary active">
+                                            <input  class="btn-check" type="radio" name="modes" id="week" value="Week" checked> Week
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input  class="btn-check" type="radio" name="modes" id="month" value="Month"> Month
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        <div class="row">
+                            <div class="row col-xl-12">
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Start Date</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->start_date}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            (Mitter)
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">End Date</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->end_date}}
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Due Date">Due Date</h5>
+                                                    <h3 class="my-2 py-1 d-flex text-warning">
+                                                        {{ now()->diffInDays($project->end_date) }} Days Left
+                                                        
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                            </div>
+                            <div class="row col-xl-12">
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Land Area</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->land[0]->land_area}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            ({{$project->land[0]->plot_area_counter}})
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="text-muted fw-normal mt-0 text-truncate">
+                                                    <h5 class="mt-0" title="Campaign Sent">Building Area</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->land[0]->building_area}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            ({{$project->land[0]->Building_area_counter}})
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->land[0]->building_height}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            ({{$project->land[0]->Building_height_counter}})
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                            </div>
+                            <div class="row col-xl-12">
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Estimate Budget</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->budget}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            ({{__('BDT')}})
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Cost</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        9,184
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            (Mitter)
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        9,184
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            (Mitter)
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                            </div>
+            
+                        </div>
+                        </div>
+                    </div>
+                    <!-- end gantt view -->
+                </div>
+            </div>
+        </div>
+        
+    </div> <!-- End Content -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end footer-links d-none d-md-block">
+                        <a href="javascript: void(0);">About</a>
+                        <a href="javascript: void(0);">Support</a>
+                        <a href="javascript: void(0);">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end Footer -->
 
 </div> <!-- content-page -->
 
-</div> <!-- end wrapper-->
-</div>
-<!-- END Container -->
-
-
 @endsection
+
 
 @push('scripts')
 <script src="{{asset('assets/js/vendor/apexcharts.min.js')}}"></script>
 
 <script src="{{asset('assets/js/pages/demo.dashboard-crm.js')}}"></script>
+<script>
+
+    $('#condensed-check').prop('checked', true);
+</script>
 @endpush

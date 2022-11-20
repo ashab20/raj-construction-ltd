@@ -40,11 +40,11 @@
                             @method('post')
                          
                             <div class="row">                            
-                                <div class="col-xl-6 mb-3">
+                                <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
                                     <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}">
                                 </div>
-                                <div class="mb-0 col-xl-6 col-6">
+                                <div class="mb-0 col-xl-4 col-6">
                                     <label for="project-overview" class="form-label">{{__('Land Owner Name')}} :</label>
 
                                     <select class="form-control select2" data-toggle="select2" name="landownerdata">
@@ -57,32 +57,41 @@
                                         @endforelse
                                     </select>
                                 </div>
+
+                                <div class="col-xl-4 mb-3">
+                                    <label for="projectOwnerShip" class="form-label">{{__('Owner Ship ')}} (%):</label>
+                                    <input type="text" id="projectOwnerShip-budget" class="form-control" name="projectOwnerShip" placeholder="Eg 40"
+                                    value="{{ old('projectOwnerShip')}}">
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <!-- Date View -->
-                                <div class="col-xl-6 mb-3 position-relative" id="datepicker1">
+                                <div class="col-xl-4 mb-3 position-relative" id="datepicker1">
                                     <label class="form-label">{{__('Start Date')}}</label>
                                     <input type="date" class="form-control" 
                                     name="parojectStarDate"
                                     value="{{ old('parojectStarDate')}}"
                                     >
                                 </div>
-                                <div class="col-xl-6 position-relative" id="datepicker2">
+                                <div class="col-xl-4 position-relative" id="datepicker2">
                                     <label class="form-label">{{__('Due Date')}}</label>
                                     <input type="date" class="form-control"  
                                     name="parojectEndDate"
                                     value="{{ old('parojectEndDate')}}" >
                                 </div>
+                                <div class="col-xl-4 mb-3">
+                                    <label for="project-budget" class="form-label">{{__('Estimate Budget')}}:</label>
+                                    <input type="text" id="project-budget" class="form-control" name="totalBudget" placeholder="Enter project budget"
+                                    value="{{ old('totalBudget')}}">
+                                </div>
                             </div>
                             <div class="row">
                                 {{-- <div class="col-xl-6"> --}}
                                     
-                                    <div class="col-xl-6 mb-3">
-                                        <label for="project-budget" class="form-label">{{__('Budget')}}</label>
-                                        <input type="text" id="project-budget" class="form-control" name="totalBudget" placeholder="Enter project budget"
-                                        value="{{ old('totalBudget')}}">
-                                    </div>
-                                    <div class="col-xl-6 mb-3 mt-3 mt-xl-0">
-                                        <label for="projectname" class="mb-0">Project Image</label>
+                                    
+                                    <div class="col-xl-4 mb-3 mt-3 mt-xl-0">
+                                        <label for="projectname" class="mb-0">{{__('Project thumbnail')}} : </label>
                                         
                                             <input class="form-control" type="file" id="inputGroupFile04" name="projectImage"
                                             value="{{old('projectImage')}}">

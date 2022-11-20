@@ -61,6 +61,7 @@ class ProjectsController extends Controller
                 $project->project_name = $request->projectNameInputField;
                 // $project->project_name = $request->landownerdata;
                 $project->project_overview = $request->projectOverview;
+                $project->ownerShip = $request->projectOwnerShip % 100;
 
                 $project->start_date = $request->parojectStarDate;
                 $project->end_date = $request->parojectEndDate;
