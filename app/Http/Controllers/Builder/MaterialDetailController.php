@@ -29,7 +29,7 @@ class MaterialDetailController extends Controller
      */
     public function create()
     {
-        $matName=Material::all();
+        $matName = Material::all();
         return view('materialDetails.create',compact('matName'));
     }
 

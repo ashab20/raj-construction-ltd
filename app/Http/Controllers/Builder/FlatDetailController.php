@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
+use App\Models\Builder\Flat;
 use App\Models\Builder\FlatDetail as BuilderFlatDetail;
 use Exception;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class FlatDetailController extends Controller
      */
     public function create()
     {
-        return view('flatDetail.create');
+        $flatName = Flat::all();
+        return view('flatDetail.create',compact('flatName'));
     }
 
     /**

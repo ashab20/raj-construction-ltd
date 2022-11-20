@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class FlatDetail extends Model
 {
     use HasFactory,SoftDeletes;
+
+    public function flat(){
+        return $this->belongsTo(Flat::class);
+    }
 }

@@ -31,9 +31,22 @@
                                 <div class="col-lg-12">
                                     <form class="form" method="post" action="{{ route('flatDetail.store')}}">
                                         @csrf
-                                        <div class="mb-3">
-                                            <label for="squireFeet" class="form-label">Squire Feet</label>
-                                            <input type="text" id="squireFeet" name="squireFeet" class="form-control">
+                                        <div class="row">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="materialName" class="form-label">Material Name</label>
+                                                <select class="form-control" name="materialName" id="materialName">
+                                                    <option value="">Select Name</option>
+                                                    @forelse($matName as $mName)
+                                                        <option value="{{$mName->id}}" {{ old('materialName')==$mName->id?"selected":""}}> {{ $mName->material_name}}</option>
+                                                    @empty
+                                                        <option value="">No data found</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label for="squireFeet" class="form-label">Squire Feet</label>
+                                                <input type="text" id="squireFeet" name="squireFeet" class="form-control">
+                                            </div>
                                         </div>
 
                                         <div class="mb-3">

@@ -57,7 +57,7 @@
                                     <tr>
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $fd->flat_id}}</td>
+                                        <td>{{ $fd->flat?->flat}}</td>
                                         <td>{{ $fd->client_id}}</td>
                                         <td>{{ $fd->squire_feet}}</td>
                                         {{-- <td><img width="50px" src="{{ asset('uploads/land/'.$land->design_id)}}" alt=""></td> --}}
