@@ -81,9 +81,9 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::get('/design',[DesignController::class, 'index'])->name('design');
         Route::get('/design/create/{id}', [DesignController::class, 'create'])->name('design.create');
         Route::post('/design/store', [DesignController::class, 'store'])->name('design.store');
-        Route::get('/design/store', [DesignController::class, 'edit'])->name('design.edit');
-        Route::put('/design/edit', [DesignController::class, 'update'])->name('design.update');
-        Route::post('/design/delete', [DesignController::class, 'destroy'])->name('design.destroy');
+        Route::get('/design/edit/{design}', [DesignController::class, 'edit'])->name('design.edit');
+        Route::put('/design/update', [DesignController::class, 'update'])->name('design.update');
+        Route::post('/design/delete/{design}', [DesignController::class, 'destroy'])->name('design.destroy');
 
         // builder
         Route::resource('/designation', DesignationController::class);

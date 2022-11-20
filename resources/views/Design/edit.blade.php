@@ -32,30 +32,39 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('design.update',$designDetails->id)}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{route('design.update',$designDetail->id)}}">
                                         @csrf
                                         @method('patch')
                                         <div class="mb-3">
-                                            <label for="desiname" class="form-label">Designer Name</label>
-                                            <input type="text" value="{{ old('desiname',$designDetails->designer_id)}}" id="desiname" name="desiname" class="form-control">
+                                            <label for="desiname" class="form-label">{{__('Designer')}}: </label>
+                                            <select  class="form-control select2" data-toggle="select2" name="desiname" required>
+                                                <option value="" >Select</option>
+                                                @forelse ($employee as $em)
+                                                <option value="{{$em->id}}" {{old('desiname',$designDetail->designer_id) === $em->id?'selected':''}}>{{$em->name}} - {{$em->email}} - {{$em->phone}}</option>
+                                                
+                                                @empty
+                                                <option value="" disabled>{{__('Not found!')}}</option>
+                                                    
+                                                @endforelse
+                                            </select>
                                         </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label for="document">Document</label>
-                                                <input class="form-control" value="{{ old('document',$designDetails->document)}}" name="document" id="document" type="file">
+                                                <input class="form-control" value="{{ old('document',$designDetail->document)}}" name="document" id="document" type="file">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="bsfeet" class="form-label">Building squire feet</label>
-                                            <input type="number" value="{{ old('bsfeet',$designDetails->building_squire_feet)}}" id="bsfeet" name="bsfeet" class="form-control">
+                                            <input type="number" value="{{ old('bsfeet',$designDetail->building_squire_feet)}}" id="bsfeet" name="bsfeet" class="form-control">
                                         </div>
                                         <div class="mb-3">
                                             <label for="tfnumber" class="form-label">Total floor number</label>
-                                            <input type="number" value="{{ old('tfnumber',$designDetails->total_floor_number)}}" id="tfnumber" name="tfnumber" class="form-control">
+                                            <input type="number" value="{{ old('tfnumber',$designDetail->total_floor_number)}}" id="tfnumber" name="tfnumber" class="form-control">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="designdetails" class="form-label">design details</label>
-                                            <textarea class="form-control"  id="designdetails" name="designdetails" rows="5">{{ old('designdetails',$designDetails->design_details)}}</textarea>
+                                            <label for="designdetails" class="form-label">design detail</label>
+                                            <textarea class="form-control"  id="designdetails" name="designdetails" rows="5">{{ old('designdetails',$designDetail->design_details)}}</textarea>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
 

@@ -65,40 +65,180 @@
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a>
                             </div>
                         </div>
-                        <!-- project title-->
                         <h3 class="mt-0">
                             {{$project->project_name}}
                         </h3>
                         <div class="badge bg-secondary text-light mb-3">Ongoing</div>
 
+                        <div class="row">
+                            <div class="row col-xl-12">
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Start Date</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->start_date}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            (Mitter)
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">End Date</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->end_date}}
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Due Date">Due Date</h5>
+                                                    <h3 class="my-2 py-1 d-flex text-warning">
+                                                        {{ now()->diffInDays($project->end_date) }} Days Left
+                                                        
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                            </div>
+                            <div class="row col-xl-12">
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Land Area</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->land[0]->land_area}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            ({{$project->land[0]->plot_area_counter}})
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="text-muted fw-normal mt-0 text-truncate">
+                                                    <h5 class="mt-0" title="Campaign Sent">Building Area</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->land[0]->building_area}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            ({{$project->land[0]->Building_area_counter}})
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        {{$project->land[0]->building_height}}
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            ({{$project->land[0]->Building_height_counter}})
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                            </div>
+                            <div class="row col-xl-12">
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Budget</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        9,184
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            (Mitter)
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Cost</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        9,184
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            (Mitter)
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                                <div class="col-lg-4 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="">
+                                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
+                                                    <h3 class="my-2 py-1 d-flex">
+                                                        9,184
+                                                        <p class="mt-2 p-1 text-muted small">
+                                                            (Mitter)
+                                                        </p>
+                                                    </h3>
+                                                </div>
+                                            </div> <!-- end row-->
+                                        </div> <!-- end card-body -->
+                                    </div> <!-- end card -->
+                                </div> <!-- end col -->
+                            </div>
+            
+                        </div>
+                        <!-- project title-->
+                        
                         <h5>{{__('Project Overview')}}:</h5>
                         <div data-simplebar data-simplebar-primary style="max-height: 250px;">
 
-
-
+                            @isset($project->project_overview)
                             {!! Str::markdown($project->project_overview) !!}
+                                
+                            @endisset
+                            
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-4">
-                                    <h5>Start Date</h5>
-                                    <p>17 March 2018 <small class="text-muted">1:00 PM</small></p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-4">
-                                    <h5>End Date</h5>
-                                    <p>22 December 2018 <small class="text-muted">1:00 PM</small></p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-4">
-                                    <h5>Budget</h5>
-                                    <p>$15,800</p>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div id="tooltip-container">
                             <h5>Team Members:</h5>
@@ -141,13 +281,22 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <!-- item-->
-                                    @if($project->design->count() < 0) <a href="{{ route('design.create',encrypt($project->id))}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Add New Design</a>
-                                        @endif
+                                    @if($project->design->count() > 0)                   
 
-                                        <a href="{{ route('design.edit',$project->design->first())}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                        <a href="{{ route('design.edit',encrypt($project->design->first()->id))}}" class="dropdown-item">
+                                            <i class="mdi mdi-pencil me-1"></i>Edit
+                                        </a>
                                         <!-- item-->
-                                        <a  href="{{ route('design.destroy',encrypt($project->design))}}" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
-                                        <!-- item-->
+                                        <a  href="{{ route('design.destroy',encrypt($project->design->first()->id))}}" class="dropdown-item">
+                                            <i class="mdi mdi-delete me-1"></i>Delete
+                                        </a>
+                                        <!-- item--> 
+                                    @else
+                                    <a href="{{ route('design.create',encrypt($project->id))}}" class="dropdown-item">
+                                        <i class="uil-file-plus-alt  me-1"></i>
+                                        Add New Design
+                                    </a>  
+                                    @endif
                                         <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a>
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a>

@@ -94,11 +94,12 @@ class DesignController extends Controller
      * @param  \App\Models\design  $design
      * @return \Illuminate\Http\Response
      */
-    public function edit(Design $design, $id)
+    public function edit($id)
     {
-        $designDetails=Design::find(decrypt($id));
-        print_r($design);
-        return view('Design.edit',compact('designDetails'));
+        // print_r($id);
+        $designDetail=Design::find(decrypt($id));
+        $employee = User::where('role_id',3)->get();
+        return view('Design.edit',compact('designDetail','employee'));
     }
 
     /**
