@@ -13,4 +13,8 @@ class FloorBudgetDetails extends Model
     public function material(){
         return $this->belongsTo(Material::class);
     }
+
+    public function floor_budget_id(){
+        return $this->hasMany(FlatDetail::class);
+    }
 }

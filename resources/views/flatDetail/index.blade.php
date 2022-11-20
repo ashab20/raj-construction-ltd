@@ -53,15 +53,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @forelse ($fdetail as $fd)
                                     <tr>
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         <td>{{ $fd->flat?->flat}}</td>
-                                        <td>{{ $fd->client_id}}</td>
+                                        <td>{{ $fd->client?->name}}</td>
                                         <td>{{ $fd->squire_feet}}</td>
-                                        {{-- <td><img width="50px" src="{{ asset('uploads/land/'.$land->design_id)}}" alt=""></td> --}}
-                                        <td>{{ $fd->total_budget}}</td>
+                                        <td>{{ $fd->totalBudget}}</td>
+                                        {{-- <td>{{ $fd->?->total_budget / $fd->flat?->flat->count()}}</td> --}}
                                         <td>{{ $fd->total_cost}}</td>
                                         <td>{{ $fd->material_detail_id}}</td>
                                         <td>{{ $fd->sales_price}}</td>
