@@ -29,7 +29,7 @@ class FlatController extends Controller
      */
     public function create()
     {
-        //
+        return view('Flat.create');
     }
 
     /**
@@ -40,7 +40,23 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $flats=new Flat();
+            $identity = decrypt(session()->get('roleIdentity'));
+            
+            $flats->created_by=decrypt(session()->get('userId'));
+            $flats->flat=$request->flatname;
+           
+            
+            $flats->status = 1;
+            if($flats->save()){
+                return redirect($identity.'/flat')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -85,6 +101,9 @@ class FlatController extends Controller
      */
     public function destroy(Flat $flat)
     {
-        //
+        $flat->delete();
+        return redirect()->route('flat.index');
     }
 }
+
+
