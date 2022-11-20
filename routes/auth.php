@@ -92,7 +92,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         // floor
         Route::resource('/floorDetails', FloorDetailsController::class);
         Route::resource('/floorBudget', FloorbudgetController::class);
-        Route::resource('/floorBudgetDetails', FloorBudgetDetailsController::class);
+        Route::resource('/floorBudgetDetail', FloorBudgetDetailsController::class);
 
         // flat
         Route::resource('/flatDetail', FlatDetailController::class);

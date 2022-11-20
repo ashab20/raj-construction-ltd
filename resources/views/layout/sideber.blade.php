@@ -117,6 +117,7 @@
                                 </div>
                             </li>
                             <li>
+                            <li  class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarMaterial" aria-expanded="false" aria-controls="sidebarMaterial">
                                     <span> {{ __('Materials')}}</span>
                                     <span class="menu-arrow"></span>
@@ -136,7 +137,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li>
+                            <li  class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarFloor">
                                     <span>{{__('Floor')}}</span>
                                     <span class="menu-arrow"></span>
@@ -154,14 +155,14 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('floorBudgetDetails.index')}}">
+                                            <a href="{{ route('floorBudgetDetail.index')}}">
                                                 {{__('Floor Budget Details')}}
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li>
+                            <li  class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarBuilder">
                                     <span>{{__('Builder')}}</span>
                                     <span class="menu-arrow"></span>
