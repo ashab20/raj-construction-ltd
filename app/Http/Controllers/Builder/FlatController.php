@@ -78,7 +78,8 @@ class FlatController extends Controller
      */
     public function edit(Flat $flat)
     {
-        //
+        return view ('flat.edit',compact('flat'));
+
     }
 
     /**
@@ -90,7 +91,23 @@ class FlatController extends Controller
      */
     public function update(Request $request, Flat $flat)
     {
-        //
+       
+        try{
+             $identity = decrypt(session()->get('roleIdentity'));
+            $user = decrypt(session()->get('userId'));
+            $flats=$flat;
+            $flats->flat=$request->flatname;
+            $flats->updated_by = $user;
+            // $builder->builder=$request->buildername;
+            $flats->status = 1;
+            if($flats->save()){
+                return redirect($identity.'/flat')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
