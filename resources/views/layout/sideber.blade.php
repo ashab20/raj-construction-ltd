@@ -87,7 +87,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('flatDetail.index')}}">
-                                    {{__('Flat')}}
+                                    {{__('Flat Details')}}
                                 </a>
                             </li>
                             <li>
@@ -95,6 +95,28 @@
                                     {{__('Documents')}}
                                 </a>
                             </li>
+
+                            <li>
+                                <a data-bs-toggle="collapse" href="#sidebarflat" aria-expanded="false" aria-controls="sidebarflat">
+                                    <span> {{ __('Flat')}}</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarflat">
+                                    <ul class="side-nav-second-level">
+                                        <li>
+                                            <a href="{{ route('flat.create')}}">
+                                                {{__('Flats')}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('flat.index')}}">
+                                                {{__('Flats Details')}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
                             <li  class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarMaterial" aria-expanded="false" aria-controls="sidebarMaterial">
                                     <span> {{ __('Materials')}}</span>
