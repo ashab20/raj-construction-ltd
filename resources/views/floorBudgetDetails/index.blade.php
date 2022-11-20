@@ -12,10 +12,10 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                    <li class="breadcrumb-item active">Floor Budget</li>
+                    <li class="breadcrumb-item active">Floor Budget Details</li>
                 </ol>
             </div>
-            <h4 class="page-title">Floor Budget</h4>
+            <h4 class="page-title">Floor Budget Details</h4>
         </div>
     </div>
 </div>      
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{route('floorBudget.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Floor Budget</a>
+                            <a href="{{route('floorBudgetDetails.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Floor Budget</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
@@ -41,36 +41,39 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
-                                        <th>Floor No.</th>
-                                        <th>Total Working Day</th>
-                                        <th>Total Worker</th>
+                                        <th>Material Name</th>
+                                        <th>Quantity</th>
+                                        <th>Market Price</th>
+                                        <th>Total Budget</th>
                                         <th>Issues Date</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($floorbudget as $fBudget)
+                                    @forelse ($floorbudgetdetails as $fBudgetDetails)
                                     <tr>
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $fBudget->floorDetail?->floor_no}}</td>
-                                        <td>{{ $fBudget->Total_working_day}}</td>
-                                        <td>{{ $fBudget->Total_worker}}</td>
-                                        <td>{{ $fBudget->issues_date}}</td>
+                                        {{-- material_id  budget_quantity 	market_price 	total_budget 	issues_date  (material_name)--}}
+                                        <td>{{ $fBudgetDetails->material?->material_name}}</td>
+                                        <td>{{ $fBudgetDetails->budget_quantity}}</td>
+                                        <td>{{ $fBudgetDetails->market_price}}</td>
+                                        <td>{{ $fBudgetDetails->budget_quantity * $fBudgetDetails->market_price}}</td>
+                                        <td>{{ $fBudgetDetails->issues_date}}</td>
                                         <td>
-                                            @if ($fBudget->status === 1)
+                                            @if ($fBudgetDetails->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
                                             @else                                   
                                                 <span class="badge badge-danger-lighten">Blocked</span>
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('floorBudget.edit',$fBudget->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="{{ route('floorBudgetDetails.edit',$fBudgetDetails->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
                                                 
-                                            <a href="javascript:void()" onclick="$('#form{{$fBudget->id}}').submit()">
+                                            <a href="javascript:void()" onclick="$('#form{{$fBudgetDetails->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$fBudget->id}}" action="{{ route('floorBudget.destroy',$fBudget->id)}}" method="post">
+                                            <form id="form{{$fBudgetDetails->id}}" action="{{ route('floorBudgetDetails.destroy',$fBudgetDetails->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

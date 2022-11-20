@@ -132,6 +132,11 @@
                                                 {{__('Floor Budget')}}
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('floorBudgetDetails.index')}}">
+                                                {{__('Floor Budget Details')}}
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

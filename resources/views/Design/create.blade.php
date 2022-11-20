@@ -18,7 +18,7 @@
                     <h4 class="page-title">Form Elements</h4>
                 </div>                     
             </div>
-        </div>                                                                  
+        </div>                                                                 
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -32,12 +32,13 @@
                                 <div class="col-lg-12">
                                     <form class="form" method="post" enctype="multipart/form-data" action="{{route('design.store')}}">
                                         @csrf
+                                        @method('POST')
                                         <input type="text" name="project" value="{{decrypt($id)}}" id="" hidden>
                                         <div class="row">
                                            <div class="mb-3 col-xl-4">
                                             <label for="desiname" class="form-label">{{__('Designer')}}: </label>
-                                            <select name="" id="" class="form-control select2" data-toggle="select2" name="desiname">
-                                                
+                                            <select  class="form-control select2" data-toggle="select2" name="desiname" required>
+                                                <option value="" >Select</option>
                                                 @forelse ($employee as $em)
                                                 <option value="{{$em->id}}">{{$em->name}} - {{$em->email}} - {{$em->phone}}</option>
                                                 

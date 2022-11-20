@@ -13,7 +13,8 @@ class DesignController extends Controller
 {
     public function __invoke(Request $request,$id)
     {
-        $employee = User::where('role_id',3);
+        
+        $employee = User::where('role_id',3)->get();
         return view('Design.create',compact(['id','employee']));      
         
     }
@@ -24,8 +25,9 @@ class DesignController extends Controller
      */
     public function index()
     {
-        $design=Design::paginate(10);
-        return view('Design.index',compact('design'));
+        $employee = User::where('role_id',3)->get();
+        return view('Design.create',compact(['id','employee']));      
+        
     }
 
     /**
@@ -35,8 +37,8 @@ class DesignController extends Controller
      */
     public function create($id)
     {
-        // dd($id);
-        return view('Design.create',compact('id'));
+        $employee = User::where('role_id',3)->get();
+        return view('Design.create',compact(['id','employee']));  
     }
 
     /**

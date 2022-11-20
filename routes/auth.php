@@ -10,6 +10,7 @@ use App\Http\Controllers\Builder\BuilderOptionController;
 use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
 use App\Http\Controllers\Builder\FloorbudgetController;
+use App\Http\Controllers\Builder\FloorBudgetDetailsController;
 use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
 use App\Http\Controllers\Constructions\ConstructControlller;
@@ -73,20 +74,26 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         Route::resource('/document', DocumentController::class);
         Route::resource('/land', LandController::class);
-        Route::resource('/floorDetails', FloorDetailsController::class);
-        Route::resource('/flatDetail', FlatDetailController::class);
 
         // design
         Route::get('/design', DesignController::class, 'index');
         Route::get('/design/create/{id}', DesignController::class, 'create')->name('design.create');
         Route::post('/design/store', DesignController::class, 'store')->name('design.store');
 
-
+        // builder
         Route::resource('/designation', DesignationController::class);
         Route::resource('/builder', BuilderOptionController::class);
-
+        
+        // material
         Route::resource('/material', BuilderMaterialController::class);
         Route::resource('/materialDetails', MaterialDetailController::class);
+        
+        // floor
+        Route::resource('/floorDetails', FloorDetailsController::class);
         Route::resource('/floorBudget', FloorbudgetController::class);
+        Route::resource('/floorBudgetDetails', FloorBudgetDetailsController::class);
+
+        // flat
+        Route::resource('/flatDetail', FlatDetailController::class);
     });
 });

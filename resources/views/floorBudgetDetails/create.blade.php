@@ -11,11 +11,11 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                            <li class="breadcrumb-item active">Floor Budget Update</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
+                            <li class="breadcrumb-item active">Floor Budget Details Create</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Floor Budget Update</h4>
+                    <h4 class="page-title">Floor Budget Details Create</h4>
                 </div>
             </div>
         </div>      
@@ -29,34 +29,38 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('floorBudget.update',$floorBudget->id)}}">
+                                    <form class="form" enctype="multipart/form-data" method="post" action="{{ route('floorBudgetDetails.store')}}">
                                         @csrf
-                                        @method('patch')
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
-                                                <label for="floorNo" class="form-label">Floor No.</label>
-                                                <select class="form-control" name="floorNo" id="floorNo">
-                                                    <option value="">Select floor no.</option>
-                                                    @forelse($fbudgets as $fbudget)
-                                                        <option value="{{$fbudget->id}}" {{ old('floorNo',$floorBudget->floor_details_id)==$fbudget->id?"selected":""}}> {{ $fbudget->floor_no}}</option>
+                                                <label for="matName" class="form-label">Material Name</label>
+                                                <select class="form-control" name="matName" id="matName">
+                                                    <option value="">Select Name</option>
+                                                    @forelse($matname as $mtn)
+                                                        <option value="{{$mtn->id}}" {{ old('matName')==$mtn->id?"selected":""}}> {{ $mtn->material_name}}</option>
                                                     @empty
                                                         <option value="">No data found</option>
                                                     @endforelse
                                                 </select>
                                             </div>
                                             <div class="mb-3 col-md-6">
-                                                <label for="tworkingday" class="form-label">Total Working Day</label>
-                                                <input type="text" value="{{ old('tworkingday',$floorBudget->Total_working_day)}}" id="tworkingday" name="tworkingday" class="form-control">
+                                                <label for="quantity" class="form-label">Quantity</label>
+                                                <input type="text" id="quantity" name="quantity" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
-                                                <label for="tworker" class="form-label">Total Worker</label>
-                                                <input type="text" value="{{ old('tworker',$floorBudget->Total_worker)}}" id="tworker" name="tworker" class="form-control">
+                                                <label for="mPrice" class="form-label">Market Price</label>
+                                                <input type="text" id="mPrice" name="mPrice" class="form-control">
                                             </div>
+                                            {{-- automaticaly total budget calculate hobe --}}
+                                            {{-- <div class="mb-3 col-md-6">
+                                                <label for="tBudget" class="form-label">Total Budget</label>
+                                                <input type="text" id="tBudget" name="tBudget" class="form-control">
+                                            </div> --}} 
                                             <div class="mb-3 col-md-6">
                                                 <label for="issueDate" class="form-label">Issues Date</label>
-                                                <input type="datetime-local" value="{{ old('issueDate',$floorBudget->issues_date)}}" id="issueDate" name="issueDate" class="form-control">
+                                                <input type="date" id="issueDate" name="issueDate" class="form-control">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
