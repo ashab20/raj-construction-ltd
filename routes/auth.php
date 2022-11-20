@@ -96,5 +96,6 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         // flat
         Route::resource('/flatDetail', FlatDetailController::class);
+        Route::resource('/flat', FlatController::class);
     });
 });
