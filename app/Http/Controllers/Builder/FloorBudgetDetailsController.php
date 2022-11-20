@@ -47,7 +47,7 @@ class FloorBudgetDetailsController extends Controller
             $fBDetails->material_id = $request->matName;
             $fBDetails->budget_quantity = $request->quantity;
             $fBDetails->market_price = $request->mPrice;
-            // $fBDetails->total_budget = $request->quantity * $request->tBudget;
+            $fBDetails->total_budget = $request->quantity * $request->tBudget;
             $fBDetails->issues_date = $request->issueDate;
 
             $fBDetails->status = 1;
@@ -80,9 +80,10 @@ class FloorBudgetDetailsController extends Controller
      * @param  \App\Models\FloorBudgetDetails  $floorBudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(FloorBudgetDetails $floorBudgetDetails)
+    public function edit(FloorBudgetDetails $floorBudgetDetail)
     {
-        //
+        $matName = Material::all();
+        return view('floorBudgetDetails.edit',compact('floorBudgetDetail','matName'));
     }
 
     /**
@@ -92,9 +93,27 @@ class FloorBudgetDetailsController extends Controller
      * @param  \App\Models\FloorBudgetDetails  $floorBudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FloorBudgetDetails $floorBudgetDetails)
+    public function update(Request $request, FloorBudgetDetails $floorBudgetDetail)
     {
-        //
+        try{
+            $fBDetails = $floorBudgetDetail;
+            $fBDetails->material_id = $request->matName;
+            $fBDetails->budget_quantity = $request->quantity;
+            $fBDetails->market_price = $request->mPrice;
+            $fBDetails->total_budget = $request->quantity * $request->tBudget;
+            $fBDetails->issues_date = $request->issueDate;
+
+            $fBDetails->status = 1;
+            $fBDetails->updated_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
+            if($fBDetails->save()){
+                return redirect($identity.'/floorBudgetDetail')->with('success', 'Data saved');
+            }
+
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -103,9 +122,9 @@ class FloorBudgetDetailsController extends Controller
      * @param  \App\Models\FloorBudgetDetails  $floorBudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FloorBudgetDetails $floorBudgetDetails)
+    public function destroy(FloorBudgetDetails $floorBudgetDetail)
     {
-        $floorBudgetDetails->delete();
+        $floorBudgetDetail->delete();
         return redirect()->back();
     }
 }

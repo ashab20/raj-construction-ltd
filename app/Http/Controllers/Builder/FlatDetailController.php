@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
-use App\Models\Builder\FlatDetail as BuilderFlatDetail;
+use App\Models\Builder\Flat;
+use App\Models\Builder\FlatDetail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -17,7 +18,7 @@ class FlatDetailController extends Controller
      */
     public function index()
     {
-        $fdetail=BuilderFlatDetail::paginate(10);
+        $fdetail=FlatDetail::paginate(10);
         return view('flatDetail.index',compact('fdetail'));
     }
 
@@ -28,7 +29,8 @@ class FlatDetailController extends Controller
      */
     public function create()
     {
-        return view('flatDetail.create');
+        $flatName = Flat::all();
+        return view('flatDetail.create',compact('flatName'));
     }
 
     /**
@@ -41,7 +43,7 @@ class FlatDetailController extends Controller
     {
         try{
             // squire_feet 	total_cost 	floor_budget_id 	material_detail_id 	sales_price 
-            $fd=new BuilderFlatDetail();
+            $fd=new FlatDetail();
             $identity = decrypt(session()->get('roleIdentity'));
             $fd->squire_feet = $request->squireFeet;
             // $fd->floor_budget_id = $request->tbudget;
@@ -66,7 +68,7 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(BuilderFlatDetail $flatDetail)
+    public function show(FlatDetail $flatDetail)
     {
         //
     }
@@ -77,7 +79,7 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(BuilderFlatDetail $flatDetail)
+    public function edit(FlatDetail $flatDetail)
     {
         return view('flatDetail.edit',compact('flatDetail'));
     }
@@ -89,7 +91,7 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BuilderFlatDetail $flatDetail)
+    public function update(Request $request,FlatDetail $flatDetail)
     {
         try{
             $fd = $flatDetail;
@@ -116,7 +118,7 @@ class FlatDetailController extends Controller
      * @param  \App\Models\FlatDetail  $flatDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BuilderFlatDetail $flatDetail)
+    public function destroy(FlatDetail $flatDetail)
     {
         $flatDetail->delete();
         return redirect()->back();
