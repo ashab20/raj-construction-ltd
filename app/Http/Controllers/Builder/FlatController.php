@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Builder\Flat;
 use Illuminate\Http\Request;
+use Exception;
 
 class FlatController extends Controller
 {
@@ -14,7 +15,8 @@ class FlatController extends Controller
      */
     public function index()
     {
-        //
+        $flats=Flat::paginate(10);
+        return view('flat.index',compact('flats'));
     }
 
     /**

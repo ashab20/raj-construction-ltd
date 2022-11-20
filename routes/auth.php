@@ -7,6 +7,7 @@ use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\Builder\DesignController;
 use App\Http\Controllers\Builder\DesignationController;
 use App\Http\Controllers\Builder\BuilderOptionController;
+use App\Http\Controllers\Builder\FlatController;
 use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
 use App\Http\Controllers\Builder\FloorbudgetController;
@@ -84,7 +85,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         Route::resource('/designation', DesignationController::class);
         Route::resource('/builder', BuilderOptionController::class);
-
+        Route::resourse('/flat',FlatController::class);    
         Route::resource('/material', BuilderMaterialController::class);
         Route::resource('/materialDetails', MaterialDetailController::class);
         Route::resource('/floorBudget', FloorbudgetController::class);
