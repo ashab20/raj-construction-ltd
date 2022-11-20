@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('document');
             $table->integer('building_squire_feet')->nullable();
             $table->integer('total_floor_number')->nullable();
-            $table->string('design_details');
+            $table->string('design_details')->nullable();
 
             //default
             $table->integer('status')->default(1);

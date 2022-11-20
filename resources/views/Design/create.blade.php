@@ -33,7 +33,7 @@
                                     <form class="form" method="post" enctype="multipart/form-data" action="{{route('design.store')}}">
                                         @csrf
                                         @method('POST')
-                                        <input type="text" name="project" value="{{decrypt($id)}}" id="" hidden>
+                                        <input type="text" name="project" value="{{$id}}" id="" hidden>
                                         <div class="row">
                                            <div class="mb-3 col-xl-4">
                                             <label for="desiname" class="form-label">{{__('Designer')}}: </label>

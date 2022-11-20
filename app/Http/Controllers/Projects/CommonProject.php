@@ -11,6 +11,7 @@ class CommonProject extends Controller
     public function __invoke()
     {
          $projects = Project::paginate(10);
+        //  print_r($projects);
         return view('Projects.overview',compact('projects'));
     }
 }

@@ -56,6 +56,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         Route::get('/moderators', [RoleRouteController::class, 'moderators'])->name('admin.moderators');
 
+        // project
         Route::resource('/details/project', ProjectsController::class);
 
         Route::get('/overeview/ptoject', CommonProject::class,'overview')->name('admin.project.overview');
@@ -77,9 +78,12 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/land', LandController::class);
 
         // design
-        Route::get('/design', DesignController::class, 'index');
-        Route::get('/design/create/{id}', DesignController::class, 'create')->name('design.create');
-        Route::post('/design/store', DesignController::class, 'store')->name('design.store');
+        Route::get('/design',[DesignController::class, 'index'])->name('design');
+        Route::get('/design/create/{id}', [DesignController::class, 'create'])->name('design.create');
+        Route::post('/design/store', [DesignController::class, 'store'])->name('design.store');
+        Route::get('/design/store', [DesignController::class, 'edit'])->name('design.edit');
+        Route::put('/design/edit', [DesignController::class, 'update'])->name('design.update');
+        Route::post('/design/delete', [DesignController::class, 'destroy'])->name('design.destroy');
 
         // builder
         Route::resource('/designation', DesignationController::class);

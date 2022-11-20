@@ -2,7 +2,7 @@
 
 namespace App\Models\Projects;
 
-
+use App\Models\Builder\Design;
 use App\Models\Projects\Stage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +15,10 @@ class Project extends Model
 
     public function stage(){
         return $this->belongsTo(Stage::class);
+    }
+
+    public function design(){
+        return $this->hasMany(Design::class);
     }
 }
 

@@ -11,19 +11,19 @@ use Illuminate\Http\Request;
 
 class DesignController extends Controller
 {
-    public function __invoke(Request $request,$id)
-    {
+    // public function __invoke(Request $request,$id)
+    // {
         
-        $employee = User::where('role_id',3)->get();
-        return view('Design.create',compact(['id','employee']));      
+    //     $employee = User::where('role_id',3)->get();
+    //     return view('Design.create',compact(['id','employee']));      
         
-    }
+    // }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $employee = User::where('role_id',3)->get();
         return view('Design.create',compact(['id','employee']));      
@@ -49,6 +49,7 @@ class DesignController extends Controller
      */
     public function store(Request $request)
     {
+        $project = decrypt($request->project);
         try{
             $design=new Design;
             $identity = decrypt(session()->get('roleIdentity'));
@@ -61,12 +62,12 @@ class DesignController extends Controller
             $design->building_squire_feet=$request->bsfeet;
             $design->total_floor_number=$request->tfnumber;
             $design->design_details=$request->designdetails;
-            $design->project_id=$request->project;
+            $design->project_id= $project;
             $design->created_by=decrypt(session()->get('userId'));
             
             $design->status = 1;
             if($design->save()){
-                return redirect($identity.'/design')->with('success','Data saved');
+                return redirect(route('project.show',$project))->with('success','Data saved');
             }
         }
         catch(Exception $e){
@@ -93,9 +94,10 @@ class DesignController extends Controller
      * @param  \App\Models\design  $design
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Design $design, $id)
     {
         $designDetails=Design::find(decrypt($id));
+        print_r($design);
         return view('Design.edit',compact('designDetails'));
     }
 
