@@ -7,7 +7,7 @@
 
     <div class="content-page">
         <div class="content">
-            
+
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -22,92 +22,192 @@
                         <h4 class="page-title">CRM</h4>
                     </div>
                 </div>
-            </div>     
-            <!-- end page title --> 
+            </div>
+            <!-- end page title -->
 
+
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <div class="btn-group mb-3 ms-2 d-sm-inline-block">
+                        <a href="#" class="btn btn-link text-muted"><i class="dripicons-view-apps"></i></a>
+                    </div>
+                    <div class="btn-group mb-3 d-sm-inline-block">
+                        <a href="{{route('admin.project.overview')}}" type="button" class="btn   btn-secondary"><i class="dripicons-checklist"></i></a>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="text-sm-end">
+                        <div class="btn-group mb-3">
+                            <button type="button" class="btn btn-primary">Overview</button>
+                        </div>
+                        <div class="btn-group mb-3 ms-1">
+                            <a href="{{route('construct.index')}}" class="btn btn-light">Construction</a>
+                            <button type="button" class="btn btn-light">Managment</button>
+                        </div>
+                    </div>
+                </div><!-- end col-->
+            </div>
             <div class="row">
-                <div class="col-lg-6 col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Campaign Sent</h5>
-                                    <h3 class="my-2 py-1">9,184</h3>
-                                    <p class="mb-0 text-muted">
-                                        <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 3.27%</span>
-                                    </p>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-end">
-                                        <div id="campaign-sent-chart" data-colors="#536de6"></div>
+                <div class="row col-xl-10">
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Land Area</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Building Area</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                </div>
+                <div class="row col-xl-10">
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Start Date</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">End Date</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Due Date</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                </div>
+                <div class="row col-xl-10">
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Budget</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Cost</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="">
+                                        <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
+                                        <h3 class="my-2 py-1 d-flex">
+                                            9,184
+                                            <p class="mt-2 p-1 text-muted small">
+                                                (Mitter)
+                                            </p>
+                                        </h3>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end card-body -->
+                        </div> <!-- end card -->
+                    </div> <!-- end col -->
+                </div>
 
-                <div class="col-lg-6 col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="New Leads">New Leads</h5>
-                                    <h3 class="my-2 py-1">3,254</h3>
-                                    <p class="mb-0 text-muted">
-                                        <span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> 5.38%</span>
-                                    </p>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-end">
-                                        <div id="new-leads-chart" data-colors="#10c469"></div>
-                                    </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
-                <div class="col-lg-6 col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Deals">Deals</h5>
-                                    <h3 class="my-2 py-1">861</h3>
-                                    <p class="mb-0 text-muted">
-                                        <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
-                                    </p>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-end">
-                                        <div id="deals-chart" data-colors="#536de6"></div>
-                                    </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
-
-                <div class="col-lg-6 col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    <h5 class="text-muted fw-normal mt-0 text-truncate" title="Booked Revenue">Booked Revenue</h5>
-                                    <h3 class="my-2 py-1">$253k</h3>
-                                    <p class="mb-0 text-muted">
-                                        <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 11.7%</span>
-                                    </p>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-end">
-                                        <div id="booked-revenue-chart" data-colors="#10c469"></div>
-                                    </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end card-body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
             </div>
             <!-- end row -->
 
@@ -183,7 +283,7 @@
                                     <a href="javascript:void(0);" class="dropdown-item">Last Month</a>
                                 </div>
                             </div>
-                            
+
                             <h4 class="header-title mb-3">Revenue</h4>
 
                             <div class="chart-content-bg">
@@ -384,14 +484,14 @@
                                     <span class="font-13">austin@dayrep.com</span>
                                 </div>
                             </div>
-                               
+
                         </div>
                         <!-- end card-body -->
                     </div>
                     <!-- end card-->
                 </div>
-                <!-- end col -->  
-                
+                <!-- end col -->
+
                 <div class="col-xl-4 col-lg-6">
                     <div class="card cta-box bg-primary text-white">
                         <div class="card-body">
@@ -433,11 +533,11 @@
                     </div> <!-- end card-->
 
                 </div>
-                <!-- end col -->  
+                <!-- end col -->
             </div>
             <!-- end row-->
 
-            
+
         </div> <!-- End Content -->
 
         <!-- Footer Start -->
@@ -445,7 +545,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> © Hyper - Coderthemes.com
                     </div>
                 </div>
             </div>
@@ -489,7 +591,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{asset('assets/js/vendor/apexcharts.min.js')}}"></script>
+<script src="{{asset('assets/js/vendor/apexcharts.min.js')}}"></script>
 
-    <script src="{{asset('assets/js/pages/demo.dashboard-crm.js')}}"></script>
+<script src="{{asset('assets/js/pages/demo.dashboard-crm.js')}}"></script>
 @endpush
