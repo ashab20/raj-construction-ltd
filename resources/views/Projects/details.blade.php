@@ -197,7 +197,7 @@
                                                 <div class="">
                                                     <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Cost</h5>
                                                     <h3 class="my-2 py-1 d-flex">
-                                                        9,184
+                                                        12,07686
                                                         <p class="mt-2 p-1 text-muted small">
                                                             (Mitter)
                                                         </p>
@@ -214,7 +214,7 @@
                                                 <div class="">
                                                     <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
                                                     <h3 class="my-2 py-1 d-flex">
-                                                        9,184
+                                                    {{$project->ownerShip * 100}} (%)
                                                         <p class="mt-2 p-1 text-muted small">
                                                             (Mitter)
                                                         </p>

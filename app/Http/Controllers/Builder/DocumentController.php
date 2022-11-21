@@ -21,7 +21,7 @@ class DocumentController extends Controller
     public function index()
     {
         $document = Document::paginate(10);
-        return view('document.index', compact('document'));
+        return view('Projects.Document.index', compact('document'));
     }
 
     /**
@@ -31,7 +31,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('document.create');
+        return view('Projects.Document.create');
     }
 
     /**
@@ -88,7 +88,7 @@ class DocumentController extends Controller
     public function edit(Document $document)
     {
 
-        return view('document.edit', compact('document'));
+        return view('Projects.Document.edit', compact('document'));
     }
 
     /**

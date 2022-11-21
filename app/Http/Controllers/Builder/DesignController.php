@@ -26,7 +26,7 @@ class DesignController extends Controller
     public function index($id)
     {
         $employee = User::where('role_id',3)->get();
-        return view('Design.create',compact(['id','employee']));      
+        return view('Projects.Design.create',compact(['id','employee']));      
         
     }
 
@@ -38,7 +38,7 @@ class DesignController extends Controller
     public function create($id)
     {
         $employee = User::where('role_id',3)->get();
-        return view('Design.create',compact(['id','employee']));  
+        return view('Projects.Design.create',compact(['id','employee']));  
     }
 
     /**
@@ -99,7 +99,7 @@ class DesignController extends Controller
         // print_r($id);
         $designDetail=Design::find(decrypt($id));
         $employee = User::where('role_id',3)->get();
-        return view('Design.edit',compact('designDetail','employee'));
+        return view('Projects.Design.edit',compact('designDetail','employee'));
     }
 
     /**

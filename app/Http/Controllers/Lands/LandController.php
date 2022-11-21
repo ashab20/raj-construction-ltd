@@ -17,7 +17,7 @@ class LandController extends Controller
     public function index()
     {
         $Lands=Land::paginate(10);
-        return view('Lands.index',compact('Lands'));
+        return view('Projects.Lands.index',compact('Lands'));
     }
 
     /**
@@ -27,7 +27,7 @@ class LandController extends Controller
      */
     public function create()
     {
-        return view('Lands.create');
+        return view('Projects.Lands.create');
     }
 
     /**
@@ -85,7 +85,7 @@ class LandController extends Controller
      */
     public function edit(Land $land)
     {
-        return view('lands.edit',compact('land'));
+        return view('Projects.Lands.edit',compact('land'));
     }
 
     /**
