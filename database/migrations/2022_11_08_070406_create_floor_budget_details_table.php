@@ -16,8 +16,16 @@ return new class extends Migration
         Schema::create('floor_budget_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            
+            $table->unsignedBigInteger('project_id')->nullable()->comment('building_name');
+            $table->foreign('project_id')->references('id')->on('floor_details')->onDelete('cascade')->change();
+
+            $table->unsignedBigInteger('floor_details_id')->nullable()->comment('floor_no');
+            $table->foreign('floor_details_id')->references('id')->on('floor_details')->onDelete('cascade')->change();
+
             $table->unsignedBigInteger('material_id')->nullable();
             $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade')->change();
+
             $table->integer('budget_quantity');
             $table->decimal('market_price',12,2);
             $table->decimal('total_budget',12,2)->nullable();

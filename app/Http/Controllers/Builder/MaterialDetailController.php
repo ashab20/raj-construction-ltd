@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
-use App\Models\Builder\Material;
 use App\Models\Builder\MaterialDetail;
+use App\Models\Builder\Unit;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -29,7 +29,7 @@ class MaterialDetailController extends Controller
      */
     public function create()
     {
-        $matName = Material::all();
+        $matName = Unit::all();
         return view('materialDetails.create',compact('matName'));
     }
 
@@ -54,7 +54,6 @@ class MaterialDetailController extends Controller
                 $request->voucherImage->move(public_path('uploads/materialVoucher'), $imageName);
                 $materialDetail->voucher_image=$imageName;
             }
-
             $materialDetail->created_by=Crypt::decrypt(session()->get('userId'));
             $materialDetail->status = 1;
             if($materialDetail->save()){
@@ -86,7 +85,7 @@ class MaterialDetailController extends Controller
      */
     public function edit(MaterialDetail $materialDetail)
     {
-        $matName=Material::all();
+        $matName=Unit::all();
         return view('materialDetails.edit',compact('materialDetail','matName'));
     }
 
