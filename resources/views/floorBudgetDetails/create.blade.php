@@ -29,13 +29,38 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" enctype="multipart/form-data" method="post" action="{{ route('floorBudgetDetails.store')}}">
+                                    <form class="form" enctype="multipart/form-data" method="post" action="{{ route('floorBudgetDetail.store')}}">
                                         @csrf
+                                        {{-- building name --}}
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
-                                                <label for="matName" class="form-label">Material Name</label>
-                                                <select class="form-control" name="matName" id="matName">
+                                                <label for="buildingName" class="form-label">Building Name</label>
+                                                <select class="form-control" name="buildingName" id="buildingName">
                                                     <option value="">Select Name</option>
+                                                    @forelse($buildingName as $mtn)
+                                                        <option value="{{$mtn->id}}" {{ old('buildingName')==$mtn->id?"selected":""}}> {{ $mtn->material_name}}</option>
+                                                    @empty
+                                                        <option value="">No data found</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                        {{-- floor no --}}
+                                            <div class="mb-3 col-md-6">
+                                                <label for="floorNo" class="form-label">Floor No.</label>
+                                                <select class="form-control" name="floorNo" id="floorNo">
+                                                    <option value="">Select Floor</option>
+                                                    @forelse($floorNo as $mtn)
+                                                        <option value="{{$mtn->id}}" {{ old('floorNo')==$mtn->id?"selected":""}}> {{ $mtn->material_name}}</option>
+                                                    @empty
+                                                        <option value="">No data found</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                        {{-- unit name --}}
+                                            <div class="mb-3 col-md-6">
+                                                <label for="matName" class="form-label">Unit Name</label>
+                                                <select class="form-control" name="matName" id="matName">
+                                                    <option value="">Select Unit</option>
                                                     @forelse($matname as $mtn)
                                                         <option value="{{$mtn->id}}" {{ old('matName')==$mtn->id?"selected":""}}> {{ $mtn->material_name}}</option>
                                                     @empty
