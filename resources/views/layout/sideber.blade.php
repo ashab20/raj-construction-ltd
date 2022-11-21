@@ -131,7 +131,7 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('material.index')}}">
-                                                {{__('Unit')}}
+                                                {{__('Material')}}
                                             </a>
                                         </li>
                                         <li>
