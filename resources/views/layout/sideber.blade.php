@@ -130,7 +130,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('.index')}}">
+                                            <a href="{{ route('material.index')}}">
                                                 {{__('Unit')}}
                                             </a>
                                         </li>
