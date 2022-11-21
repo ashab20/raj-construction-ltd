@@ -125,13 +125,18 @@
                                 <div class="collapse" id="sidebarMaterial">
                                     <ul class="side-nav-second-level">
                                         <li>
-                                            <a href="{{ route('material.index')}}">
-                                                {{__('Material')}}
+                                            <a href="{{ route('materialDetails.index')}}">
+                                                {{__('Material Details')}}
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('materialDetails.index')}}">
-                                                {{__('Material Details')}}
+                                            <a href="{{ route('.index')}}">
+                                                {{__('Unit')}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('unit.index')}}">
+                                                {{__('Unit')}}
                                             </a>
                                         </li>
                                     </ul>

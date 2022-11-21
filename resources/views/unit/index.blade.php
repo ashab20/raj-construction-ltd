@@ -12,10 +12,10 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                    <li class="breadcrumb-item active">Materials</li>
+                    <li class="breadcrumb-item active">Unit</li>
                 </ol>
             </div>
-            <h4 class="page-title">Materials</h4>
+            <h4 class="page-title">Unit</h4>
         </div>
     </div>
 </div>      
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{route('material.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Materials</a>
+                            <a href="{{route('unit.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Units</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
@@ -41,33 +41,34 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
-                                        <th>Material Name</th>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
                                         <th>Quantity Name</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($materials as $material)
+                                    @forelse ($units as $unit)
                                     <tr>
                                         {{-- flat_id --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $material->material_name}}</td>
-                                        <td>{{ $material->quantity_name}}</td>
+                                        <td>{{ $unit->name}}</td>
+                                        <td>{{ $unit->quantity}}</td>
+                                        <td>{{ $unit->quantity_name}}</td>
                                         <td>
-                                            @if ($material->status === 1)
+                                            @if ($unit->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>
                                             @else                                   
                                                 <span class="badge badge-danger-lighten">Blocked</span>
-                                            
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('material.edit',$material->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
-                                            <a href="javascript:void()" onclick="$('#form{{$material->id}}').submit()">
+                                            <a href="{{ route('unit.edit',$unit->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="javascript:void()" onclick="$('#form{{$unit->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$material->id}}" action="{{ route('material.destroy',$material->id)}}" method="post">
+                                            <form id="form{{$unit->id}}" action="{{ route('unit.destroy',$unit->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

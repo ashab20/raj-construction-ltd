@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('material_name');
+            $table->string('name');
+            $table->string('quantity');
             $table->string('quantity_name');
 
             $table->unsignedBigInteger('builder_options_id')->nullable();

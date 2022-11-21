@@ -11,11 +11,11 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Constructions</a></li>
-                            <li class="breadcrumb-item active">Flat Edit</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
+                            <li class="breadcrumb-item active">Unit Create</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Flat Edit</h4>
+                    <h4 class="page-title">Unit Create</h4>
                 </div>
             </div>
         </div>      
@@ -29,17 +29,23 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('material.update',$material->id)}}">
+                                    <form class="form" method="post" action="{{ route('unit.store')}}">
                                         @csrf
-                                        @method('patch')
-                                        <div class="mb-3">
-                                            <label for="materialName" class="form-label">Material Name</label>
-                                            <input type="text" value="{{ old('materialName',$material->material_name)}}" id="materialName" name="materialName" class="form-control">
-                                        </div>
+                                        <div class="row">
+                                            <div class="mb-3 col-md-4">
+                                                <label for="name" class="form-label">Name</label>
+                                                <input type="text" id="name" name="name" class="form-control">
+                                            </div>
 
-                                        <div class="mb-3">
-                                            <label for="qname" class="form-label">Quantity Name</label>
-                                            <input type="text" value="{{ old('qname',$material->quantity_name)}}" id="qname" class="form-control" name="qname">
+                                            <div class="mb-3 col-md-4">
+                                                <label for="quantity" class="form-label">Quantity</label>
+                                                <input type="text" id="quantity" name="quantity" class="form-control">
+                                            </div>
+
+                                            <div class="mb-3 col-md-4">
+                                                <label for="qname" class="form-label">Quantity Name</label>
+                                                <input type="text" id="qname" class="form-control" name="qname">
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
