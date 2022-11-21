@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\FloorBudgetDetails;
+use App\Models\Builder\FloorDetails;
 use App\Models\Builder\Material;
+use App\Models\Projects\Project;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -29,8 +31,10 @@ class FloorBudgetDetailsController extends Controller
      */
     public function create()
     {
+        $buildingName = Project::all();
+        $floorNo = FloorDetails::all();
         $matname = Material::all();
-        return view('floorBudgetDetails.create',compact('matname'));
+        return view('floorBudgetDetails.create',compact('buildingName', 'floorNo', 'matname'));
     }
 
     /**

@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             DivisionsSeeder::class,
             DistrictSeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }

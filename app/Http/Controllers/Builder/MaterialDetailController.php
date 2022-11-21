@@ -54,7 +54,6 @@ class MaterialDetailController extends Controller
                 $request->voucherImage->move(public_path('uploads/materialVoucher'), $imageName);
                 $materialDetail->voucher_image=$imageName;
             }
-
             $materialDetail->created_by=Crypt::decrypt(session()->get('userId'));
             $materialDetail->status = 1;
             if($materialDetail->save()){

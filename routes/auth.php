@@ -12,8 +12,9 @@ use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
 use App\Http\Controllers\Builder\FloorbudgetController;
 use App\Http\Controllers\Builder\FloorBudgetDetailsController;
-use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
+use App\Http\Controllers\Builder\MaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
+use App\Http\Controllers\Builder\UnitController;
 use App\Http\Controllers\Constructions\ConstructControlller;
 use App\Http\Controllers\Location\CountryController;
 use App\Http\Controllers\Lands\LandController;
@@ -90,7 +91,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/builder', BuilderOptionController::class);
         
         // material
-        Route::resource('/material', BuilderMaterialController::class);
+        Route::resource('/unit', UnitController::class);
         Route::resource('/materialDetails', MaterialDetailController::class);
         
         // floor
