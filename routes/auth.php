@@ -12,6 +12,7 @@ use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
 use App\Http\Controllers\Builder\FloorbudgetController;
 use App\Http\Controllers\Builder\FloorBudgetDetailsController;
+use App\Http\Controllers\Builder\TestDetailController;
 use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
 use App\Http\Controllers\Constructions\ConstructControlller;
@@ -101,5 +102,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         // flat
         Route::resource('/flatDetail', FlatDetailController::class);
         Route::resource('/flat', FlatController::class);
+        //test
+        Route::resource('/testdetail',TestDetailController::class);
     });
 });
