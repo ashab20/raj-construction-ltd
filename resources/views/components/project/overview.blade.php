@@ -1,4 +1,4 @@
-<div class="row d-none" id="budget">
+<div class="row" id="overview">
     <div class="row col-xl-12">
         <div class="col-lg-4 col-xl-4">
             <div class="card">
