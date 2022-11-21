@@ -27,13 +27,14 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            // DesignationSeeder::class,
-            // UserSeeder::class,
-            // CountrySeeder::class,
-            // DivisionsSeeder::class,
-            // DistrictSeeder::class,
-            // ProjectSeeder::class,
+            DesignationSeeder::class,
+            UserSeeder::class,
+            CountrySeeder::class,
+            DivisionsSeeder::class,
+            DistrictSeeder::class,
+            ProjectSeeder::class,
             FloorDetailsSeeder::class,
+            UnitSeeder::class,
         ]);
     }
 }
