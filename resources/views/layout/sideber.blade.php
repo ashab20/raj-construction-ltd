@@ -187,6 +187,28 @@
                                     </ul>
                                 </div>
                             </li>
+
+                            <li  class="side-nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebartestdetail">
+                                    <span>{{__('Test Detail')}}</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse ml-3" id="sidebartestdetail">
+                                    <ul class="side-nav-second-level">
+                                        <li>
+                                            <a href="{{ route('testdetail.index')}}">
+                                                {{__('Details')}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('testdetail.create')}}">
+                                                {{__('Add Test')}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
                         </ul>
                     </div>
                 </li>
