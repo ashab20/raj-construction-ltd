@@ -23,6 +23,6 @@ class FloorBudgetDetails extends Model
         return $this->belongsTo(Unit::class,'material_id','id');
     }
     // public function floor_budget_id(){
-    //     return $this->hasMany(FlatDetail::class);
+    //     return $this->belongsTo(FlatDetail::class);
     // }
 }

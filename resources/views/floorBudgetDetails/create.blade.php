@@ -33,7 +33,7 @@
                                         @csrf
                                         {{-- building name --}}
                                         <div class="row">
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-2">
                                                 <label for="buildingName" class="form-label">Building Name</label>
                                                 <select class="form-control" name="buildingName" id="buildingName">
                                                     <option value="">Select Name</option>
@@ -45,7 +45,7 @@
                                                 </select>
                                             </div>
                                         {{-- floor no --}}
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-2">
                                                 <label for="floorNo" class="form-label">Floor No.</label>
                                                 <select class="form-control" name="floorNo" id="floorNo">
                                                     <option value="">Select Floor</option>
@@ -57,7 +57,7 @@
                                                 </select>
                                             </div>
                                         {{-- unit name --}}
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-2">
                                                 <label for="unitName" class="form-label">Material Name</label>
                                                 <select class="form-control" name="unitName" id="unitName">
                                                     <option value="">Select Unit</option>
@@ -68,13 +68,11 @@
                                                     @endforelse
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-2">
                                                 <label for="quantity" class="form-label">Quantity</label>
                                                 <input type="text" id="quantity" name="quantity" class="form-control">
                                             </div>
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-2">
                                                 <label for="mPrice" class="form-label">Market Price</label>
                                                 <input type="text" id="mPrice" name="mPrice" class="form-control">
                                             </div>
@@ -83,7 +81,7 @@
                                                 <label for="tBudget" class="form-label">Total Budget</label>
                                                 <input type="text" id="tBudget" name="tBudget" class="form-control">
                                             </div> --}} 
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-2">
                                                 <label for="issueDate" class="form-label">Issues Date</label>
                                                 <input type="date" id="issueDate" name="issueDate" class="form-control">
                                             </div>
