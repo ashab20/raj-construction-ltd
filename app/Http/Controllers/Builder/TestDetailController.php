@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Builder;
 use App\Http\Controllers\Controller;
 use App\Models\Builder\TestDetail;
 use Illuminate\Http\Request;
+use App\Models\Projects\Project;
 use Exception;
 
 class TestDetailController extends Controller
@@ -15,7 +16,7 @@ class TestDetailController extends Controller
      */
     public function index()
     {
-        $testdetail=testdetail::paginate(10);
+        $testdetail=TestDetail::paginate(10);
         return view('testdetail.index',compact('testdetail'));
         
     }
@@ -27,7 +28,8 @@ class TestDetailController extends Controller
      */
     public function create()
     {
-        return view('testdetail.create');
+        $projectName = Project::all();
+        return view('testdetail.create',compact('projectName'));
     }
 
     /**
@@ -39,15 +41,13 @@ class TestDetailController extends Controller
     public function store(Request $request)
     {
         try{
-            $testdetail=new testdetail();
-            $identity = decrypt(session()->get('roleIdentity'));
-            
+            $testdetail=new TestDetail();
+            $identity = decrypt(session()->get('roleIdentity'));           
             $testdetail->created_by=decrypt(session()->get('userId'));
+            $testdetail->project_id = $request->projectname;
             $testdetail->test_name=$request->tname;
             $testdetail->test_status=$request->tstatus;
-            $testdetail->comments=$request->com;
-           
-            
+            $testdetail->comments=$request->com;       
             $testdetail->status = 1;
             if($testdetail->save()){
                 return redirect($identity.'/testDetail')->with('success','Data saved');

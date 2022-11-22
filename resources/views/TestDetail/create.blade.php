@@ -30,20 +30,35 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" action="{{route('testDetail.store')}}">
+                                    <form class="form" enctype="multipart/form-data" method="post" action="{{ route('testDetail.store')}}">
                                         @csrf
-                                
-                                        <div class="mb-3">
-                                            <label for="tname" class="form-label">Test Name </label>
-                                            <input type="text" id="tname" name="tname" class="form-control">
+                                        <div class="row">
+                                            <div class="mb-3 col-md-4">
+                                                <h4 class="mt-0">Project Name</h4>
+                                                <select class="form-control select2" data-toggle="select2" name="projectname" id="projectname">
+                                                    <option value="">Select Name</option>
+                                                    @forelse($projectName as $pName)
+                                                        <option value="{{$pName->id}}" {{ old('projectname')==$pName->id?"selected":""}}> {{ $pName->project_name}}</option>
+                                                    @empty
+                                                        <option value="">No data found</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-4">                                                
+                                                <h4 class="mt-0">Test Name</h4>
+                                                <input type="text" id="tname" name="tname" class="form-control">
+                                            </div>
+                                            <div class="mb-3 col-md-4">
+                                                <h4 class="mt-0">Test Status</h4>
+                                                <input type="text" id="tstatus" name="tstatus" class="form-control">
+                                            </div>                                            
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="tstatus" class="form-label">Test Status</label>
-                                            <input type="text" id="tstatus" name="tstatus" class="form-control">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="com" class="form-label">Comments</label>
-                                            <input type="text" id="com" name="com" class="form-control">
+                                        <div class="row">
+                                            <div class="mb-3 col-md-6">
+                                                <h4 class="mt-0">Comments</h4>
+                                                <input type="text" id="com" name="com" class="form-control">
+                                            </div>
+                                           
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
