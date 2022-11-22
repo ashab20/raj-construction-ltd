@@ -4,7 +4,7 @@
             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Project Budget')}} :</h5>
                     <div class="form-group">
             <div class="card-body">
-                <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('budget.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('post')
                     <input type="number" value="{{$project->id}}" name="project_id" hidden>
@@ -84,7 +84,7 @@
                         @endphp
                         <hr>
                         <div class="repeater bg-light p-2 justify-content-center text-center">
-                            <div data-repeater-list="outer-list">
+                            <div data-repeater-list="outer_list">
                                 <div data-repeater-item class="row mt-2 offset-2">
                                     
                                     <div class="col-1 mx-2">

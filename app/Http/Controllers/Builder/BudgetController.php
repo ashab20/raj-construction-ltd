@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Budget;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BudgetController extends Controller
 {
@@ -38,6 +40,23 @@ class BudgetController extends Controller
     public function store(Request $request)
     {
         //
+        // print_r($request);
+        
+        try {
+            DB::beginTransaction();
+            
+            foreach($request->outer_list as $material){
+                $material->material_id;
+                $material->market_price;
+                $material->quantity;
+                $total = $material->market_price * $material->quantity;
+            }
+
+            DB::commit();
+        } catch (Exception $err) {
+            dd($err);
+            DB::rollBack();
+        }
     }
 
     /**
