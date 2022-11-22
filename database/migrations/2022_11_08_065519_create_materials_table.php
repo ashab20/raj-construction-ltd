@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
             $table->unsignedBigInteger('unit_id')->nullable();
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade')->change();
             $table->string('brand');
             $table->integer('unit');
             $table->decimal('per_unit_price',12,2);
-            $table->integer('note',5000);
+            $table->string('note',5000)->nullable();
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');

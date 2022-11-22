@@ -27,7 +27,7 @@ class TestDetailController extends Controller
      */
     public function create()
     {
-        return view('testdetail.create');
+        return views('Builder.create');
     }
 
     /**
@@ -38,25 +38,7 @@ class TestDetailController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $testdetail=new testdetail();
-            $identity = decrypt(session()->get('roleIdentity'));
-            
-            $testdetail->created_by=decrypt(session()->get('userId'));
-            $testdetail->test_name=$request->tname;
-            $testdetail->test_status=$request->tstatus;
-            $testdetail->comments=$request->com;
-           
-            
-            $testdetail->status = 1;
-            if($testdetail->save()){
-                return redirect($identity.'/testDetail')->with('success','Data saved');
-            }
-        }
-        catch(Exception $e){
-            dd($e);
-            return back()->withInput();
-        }
+        //
     }
 
     /**

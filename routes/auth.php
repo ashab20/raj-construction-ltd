@@ -94,7 +94,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         
         // material
         Route::resource('/unit', UnitController::class);
-        Route::resource('/material', UnitController::class);
+        Route::resource('/material', MaterialController::class);
         Route::resource('/materialDetails', MaterialDetailController::class);
         
         // floor

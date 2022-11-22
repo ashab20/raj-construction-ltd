@@ -22,14 +22,14 @@
         <!-- end page title -->
         <!-- mini header -->
         <!-- Path: view/components/project/header -->
-        <x-project.header :project="$project"/>
+        <x-project.header :project="$project" />
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                <!-- mini side bar -->
-                <!-- Path: view/components/project/sidebar -->
+                    <!-- mini side bar -->
+                    <!-- Path: view/components/project/sidebar -->
                     <!-- start projects-->
-                    <x-project.sidebar :project="$project"/>
+                    <x-project.sidebar :project="$project" />
                     <!-- end projects -->
 
                     <!-- gantt view -->
@@ -59,7 +59,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <x-project.budget :project="$project" />
+                            <!-- Path: view/components/project/ -->
+                            <x-project.overview :project="$project" />
+                            <x-project.project-info :project="$project" />
+                            <x-project.project-test :project="$project" />
+                            <x-project.project-design :project="$project" />
+                            <x-project.project-budget :project="$project" />
                         </div>
                     </div>
                     <!-- end gantt view -->
@@ -100,6 +105,87 @@
 
 <script src="{{asset('assets/js/pages/demo.dashboard-crm.js')}}"></script>
 <script>
-    $('#condensed-check').prop('checked', true);
+    // content button
+    let overbtn = $('#overbtn');
+    let projectInfoBtn = $('#project_info_btn');
+    let projectTestBtn = $('#project_test_btn');
+    let projectDesignBtn = $('#project_design_btn');
+    let projectBudgetBtn = $('#project_budget_btn');
+    let projectManagment = $('#project_managment');
+
+    // content 
+    let overview = $('#overview');
+    let projectInfo = $('#project-info');
+    let projectTest = $('#project_test');
+    let projectDesign = $('#project_design');
+    let projectBudget = $('#project_budget');
+
+
+
+    // button action function
+    // overview
+    overbtn.click(function(e) {
+        overview.removeClass('d-none');
+        overbtn.addClass('bg-light');
+
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');
+
+    });
+    // project info
+    projectInfoBtn.click(function(e) {
+        projectInfo.removeClass('d-none');
+        projectInfoBtn.addClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');
+    });
+
+    // project test
+    projectTestBtn.click(function(e) {
+        projectTest.removeClass('d-none');
+        projectTestBtn.addClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectDesign.addClass('d-none');
+        projectDesignBtn.removeClass('bg-light');
+    });
+
+    projectDesignBtn.click(function(e) {
+        projectDesign.removeClass('d-none');
+        projectDesignBtn.addClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');
+        projectBudget.addClass('d-none');
+        projectBudgetBtn.removeClass('bg-light');
+    });
+
+    // project budget
+    projectBudgetBtn.click(function(e) {
+        projectBudget.removeClass('d-none');
+        projectBudgetBtn.addClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');
+        projectDesign.addClass('d-none');
+        projectDesignBtn.removeClass('bg-light');
+        
+    });
 </script>
 @endpush

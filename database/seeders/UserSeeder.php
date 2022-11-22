@@ -37,6 +37,15 @@ class UserSeeder extends Seeder
                 'language' => 'en',
                 'status' => 1,
             ],
+            [
+                'name' => 'Rabib Hasan',
+                'email' => 'rabib@gmail.com',
+                'phone' => '01735' . Str::random(9),
+                'password' => Crypt::encrypt('12345678'),
+                'role_id' => 1,
+                'language' => 'en',
+                'status' => 1,
+            ],
             
             [
                 'name' => Str::random(10),

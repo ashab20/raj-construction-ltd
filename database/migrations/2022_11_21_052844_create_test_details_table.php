@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('test_name');
             $table->string('test_status');
             $table->string('comments');
+
+            $table->unsignedBigInteger('project_id')->nullable()->comment('Project id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
+            
                   //default
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');

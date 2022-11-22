@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             DivisionsSeeder::class,
             DistrictSeeder::class,
             ProjectSeeder::class,
+            FloorDetailsSeeder::class,
+            UnitSeeder::class,
         ]);
     }
 }
