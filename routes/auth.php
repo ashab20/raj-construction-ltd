@@ -106,6 +106,6 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/flatDetail', FlatDetailController::class);
         Route::resource('/flat', FlatController::class);
         //test
-        Route::resource('/testdetail',TestDetailController::class);
+        Route::resource('/testDetail',TestDetailController::class);
     });
 });
