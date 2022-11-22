@@ -44,7 +44,7 @@
                                         <th>Hight</th>
                                         <th>Weight</th>
                                         <th>Piles</th>
-                                        <th>Rode Size</th>
+                                        <th>Rod Size</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
@@ -78,7 +78,7 @@
                                     </tr>                                      
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="text-center">No Data Found <td>
+                                            <td colspan="6" class="text-center">No Data Found <td>
                                         </tr>
                                     @endforelse
                                 </tbody>

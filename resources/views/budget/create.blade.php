@@ -29,7 +29,7 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" enctype="multipart/form-data" method="post" action="{{ route('material.store')}}">
+                                    <form class="form" enctype="multipart/form-data" method="post" action="{{ route('budget.store')}}">
                                         @csrf
                                         <div class="row">
                                             <div class="mb-3 col-md-4">
