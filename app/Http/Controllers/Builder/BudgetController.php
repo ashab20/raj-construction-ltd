@@ -15,7 +15,7 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        $budget = Budget::paginate(10);
+        $budgets = Budget::paginate(10);
         return view('budget.index',compact('budgets'));
     }
 

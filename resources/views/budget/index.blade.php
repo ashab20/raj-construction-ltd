@@ -42,10 +42,11 @@
                                     <tr>
                                         <th>#SL</th>
                                         <th>Name</th>
-                                        <th>Brand</th>
-                                        <th>Unit</th>
-                                        <th>Per unit price</th>
-                                        <th>Note</th>
+                                        <th>Floor</th>
+                                        <th>Height</th>
+                                        <th>Total Working Day</th>
+                                        <th>Total Worker</th>
+                                        <th>Issue Date</th>
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
@@ -55,7 +56,7 @@
                                     <tr>
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         <td>{{ $budget->project?->project_name}}</td>
-                                        <td>{{ $budget->floordetails?->floor_no}}</td>
+                                        <td>{{ $budget->floorDetail?->floor_no}}</td>
                                         <td>{{ $budget->foundation?->height}}</td>
                                         <td>{{ $budget->total_working_day}}</td>
                                         <td>{{ $budget->total_worker}}</td>
@@ -81,7 +82,7 @@
                                     </tr>                                      
                                     @empty
                                         <tr>
-                                            <td colspan="7" class="text-center">No Data Found <td>
+                                            <td colspan="9" class="text-center">No Data Found <td>
                                         </tr>
                                     @endforelse
                                 </tbody>

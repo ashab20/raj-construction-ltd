@@ -92,6 +92,43 @@
                                     {{__('Documents')}}
                                 </a>
                             </li>
+                            {{-- budget --}}
+                            <li class="side-nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebarbudget" aria-expanded="false" aria-controls="sidebarbudget">
+                                    <span> {{ __('Budget')}}</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarbudget">
+                                    <ul class="side-nav-second-level">
+                                        <li>
+                                            <a href="{{ route('budget.index')}}">
+                                                {{__('Budget')}}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('floorBudgetDetail.index')}}">
+                                                {{__('Budget Details')}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            {{-- support table --}}
+                            <li class="side-nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebarsuport" aria-expanded="false" aria-controls="sidebarsuport">
+                                    <span> {{ __('Suport')}}</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarsuport">
+                                    <ul class="side-nav-second-level">
+                                        <li>
+                                            <a href="{{ route('foundation.index')}}">
+                                                {{__('Foundation')}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                             {{-- flat --}}
                             <li class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarflat" aria-expanded="false" aria-controls="sidebarflat">
@@ -100,11 +137,6 @@
                                 </a>
                                 <div class="collapse" id="sidebarflat">
                                     <ul class="side-nav-second-level">
-                                        <li>
-                                            <a href="{{ route('flat.create')}}">
-                                                {{__('Flats')}}
-                                            </a>
-                                        </li>
                                         <li>
                                             <a href="{{ route('flat.index')}}">
                                                 {{__('Flats Details')}}
@@ -154,11 +186,6 @@
                                         <li>
                                             <a href="{{ route('floorBudget.index')}}">
                                                 {{__('Floor Budget')}}
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('floorBudgetDetail.index')}}">
-                                                {{__('Budget Details')}}
                                             </a>
                                         </li>
                                     </ul>
