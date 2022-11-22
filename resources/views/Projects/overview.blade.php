@@ -126,7 +126,7 @@
 
     // button action function
     overbtn.click(function (e) {
-       
+
             overview.toggleClass('d-none');
             overbtn.toggleClass('bg-light');
 
@@ -134,7 +134,7 @@
             projectInfoBtn.removeClass('bg-light');
             projectTest.addClass('d-none');
             projectTestBtn.removeClass('bg-light');
-             
+
     });
     projectInfoBtn.click(function (e) {
             projectInfo.toggleClass('d-none');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Builder;
 use App\Http\Controllers\Controller;
 use App\Models\Builder\FloorBudgetDetails;
 use App\Models\Builder\FloorDetails;
-use App\Models\Builder\Material;
+use App\Models\Builder\Unit;
 use App\Models\Projects\Project;
 use Exception;
 use Illuminate\Http\Request;
@@ -33,32 +33,34 @@ class FloorBudgetDetailsController extends Controller
     {
         $buildingName = Project::all();
         $floorNo = FloorDetails::all();
-        $matname = Material::all();
-        return view('floorBudgetDetails.create',compact('buildingName', 'floorNo', 'matname'));
+        $unitName = Unit::all();
+        return view('floorBudgetDetails.create',compact('buildingName', 'floorNo', 'unitName'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request  
      * @return \Illuminate\Http\Response
-     * {{-- material_id  budget_quantity 	market_price 	total_budget 	issues_date  (material_name)--}}
+     * {{-- project_id(building_name) floor_details_id(floor_no) material_id  budget_quantity market_price 	total_budget 	issues_date  (material_name)--}}
      */
     public function store(Request $request)
     {
         try{
             $fBDetails = new FloorBudgetDetails();
-            $fBDetails->material_id = $request->matName;
+            $fBDetails->project_id = $request->buildingName;
+            $fBDetails->floor_details_id = $request->floorNo;
+            $fBDetails->material_id = $request->unitName;
             $fBDetails->budget_quantity = $request->quantity;
             $fBDetails->market_price = $request->mPrice;
-            $fBDetails->total_budget = $request->quantity * $request->tBudget;
+            $fBDetails->total_budget = $request->quantity * $request->mPrice;
             $fBDetails->issues_date = $request->issueDate;
 
             $fBDetails->status = 1;
             $fBDetails->created_by = Crypt::decrypt(session()->get('userId'));
             $identity = decrypt(session()->get('roleIdentity'));
             if($fBDetails->save()){
-                return redirect($identity.'/floorBudgetDetails')->with('success', 'Data saved');
+                return redirect($identity.'/floorBudgetDetail')->with('success', 'Data saved');
             }
 
         }catch(Exception $err){
@@ -86,8 +88,10 @@ class FloorBudgetDetailsController extends Controller
      */
     public function edit(FloorBudgetDetails $floorBudgetDetail)
     {
-        $matName = Material::all();
-        return view('floorBudgetDetails.edit',compact('floorBudgetDetail','matName'));
+        $buildingName = Project::all();
+        $floorNo = FloorDetails::all();
+        $unitName = Unit::all();
+        return view('floorBudgetDetails.edit',compact('floorBudgetDetail','buildingName', 'floorNo', 'unitName'));
     }
 
     /**
@@ -101,10 +105,12 @@ class FloorBudgetDetailsController extends Controller
     {
         try{
             $fBDetails = $floorBudgetDetail;
-            $fBDetails->material_id = $request->matName;
+            $fBDetails->project_id = $request->buildingName;
+            $fBDetails->floor_details_id = $request->floorNo;
+            $fBDetails->material_id = $request->unitName;
             $fBDetails->budget_quantity = $request->quantity;
             $fBDetails->market_price = $request->mPrice;
-            $fBDetails->total_budget = $request->quantity * $request->tBudget;
+            $fBDetails->total_budget = $request->quantity * $request->mPrice;
             $fBDetails->issues_date = $request->issueDate;
 
             $fBDetails->status = 1;
