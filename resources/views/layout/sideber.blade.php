@@ -199,7 +199,7 @@
                                 <div class="collapse ml-3" id="sidebarBuilder">
                                     <ul class="side-nav-second-level">
                                         <li>
-                                            <a href="{{ route('builder.index')}}">
+                                            <a href="#">
                                                 {{__('Builder Details')}}
                                             </a>
                                         </li>

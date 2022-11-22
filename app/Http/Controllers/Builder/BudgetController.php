@@ -7,9 +7,10 @@ use App\Models\Builder\Budget;
 use App\Models\Builder\FloorDetails;
 use App\Models\Builder\Foundation;
 use App\Models\Projects\Project;
+use Illuminate\Support\Facades\Crypt;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class BudgetController extends Controller
 {
@@ -46,28 +47,44 @@ class BudgetController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $material = new Budget();
-            $material->project_id = $request->projectName;
-            $material->floor_id = $request->floorno;
-            $material->foundation_id = $request->pilesheight;
-            $material->total_working_day = $request->totalday;
-            $material->total_worker = $request->tworker;
-            $material->issus_date = $request->issuedate;
+        // try{
+        //     $material = new Budget();
+        //     $material->project_id = $request->projectName;
+        //     $material->floor_id = $request->floorno;
+        //     $material->foundation_id = $request->pilesheight;
+        //     $material->total_working_day = $request->totalday;
+        //     $material->total_worker = $request->tworker;
+        //     $material->issus_date = $request->issuedate;
 
-            $material->status = 1;
-            $material->created_by = Crypt::decrypt(session()->get('userId'));
-            $identity = decrypt(session()->get('roleIdentity'));
+        //     $material->status = 1;
+        //     $material->created_by = Crypt::decrypt(session()->get('userId'));
+        //     $identity = decrypt(session()->get('roleIdentity'));
 
-            if($material->save()){
-                return redirect($identity.'/budget')->with('success','Data saved');
+        //     if($material->save()){
+        //         return redirect($identity.'/budget')->with('success','Data saved');
+        //     }
+        // }catch(Exception $err){
+        //     dd($err);
+        //     return back()->withInput();
+        // }
+        // print_r($request);
+        
+        try {
+            DB::beginTransaction();
+            
+            foreach($request->outer_list as $material){
+                $material->material_id;
+                $material->market_price;
+                $material->quantity;
+                $total = $material->market_price * $material->quantity;
             }
-        }catch(Exception $err){
+
+            DB::commit();
+        } catch (Exception $err) {
             dd($err);
-            return back()->withInput();
+            DB::rollBack();
         }
     }
-
     /**
      * Display the specified resource.
      *
