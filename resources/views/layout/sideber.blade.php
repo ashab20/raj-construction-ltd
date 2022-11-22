@@ -13,11 +13,8 @@
                     </span>
                 </a>
             </div>
-
             <!--- Sidemenu -->
-            <ul class="side-nav">
-
-                
+            <ul class="side-nav">                
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                         <i class="uil-home-alt"></i>
@@ -95,8 +92,8 @@
                                     {{__('Documents')}}
                                 </a>
                             </li>
-
-                            <li>
+                            {{-- flat --}}
+                            <li class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarflat" aria-expanded="false" aria-controls="sidebarflat">
                                     <span> {{ __('Flat')}}</span>
                                     <span class="menu-arrow"></span>
@@ -116,8 +113,8 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li>
-                            <li  class="side-nav-item">
+                            {{-- material --}}
+                            <li class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarMaterial" aria-expanded="false" aria-controls="sidebarMaterial">
                                     <span> {{ __('Materials')}}</span>
                                     <span class="menu-arrow"></span>
@@ -161,13 +158,13 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('floorBudgetDetail.index')}}">
-                                                {{__('Floor Budget Details')}}
+                                                {{__('Budget Details')}}
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li  class="side-nav-item">
+                            <li class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarBuilder">
                                     <span>{{__('Builder')}}</span>
                                     <span class="menu-arrow"></span>
@@ -187,23 +184,12 @@
                                     </ul>
                                 </div>
                             </li>
-
-                            <li  class="side-nav-item">
-                                <a data-bs-toggle="collapse" href="#sidebartestdetail">
-                                    <span>{{__('Test Detail')}}</span>
-                                    <span class="menu-arrow"></span>
+                            {{-- Test Details --}}
+                            <li class="side-nav-item">
+                                <a href="{{ route('testDetail.index')}}">
+                                    {{__('Test Detail')}}
                                 </a>
-                                <div class="collapse ml-3" id="sidebartestdetail">
-                                    <ul class="side-nav-second-level">
-                                        <li>
-                                            <a href="{{ route('testDetail.index')}}">
-                                                {{__('Details')}}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
-
                         </ul>
                     </div>
                 </li>
@@ -221,26 +207,7 @@
                         <i class="uil-comments-alt"></i>
                         <span> Chat </span>
                     </a>
-                </li>
-
-                {{-- <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarDesign" aria-expanded="false" aria-controls="sidebarDesign" class="side-nav-link">
-                        <i class="uil-store"></i>
-                        <span> Design</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarDesign">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{ route('design.create')}}">Add</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('design.index')}}">Design Details</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
-
+                </li> 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
