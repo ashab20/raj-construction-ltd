@@ -190,14 +190,25 @@ function handleBudgetChange(e){
   function totalCount(){
     let marketPrice = parseFloat($('.price').val());
     let quantityfield = parseFloat($('.quantity').val());
-    let totalField =$('.total');
+    let totalField =$('.sub');
     if(!marketPrice)marketPrice=0;
     if(!quantityfield)quantityfield=0;
 
     
     var total=(marketPrice * quantityfield);
     totalField.val(total);
-    console.log(total);
+  }
+
+  function sub_amount(){
+    var sub_amount=0;
+    $('.sub').each(function(){
+      sub_amount+=parseFloat($(this).val());
+      console.log(sub_amount);
+    });
+
+    // $('.sub').val(sub_amount);
+    $('.total').val(sub_amount);
+    totalCount();
   }
 </script>
 <script>
@@ -208,6 +219,7 @@ function getQuintity(e){
 var qty=parseFloat($(e).closest('.row').find('.quantity').val());
   var sub=price * qty; // qty*price
   $(e).closest('.row').find('.sub').val(sub);
+
   sub_amount();
   totalCount();
 }
@@ -226,16 +238,7 @@ var qty=parseFloat($(e).closest('.row').find('.quantity').val());
     totalCount();
   }
 
-  function sub_amount(){
-    var sub_amount=0;
-    $('.sub').each(function(){
-      sub_amount+=parseFloat($(this).val());
-    });
-
-    // $('.sub').val(sub_amount);
-    $('.total').val(sub_amount);
-    totalCount();
-  }
+ 
 
 
 
