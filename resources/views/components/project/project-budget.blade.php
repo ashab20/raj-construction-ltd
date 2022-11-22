@@ -1,58 +1,140 @@
-<div class="row" id="project_budget">
+<div class="row d-none project_budget" id="project_budget">
     <div class="col-12">
         <div class="card">
+            <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Project Budget')}} :</h5>
+                    <div class="form-group">
             <div class="card-body">
                 <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('post')
-                        
-                    <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Project Budget')}} :</h5>
-                    <div class="form-group">
-                        <div class="row bg-light p-2 rounded-top">
+                    <input type="number" value="{{$project->id}}" name="project_id" hidden>
+                    <div class="row">                            
+                        <div class="col-xl-4 mb-3">
+                            <label for="projectname" class="form-label">{{__('Budget For')}}</label>
+                            <select name="" id="" class="form-select" onchange="handleBudgetChange(this)">
+                                <option value="">Select Budget Options</option>
+                                <option value="floor">Floor</option>
+                                <option value="piler">Pilar</option>
+                            </select>
+                        </div>
+                        <div class="mb-0 col-xl-4 col-6"> 
+                            <div class="mb-3" id="floor">
+                                @php
+                                    $floor = DB::table('floor_details')->get()
+                                @endphp
+                                <label class="form-label" >
+                                    {{__('Floor No')}}
+                                </label>
+                                <select name="" id="" class="form-select">
+                                    <option value="">Select</option>
+                                    @forelse ($floor as $f)
+                                    <option value="{{$f->id}}">{{$f->floor_no}}</option>
+                                    
+                                    @empty
+                                    <option value="{{$f->id}}">{{__('No Data Founds!')}}</option>
+                                        
+                                    @endforelse
+                                </select>
+                            </div>                           
+                            <div class="mb-3 d-none" id="piler">
+                                <label class="form-label" >
+                                    {{__('Piler No')}}
+                                </label>
+                                <input class="form-control" type="text" placeholder="Piller No/Floor no">
+                            </div>                           
+                        </div>
+                        <div class="mb-0 col-xl-4 col-6"> 
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    {{__('Total Working Day')}}
+                                </label>
+                                <input data-toggle="touchspin" data-bts-max="500" value="128" data-btn-vertical="true" type="text">
+                            </div>                           
+                        </div>
+                        <div class="mb-0 col-xl-4 col-6">
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    {{__('Total Worker')}}
+                                </label>
+                                <input data-toggle="touchspin" data-bts-max="500" value="128" data-btn-vertical="true" type="text">
+                            </div>                           
+                        </div>
+                        <div class="mb-0 col-xl-4 col-6">
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    {{__('Issues Date')}}
+                                </label>
+                                <input class="form-select" type="date">
+                            </div>                           
+                        </div>
+                    </div>
+                    
+                        {{-- <div class="row bg-light p-2 rounded-top">
                             <div class="col-2"></div>
                             <div class="col-3">
-                                <label for="">Test</label>
+                                <label for="">Material Name</label>
                             </div>
-                            <div class="col-2"><label for="">Description</label></div>
-                            <div class="col-2"><label for="">Price</label></div>
+                            <div class="col-2"><label for="">Market Price</label></div>
+                            <div class="col-2"><label for="">Quantity</label></div>
                             <div class="col-3"><label for="">Total</label></div>
-
-                        </div>
+                        </div> --}}
                         <!-- outer repeater -->
-                        <div class="repeater">
+                        @php
+                            $materials = DB::table('units')->get();   
+                        @endphp
+                        <hr>
+                        <div class="repeater bg-light p-2 justify-content-center text-center">
                             <div data-repeater-list="outer-list">
-                                <div data-repeater-item class="row mt-2">
+                                <div data-repeater-item class="row mt-2 offset-2">
+                                    
                                     <div class="col-1 mx-2">
-                                        <button class="btn bg-danger text-white btn-sm mt-1" data-repeater-delete type="button">
+                                        <button class="btn bg-danger text-white btn-sm mt-4" data-repeater-delete type="button">
                                             <i class="mdi mdi-minus-circle"></i>
                                         </button>
                                     </div>
                                     <div class="col-3 mr-2">
                                         <!-- <div class="p-0"> -->
-                                        <select name="tid" class="form-select" onchange="product_add(this)">
+                                            <label for=""  class="form-label">Material Name</label>
+                                        <select name="material_id" class="form-select" onchange="product_add(this)">
                                             <option value="">Select Item</option>
+                                            @forelse ($materials as $material)
+                                            <option value="{{$material->id}}" 
+
+                                                data-quantity_name="{{$material->quantity_name}}"
+                                                data-quantity="{{$material->quantity}}"
+                                                
+                                                >
+                                                {{$material->name}} - {{$material->quantity}} {{$material->quantity_name}}
+                                            </option>
+                                                
+                                            @empty
+                                            <option value="">{{__('No data Founds!')}}</option> 
+                                            @endforelse
                                             
                                         </select>
                                         <!-- </div> -->
                                     </div>
                                     <div class="col-2 p-0 mx-2">
+                                        <label for=""  class="form-label">Market Price</label>
                                         <input type="text" class="form-control descirbe" name="describtion" onkeyup="get_count(this)">
                                     </div>
                                     <div class="col-2 p-0 mx-2">
+                                        <label for=""  class="form-label">Quantity</label>
                                         <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="price">
                                     </div>
-                                    <!-- <input type="text" hidden  class="test_id" name="test_id"> -->
-
-                                    <div class="col-2 p-0 mx-2">
-                                        <input readonly type="text" class="form-control sub bg-white" name="sub">
-                                    </div>
-
+                                    
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <button class="btn bg-primary m-2 text-white btn-sm" data-repeater-create type="button">
-                                    <i class="mdi mdi-plus-circle"></i>
+                            <div class="row justify-content-center">                                
+                                <div class="col-xl-4 p-0 mx-2 m-2 ">
+                                    <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="price" disabled>
+                                    <label for=""  class="form-label p-2 text-center">Total</label>
+                                </div>
+                                <div class="col-2">                                
+                                    <button class="btn bg-primary m-2 text-white btn-sm" data-repeater-create type="button">
+                                    <i class="mdi mdi-plus-circle"></i> New
                                 </button>
+                                </div>
                             </div>
 
                         </div>
@@ -74,6 +156,24 @@
 
 @push('scripts')
 <script src="{{asset('assets/js/jquery.repeater.min.js')}}"></script>
+
+<script>
+
+function handleBudgetChange(e){
+    if(e.value === "piler"){
+        // $('#indentity_budget').text("{{__('Piler No')}}") ;
+        $('#piler').removeClass('d-none');
+        $('#floor').addClass('d-none');
+    }else if (e.value === "floor"){
+        $('#piler').addClass('d-none');
+        $('#floor').removeClass('d-none');
+        
+    }
+}
+
+
+</script>
+
 
 <script>
     

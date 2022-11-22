@@ -118,7 +118,7 @@
     let projectInfo = $('#project-info');
     let projectTest = $('#project_test');
     let projectDesign = $('#project_design');
-    let projectBudget = $('#project_budget');
+    let projectBudget = $('.project_budget');
 
 
 
@@ -174,8 +174,11 @@
 
     // project budget
     projectBudgetBtn.click(function(e) {
-        projectBudget.removeClass('d-none');
+        projectBudget.toggleClass('d-none');
         projectBudgetBtn.addClass('bg-light');
+
+        projectDesign.addClass('d-none');
+        projectDesignBtn.removeClass('bg-light');
 
         overview.addClass('d-none');
         overbtn.removeClass('bg-light');
@@ -183,10 +186,10 @@
         projectInfoBtn.removeClass('bg-light');
         projectTest.addClass('d-none');
         projectTestBtn.removeClass('bg-light');
-        projectDesign.addClass('d-none');
-        projectDesignBtn.removeClass('bg-light');
         
     });
+
+    // data-leftbar-compact-mode="condensed"
 </script>
 
 
