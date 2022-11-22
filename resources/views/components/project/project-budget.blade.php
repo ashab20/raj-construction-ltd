@@ -76,7 +76,7 @@
 <script src="{{asset('assets/js/jquery.repeater.min.js')}}"></script>
 
 <script>
-    $(document).ready(function() {
+    
         $('.repeater').repeater({
             // (Required if there is a nested repeater)
             // Specify the configuration of the nested repeaters.
@@ -89,7 +89,7 @@
                 selector: '.inner-repeater'
             }]
         });
-    });
+    
 </script>
 
 @endpush

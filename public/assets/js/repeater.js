@@ -2,8 +2,10 @@
 // https://github.com/DubFriend/jquery.repeater
 // (MIT) 09-10-2016
 // Brian Detering <BDeterin@gmail.com> (http://www.briandetering.net/)
+
 (function ($) {
     'use strict';
+
     
     var identity = function (x) {
         return x;
