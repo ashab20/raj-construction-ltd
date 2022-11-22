@@ -196,13 +196,8 @@
                                 <div class="collapse ml-3" id="sidebartestdetail">
                                     <ul class="side-nav-second-level">
                                         <li>
-                                            <a href="{{ route('testdetail.index')}}">
+                                            <a href="{{ route('testDetail.index')}}">
                                                 {{__('Details')}}
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('testdetail.create')}}">
-                                                {{__('Add Test')}}
                                             </a>
                                         </li>
                                     </ul>

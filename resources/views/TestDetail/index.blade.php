@@ -25,7 +25,7 @@
                     <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{ route('testdetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Test Detail</a>
+                            <a href="{{ route('testDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Test Detail</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
@@ -64,11 +64,11 @@
                                             @endif
                                         </td>
                                             <td class="table-action">
-                                                <a href="{{ route('testdetail.edit',$tdetail)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
+                                                <a href="{{ route('testDetail.edit',$tdetail)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
                                                 <a href="javascript:void()" onclick="$('#form{{$tdetail->id}}').submit()">
                                                     <i class="mdi mdi-delete"></i>
                                                 </a>
-                                                <form id="form{{$tdetail->id}}" action="{{ route('testdetail.destroy',$tdetail->id)}}" method="post">
+                                                <form id="form{{$tdetail->id}}" action="{{ route('testDetail.destroy',$tdetail->id)}}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                 </form>

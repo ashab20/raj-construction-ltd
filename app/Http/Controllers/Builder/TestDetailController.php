@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Builder;
 use App\Http\Controllers\Controller;
 use App\Models\Builder\TestDetail;
 use Illuminate\Http\Request;
-
 use Exception;
 
 class TestDetailController extends Controller
@@ -28,7 +27,7 @@ class TestDetailController extends Controller
      */
     public function create()
     {
-        return views('Builder.create');
+        return view('testdetail.create');
     }
 
     /**
@@ -39,7 +38,25 @@ class TestDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $testdetail=new testdetail();
+            $identity = decrypt(session()->get('roleIdentity'));
+            
+            $testdetail->created_by=decrypt(session()->get('userId'));
+            $testdetail->test_name=$request->tname;
+            $testdetail->test_status=$request->tstatus;
+            $testdetail->comments=$request->com;
+           
+            
+            $testdetail->status = 1;
+            if($testdetail->save()){
+                return redirect($identity.'/testDetail')->with('success','Data saved');
+            }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -61,7 +78,7 @@ class TestDetailController extends Controller
      */
     public function edit(TestDetail $testDetail)
     {
-        //
+        return view ('testdetail.edit',compact('testDetail'));
     }
 
     /**
@@ -73,7 +90,24 @@ class TestDetailController extends Controller
      */
     public function update(Request $request, TestDetail $testDetail)
     {
-        //
+        try{
+           $identity = decrypt(session()->get('roleIdentity'));
+           $user = decrypt(session()->get('userId'));
+           $testdetail=$testDetail;
+           $testdetail->test_name=$request->tname;
+           $testdetail->test_status=$request->tstatus;
+           $testdetail->comments=$request->com;
+           $testdetail->updated_by = $user;
+           // $builder->builder=$request->buildername;
+           $testdetail->status = 1;
+           if($testdetail->save()){
+               return redirect($identity.'/testDetail')->with('success','Data saved');
+           }
+       }
+       catch(Exception $e){
+           dd($e);
+           return back()->withInput();
+       }
     }
 
     /**
@@ -84,6 +118,7 @@ class TestDetailController extends Controller
      */
     public function destroy(TestDetail $testDetail)
     {
-        //
+        $testDetail->delete();
+        return redirect()->back();
     }
 }
