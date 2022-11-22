@@ -29,40 +29,39 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('materialDetails.update',$materialDetail->id)}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('material.update',$material->id)}}">
                                         @csrf
                                         @method('patch')
                                         <div class="row">
-                                            <div class="mb-3">
-                                                <label for="materialName">Material Name</label>
-                                                <select class="form-control" name="materialName" id="materialName">
-                                                    <option value="">Select Material Name</option>
-                                                    @forelse($matName as $mName)
-                                                        <option value="{{$mName->id}}" {{ old('materialName',$materialDetail->material_id)==$mName->id?"selected":""}}> {{ $mName->material_name}}</option>
+                                            <div class="mb-3 col-md-4">
+                                                <label for="uname" class="form-label">Name</label>
+                                                <select class="form-control select2" data-toggle="select2" name="uname" id="uname">
+                                                    <option value="">Select Name</option>
+                                                    @forelse($unitname as $uName)
+                                                        <option value="{{$uName->id}}" {{ old('uname',$material->unit_id)==$uName->id?"selected":""}}> {{ $uName->name}}</option>
                                                     @empty
                                                         <option value="">No data found</option>
                                                     @endforelse
                                                 </select>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="brandName" class="form-label">Material Name</label>
-                                                <input type="text" value="{{ old('brandName',$materialDetail->brand_name)}}" id="brandName" name="brandName" class="form-control">
+                                            <div class="mb-3 col-md-4">
+                                                <label for="brand" class="form-label">Brand</label>
+                                                <input type="text" value="{{ old('brand',$material->brand)}}" id="brand" name="brand" class="form-control">
+                                            </div>
+                                            <div class="mb-3 col-md-4">
+                                                <label for="unit" class="form-label">Unit</label>
+                                                <input type="text" value="{{ old('unit',$material->unit)}}" id="unit" name="unit" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="mb-3">
-                                                <label for="quantity" class="form-label">Material Name</label>
-                                                <input type="text" value="{{ old('quantity',$materialDetail->quantity)}}" id="quantity" name="quantity" class="form-control">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="perunitprice" class="form-label">Quantity Name</label>
+                                                <input type="text" value="{{ old('perunitprice',$material->per_unit_price)}}" id="perunitprice" class="form-control" name="perunitprice">
                                             </div>
-
-                                            <div class="mb-3">
-                                                <label for="costPerItems" class="form-label">Quantity Name</label>
-                                                <input type="text" value="{{ old('costPerItems',$materialDetail->cost_per_items)}}" id="costPerItems" class="form-control" name="costPerItems">
+                                            <div class="mb-3 col-md-6">
+                                                <label for="note" class="form-label">Note</label>
+                                                <textarea class="form-control form-control-light mb-2" placeholder="Write message" id="example-textarea" name="note" rows="3">{{ old('note',$material->note)}}</textarea>
                                             </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="voucherImage" class="form-label">Voucher</label>
-                                            <input type="file" id="voucherImage" class="form-control" name="voucherImage">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
