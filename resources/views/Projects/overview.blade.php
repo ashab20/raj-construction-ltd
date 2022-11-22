@@ -59,6 +59,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Path: view/components/project/ -->
+                            <x-project.overview :project="$project" />
+                            <x-project.project-info :project="$project" />
+                            <x-project.project-test :project="$project" />
+                            <x-project.project-design :project="$project" />
                             <x-project.budget :project="$project" />
                         </div>
                     </div>
@@ -100,6 +105,75 @@
 
 <script src="{{asset('assets/js/pages/demo.dashboard-crm.js')}}"></script>
 <script>
-    $('#condensed-check').prop('checked', true);
+    
+    
+    // content button
+    let overbtn = $('#overbtn');
+    let projectInfoBtn = $('#project_info_btn');
+    let projectTestBtn = $('#project_test_btn');
+    let projectDesignBtn = $('#project_design_btn');
+    let projectBudgetBtn = $('#project_budget_btn');
+    let projectManagment = $('#project_managment');
+
+    // content 
+    let overview = $('#overview');
+    let projectInfo = $('#project-info');
+    let projectTest = $('#project-project_test');
+    let projectDesign = $('#project_design');
+    let budget = $('#budget');
+
+
+
+    // button action function
+    overbtn.click(function (e) {
+       
+            overview.toggleClass('d-none');
+            overbtn.toggleClass('bg-light');
+
+            projectInfo.addClas('d-none');
+            projectInfoBtn.removeClass('bg-light');
+            projectTest.addClass('d-none');
+            projectTestBtn.removeClass('bg-light');
+             
+    });
+    projectInfoBtn.click(function (e) {
+            projectInfo.toggleClass('d-none');
+            projectInfoBtn.toggleClass('bg-light');
+
+            overview.addClass('d-none');
+            overbtn.removeClass('bg-light');  
+            projectTest.addClass('d-none');
+            projectTestBtn.removeClass('bg-light');      
+    });
+    projectTestBtn.click(function (e) {
+        projectTest.toggleClass('d-none');
+        projectTestBtn.toggleClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');        
+    });
+    projectDesignBtn.click(function (e) {
+        projectDesign.toggleClass('d-none');
+        projectDesignBtn.toggleClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');        
+    });
+    projectBudgetBtn.click(function (e) {
+        budget.toggleClass('d-none');
+        projectBudgetBtn.toggleClass('bg-light');
+            
+        projectInfo.addClas('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');      
+    });
+
+
+
 </script>
 @endpush
