@@ -123,6 +123,7 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
         // $project = Crypt::decrpt($project);
+        
         return view('Projects.details',compact('project'));
     }
 
