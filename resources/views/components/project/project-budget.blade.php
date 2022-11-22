@@ -95,7 +95,7 @@
                                     <div class="col-3 mr-2">
                                         <!-- <div class="p-0"> -->
                                             <label for=""  class="form-label">Material Name</label>
-                                        <select name="material_id" class="form-select" onchange="product_add(this)">
+                                        <select name="material_id" class="form-select" >
                                             <option value="">Select Item</option>
                                             @forelse ($materials as $material)
                                             <option value="{{$material->id}}" 
@@ -116,18 +116,24 @@
                                     </div>
                                     <div class="col-2 p-0 mx-2">
                                         <label for=""  class="form-label">Market Price</label>
-                                        <input type="text" class="form-control descirbe" name="describtion" onkeyup="get_count(this)">
+                                        <input type="text" class="form-control price" name="market_price" onkeyup="getPriceCount(this)" id="market_price">
                                     </div>
                                     <div class="col-2 p-0 mx-2">
                                         <label for=""  class="form-label">Quantity</label>
-                                        <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="price">
+                                        {{-- <input type="numbet" onkeyup="get_quintity(this)" class="form-control price" name="quantity" id="quantity" value="1"> --}}
+                                        <input data-toggle="touchspin" class="form-control quantity" data-bts-max="500" value="1" onkeyup="getQuintity(this)" name="quantity"data-btn-vertical="true" type="text" >
+                                    </div>
+                                    <div class="col-2 p-0 mx-2">
+                                        <label for=""  class="form-label">Sub Total</label>
+                                        {{-- <input type="numbet" onkeyup="get_quintity(this)" class="form-control price" name="quantity" id="quantity" value="1"> --}}
+                                        <input data-toggle="touchspin" class="form-control sub"  value="1" onkeyup="sub_amount(this)" name="quantity" type="text" >
                                     </div>
                                     
                                 </div>
                             </div>
                             <div class="row justify-content-center">                                
                                 <div class="col-xl-4 p-0 mx-2 m-2 ">
-                                    <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="price" disabled>
+                                    <input type="text" id="total" onkeyup="totalCount(this)" class="form-control total" name="total" disabled>
                                     <label for=""  class="form-label p-2 text-center">Total</label>
                                 </div>
                                 <div class="col-2">                                
@@ -159,6 +165,9 @@
 
 <script>
 
+    // varibles
+   
+
 function handleBudgetChange(e){
     if(e.value === "piler"){
         // $('#indentity_budget').text("{{__('Piler No')}}") ;
@@ -170,6 +179,64 @@ function handleBudgetChange(e){
         
     }
 }
+
+
+
+</script>
+
+
+{{-- adjust --}}
+    <script>
+  function totalCount(){
+    let marketPrice = parseFloat($('.price').val());
+    let quantityfield = parseFloat($('.quantity').val());
+    let totalField =$('.total');
+    if(!marketPrice)marketPrice=0;
+    if(!quantityfield)quantityfield=0;
+
+    
+    var total=(marketPrice * quantityfield);
+    totalField.val(total);
+    console.log(total);
+  }
+</script>
+<script>
+
+
+function getQuintity(e){
+    var price=parseFloat($(e).closest('.row').find('.price').val());
+var qty=parseFloat($(e).closest('.row').find('.quantity').val());
+  var sub=price * qty; // qty*price
+  $(e).closest('.row').find('.sub').val(sub);
+  sub_amount();
+  totalCount();
+}
+
+
+
+
+
+  function getPriceCount(e){
+    var price=parseFloat($(e).val());
+    var qty=parseFloat($(e).closest('.row').find('.quantity').val());
+
+    var sub=price * qty; // qty*price
+    $(e).closest('.row').find('.sub').val(sub);
+    sub_amount();
+    totalCount();
+  }
+
+  function sub_amount(){
+    var sub_amount=0;
+    $('.sub').each(function(){
+      sub_amount+=parseFloat($(this).val());
+    });
+
+    // $('.sub').val(sub_amount);
+    $('.total').val(sub_amount);
+    totalCount();
+  }
+
 
 
 </script>
