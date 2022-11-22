@@ -41,10 +41,12 @@
                                 <thead>
                                     <tr>
                                         <th>#SL</th>
+                                        <th>Building Name</th>
+                                        <th>Floor</th>
                                         <th>Material Name</th>
                                         <th>Quantity</th>
                                         <th>Market Price</th>
-                                        <th>Total Budget</th>
+                                        <th>Total</th>
                                         <th>Issues Date</th>
                                         <th>Satus</th>
                                         <th>Action</th>
@@ -55,7 +57,9 @@
                                     <tr>
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         {{-- material_id  budget_quantity 	market_price 	total_budget 	issues_date  (material_name)--}}
-                                        <td>{{ $fBudgetDetails->material?->material_name}}</td>
+                                        <td>{{ $fBudgetDetails->projectname?->project_name}}</td>
+                                        <td>{{ $fBudgetDetails->floorno?->floor_no}}</td>
+                                        <td>{{ $fBudgetDetails->unit?->name}}</td>
                                         <td>{{ $fBudgetDetails->budget_quantity}}</td>
                                         <td>{{ $fBudgetDetails->market_price}}</td>
                                         <td>{{ $fBudgetDetails->budget_quantity * $fBudgetDetails->market_price}}</td>
