@@ -44,7 +44,7 @@
                                                     @endforelse
                                                 </select>
                                             </div>
-                                            <div class="mb-3 col-md-4">                                                
+                                            <div class="mb-3 col-md-4">
                                                 <h4 class="mt-0">Test Name</h4>
                                                 <input type="text" id="tname" name="tname" class="form-control">
                                             </div>
@@ -58,7 +58,6 @@
                                                 <h4 class="mt-0">Comments</h4>
                                                 <input type="text" id="com" name="com" class="form-control">
                                             </div>
-                                           
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>

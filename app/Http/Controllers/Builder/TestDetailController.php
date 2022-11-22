@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Builder;
 use App\Http\Controllers\Controller;
 use App\Models\Builder\TestDetail;
-use Illuminate\Http\Request;
 use App\Models\Projects\Project;
+use Illuminate\Http\Request;
 use Exception;
 
 class TestDetailController extends Controller
