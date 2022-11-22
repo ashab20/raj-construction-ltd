@@ -29,23 +29,27 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('unit.update',$unit->id)}}">
+                                    <form class="form" method="post" enctype="multipart/form-data" action="{{ route('foundation.update',$foundation->id)}}">
                                         @csrf
                                         @method('patch')
                                         <div class="row">
-                                            <div class="mb-3 col-md-4">
-                                                <label for="name" class="form-label">Name</label>
-                                                <input type="text" value="{{ old('name',$unit->name)}}" id="name" name="name" class="form-control">
+                                            <div class="mb-3 col-md-3">
+                                                <label for="height" class="form-label">Height</label>
+                                                <input type="text" value="{{$foundation->height}}" id="height" name="height" class="form-control">
                                             </div>
 
-                                            <div class="mb-3 col-md-4">
-                                                <label for="quantity" class="form-label">Quantity</label>
-                                                <input type="text" value="{{ old('quantity',$unit->quantity)}}" id="quantity" name="quantity" class="form-control">
+                                            <div class="mb-3 col-md-3">
+                                                <label for="weight" class="form-label">Weight</label>
+                                                <input type="text" value="{{$foundation->weight}}" id="weight" name="weight" class="form-control">
                                             </div>
 
-                                            <div class="mb-3 col-md-4">
-                                                <label for="qname" class="form-label">Quantity Name</label>
-                                                <input type="text" value="{{ old('qname',$unit->quantity_name)}}" id="qname" class="form-control" name="qname">
+                                            <div class="mb-3 col-md-3">
+                                                <label for="piles" class="form-label">Piles</label>
+                                                <input type="text" value="{{$foundation->piles}}" id="piles" class="form-control" name="piles">
+                                            </div>
+                                            <div class="mb-3 col-md-3">
+                                                <label for="rodsize" class="form-label">Rod size</label>
+                                                <input type="text" value="{{$foundation->rode_size}}" id="rodsize" class="form-control" name="rodsize">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>

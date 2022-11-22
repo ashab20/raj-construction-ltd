@@ -49,6 +49,7 @@ class FloorDetailsController extends Controller
             $fdetails->total_cost=$request->tCost;
             $fdetails->total_budget=$request->tBudget;
             $fdetails->material_id=$request->mId;
+            
             $fdetails->created_by=Crypt::decrypt(session()->get('userId'));
 
             $fdetails->status=1;

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Foundation;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class FoundationController extends Controller
 {
@@ -26,7 +28,7 @@ class FoundationController extends Controller
      */
     public function create()
     {
-        //
+        return view('foundation.create');
     }
 
     /**
@@ -37,7 +39,24 @@ class FoundationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $foundation = new Foundation();
+            $foundation->height = $request->height;
+            $foundation->weight = $request->weight;
+            $foundation->piles = $request->piles;
+            $foundation->rode_size = $request->rodsize;
+
+            $foundation->status = 1;
+            $foundation->created_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if($foundation->save()){
+                return redirect($identity.'/foundation')->with('success','Data saved');
+            }
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
     }
 
     /**
@@ -59,7 +78,7 @@ class FoundationController extends Controller
      */
     public function edit(Foundation $foundation)
     {
-        //
+        return view('foundation.edit',compact('foundation'));
     }
 
     /**
@@ -71,7 +90,24 @@ class FoundationController extends Controller
      */
     public function update(Request $request, Foundation $foundation)
     {
-        //
+        try{
+            $foundations = $foundation;
+            $foundations->height = $request->height;
+            $foundations->weight = $request->weight;
+            $foundations->piles = $request->piles;
+            $foundations->rode_size = $request->rodsize;
+
+            $foundations->status = 1;
+            $foundations->created_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if($foundations->save()){
+                return redirect($identity.'/foundation')->with('success','Data saved');
+            }
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
     }
 
     /**

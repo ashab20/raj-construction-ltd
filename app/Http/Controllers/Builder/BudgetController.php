@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Budget;
+use App\Models\Builder\FloorDetails;
+use App\Models\Builder\Foundation;
+use App\Models\Projects\Project;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class BudgetController extends Controller
 {
@@ -26,7 +31,10 @@ class BudgetController extends Controller
      */
     public function create()
     {
-        //
+        $projectname = Project::all();
+        $floorno = FloorDetails::all();
+        $foundation = Foundation::all();
+        return view('budget.create',compact('projectname','floorno','foundation'));
     }
 
     /**
@@ -34,10 +42,30 @@ class BudgetController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *  	project_id  floor_id  foundation_id 	total_working_day 	total_worker 	issus_date
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $material = new Budget();
+            $material->project_id = $request->projectName;
+            $material->floor_id = $request->floorno;
+            $material->foundation_id = $request->pilesheight;
+            $material->total_working_day = $request->totalday;
+            $material->total_worker = $request->tworker;
+            $material->issus_date = $request->issuedate;
+
+            $material->status = 1;
+            $material->created_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if($material->save()){
+                return redirect($identity.'/budget')->with('success','Data saved');
+            }
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
     }
 
     /**
