@@ -55,7 +55,7 @@
                                     <tr>
                                         {{-- unit_id 	brand 	unit 	per_unit_price 	note --}}
                                         <td scope="row">{{ ++$loop->index }}</td>
-                                        <td>{{ $material->unit?->name}}</td>
+                                        <td>{{ $material->units?->name}}</td>
                                         <td>{{ $material->brand}}</td>
                                         <td>{{ $material->unit}}</td>
                                         <td>{{ $material->per_unit_price}}</td>
@@ -69,11 +69,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('materialDetails.edit',$material->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="{{ route('material.edit',$material->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
                                             <a href="javascript:void()" onclick="$('#form{{$material->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$material->id}}" action="{{ route('materialDetails.destroy',$material->id)}}" method="post">
+                                            <form id="form{{$material->id}}" action="{{ route('material.destroy',$material->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

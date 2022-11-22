@@ -43,7 +43,7 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        Try{
+        try{
             $material = new Material();
             $material->unit_id = $request->unitName;
             $material->brand = $request->brandName;
@@ -85,7 +85,7 @@ class MaterialController extends Controller
     public function edit(Material $material)
     {
         $unitname = Unit::all();
-        return view('material.create',compact('unitname'));
+        return view('material.edit',compact('material','unitname'));
     }
 
     /**
@@ -97,7 +97,25 @@ class MaterialController extends Controller
      */
     public function update(Request $request, Material $material)
     {
-        
+        try{
+            $material = $material;
+            $material->unit_id = $request->uname;
+            $material->brand = $request->brand;
+            $material->unit = $request->unit;
+            $material->per_unit_price = $request->perunitprice;
+            $material->note = $request->note;
+
+            $material->status = 1;
+            $material->created_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if($material->save()){
+                return redirect($identity.'/material')->with('success','Data saved');
+            }
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
     }
 
     /**
