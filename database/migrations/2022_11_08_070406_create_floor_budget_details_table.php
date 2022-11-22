@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('floor_details_id')->references('id')->on('floor_details')->onDelete('cascade')->change();
 
             $table->unsignedBigInteger('material_id')->nullable();
-            $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade')->change();
+            $table->foreign('material_id')->references('id')->on('units')->onDelete('cascade')->change();
 
             $table->integer('budget_quantity');
             $table->decimal('market_price',12,2);

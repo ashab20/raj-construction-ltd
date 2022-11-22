@@ -24,6 +24,7 @@
             <div class="card">
                 <div class="card-body">
                     <hr>
+                    {{-- project_id(building_name) floor_details_id(floor_no) material_id  budget_quantity market_price 	total_budget 	issues_date  (material_name)--}}
 
                     <div class="tab-content">
                         <div class="tab-pane show active" id="input-types-preview">
@@ -33,30 +34,51 @@
                                         @csrf
                                         @method('patch')
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label for="matName" class="form-label">Material Name</label>
-                                                <select class="form-control" name="matName" id="matName">
-                                                    <option value="">Select material name</option>
-                                                    @forelse($matName as $materialName)
-                                                        <option value="{{$materialName->id}}" {{ old('matName',$floorBudgetDetail->material_id)==$materialName->id?"selected":""}}> {{ $materialName->material_name}}</option>
+                                            {{-- building name --}}
+                                            <div class="mb-3 col-md-2">
+                                                <label for="buildingName" class="form-label">Building Name</label>
+                                                <select class="form-control select2" data-toggle="select2" name="buildingName" id="buildingName">
+                                                    @forelse($buildingName as $mtn)
+                                                        <option value="{{$mtn->id}}" {{ old('buildingName',$floorBudgetDetail->project_id)==$mtn->id?"selected":""}}> {{ $mtn->project_name}}</option>
                                                     @empty
                                                         <option value="">No data found</option>
                                                     @endforelse
                                                 </select>
                                             </div>
-                                            <div class="mb-3 col-md-6">
+                                            {{-- floor no --}}
+                                            <div class="mb-3 col-md-2">
+                                                <label for="floorNo" class="form-label">Floor No.</label>
+                                                <select class="form-control select2" data-toggle="select2" name="floorNo" id="floorNo">
+                                                    @forelse($floorNo as $fno)
+                                                        <option value="{{$fno->id}}" {{ old('floorNo',$floorBudgetDetail->floor_details_id)==$fno->id?"selected":""}}> {{ $fno->floor_no}}</option>
+                                                    @empty
+                                                        <option value="">No data found</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                        {{-- unit name --}}
+                                            <div class="mb-3 col-md-2">
+                                                <label for="unitName" class="form-label">Material Name</label>
+                                                <select class="form-control select2" data-toggle="select2" name="unitName" id="unitName">
+                                                    <option value="">Select Unit</option>
+                                                    @forelse($unitName as $uName)
+                                                        <option value="{{$uName->id}}" {{ old('unitName',$floorBudgetDetail->material_id)==$uName->id?"selected":""}}> {{ $uName->name}}</option>
+                                                    @empty
+                                                        <option value="">No data found</option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                            <div class="mb-3 col-md-2">
                                                 <label for="quantity" class="form-label">Quantity</label>
-                                                <input type="text" value="{{ old('quantity',$floorBudgetDetail->budget_quantity)}}" id="quantity" name="quantity" class="form-control">
+                                                <input type="text" id="quantity" value="{{$floorBudgetDetail->budget_quantity}}" name="quantity" class="form-control">
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label for="mPrice" class="form-label">Total Worker</label>
-                                                <input type="text" value="{{ old('mPrice',$floorBudgetDetail->market_price)}}" id="mPrice" name="mPrice" class="form-control">
+                                            <div class="mb-3 col-md-2">
+                                                <label for="mPrice" class="form-label">Market Price</label>
+                                                <input type="text" id="mPrice" value="{{$floorBudgetDetail->market_price}}" name="mPrice" class="form-control">
                                             </div>
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-2">
                                                 <label for="issueDate" class="form-label">Issues Date</label>
-                                                <input type="datetime-local" value="{{ old('issueDate',$floorBudgetDetail->issues_date)}}" id="issueDate" name="issueDate" class="form-control">
+                                                <input type="datetime-local" id="issueDate" value="{{$floorBudgetDetail->issues_date}}" name="issueDate" class="form-control">
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>

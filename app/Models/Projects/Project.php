@@ -26,8 +26,12 @@ class Project extends Model
     public function design(){
         return $this->hasMany(Design::class);
     }
-    
+
     public function testDetail(){
+        return $this->hasMany(TestDetail::class,'project_id');
+    }
+
+    public function budget(){
         return $this->hasMany(TestDetail::class,'project_id');
     }
 }
