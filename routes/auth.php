@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RoleRouteController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Builder\BudgetController;
 use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\Builder\DesignController;
 use App\Http\Controllers\Builder\DesignationController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
 use App\Http\Controllers\Builder\FloorbudgetController;
 use App\Http\Controllers\Builder\FloorBudgetDetailsController;
+use App\Http\Controllers\Builder\FoundationController;
 use App\Http\Controllers\Builder\TestDetailController;
 use App\Http\Controllers\Builder\MaterialController as BuilderMaterialController;
 use App\Http\Controllers\Builder\MaterialController;
@@ -100,7 +102,13 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         // floor
         Route::resource('/floorDetails', FloorDetailsController::class);
         Route::resource('/floorBudget', FloorbudgetController::class);
+        
+        // budget
+        Route::resource('/budget', BudgetController::class);
         Route::resource('/floorBudgetDetail', FloorBudgetDetailsController::class);
+        
+        // Foundation
+        Route::resource('/foundation', FoundationController::class);
 
         // flat
         Route::resource('/flatDetail', FlatDetailController::class);
