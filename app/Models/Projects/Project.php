@@ -3,6 +3,7 @@
 namespace App\Models\Projects;
 
 use App\Models\Builder\Design;
+use App\Models\Builder\TestDetail;
 use App\Models\Lands\Land;
 use App\Models\Projects\Stage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,10 @@ class Project extends Model
 
     public function design(){
         return $this->hasMany(Design::class);
+    }
+    
+    public function testDetail(){
+        return $this->hasMany(TestDetail::class,'project_id');
     }
 }
 

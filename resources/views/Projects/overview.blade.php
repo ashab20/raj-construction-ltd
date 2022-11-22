@@ -22,14 +22,14 @@
         <!-- end page title -->
         <!-- mini header -->
         <!-- Path: view/components/project/header -->
-        <x-project.header :project="$project"/>
+        <x-project.header :project="$project" />
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                <!-- mini side bar -->
-                <!-- Path: view/components/project/sidebar -->
+                    <!-- mini side bar -->
+                    <!-- Path: view/components/project/sidebar -->
                     <!-- start projects-->
-                    <x-project.sidebar :project="$project"/>
+                    <x-project.sidebar :project="$project" />
                     <!-- end projects -->
 
                     <!-- gantt view -->
@@ -64,7 +64,7 @@
                             <x-project.project-info :project="$project" />
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
-                            <x-project.budget :project="$project" />
+                            <x-project.project-budget :project="$project" />
                         </div>
                     </div>
                     <!-- end gantt view -->
@@ -105,8 +105,6 @@
 
 <script src="{{asset('assets/js/pages/demo.dashboard-crm.js')}}"></script>
 <script>
-    
-    
     // content button
     let overbtn = $('#overbtn');
     let projectInfoBtn = $('#project_info_btn');
@@ -118,62 +116,76 @@
     // content 
     let overview = $('#overview');
     let projectInfo = $('#project-info');
-    let projectTest = $('#project-project_test');
+    let projectTest = $('#project_test');
     let projectDesign = $('#project_design');
-    let budget = $('#budget');
+    let projectBudget = $('#project_budget');
 
 
 
     // button action function
-    overbtn.click(function (e) {
-       
-            overview.toggleClass('d-none');
-            overbtn.toggleClass('bg-light');
+    // overview
+    overbtn.click(function(e) {
+        overview.removeClass('d-none');
+        overbtn.addClass('bg-light');
 
-            projectInfo.addClas('d-none');
-            projectInfoBtn.removeClass('bg-light');
-            projectTest.addClass('d-none');
-            projectTestBtn.removeClass('bg-light');
-             
-    });
-    projectInfoBtn.click(function (e) {
-            projectInfo.toggleClass('d-none');
-            projectInfoBtn.toggleClass('bg-light');
-
-            overview.addClass('d-none');
-            overbtn.removeClass('bg-light');  
-            projectTest.addClass('d-none');
-            projectTestBtn.removeClass('bg-light');      
-    });
-    projectTestBtn.click(function (e) {
-        projectTest.toggleClass('d-none');
-        projectTestBtn.toggleClass('bg-light');
-
-        overview.addClass('d-none');
-        overbtn.removeClass('bg-light');
         projectInfo.addClass('d-none');
-        projectInfoBtn.removeClass('bg-light');        
-    });
-    projectDesignBtn.click(function (e) {
-        projectDesign.toggleClass('d-none');
-        projectDesignBtn.toggleClass('bg-light');
-
-        overview.addClass('d-none');
-        overbtn.removeClass('bg-light');
-        projectInfo.addClass('d-none');
-        projectInfoBtn.removeClass('bg-light');        
-    });
-    projectBudgetBtn.click(function (e) {
-        budget.toggleClass('d-none');
-        projectBudgetBtn.toggleClass('bg-light');
-            
-        projectInfo.addClas('d-none');
         projectInfoBtn.removeClass('bg-light');
         projectTest.addClass('d-none');
-        projectTestBtn.removeClass('bg-light');      
+        projectTestBtn.removeClass('bg-light');
+
+    });
+    // project info
+    projectInfoBtn.click(function(e) {
+        projectInfo.removeClass('d-none');
+        projectInfoBtn.addClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');
     });
 
+    // project test
+    projectTestBtn.click(function(e) {
+        projectTest.removeClass('d-none');
+        projectTestBtn.addClass('bg-light');
 
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectDesign.addClass('d-none');
+        projectDesignBtn.removeClass('bg-light');
+    });
 
+    projectDesignBtn.click(function(e) {
+        projectDesign.removeClass('d-none');
+        projectDesignBtn.addClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');
+        projectBudget.addClass('d-none');
+        projectBudgetBtn.removeClass('bg-light');
+    });
+
+    // project budget
+    projectBudgetBtn.click(function(e) {
+        projectBudget.removeClass('d-none');
+        projectBudgetBtn.addClass('bg-light');
+
+        overview.addClass('d-none');
+        overbtn.removeClass('bg-light');
+        projectInfo.addClass('d-none');
+        projectInfoBtn.removeClass('bg-light');
+        projectTest.addClass('d-none');
+        projectTestBtn.removeClass('bg-light');
+        projectDesign.addClass('d-none');
+        projectDesignBtn.removeClass('bg-light');
+        
+    });
 </script>
 @endpush

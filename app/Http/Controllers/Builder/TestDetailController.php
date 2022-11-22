@@ -28,7 +28,7 @@ class TestDetailController extends Controller
      */
     public function create()
     {
-        return views('Builder.create');
+        return view('Builder.create');
     }
 
     /**
@@ -40,6 +40,7 @@ class TestDetailController extends Controller
     public function store(Request $request)
     {
         //
+        // project_id, test_name 	test_status 	comments 	status 	created_by 	updated_by
     }
 
     /**

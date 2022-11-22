@@ -4,7 +4,7 @@ namespace App\View\Components\Project;
 
 use Illuminate\View\Component;
 
-class ProjectDesign extends Component
+class projectBudget extends Component
 {
     /**
      * Create a new component instance.
@@ -15,7 +15,7 @@ class ProjectDesign extends Component
     public function __construct($project)
     {
         //
-        $this->project = $project;
+        $this->$project = $project;
     }
 
     /**
@@ -25,6 +25,6 @@ class ProjectDesign extends Component
      */
     public function render()
     {
-        return view('components.project.project-design');
+        return view('components.project.project-budget');
     }
 }
