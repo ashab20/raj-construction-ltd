@@ -84,7 +84,8 @@ class MaterialController extends Controller
      */
     public function edit(Material $material)
     {
-        //
+        $unitname = Unit::all();
+        return view('material.create',compact('unitname'));
     }
 
     /**
