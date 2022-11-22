@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('brand');
             $table->integer('unit');
             $table->decimal('per_unit_price',12,2);
-            $table->string('note',5000);
+            $table->string('note',5000)->nullable();
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');

@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Material;
+use App\Models\Builder\Unit;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use PhpParser\Node\Stmt\TryCatch;
 
 class MaterialController extends Controller
 {
@@ -26,7 +30,8 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        $unitname = Unit::all();
+        return view('material.create',compact('unitname'));
     }
 
     /**
@@ -34,10 +39,30 @@ class MaterialController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * unit_id 	brand 	unit 	per_unit_price 	note
      */
     public function store(Request $request)
     {
-        //
+        Try{
+            $material = new Material();
+            $material->unit_id = $request->unitName;
+            $material->brand = $request->brandName;
+            $material->unit = $request->unit;
+            $material->per_unit_price = $request->perunitprice;
+            $material->note = $request->note;
+
+            $material->status = 1;
+            $material->created_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if($material->save()){
+                return redirect($identity.'/material')->with('success','Data saved');
+            }
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
+
     }
 
     /**
@@ -71,7 +96,7 @@ class MaterialController extends Controller
      */
     public function update(Request $request, Material $material)
     {
-        //
+        
     }
 
     /**
@@ -82,6 +107,7 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        //
+        $material->delete();
+        return redirect()->back();
     }
 }
