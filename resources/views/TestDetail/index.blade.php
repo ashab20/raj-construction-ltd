@@ -35,7 +35,6 @@
                             </div>
                         </div><!-- end col-->
                     </div>
-    <?php print_r($testdetail[0]->projectname) ?>
                     <div class="table-responsive">
                         <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                                     <thead>
@@ -53,7 +52,7 @@
                                         @forelse ($testdetail as $tdetail)
                                         <tr>
                                             <td scope="row">{{ ++$loop->index }}</td>
-                                            <td>{{ $tdetail?->projectname?->project_name}}</td>
+                                            <td>{{ $tdetail?->project?->project_name}}</td>
 
                                             <td>{{ $tdetail->test_name}}</td>
                                             <td>{{ $tdetail->test_status}}</td>
