@@ -15,21 +15,21 @@ return new class extends Migration
     {
         Schema::create('floor_details', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            // $table->integer('floor_no',255);
-            // $table->integer('total_squire_feet');
-            // $table->decimal('total_cost',12,2);
-            // $table->decimal('total_budget',12,2);
-
-            // $table->unsignedBigInteger('units_id')->nullable();
-            // $table->foreign('units_id')->references('id')->on('units')->onDelete('cascade')->change();
+            $table->string('floor_no',255);
+            $table->integer('total_squire_feet');
+            $table->decimal('total_cost',12,2);
+            $table->decimal('total_budget',12,2);
+        
+            $table->unsignedBigInteger('unit_id')->nullable();
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade')->change();
             
-            // $table->integer('status')->default(1);
-            // $table->unsignedBigInteger('created_by')->nullable()->index();
-            // $table->unsignedBigInteger('updated_by')->nullable()->index();
-            // $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
-            // $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();
-            // $table->softDeletes();
+            $table->integer('status')->default(1);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->timestamps();
+            $table->softDeletes();
             
         });
     }
@@ -41,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('floor_details');
+        Schema::dropIfExists('floor_budget_details');
     }
 };
