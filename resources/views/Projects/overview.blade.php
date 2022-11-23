@@ -64,7 +64,7 @@
                             <x-project.project-info :project="$project" />
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
-                            <x-project.project-budget :project="$project" />
+                            {{-- <x-project.project-budget :project="$project" /> --}}
                         </div>
                     </div>
                     <!-- end gantt view -->

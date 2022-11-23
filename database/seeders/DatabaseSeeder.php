@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             DesignationSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
+            LandsSeeders::class,
             CountrySeeder::class,
             DivisionsSeeder::class,
             DistrictSeeder::class,
