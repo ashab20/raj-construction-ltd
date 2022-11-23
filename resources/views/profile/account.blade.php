@@ -21,10 +21,10 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                     <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                    <li class="breadcrumb-item active">Profile 2</li>
+                    <li class="breadcrumb-item active">Profile</li>
                 </ol>
             </div>
-            <h4 class="page-title">Profile 2</h4>
+            <h4 class="page-title">Profile</h4>
         </div>
     </div>
 </div>
@@ -96,7 +96,7 @@
         </div> <!-- end card -->
 
         <!-- Messages-->
-        <div class="card">
+        {{-- <div class="card">
             <div class="card-body">
                 <div class="dropdown float-end">
                     <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
@@ -155,7 +155,8 @@
                     </div>
                 </div> <!-- end inbox-widget -->
             </div> <!-- end card-body-->
-        </div> <!-- end card-->
+        </div>  --}}
+        <!-- end card-->
 
     </div> <!-- end col-->
 
@@ -168,11 +169,11 @@
                             About
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#timeline" data-bs-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
                             Timeline
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="#settings" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0">
                             Settings
@@ -412,9 +413,9 @@
                        @php
                            $userData = DB::table('user_details')->where('user_id',decrypt(session()->get('userId')))->first();
                        @endphp
-                        <form action="" method="POST" >
+                        <form action="{{ route('member.update',$member)}}" method="POST" >
                             @csrf
-                            @method('POST')
+                            @method('patch')
                             <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> {{__('Personal Info')}}</h5>
                              <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName">
                              {{-- <input type="text"  value="{{Input::get('id')}}" id="authName"> --}}
@@ -424,11 +425,7 @@
                                         <label for="userbio" class="form-label">{{__('Bio')}}</label>
                                         <textarea class="form-control" id="userbio" rows="4"
                                         name="userbio"
-                                        placeholder="Write something...">
-                                        
-                                            {{$userData?->bio}}
-
-                                        </textarea>
+                                        placeholder="Write something...">{{$userData?->bio}}</textarea>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -437,7 +434,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="firstname" class="form-label">{{__('First Name')}} :</label>
-                                        <input type="text" class="form-control" id="firstname" placeholder="Enter first name" value="{{$member->name}}">
+                                        <input type="text" class="form-control" id="firstname" placeholder="Enter first name" name="name" value="{{$member->name}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -454,14 +451,14 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="useremail" class="form-label">{{__('Email Address')}} :</label>
-                                        <input type="email" class="form-control" id="useremail" placeholder="Enter email" value="{{$member->email}}" readonly>
+                                        <input type="email" class="form-control" name="email" id="useremail" placeholder="Enter email" value="{{$member->email}}" readonly>
                                         <span class="form-text text-muted"><small>If you want to change email please <a href="javascript: void(0);">click</a> here.</small></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="userpassword" class="form-label">{{__('Phone')}} :</label>
-                                        <input type="tel" class="form-control" id="userpassword" placeholder="Enter password" value="{{$member->phone}}" readonly>
+                                        <input type="tel" class="form-control" name="phone" id="userpassword" placeholder="Enter password" value="{{$member->phone}}" readonly>
                                         <span class="form-text text-muted"><small>If you want to change password please <a href="javascript: void(0);">click</a> here.</small></span>
                                     </div>
                                 </div> <!-- end col -->
@@ -534,9 +531,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="preaddress" class="form-label">{{__('Present Address')}}</label>
-                                        <textarea class="form-control" rows="6" id="preaddress" name="preaddress" placeholder="1234 Main St"> 
-                                            
-                                        </textarea>
+                                        <textarea class="form-control" rows="6" id="preaddress" name="preaddress" placeholder="1234 Main St"></textarea>
                                     </div>
                                 </div>
                                  @php
@@ -654,7 +649,7 @@
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
 
-                            <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth me-1"></i> Social</h5>
+                            {{-- <h5 class="mb-3 text-uppercase bg-light p-2"><i class="mdi mdi-earth me-1"></i> Social</h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -716,10 +711,10 @@
                                         </div>
                                     </div>
                                 </div> <!-- end col -->
-                            </div> <!-- end row -->
+                            </div> <!-- end row --> --}}
 
                             <div class="text-end">
-                                <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save"></i> Save</button>
+                                <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save"></i> Update</button>
                             </div>
                         </form>
                     </div>

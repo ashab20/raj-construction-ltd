@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\Auth\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as RoutingController;
-use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\DB;
 
 class UserDetails extends RoutingController
 {
@@ -38,36 +38,7 @@ class UserDetails extends RoutingController
      */
     public function store(Request $request)
     {
-        try{
-            // user_id 	designation_id 	father_name 	mother_name 	bio 	gender 	resume 	present_address 	present_country_id 	present_division_id 	present_district_id 	permanent_address 	permanent_country_id 	permanent_division_id 	permanent_district_id 	status
-
-            
-            $store = new UserDetails();
-            $store->bio = $request->userBio;
-            $store->father_name = $request->fathername;
-            $store->mother_name = $request->mothername;
-            $store->gender = $request->usergender;
-            $store->designation_id = $request->designation;
-            
-            if($request->resume){
-                $store->resume = $request->resume;
-            }
-
-            $store->present_address = $request->preaddress;
-            $store->present_country_id = $request->country;
-            $store->present_division_id = $request->division;
-            $store->present_district_id = $request->district;
-            $store->permanent_address = $request->peraddress;
-            $store->permanent_country_id = $request->slectcountry;
-            $store->permanent_division_id = $request->slectdivision;
-            $store->permanent_district_id = $request->slectdistrict;
-            $store->status = 1;
-            dd($store);
-
-        }catch(Exception $err){
-
-        }
-        
+                
     }
 
     /**
@@ -101,7 +72,56 @@ class UserDetails extends RoutingController
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::beginTransaction();
+        try{
+            //  name 	email 	phone
+
+            $user = $request;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+
+            // user_id 	designation_id 	father_name 	mother_name 	bio 	gender 	resume 	present_address 	present_country_id 	present_division_id 	present_district_id 	permanent_address 	permanent_country_id 	permanent_division_id 	permanent_district_id 	status
+
+            
+            $userdetails = $request;
+            $userdetails->bio = $request->userBio;
+            $userdetails->father_name = $request->fathername;
+            $userdetails->mother_name = $request->mothername;
+            $userdetails->gender = $request->usergender;
+            $userdetails->designation_id = $request->designation;
+            
+            if($request->resume){
+                $userdetails->resume = $request->resume;
+            }
+
+            $userdetails->present_address = $request->preaddress;
+            $userdetails->present_country_id = $request->country;
+            $userdetails->present_division_id = $request->division;
+            $userdetails->present_district_id = $request->district;
+            $userdetails->permanent_address = $request->peraddress;
+            $userdetails->permanent_country_id = $request->slectcountry;
+            $userdetails->permanent_division_id = $request->slectdivision;
+            $userdetails->permanent_district_id = $request->slectdistrict;
+            $userdetails->status = 1;
+            dd($userdetails);
+
+            if($user->save()){
+                $userdetails->project_id =  $user->id;
+                if($userdetails->save()){
+
+                
+                DB::commit();
+                return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Profile updated successfully'));
+                }
+            }
+            
+            //});
+        } catch (Exception $err) {
+            dd($err);
+            DB::rollBack();
+            return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot update profile, Please try again'));
+        }
     }
 
     /**
