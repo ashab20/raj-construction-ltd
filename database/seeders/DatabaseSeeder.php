@@ -28,16 +28,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            DesignationSeeder::class,
+            // DesignationSeeder::class,
             // UserSeeder::class,
-            LandsSeeders::class,
             CountrySeeder::class,
             DivisionsSeeder::class,
             DistrictSeeder::class,
             ProjectSeeder::class,
-            LandsSeeders::class,
             FloorDetailsSeeder::class,
             UnitSeeder::class,
+            LandsSeeders::class,
         ]);
     }
 }
