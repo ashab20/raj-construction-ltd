@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('budget_quantity');
             $table->decimal('market_price',12,2);
             $table->decimal('total_budget',12,2)->nullable();
-            $table->dateTime('issues_date');
+            // $table->dateTime('issues_date');
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
