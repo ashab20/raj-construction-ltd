@@ -40,8 +40,9 @@
                                 @php
                                     $foundations = DB::table('foundations')->get()
                                 @endphp
-                                <label class="form-label" >
+                                <label class="form-label d-flex" >
                                     {{__('Piler No')}}
+                                    <span class="text-danger mx-2">*</span>
                                 </label>
                                 <select name="foundation" id="" class="form-select">
                                     <option value="">Select</option>

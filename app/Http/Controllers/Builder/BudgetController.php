@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTraits;
 use App\Models\Builder\Budget;
 use App\Models\Builder\BudgetDetails;
 use App\Models\Builder\FloorDetails;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 class BudgetController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -70,13 +72,13 @@ class BudgetController extends Controller
         // }
 
         //  	id 	created_at 	updated_at 	project_id name 	floor_id floor no 	foundation_id 	total_working_day 	total_worker 	issus_date 	status 	created_by 	updated_by 	deleted_at 	
-        dd($request);
+        // dd($request);
         
         try {
             DB::beginTransaction();
 
             $budget = new Budget();
-            $budget->project_id = $request->project;
+            $budget->project_id = $request->project || 1;
             if($request->foundation_id){
                 $budget->foundation_id = $request->foundation;
             }else if($request->floorno){
@@ -84,12 +86,12 @@ class BudgetController extends Controller
             }
             
             $budget->total_working_day = $request->working_day;
-            $budget->worker = $request->total_worker;
+            $budget->total_worker = $request->worker;
             $budget->issus_date = $request->issus_date;
             $budget->status = 1;
             $budget->created_by =  Crypt::decrypt(session()->get('userId'));
 
-            if($budget){
+            if($budget->save()){
                 $total = null;
                 foreach($request->outer_list as $material){
                     // id 	created_at 	updated_at 	project_id
@@ -97,18 +99,25 @@ class BudgetController extends Controller
                     // floor_no 	material_id 	budget_quantity 	market_price 	total_budget 	issues_date 	status 	created_by 	updated_by 	deleted_a
                     $material = new BudgetDetails();
                     $material->units_id = $request->material_id;
-                    $material->market_price = $request->price;
-                    $material->budget_quantity = $request->quantity;
+                    $material->market_price = floatval($request->price);
+                    $material->budget_quantity = floatval($request->quantity);
+                    $material->budget_quantity = $budget->id;
+
                     $material->created_by =  Crypt::decrypt(session()->get('userId'));
                     $subtotal = $material->market_price * $material->quantity;
                     $total.=$subtotal;
+
+                    if($material->save()){
+                        DB::commit();
+                        return redirect()->back()->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                    }
                 }
             }       
 
-            DB::commit();
         } catch (Exception $err) {
             dd($err);
             DB::rollBack();
+            return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Project, Please try again'));
         }
     }
     /**

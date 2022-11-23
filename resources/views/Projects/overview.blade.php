@@ -58,12 +58,15 @@
                                     </div>
                                 </div>
                             </div>
+                            @if(Session::has('response'))
+                                {!!Session::get('response')['message']!!}
+                            @endif
                             <!-- Path: view/components/project/ -->
                             <x-project.overview :project="$project" />
                             <x-project.project-info :project="$project" />
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
-                            {{-- <x-project.project-budget :project="$project" /> --}}
+                            <x-project.project-budget :project="$project" />
                         </div>
                     </div>
                     <!-- end gantt view -->
