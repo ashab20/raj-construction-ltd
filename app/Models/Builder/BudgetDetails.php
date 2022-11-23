@@ -22,6 +22,10 @@ class BudgetDetails extends Model
     public function unit(){
         return $this->belongsTo(Unit::class,'material_id','id');
     }
+
+    public function budgets(){
+        return $this->belongsTo(Budget::class,'material_id','id');
+    }
     // public function floor_budget_id(){
     //     return $this->belongsTo(FlatDetail::class);
     // }

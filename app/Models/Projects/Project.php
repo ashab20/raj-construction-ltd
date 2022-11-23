@@ -2,8 +2,9 @@
 
 namespace App\Models\Projects;
 
+use App\Models\Builder\Budget;
 use App\Models\Builder\Design;
-use App\Models\Builder\TestDetail;
+use App\Models\Builder\BudgetDetails;
 use App\Models\Lands\Land;
 use App\Models\Projects\Stage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,8 +32,12 @@ class Project extends Model
     //     return $this->hasMany(TestDetail::class,'project_id');
     // }
 
-    public function budget(){
-        return $this->hasMany(TestDetail::class,'project_id');
+    public function budgets(){
+        return $this->hasMany(Budget::class,'project_id');
+    }
+
+    public function budgetDetails(){
+        return $this->belongsTo(BudgetDetails::class,'project_id','id');
     }
 }
 
