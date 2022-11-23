@@ -31,7 +31,6 @@
                     <!-- start projects-->
                     <x-project.sidebar :project="$project" />
                     <!-- end projects -->
-
                     <!-- gantt view -->
                     <div class="col-xxl-9 mt-4 mt-xl-0 col-lg-8">
                         <div class="ps-xl-3">

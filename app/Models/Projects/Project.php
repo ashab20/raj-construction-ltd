@@ -20,7 +20,7 @@ class Project extends Model
     }
 
     public function land(){
-        return $this->hasMany(Land::class);
+        return $this->hasMany(Land::class,'project_id');
     }
 
     public function design(){

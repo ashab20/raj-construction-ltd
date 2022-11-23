@@ -7,7 +7,7 @@
                 <form action="{{route('budget.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('post')
-                    <input type="number" value="{{$project->id}}" name="project_id" hidden>
+                    <input type="number" value="{{$project?->id}}" name="project_id" hidden>
                     <div class="row">                            
                         <div class="col-xl-4 mb-3">
                             <label for="projectname" class="form-label">{{__('Budget For')}}</label>
