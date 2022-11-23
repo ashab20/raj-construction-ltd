@@ -22,4 +22,8 @@ class Budget extends Model
     public function foundation(){
         return $this->belongsTo(Foundation::class);
     }
+
+    public function budgetDetails(){
+        return $this->belongsToMany(BudgetDetails::class);
+    }
 }
