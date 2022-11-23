@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('height');
             $table->string('weight');
-            $table->integer('piles')->comment('Filler Underground');
+            $table->string('piler_name',255)->comment('Piller Name');
             $table->string('rode_size');
 
             $table->integer('status')->default(1);

@@ -7,11 +7,11 @@
                 <form action="{{route('budget.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('post')
-                    <input type="number" value="{{$project->id}}" name="project_id" hidden>
+                    <input type="number" value="{{$project?->id}}" name="project" hidden>
                     <div class="row">                            
                         <div class="col-xl-4 mb-3">
                             <label for="projectname" class="form-label">{{__('Budget For')}}</label>
-                            <select name="" id="" class="form-select" onchange="handleBudgetChange(this)">
+                            <select name="budgetfor" id="" class="form-select" onchange="handleBudgetChange(this)">
                                 <option value="">Select Budget Options</option>
                                 <option value="floor">Floor</option>
                                 <option value="piler">Pilar</option>
@@ -25,7 +25,7 @@
                                 <label class="form-label" >
                                     {{__('Floor No')}}
                                 </label>
-                                <select name="" id="" class="form-select">
+                                <select name="floorno" id="" class="form-select">
                                     <option value="">Select</option>
                                     @forelse ($floor as $f)
                                     <option value="{{$f->id}}">{{$f->floor_no}}</option>
@@ -37,10 +37,22 @@
                                 </select>
                             </div>                           
                             <div class="mb-3 d-none" id="piler">
+                                @php
+                                    $foundations = DB::table('foundations')->get()
+                                @endphp
                                 <label class="form-label" >
                                     {{__('Piler No')}}
                                 </label>
-                                <input class="form-control" type="text" placeholder="Piller No/Floor no">
+                                <select name="foundation" id="" class="form-select">
+                                    <option value="">Select</option>
+                                    @forelse ($foundations as $f)
+                                    <option value="{{$f->id}}">{{$f->piler_name}}</option>
+                                    
+                                    @empty
+                                    <option value="{{$f->id}}">{{__('No Data Founds!')}}</option>
+                                        
+                                    @endforelse
+                                </select>
                             </div>                           
                         </div>
                         <div class="mb-0 col-xl-4 col-6"> 
@@ -48,7 +60,7 @@
                                 <label class="form-label">
                                     {{__('Total Working Day')}}
                                 </label>
-                                <input data-toggle="touchspin" data-bts-max="500" value="128" data-btn-vertical="true" type="text">
+                                <input data-toggle="touchspin" data-bts-max="500" name="working_day" data-btn-vertical="true" type="text">
                             </div>                           
                         </div>
                         <div class="mb-0 col-xl-4 col-6">
@@ -56,7 +68,7 @@
                                 <label class="form-label">
                                     {{__('Total Worker')}}
                                 </label>
-                                <input data-toggle="touchspin" data-bts-max="500" value="128" data-btn-vertical="true" type="text">
+                                <input data-toggle="touchspin" data-bts-max="500" name="worker" data-btn-vertical="true" type="text">
                             </div>                           
                         </div>
                         <div class="mb-0 col-xl-4 col-6">
@@ -64,7 +76,7 @@
                                 <label class="form-label">
                                     {{__('Issues Date')}}
                                 </label>
-                                <input class="form-select" type="date">
+                                <input class="form-select" type="date" name="issus_date">
                             </div>                           
                         </div>
                     </div>
@@ -116,7 +128,7 @@
                                     </div>
                                     <div class="col-2 p-0 mx-2">
                                         <label for=""  class="form-label">Market Price</label>
-                                        <input type="text" class="form-control price" name="market_price" onkeyup="getPriceCount(this)" id="market_price">
+                                        <input type="text" class="form-control price" name="price" onkeyup="getPriceCount(this)" id="market_price">
                                     </div>
                                     <div class="col-2 p-0 mx-2">
                                         <label for=""  class="form-label">Quantity</label>
