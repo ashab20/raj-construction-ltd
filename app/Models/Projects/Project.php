@@ -33,8 +33,11 @@ class Project extends Model
     // }
 
     public function budgets(){
+        return $this->hasMany(Budget::class,'project_id');
+    }
+    public function budgetDetails(){
         // return $this->hasMany(Budget::class,'project_id');
-        return $this->hasOneThrough(BudgetDetails::class, Budget::class,'project_id','budget_id','id','id');
+        return $this->hasManyThrough(BudgetDetails::class, Budget::class,'project_id','budget_id','id','id');
     }
 
   
