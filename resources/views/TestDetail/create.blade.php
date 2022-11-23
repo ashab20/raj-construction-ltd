@@ -35,6 +35,7 @@
                                         <div class="row">
                                             <div class="mb-3 col-md-4">
                                                 <h4 class="mt-0">Project Name</h4>
+
                                                 <select class="form-control select2" data-toggle="select2" name="projectname" id="projectname">
                                                     <option value="">Select Name</option>
                                                     @forelse($projectName as $pName)
@@ -43,6 +44,7 @@
                                                         <option value="">No data found</option>
                                                     @endforelse
                                                 </select>
+                                                
                                             </div>
                                             <div class="mb-3 col-md-4">
                                                 <h4 class="mt-0">Test Name</h4>
