@@ -69,28 +69,24 @@ class BudgetController extends Controller
 
             if($budget->save()){
                 $total = null;
-                $budgetDetails = new BudgetDetails();
-                $budgetDetails->created_by =  Crypt::decrypt(session()->get('userId'));
-                $budgetDetails->budget_id = $budget->id;
-                foreach($request->outer_list as $material){
-                    // id 	created_at 	updated_at 	project_id
-                    // building_name 	floor_details_id
-                    // floor_no 	material_id 	budget_quantity 	market_price 	total_budget 	issues_date 	status 	created_by 	updated_by 	deleted_a
-                    // echo($material->material_id);
-
-                    
+                $work = false;
+                foreach($request->outer_list as $material){                   
+                    $budgetDetails = new BudgetDetails();
+                    $budgetDetails->created_by =  Crypt::decrypt(session()->get('userId'));
+                    $budgetDetails->budget_id = $budget->id;
                     $budgetDetails->units_id = $material['unit_id'];
                     $budgetDetails->market_price = floatval($material['price']);
-                    $budgetDetails->budget_quantity = floatval($material['quantity']);                   
-
-                    
+                    $budgetDetails->budget_quantity = floatval($material['quantity']);             
                     $budgetDetails->total_budget = $budgetDetails->market_price * $budgetDetails->budget_quantity;
-                    $total.=$budgetDetails->total_budget ;
-
+                    $total.=$budgetDetails->total_budget;
                     if($budgetDetails->save()){
-                        DB::commit();
-                        return redirect()->back()->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                        $work = true;                  
                     }
+                }
+
+                if($work){
+                    DB::commit();
+                    return redirect()->back()->with($this->resMessageHtml(true, false, 'Project created successfully'));
                 }
             }       
 
