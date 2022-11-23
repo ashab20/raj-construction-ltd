@@ -47,43 +47,44 @@ class BudgetController extends Controller
      */
     public function store(Request $request)
     {
-        // try{
-        //     $material = new Budget();
-        //     $material->project_id = $request->projectName;
-        //     $material->floor_id = $request->floorno;
-        //     $material->foundation_id = $request->pilesheight;
-        //     $material->total_working_day = $request->totalday;
-        //     $material->total_worker = $request->tworker;
-        //     $material->issus_date = $request->issuedate;
+        try{
+            $bd = new Budget();
+            $bd->project_id = $request->projectName;
+            $bd->floor_id = $request->floorno;
+            $bd->foundation_id = $request->pilesheight;
+            $bd->total_working_day = $request->totalday;
+            $bd->total_worker = $request->tworker;
+            $bd->issus_date = $request->issuedate;
 
-        //     $material->status = 1;
-        //     $material->created_by = Crypt::decrypt(session()->get('userId'));
-        //     $identity = decrypt(session()->get('roleIdentity'));
+            $bd->status = 1;
+            $bd->created_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
 
-        //     if($material->save()){
-        //         return redirect($identity.'/budget')->with('success','Data saved');
-        //     }
-        // }catch(Exception $err){
-        //     dd($err);
-        //     return back()->withInput();
-        // }
+            if($bd->save()){
+                return redirect($identity.'/budget')->with('success','Data saved');
+            }
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
+
         // print_r($request);
         
-        try {
-            DB::beginTransaction();
+        // try {
+        //     DB::beginTransaction();
             
-            foreach($request->outer_list as $material){
-                $material->material_id;
-                $material->market_price;
-                $material->quantity;
-                $total = $material->market_price * $material->quantity;
-            }
+        //     foreach($request->outer_list as $material){
+        //         $material->material_id;
+        //         $material->market_price;
+        //         $material->quantity;
+        //         $total = $material->market_price * $material->quantity;
+        //     }
 
-            DB::commit();
-        } catch (Exception $err) {
-            dd($err);
-            DB::rollBack();
-        }
+        //     DB::commit();
+        // } catch (Exception $err) {
+        //     dd($err);
+        //     DB::rollBack();
+        // }
     }
     /**
      * Display the specified resource.
@@ -104,7 +105,10 @@ class BudgetController extends Controller
      */
     public function edit(Budget $budget)
     {
-        //
+        $projectname = Project::all();
+        $floorno = FloorDetails::all();
+        $foundation = Foundation::all();
+        return view('budget.edit',compact('budget','projectname','floorno','foundation'));
     }
 
     /**
@@ -116,7 +120,26 @@ class BudgetController extends Controller
      */
     public function update(Request $request, Budget $budget)
     {
-        //
+        try{
+            $material = $budget;
+            $material->project_id = $request->projectName;
+            $material->floor_id = $request->floorno;
+            $material->foundation_id = $request->pilesheight;
+            $material->total_working_day = $request->totalday;
+            $material->total_worker = $request->tworker;
+            $material->issus_date = $request->issuedate;
+
+            $material->status = 1;
+            $material->created_by = Crypt::decrypt(session()->get('userId'));
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if($material->save()){
+                return redirect($identity.'/budget')->with('success','Data saved');
+            }
+        }catch(Exception $err){
+            dd($err);
+            return back()->withInput();
+        }
     }
 
     /**

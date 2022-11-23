@@ -36,7 +36,7 @@
                                             <div class="mb-3 col-md-4">
                                                 <label for="uname" class="form-label">Name</label>
                                                 <select class="form-control select2" data-toggle="select2" name="uname" id="uname">
-                                                    <option value="">Select Name</option>
+                                                    
                                                     @forelse($unitname as $uName)
                                                         <option value="{{$uName->id}}" {{ old('uname',$material->unit_id)==$uName->id?"selected":""}}> {{ $uName->name}}</option>
                                                     @empty

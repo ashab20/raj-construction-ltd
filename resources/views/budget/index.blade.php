@@ -70,11 +70,11 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('material.edit',$budget->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="{{ route('budget.edit',$budget->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
                                             <a href="javascript:void()" onclick="$('#form{{$budget->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$budget->id}}" action="{{ route('material.destroy',$budget->id)}}" method="post">
+                                            <form id="form{{$budget->id}}" action="{{ route('budget.destroy',$budget->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>
