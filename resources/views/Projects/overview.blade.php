@@ -24,7 +24,7 @@
         <!-- Path: view/components/project/header -->
         <x-project.header :project="$project" />
         <div class="card">
-            {{$project->budgetDetails}}
+            
             <div class="card-body">
                 <div class="row">
                     <!-- mini side bar -->
@@ -68,6 +68,7 @@
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
                             {{-- <x-project.project-budget :project="$project" />  --}}
+                           
                             {{-- ******project budget start******  --}}
                             <div class="row d-none project_budget" id="project_budget">
                                 <div class="col-12">
@@ -180,7 +181,7 @@
                                                                 <div class="col-3 mr-2">
                                                                     <!-- <div class="p-0"> -->
                                                                         <label for=""  class="form-label">Material Name</label>
-                                                                    <select name="material_id" class="form-select" >
+                                                                    <select name="unit_id" class="form-select" >
                                                                         <option value="">Select Item</option>
                                                                         @forelse ($materials as $material)
                                                                         <option value="{{$material->id}}" 
@@ -352,6 +353,7 @@
                              
 
                             {{-- ******project budget end******  --}}
+                          
                         </div>
                     </div>
                     <!-- end gantt view -->

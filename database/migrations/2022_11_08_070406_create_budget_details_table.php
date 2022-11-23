@@ -26,6 +26,9 @@ return new class extends Migration
             $table->unsignedBigInteger('units_id')->nullable();
             $table->foreign('units_id')->references('id')->on('units')->onDelete('cascade')->change();
 
+            $table->unsignedBigInteger('budget_id')->nullable();
+            $table->foreign('budget_id')->references('id')->on('budgets')->onDelete('cascade')->change();
+
             $table->integer('budget_quantity');
             $table->decimal('market_price',12,2);
             $table->decimal('total_budget',12,2)->nullable();
