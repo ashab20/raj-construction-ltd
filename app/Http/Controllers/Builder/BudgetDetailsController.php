@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
-use App\Models\Builder\FloorBudgetDetails;
+use App\Models\Builder\BudgetDetails;
 use App\Models\Builder\FloorDetails;
 use App\Models\Builder\Unit;
 use App\Models\Projects\Project;
@@ -11,7 +11,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
-class FloorBudgetDetailsController extends Controller
+class BudgetDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +20,8 @@ class FloorBudgetDetailsController extends Controller
      */
     public function index()
     {
-        $floorbudgetdetails= FloorBudgetDetails::paginate(10);
-        return view('floorBudgetDetails.index',compact('floorbudgetdetails'));
+        $BudgetDetails= BudgetDetails::paginate(10);
+        return view('BudgetDetails.index',compact('BudgetDetails'));
     }
 
     /**
@@ -34,7 +34,7 @@ class FloorBudgetDetailsController extends Controller
         $buildingName = Project::all();
         $floorNo = FloorDetails::all();
         $unitName = Unit::all();
-        return view('floorBudgetDetails.create',compact('buildingName', 'floorNo', 'unitName'));
+        return view('BudgetDetails.create',compact('buildingName', 'floorNo', 'unitName'));
     }
 
     /**
@@ -47,7 +47,7 @@ class FloorBudgetDetailsController extends Controller
     public function store(Request $request)
     {
         try{
-            $fBDetails = new FloorBudgetDetails();
+            $fBDetails = new BudgetDetails();
             $fBDetails->project_id = $request->buildingName;
             $fBDetails->floor_details_id = $request->floorNo;
             $fBDetails->material_id = $request->unitName;
@@ -72,10 +72,10 @@ class FloorBudgetDetailsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FloorBudgetDetails  $floorBudgetDetails
+     * @param  \App\Models\BudgetDetails  $BudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function show(FloorBudgetDetails $floorBudgetDetails)
+    public function show(BudgetDetails $BudgetDetails)
     {
         //
     }
@@ -83,25 +83,25 @@ class FloorBudgetDetailsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\FloorBudgetDetails  $floorBudgetDetails
+     * @param  \App\Models\BudgetDetails  $BudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(FloorBudgetDetails $floorBudgetDetail)
+    public function edit(BudgetDetails $floorBudgetDetail)
     {
         $buildingName = Project::all();
         $floorNo = FloorDetails::all();
         $unitName = Unit::all();
-        return view('floorBudgetDetails.edit',compact('floorBudgetDetail','buildingName', 'floorNo', 'unitName'));
+        return view('BudgetDetails.edit',compact('floorBudgetDetail','buildingName', 'floorNo', 'unitName'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\FloorBudgetDetails  $floorBudgetDetails
+     * @param  \App\Models\BudgetDetails  $BudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FloorBudgetDetails $floorBudgetDetail)
+    public function update(Request $request, BudgetDetails $floorBudgetDetail)
     {
         try{
             $fBDetails = $floorBudgetDetail;
@@ -129,10 +129,10 @@ class FloorBudgetDetailsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FloorBudgetDetails  $floorBudgetDetails
+     * @param  \App\Models\BudgetDetails  $BudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FloorBudgetDetails $floorBudgetDetail)
+    public function destroy(BudgetDetails $floorBudgetDetail)
     {
         $floorBudgetDetail->delete();
         return redirect()->back();

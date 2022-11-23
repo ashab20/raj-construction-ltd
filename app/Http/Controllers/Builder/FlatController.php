@@ -46,7 +46,6 @@ class FlatController extends Controller
             
             $flats->created_by=decrypt(session()->get('userId'));
             $flats->flat=$request->flatname;
-           
             
             $flats->status = 1;
             if($flats->save()){

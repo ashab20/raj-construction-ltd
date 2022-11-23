@@ -13,18 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('floor_budget_details', function (Blueprint $table) {
+        Schema::create('budget_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             
             $table->unsignedBigInteger('project_id')->nullable()->comment('building_name');
-            $table->foreign('project_id')->references('id')->on('floor_details')->onDelete('cascade')->change();
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
 
             $table->unsignedBigInteger('floor_details_id')->nullable()->comment('floor_no');
             $table->foreign('floor_details_id')->references('id')->on('floor_details')->onDelete('cascade')->change();
 
-            $table->unsignedBigInteger('material_id')->nullable();
-            $table->foreign('material_id')->references('id')->on('units')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('units_id')->nullable();
+            $table->foreign('units_id')->references('id')->on('units')->onDelete('cascade')->change();
 
             $table->integer('budget_quantity');
             $table->decimal('market_price',12,2);
