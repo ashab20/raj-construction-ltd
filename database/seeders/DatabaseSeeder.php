@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Http\Controllers\Lands\LandController;
 use App\Models\Auth\User;
 use Illuminate\Database\Seeder;
 
@@ -33,7 +34,8 @@ class DatabaseSeeder extends Seeder
             DivisionsSeeder::class,
             DistrictSeeder::class,
             ProjectSeeder::class,
-            // FloorDetailsSeeder::class,
+            LandsSeeders::class,
+            FloorDetailsSeeder::class,
             UnitSeeder::class,
         ]);
     }
