@@ -42,7 +42,7 @@
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
-                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}">
+                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}" required>
                                 </div>
                                 <div class="mb-0 col-xl-4 col-6">
                                     <label for="project-overview" class="form-label">{{__('Land Owner Name')}} :</label>
