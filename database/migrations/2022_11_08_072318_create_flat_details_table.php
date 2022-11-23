@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('squire_feet');
             $table->decimal('total_cost',12,2);
             $table->unsignedBigInteger('floor_budget_id')->nullable();
-            $table->foreign('floor_budget_id')->references('id')->on('floor_budget_details')->onDelete('cascade')->change();
+            $table->foreign('floor_budget_id')->references('id')->on('budget_details')->onDelete('cascade')->change();
             $table->unsignedBigInteger('material_detail_id')->nullable();
             $table->foreign('material_detail_id')->references('id')->on('material_details')->onDelete('cascade')->change();
             $table->decimal('sales_price',12,2);
