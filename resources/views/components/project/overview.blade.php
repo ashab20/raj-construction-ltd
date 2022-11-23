@@ -55,10 +55,10 @@
                         <div class="">
                             <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Land Area</h5>
                             <h3 class="my-2 py-1 d-flex">
-                                {{-- {{$project?->land[0]?->land_area}}
+                                 {{$project->land[0]?->land_area}}
                                 <p class="mt-2 p-1 text-muted small">
-                                    ({{$project?->land[0]?->plot_area_counter}})
-                                </p> --}}
+                                    {{-- ({{$project->land->plot_area_counter}}) --}}
+                                </p> 
                             </h3>
                         </div>
                     </div> <!-- end row-->
@@ -72,10 +72,10 @@
                         <div class="text-muted fw-normal mt-0 text-truncate">
                             <h5 class="mt-0" title="Campaign Sent">Building Area</h5>
                             <h3 class="my-2 py-1 d-flex">
-                                {{-- {{$project?->land[0]?->building_area}}
+                                 {{$project->land[0]?->building_area}}
                                 <p class="mt-2 p-1 text-muted small">
-                                    ({{$project?->land[0]?->Building_area_counter}})
-                                </p> --}}
+                                    ({{$project->land[0]?->Building_area_counter}})
+                                </p> 
                             </h3>
                         </div>
                     </div> <!-- end row-->
@@ -89,10 +89,10 @@
                         <div class="">
                             <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Total Height</h5>
                             <h3 class="my-2 py-1 d-flex">
-                                {{-- {{$project?->land[0]?->building_height}}
+                                 {{$project->land[0]?->building_height}}
                                 <p class="mt-2 p-1 text-muted small">
-                                    ({{$project?->land[0]?->Building_height_counter}})
-                                </p> --}}
+                                    ({{$project->land[0]?->Building_height_counter}})
+                                </p> 
                             </h3>
                         </div>
                     </div> <!-- end row-->
@@ -108,10 +108,10 @@
                         <div class="">
                             <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Estimate Budget</h5>
                             <h3 class="my-2 py-1 d-flex">
-                                {{-- {{$project->budget}}
+                                 {{$project->budget}}
                                 <p class="mt-2 p-1 text-muted small">
                                     ({{__('BDT')}})
-                                </p> --}}
+                                </p> 
                             </h3>
                         </div>
                     </div> <!-- end row-->

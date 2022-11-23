@@ -62,24 +62,6 @@ class ProjectSeeder extends Seeder
                 'created_by' => 1,
                 'status' => 1,
             ],
-            [
-                'project_name' => 'RRR',
-                'start_date'=> Carbon::now(),
-                'end_date' => Carbon::now(),
-                'stage_id' => 1,
-                'user_id' => 1,
-                'created_by' => 1,
-                'status' => 1,
-            ],
-            [
-                'project_name' => 'JAR',
-                'start_date'=> Carbon::now(),
-                'end_date' => Carbon::now(),
-                'stage_id' => 1,
-                'user_id' => 1,
-                'created_by' => 1,
-                'status' => 1,
-            ],
         ];
         foreach ($project as $key => $value) {
 
