@@ -413,9 +413,11 @@
                        @php
                            $userData = DB::table('user_details')->where('user_id',decrypt(session()->get('userId')))->first();
                        @endphp
-                        <form action="{{ route('member.update',$member)}}" method="POST" >
+                        <form action="{{ route('userdetails.update',$member)}}" method="POST" >
                             @csrf
-                            @method('patch')
+                            @method('post')
+                            <input type="number" hidden name="user_id" value="{{$member->id}}">
+                            {{-- <input type="number" hidden name="userdetails_id" value="{{$member->userDetails->id}}"> --}}
                             <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> {{__('Personal Info')}}</h5>
                              <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName">
                              {{-- <input type="text"  value="{{Input::get('id')}}" id="authName"> --}}

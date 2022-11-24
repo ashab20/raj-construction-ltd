@@ -70,12 +70,18 @@ class UserDetails extends RoutingController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $request, $id)
     {
+        // dd($request);
         DB::beginTransaction();
         try{
             //  name 	email 	phone
+           User::where($request->user_id)->update([
+            'name'=>$request->name,
+           ]);
 
+           $userdetails = DB::table('úser_details');
+           $userdetails->father_name = 'ka';
             $user = $request;
             $user->name = $request->name;
             $user->email = $request->email;
@@ -104,7 +110,6 @@ class UserDetails extends RoutingController
             $userdetails->permanent_division_id = $request->slectdivision;
             $userdetails->permanent_district_id = $request->slectdistrict;
             $userdetails->status = 1;
-            dd($userdetails);
 
             if($user->save()){
                 $userdetails->project_id =  $user->id;

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RoleRouteController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Auth\UserDetails;
 use App\Http\Controllers\Builder\BudgetController;
 use App\Http\Controllers\Builder\DocumentController;
 use App\Http\Controllers\Builder\DesignController;
@@ -56,6 +57,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         // Create Users
         Route::resource('member', UserController::class);
+        Route::post('/userdetail/{member}',[UserDetails::class,'update'])->name('userdetails.update');
 
         Route::get('/adms', [RoleRouteController::class, 'admins'])->name('admins');
 
