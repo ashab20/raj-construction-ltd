@@ -3,7 +3,7 @@
 @section('content')
 <div class="content-page">
     <div class="content">
-
+        
         <!-- start page title -->
         <div class="row">
             <div class="col-12">
@@ -24,7 +24,7 @@
         <!-- Path: view/components/project/header -->
         <x-project.header :project="$project" />
         <div class="card">
-            
+          
             <div class="card-body">
                 <div class="row">
                     <!-- mini side bar -->
@@ -44,9 +44,8 @@
                             <x-project.project-info :project="$project" />
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
-                            <x-project.project-budget :project="$project" /> 
-
-                          
+                            <x-project.project-budget :project="$project" />
+                                                      
                         </div>
                     </div>
                     <!-- end gantt view -->
@@ -114,6 +113,8 @@
         projectInfoBtn.removeClass('bg-light');
         projectTest.addClass('d-none');
         projectTestBtn.removeClass('bg-light');
+        projectBudget.addClass('d-none');
+        projectBudgetBtn.removeClass('bg-light');
 
     });
     // project info
@@ -125,6 +126,8 @@
         overbtn.removeClass('bg-light');
         projectTest.addClass('d-none');
         projectTestBtn.removeClass('bg-light');
+        projectBudget.addClass('d-none');
+        projectBudgetBtn.removeClass('bg-light');
     });
 
     // project test
@@ -138,6 +141,8 @@
         projectInfoBtn.removeClass('bg-light');
         projectDesign.addClass('d-none');
         projectDesignBtn.removeClass('bg-light');
+        projectBudget.addClass('d-none');
+        projectBudgetBtn.removeClass('bg-light');
     });
 
     projectDesignBtn.click(function(e) {
