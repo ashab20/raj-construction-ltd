@@ -50,11 +50,11 @@ class BudgetDetailsController extends Controller
             $fBDetails = new BudgetDetails();
             $fBDetails->project_id = $request->buildingName;
             $fBDetails->floor_details_id = $request->floorNo;
-            $fBDetails->material_id = $request->unitName;
+            $fBDetails->units_id = $request->unitName;
             $fBDetails->budget_quantity = $request->quantity;
             $fBDetails->market_price = $request->mPrice;
             $fBDetails->total_budget = $request->quantity * $request->mPrice;
-            $fBDetails->issues_date = $request->issueDate;
+            // $fBDetails->issues_date = $request->issueDate;
 
             $fBDetails->status = 1;
             $fBDetails->created_by = Crypt::decrypt(session()->get('userId'));
@@ -107,11 +107,11 @@ class BudgetDetailsController extends Controller
             $fBDetails = $floorBudgetDetail;
             $fBDetails->project_id = $request->buildingName;
             $fBDetails->floor_details_id = $request->floorNo;
-            $fBDetails->material_id = $request->unitName;
+            $fBDetails->units_id = $request->unitName;
             $fBDetails->budget_quantity = $request->quantity;
             $fBDetails->market_price = $request->mPrice;
             $fBDetails->total_budget = $request->quantity * $request->mPrice;
-            $fBDetails->issues_date = $request->issueDate;
+            // $fBDetails->issues_date = $request->issueDate;
 
             $fBDetails->status = 1;
             $fBDetails->updated_by = Crypt::decrypt(session()->get('userId'));

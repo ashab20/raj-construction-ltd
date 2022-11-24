@@ -45,7 +45,7 @@
 
                                             <div class="mb-3 col-md-3">
                                                 <label for="piles" class="form-label">Piles</label>
-                                                <input type="text" value="{{$foundation->piles}}" id="piles" class="form-control" name="piles">
+                                                <input type="text" value="{{$foundation->piler_name}}" id="piles" class="form-control" name="piles">
                                             </div>
                                             <div class="mb-3 col-md-3">
                                                 <label for="rodsize" class="form-label">Rod size</label>

@@ -207,7 +207,7 @@
 <div class="card budget_table">
     <div class="card-body">
 
-          {{-- {{$project->budgets}}  --}}
+        {{-- {{$project->budgets}}  --}}
 @php
 $total = null
     

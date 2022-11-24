@@ -81,10 +81,10 @@
                                                 <label for="tBudget" class="form-label">Total Budget</label>
                                                 <input type="text" id="tBudget" name="tBudget" class="form-control">
                                             </div> --}} 
-                                            <div class="mb-3 col-md-2">
+                                            {{-- <div class="mb-3 col-md-2">
                                                 <label for="issueDate" class="form-label">Issues Date</label>
                                                 <input type="date" id="issueDate" name="issueDate" class="form-control">
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
