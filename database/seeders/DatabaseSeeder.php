@@ -34,9 +34,9 @@ class DatabaseSeeder extends Seeder
             DivisionsSeeder::class,
             DistrictSeeder::class,
             ProjectSeeder::class,
+            LandsSeeders::class,
             FloorDetailsSeeder::class,
             UnitSeeder::class,
-            LandsSeeders::class,
         ]);
     }
 }
