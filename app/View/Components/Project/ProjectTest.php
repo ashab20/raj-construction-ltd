@@ -11,9 +11,11 @@ class ProjectTest extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $project;
+    public function __construct($project)
     {
         //
+        $this->project = $project;
     }
 
     /**

@@ -22,7 +22,7 @@ return new class extends Migration
             
             $table->string('test_name');
             $table->string('test_status');
-            $table->string('comments');
+            $table->string('comments')->nullable();
 
             
                   //default

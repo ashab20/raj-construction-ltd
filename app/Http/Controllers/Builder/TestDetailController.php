@@ -17,7 +17,7 @@ class TestDetailController extends Controller
     public function index()
     {
         $testdetail=TestDetail::paginate(10);
-        return view('testdetail.index',compact('testdetail'));
+        return view('TestDetail.index',compact('testdetail'));
         
     }
 
@@ -29,7 +29,7 @@ class TestDetailController extends Controller
     public function create()
     {
         $projectName = Project::all();
-        return view('testdetail.create',compact('projectName'));
+        return view('TestDetail.create',compact('projectName'));
     }
 
     /**
@@ -78,7 +78,7 @@ class TestDetailController extends Controller
      */
     public function edit(TestDetail $testDetail)
     {
-        return view ('testdetail.edit',compact('testDetail'));
+        return view ('Testdetail.edit',compact('testDetail'));
     }
 
     /**
