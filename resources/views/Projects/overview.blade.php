@@ -163,14 +163,14 @@
                                                     </div>
 
                                                     {{-- <div class="row bg-light p-2 rounded-top">
-                    <div class="col-2"></div>
-                    <div class="col-3">
-                        <label for="">Material Name</label>
-                    </div>
-                    <div class="col-2"><label for="">Market Price</label></div>
-                    <div class="col-2"><label for="">Quantity</label></div>
-                    <div class="col-3"><label for="">Total</label></div>
-                </div> --}}
+                                                            <div class="col-2"></div>
+                                                            <div class="col-3">
+                                                                <label for="">Material Name</label>
+                                                            </div>
+                                                            <div class="col-2"><label for="">Market Price</label></div>
+                                                            <div class="col-2"><label for="">Quantity</label></div>
+                                                            <div class="col-3"><label for="">Total</label></div>
+                                                        </div> --}}
                                                     <!-- outer repeater -->
                                                     @php
                                                     $materials = DB::table('units')->get();
@@ -250,7 +250,7 @@
                                     <div class="card budget_table">
                                         <div class="card-body">
 
-                                            {{-- {{$project?->budgets}} --}}
+                                         
                                             @php
                                             $total = null
 
@@ -276,7 +276,7 @@
                                                         <tr>
                                                             <td>{{++$loop->index}}</td>
                                                             <td>{{$item->floor_details_id}}</td>
-                                                            <td>{{$item->unit}}</td>
+                                                            <td></td>
                                                             <td>{{$item->budget_quantity}}</td>
                                                             <td>{{$item->market_price}}</td>
                                                             <td>{{$item->total_budget}}</td>

@@ -199,13 +199,8 @@
                                 <div class="collapse ml-3" id="sidebarBuilder">
                                     <ul class="side-nav-second-level">
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ route('builder.index')}}">
                                                 {{__('Builder Details')}}
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('floorBudget.index')}}">
-                                                {{__('Add Builder')}}
                                             </a>
                                         </li>
                                     </ul>
