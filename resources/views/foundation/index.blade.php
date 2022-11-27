@@ -43,7 +43,7 @@
                                         <th>#SL</th>
                                         <th>Hight</th>
                                         <th>Weight</th>
-                                        <th>Piles</th>
+                                        <th>Piller Name</th>
                                         <th>Rod Size</th>
                                         <th>Satus</th>
                                         <th>Action</th>
@@ -56,7 +56,7 @@
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         <td>{{ $foundation->height}}</td>
                                         <td>{{ $foundation->weight}}</td>
-                                        <td>{{ $foundation->piles}}</td>
+                                        <td>{{ $foundation->piler_name}}</td>
                                         <td>{{ $foundation->rode_size}}</td>
                                         <td>
                                             @if ($foundation->status === 1)

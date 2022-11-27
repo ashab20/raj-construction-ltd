@@ -199,13 +199,8 @@
                                 <div class="collapse ml-3" id="sidebarBuilder">
                                     <ul class="side-nav-second-level">
                                         <li>
-                                            <a href="#">
+                                            <a href="{{ route('builder.index')}}">
                                                 {{__('Builder Details')}}
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('floorBudget.index')}}">
-                                                {{__('Add Builder')}}
                                             </a>
                                         </li>
                                     </ul>
@@ -221,7 +216,6 @@
                     </div>
                 </li>
 
-              
                 <li class="side-nav-item">
                     <a href="apps-calendar.html" class="side-nav-link">
                         <i class="uil-calender"></i>

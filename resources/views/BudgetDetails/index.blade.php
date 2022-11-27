@@ -47,13 +47,13 @@
                                         <th>Quantity</th>
                                         <th>Market Price</th>
                                         <th>Total</th>
-                                        <th>Issues Date</th>
+                                        {{-- <th>Issues Date</th> --}}
                                         <th>Satus</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($floorbudgetdetails as $fBudgetDetails)
+                                    @forelse ($BudgetDetails as $fBudgetDetails)
                                     <tr>
                                         <td scope="row">{{ ++$loop->index }}</td>
                                         {{-- material_id  budget_quantity 	market_price 	total_budget 	issues_date  (material_name)--}}
@@ -63,7 +63,7 @@
                                         <td>{{ $fBudgetDetails->budget_quantity}}</td>
                                         <td>{{ $fBudgetDetails->market_price}}</td>
                                         <td>{{ $fBudgetDetails->budget_quantity * $fBudgetDetails->market_price}}</td>
-                                        <td>{{ $fBudgetDetails->issues_date}}</td>
+                                        {{-- <td>{{ $fBudgetDetails->issues_date}}</td> --}}
                                         <td>
                                             @if ($fBudgetDetails->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>

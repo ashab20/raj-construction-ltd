@@ -32,7 +32,7 @@
                                     <form class="form" enctype="multipart/form-data" method="post" action="{{ route('floorBudget.store')}}">
                                         @csrf
                                         <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-3">
                                                 <label for="floorNo" class="form-label">Floor No.</label>
                                                 <select class="form-control" name="floorNo" id="floorNo">
                                                     <option value="">Select Name</option>
@@ -43,17 +43,15 @@
                                                     @endforelse
                                                 </select>
                                             </div>
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-3">
                                                 <label for="tworkingday" class="form-label">Total Working Day</label>
                                                 <input type="text" id="tworkingday" name="tworkingday" class="form-control">
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-3">
                                                 <label for="tworker" class="form-label">Total Worker</label>
                                                 <input type="text" id="tworker" name="tworker" class="form-control">
                                             </div>
-                                            <div class="mb-3 col-md-6">
+                                            <div class="mb-3 col-md-3">
                                                 <label for="issueDate" class="form-label">Issues Date</label>
                                                 <input type="date" id="issueDate" name="issueDate" class="form-control">
                                             </div>

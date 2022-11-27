@@ -20,7 +20,7 @@ class BudgetDetails extends Model
     }
     
     public function unit(){
-        return $this->belongsTo(Unit::class,'material_id','id');
+        return $this->belongsTo(Unit::class,'units_id','id');
     }
 
     public function budgets(){
