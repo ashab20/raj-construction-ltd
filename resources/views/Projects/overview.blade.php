@@ -285,16 +285,16 @@
                                                             </td>
                                                         </tr>
                                                         @empty
-                                                        <tr>
-                                                            <td colspan="8" class="text-center">No data Founds!</td>
-                                                        </tr>
+                                                            <tr>
+                                                                <td colspan="8" class="text-center">No data Founds!</td>
+                                                            </tr>
                                                         @endforelse
 
                                                         @if($project->budgets->count() > 0)
-                                                        <tr>
-                                                            <td colspan="7" class="text-end">Total :</td>
-                                                            <td>{{$total}}</td>
-                                                        </tr>
+                                                            <tr>
+                                                                <td colspan="7" class="text-end">Total :</td>
+                                                                <td>{{$total}}</td>
+                                                            </tr>
                                                         @endif
                                                     </tbody>
                                                 </table>
