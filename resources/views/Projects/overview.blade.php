@@ -249,8 +249,7 @@
 
                                     <div class="card budget_table">
                                         <div class="card-body">
-
-                                         
+                                        
                                             @php
                                             $total = null
 
@@ -287,7 +286,7 @@
                                                         </tr>
                                                         @empty
                                                         <tr>
-                                                            <td>No data Founds!</td>
+                                                            <td colspan="8" class="text-center">No data Founds!</td>
                                                         </tr>
                                                         @endforelse
 
