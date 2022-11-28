@@ -43,7 +43,7 @@
                                             </div>
 
                                             <div class="mb-3 col-md-3">
-                                                <label for="piles" class="form-label">Piles</label>
+                                                <label for="piles" class="form-label">Piller Name</label>
                                                 <input type="text" id="piles" class="form-control" name="piles">
                                             </div>
                                             <div class="mb-3 col-md-3">

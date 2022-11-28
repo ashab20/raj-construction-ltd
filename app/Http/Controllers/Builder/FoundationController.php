@@ -43,7 +43,7 @@ class FoundationController extends Controller
             $foundation = new Foundation();
             $foundation->height = $request->height;
             $foundation->weight = $request->weight;
-            $foundation->piles = $request->piles;
+            $foundation->piler_name = $request->piles;
             $foundation->rode_size = $request->rodsize;
 
             $foundation->status = 1;
@@ -94,7 +94,7 @@ class FoundationController extends Controller
             $foundations = $foundation;
             $foundations->height = $request->height;
             $foundations->weight = $request->weight;
-            $foundations->piles = $request->piles;
+            $foundations->piler_name = $request->piles;
             $foundations->rode_size = $request->rodsize;
 
             $foundations->status = 1;
