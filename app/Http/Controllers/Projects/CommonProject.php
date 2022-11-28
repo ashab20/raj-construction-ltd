@@ -10,7 +10,7 @@ class CommonProject extends Controller
 {
     public function index(Project $project)
     {
-         $projects = Project::paginate(10);
+        $projects = Project::paginate(10);
         //  print_r($project);
         return view('Projects.overview',compact('project'));
     }
