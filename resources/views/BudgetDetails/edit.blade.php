@@ -60,9 +60,8 @@
                                             <div class="mb-3 col-md-2">
                                                 <label for="unitName" class="form-label">Material Name</label>
                                                 <select class="form-control select2" data-toggle="select2" name="unitName" id="unitName">
-                                                    <option value="">Select Unit</option>
                                                     @forelse($unitName as $uName)
-                                                        <option value="{{$uName->id}}" {{ old('unitName',$floorBudgetDetail->material_id)==$uName->id?"selected":""}}> {{ $uName->name}}</option>
+                                                        <option value="{{$uName->id}}" {{ old('unitName',$floorBudgetDetail->units_id)==$uName->id?"selected":""}}> {{ $uName->name}}</option>
                                                     @empty
                                                         <option value="">No data found</option>
                                                     @endforelse
@@ -76,10 +75,10 @@
                                                 <label for="mPrice" class="form-label">Market Price</label>
                                                 <input type="text" id="mPrice" value="{{$floorBudgetDetail->market_price}}" name="mPrice" class="form-control">
                                             </div>
-                                            <div class="mb-3 col-md-2">
+                                            {{-- <div class="mb-3 col-md-2">
                                                 <label for="issueDate" class="form-label">Issues Date</label>
                                                 <input type="datetime-local" id="issueDate" value="{{$floorBudgetDetail->issues_date}}" name="issueDate" class="form-control">
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>

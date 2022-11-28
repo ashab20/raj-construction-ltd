@@ -100,7 +100,7 @@ class LandController extends Controller
         try{
             $identity = decrypt(session()->get('roleIdentity'));
             $lands= $land;
-            $land->squire_feet = $request->squireFeet;
+            $land->plot_area_counter = $request->squireFeet;
             $land->house_no = $request->houseNo;
             $land->block = $request->block;
             $land->road_no = $request->roadNo;
