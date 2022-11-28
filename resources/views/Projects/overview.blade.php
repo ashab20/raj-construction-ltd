@@ -249,7 +249,6 @@
 
                                     <div class="card budget_table">
                                         <div class="card-body">
-                                        
                                             @php
                                             $total = null
 
