@@ -1,21 +1,21 @@
 <div class="row d-none" id="project_test">
-<div class="col-12">
-    <div class="card">
-        <div class="card-body">
-        <div class="row mb-2">
-            <div class="col-sm-4">
-                <a href="{{ route('testDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Test Detail</a>
-            </div>
-            <div class="col-sm-8">
-                <div class="text-sm-end">
-                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
-                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                    <button type="button" class="btn btn-light mb-2">Export</button>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-sm-4">
+                        <a href="{{ route('testDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Test Detail</a>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="text-sm-end">
+                            <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
+                            <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                            <button type="button" class="btn btn-light mb-2">Export</button>
+                        </div>
+                    </div><!-- end col-->
                 </div>
-            </div><!-- end col-->
-        </div>
-        <div class="table-responsive">
-            <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
+                <div class="table-responsive">
+                    <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                         <thead>
                             <tr>
                                 <th>SL No</th>
