@@ -24,7 +24,6 @@
             <div class="card">
                 <div class="card-body">
                     <hr>
-
                     <div class="tab-content">
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">

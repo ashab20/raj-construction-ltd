@@ -34,7 +34,7 @@
                                 <td>1</td>
                                 <td>CPDL</td>
                                 <td>Soil</td>
-                                <td>Good</td>
+                                <td>889</td>
                                 <td>Ok</td>
                                 <td>1</td>
                                 <td>l</td>
