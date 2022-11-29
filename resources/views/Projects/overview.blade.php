@@ -44,6 +44,7 @@
                             <x-project.project-info :project="$project" />
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
+                            <x-project.project-management :project="$project" />
                             {{-- <x-project.project-budget :project="$project" /> --}}
 
                             <!-- Test Budget start-->
@@ -445,7 +446,7 @@
         let projectTestBtn = $('#project_test_btn');
         let projectDesignBtn = $('#project_design_btn');
         let projectBudgetBtn = $('#project_budget_btn');
-        let projectManagment = $('#project_managment');
+        let projectManagementBtn = $('#project-management-btn');
 
         // content 
         let overview = $('#overview');
@@ -453,6 +454,7 @@
         let projectTest = $('#project_test');
         let projectDesign = $('#project_design');
         let projectBudget = $('.project_budget');
+        let projectManagement = $('#project-management');
 
 
 
@@ -468,6 +470,8 @@
             projectTestBtn.removeClass('bg-light');
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
+            projectManagement.addClass('d-none');
+            projectBudgetBtn.removeClass('bg-light')
 
         });
         // project info
@@ -481,6 +485,8 @@
             projectTestBtn.removeClass('bg-light');
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
+            projectManagement.addClass('d-none');
+            projectBudgetBtn.removeClass('bg-light')
         });
 
         // project test
@@ -496,6 +502,8 @@
             projectDesignBtn.removeClass('bg-light');
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
+            projectManagement.addClass('d-none');
+            projectBudgetBtn.removeClass('bg-light')
         });
 
         projectDesignBtn.click(function(e) {
@@ -510,6 +518,9 @@
             projectTestBtn.removeClass('bg-light');
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
+            
+            projectManagement.addClass('d-none');
+            projectBudgetBtn.removeClass('bg-light')
         });
 
         // project budget
@@ -526,9 +537,27 @@
             projectInfoBtn.removeClass('bg-light');
             projectTest.addClass('d-none');
             projectTestBtn.removeClass('bg-light');
+            projectManagement.addClass('d-none');
+            projectBudgetBtn.removeClass('bg-light')
 
         });
 
+        projectManagementBtn.click(()=>{
+            projectManagement.removeClass('d-none');
+            projectBudgetBtn.addClass('bg-light')
+
+            projectDesign.addClass('d-none');
+            projectDesignBtn.removeClass('bg-light');
+            
+            overview.addClass('d-none');
+            overbtn.removeClass('bg-light');
+            projectInfo.addClass('d-none');
+            projectInfoBtn.removeClass('bg-light');
+            projectTest.addClass('d-none');
+            projectTestBtn.removeClass('bg-light');
+            projectBudget.addClass('d-none');
+            projectBudgetBtn.removeClass('bg-light');
+        })
         // data-leftbar-compact-mode="condensed"
     </script>
 

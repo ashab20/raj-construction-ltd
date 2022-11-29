@@ -110,7 +110,7 @@
                     </a>
 
                     <a href="javascript:void(0);" class="text-body">
-                        <div class="d-flex mt-1 px-2 py-2" id="project_managment">
+                        <div class="d-flex mt-1 px-2 py-2" id="project-management-btn">
                             <div class="avatar-sm d-table">
                                 <span class="avatar-title bg-warning-lighten rounded-circle text-warning">
                                     <i class='uil uil-moon font-24'></i>
