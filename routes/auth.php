@@ -11,6 +11,8 @@ use App\Http\Controllers\Builder\DesignController;
 use App\Http\Controllers\Builder\DesignationController;
 use App\Http\Controllers\Builder\BuilderOptionController;
 use App\Http\Controllers\Builder\CompanyController;
+use App\Http\Controllers\WorkerController;
+
 use App\Http\Controllers\Builder\FlatController;
 use App\Http\Controllers\Builder\FloorDetailsController;
 use App\Http\Controllers\Builder\FlatDetailController;
@@ -25,6 +27,8 @@ use App\Http\Controllers\Location\CountryController;
 use App\Http\Controllers\Lands\LandController;
 use App\Http\Controllers\Location\DistrictController;
 use App\Http\Controllers\Location\DivisionController;
+use App\Http\Controllers\Management\ManagementController;
+use App\Http\Controllers\Management\TeamController;
 use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Middleware\AdminMiddleware;
@@ -119,9 +123,18 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         // flat
         Route::resource('/flatDetail', FlatDetailController::class);
         Route::resource('/flat', FlatController::class);
+
         //test
         Route::resource('/testDetail',TestDetailController::class);
+        
         //company
         Route::resource('/companyname',CompanyController::class);
+        
+        //worker
+        Route::resource('/worker',WorkerController::class);
+
+        //management
+        Route::resource('/management',ManagementController::class);
+        Route::resource('/team',TeamController::class);
     });
 });

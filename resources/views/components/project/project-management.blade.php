@@ -4,8 +4,7 @@
             <div class="card-body">
                 <div class="row mb-2">
                     <div class="col-sm-4">
-                        <a href="#" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Project</a>
-                        {{-- <a href="{{ route('testDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Test Detail</a> --}}
+                        <a href="{{ route('management.create',['id'=> encrypt($project->id)])}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Management</a>
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
@@ -19,53 +18,48 @@
                     <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                         <thead>
                             <tr>
-                                <th>SL No</th>
+                                <th>#SL</th>
                                 <th>Project Name</th>
+                                <th>Project Director</th>
+                                <th>Architecht</th>
+                                <th>Chivil Engneer Name</th>
                                 <th>Team</th>
-                                <th>Worker</th>
-                                <th>Comments</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse ($project?->testDetails as $tdetail) --}}
-                            <tr>
-                                <td>1</td>
-                                <td>CPDL</td>
-                                <td>Soil</td>
-                                <td>889</td>
-                                <td>Ok</td>
-                                <td>1</td>
-                                <td>l</td>
+                            {{$project}}
+                            {{-- @forelse ($project?->managements as $management) --}}
+                            {{-- <tr> --}}
                                 {{-- <td scope="row">{{ ++$loop->index }}</td>
-                                <td>{{ $tdetail?->project?->project_name}}</td>
+                                <td>{{ $management?->project?->project_name}}</td>
 
-                                <td>{{ $tdetail->test_name}}</td>
-                                <td>{{ $tdetail->test_status}}</td>
-                                <td>{{ $tdetail->comments}}</td> --}}
-                                {{-- <td>
-                                    @if ($tdetail->status === 1)
+                                <td>{{ $management->test_name}}</td>
+                                <td>{{ $management->test_status}}</td>
+                                <td>{{ $management->comments}}</td>
+                                <td>
+                                    @if ($management->status === 1)
                                     <span class="badge badge-success-lighten">Active</span>
                                     @else                                   
                                         <span class="badge badge-danger-lighten">Blocked</span>
                                     
                                     @endif
-                                </td> --}}
-                                {{-- <td class="table-action">
-                                    <a href="{{ route('testDetail.edit',$tdetail)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
-                                    <a href="javascript:void()" onclick="$('#form{{$tdetail->id}}').submit()">
+                                </td>
+                                <td class="table-action">
+                                    <a href="{{ route('testDetail.edit',$management)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
+                                    <a href="javascript:void()" onclick="$('#form{{$management->id}}').submit()">
                                         <i class="mdi mdi-delete"></i>
                                     </a>
-                                    <form id="form{{$tdetail->id}}" action="{{ route('testDetail.destroy',$tdetail->id)}}" method="post">
+                                    <form id="form{{$management->id}}" action="{{ route('testDetail.destroy',$management->id)}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>
-                                </td> --}}
+                                </td>
                             </tr>                                      
-                            {{-- @empty
+                            @empty
                                 <tr>
-                                    <td colspan="6" class="text-center">No Data Found</td>
+                                    <td colspan="8" class="text-center">No Data Found</td>
                                 </tr>
                             @endforelse --}}
                         </tbody>

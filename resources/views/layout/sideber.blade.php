@@ -126,6 +126,11 @@
                                                 {{__('Foundation')}}
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('team.index')}}">
+                                                {{__('Team')}}
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -212,23 +217,16 @@
                                     {{__('Test Detail')}}
                                 </a>
                             </li>
+                            </li>
+                            {{-- managements --}}
+                            <li class="side-nav-item">
+                                <a href="{{ route('management.index')}}">
+                                    {{__('Management List')}}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
-
-                <li class="side-nav-item">
-                    <a href="apps-calendar.html" class="side-nav-link">
-                        <i class="uil-calender"></i>
-                        <span> Calendar </span>
-                    </a>
-                </li>
-
-                <li class="side-nav-item">
-                    <a href="apps-chat.html" class="side-nav-link">
-                        <i class="uil-comments-alt"></i>
-                        <span> Chat </span>
-                    </a>
-                </li> 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
@@ -248,21 +246,12 @@
                             <li>
                                 <a href="{{route('admin.moderators')}}">{{ _('Moderators')}}</a>
                             </li>
-                            <li>
-                                <a href="apps-email-read.html">{{ _('Employees')}}</a>
-                            </li>
-                            <li>
-                                <a href="apps-email-read.html">{{ _('Clients')}}</a>
-                            </li>
-                            <li>
-                                <a href="apps-email-read.html">{{ _('Workers')}}</a>
-                            </li>
                         </ul>
                     </div>
                 </li>
                 <li class="side-nav-title side-nav-item">Apps</li>
 
-                 <li class="side-nav-item">
+                <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
                         <i class="uil-briefcase"></i>
                         <span> {{__('Locations')}} </span>
@@ -309,6 +298,7 @@
                         </ul>
                     </div>
                 </li>
+                
 {{--
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">

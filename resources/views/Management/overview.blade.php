@@ -45,12 +45,11 @@
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
                             <x-project.project-management :project="$project" />
-                            <x-project.project-document :project="$project" />
                             {{-- <x-project.project-budget :project="$project" /> --}}
 
                             <!-- Test Budget start-->
 
-                            {{-- project budget start******  --}}
+                            {{-- ******project budget start******  --}}
                             <div class="row d-none project_budget" id="project_budget">
                                 <div class="col-12">
                                     <div class="row">
@@ -109,20 +108,17 @@
                                                                 </label>
                                                                 <select name="floorno" id="" class="form-select">
                                                                     <option value="">Select</option>
-                                                                    @if($floor->count() > 0)
-                                                                    @forelse ($floor as $flr)
-                                                                    <option value="{{$flr->id}}">{{$flr->floor_no}}</option>
+                                                                    @forelse ($floor as $f)
+                                                                    <option value="{{$f->id}}">{{$f->floor_no}}</option>
 
                                                                     @empty
-                                                                    <option value="{{$flr->id}}">{{__('No Data Founds!')}}</option>
+                                                                    <option value="{{$f->id}}">{{__('No Data Founds!')}}</option>
 
                                                                     @endforelse
-                                                                    @endif
                                                                 </select>
                                                             </div>
                                                             <div class="mb-3 d-none" id="piler">
                                                                 @php
-                                                                
                                                                 $foundations = DB::table('foundations')->get()
                                                                 @endphp
                                                                 <label class="form-label d-flex">
@@ -131,15 +127,13 @@
                                                                 </label>
                                                                 <select name="foundation" id="" class="form-select">
                                                                     <option value="">Select</option>
-                                                                    @if($foundations->count() > 0)
-                                                                    @forelse ($foundations as $fnd)
-                                                                    <option value="{{$f->id}}">{{$fnd->piler_name}}</option>
+                                                                    @forelse ($foundations as $f)
+                                                                    <option value="{{$f->id}}">{{$f->piler_name}}</option>
 
                                                                     @empty
                                                                     <option value="{{$f->id}}">{{__('No Data Founds!')}}</option>
 
                                                                     @endforelse
-                                                                    @endif
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -318,7 +312,7 @@
 
                                     function handleBudgetChange(e) {
                                         if (e.value === "piler") {
-                                            // // $('#indentity_budget').text("{{__('Piler No')}}") ;
+                                            // $('#indentity_budget').text("{{__('Piler No')}}") ;
                                             $('#piler').removeClass('d-none');
                                             $('#floor').addClass('d-none');
                                         } else if (e.value === "floor") {
@@ -453,7 +447,6 @@
         let projectDesignBtn = $('#project_design_btn');
         let projectBudgetBtn = $('#project_budget_btn');
         let projectManagementBtn = $('#project-management-btn');
-        let projectDocumentsBtn = $('#project_document_btn');
 
         // content 
         let overview = $('#overview');
@@ -462,7 +455,6 @@
         let projectDesign = $('#project_design');
         let projectBudget = $('.project_budget');
         let projectManagement = $('#project-management');
-        let projectDocument = $('#project-document');
 
 
 
@@ -566,26 +558,6 @@
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
         })
-
-        projectDocumentsBtn.click(()=>{
-            projectDocument.removeClass('d-none');
-            projectDocumentsBtn.addClass('bg-light')
-
-            projectManagement.removeClass('bg-light');
-            projectBudgetBtn.addClass('d-none')
-            projectDesign.addClass('d-none');
-            projectDesignBtn.removeClass('bg-light');            
-            overview.addClass('d-none');
-            overbtn.removeClass('bg-light');
-            projectInfo.addClass('d-none');
-            projectInfoBtn.removeClass('bg-light');
-            projectTest.addClass('d-none');
-            projectTestBtn.removeClass('bg-light');
-            projectBudget.addClass('d-none');
-            projectBudgetBtn.removeClass('bg-light');
-        })
-
-        
         // data-leftbar-compact-mode="condensed"
     </script>
 
