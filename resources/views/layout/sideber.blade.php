@@ -298,6 +298,21 @@
                         </ul>
                     </div>
                 </li>
+
+                <li class="side-nav-item"> 
+                    <a data-bs-toggle="collapse" href="#sidebarWorker" aria-expanded="false" aria-controls="sidebarWorker" class="side-nav-link">
+                        <i class="uil-rss"></i>
+                        <span>Worker</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarWorker">
+                        <ul class="side-nav-second-level">                      
+                            <li>
+                                <a href="{{ route('worker.index')}}">Worker Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 
 {{--
                 <li class="side-nav-item">
