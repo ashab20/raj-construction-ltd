@@ -108,11 +108,11 @@
                                                                 </label>
                                                                 <select name="floorno" id="" class="form-select">
                                                                     <option value="">Select</option>
-                                                                    @forelse ($floor as $f)
-                                                                    <option value="{{$f->id}}">{{$f->floor_no}}</option>
+                                                                    @forelse ($floor as $flr)
+                                                                    <option value="{{$flr->id}}">{{$flr->floor_no}}</option>
 
                                                                     @empty
-                                                                    <option value="{{$f->id}}">{{__('No Data Founds!')}}</option>
+                                                                    <option value="{{$flr->id}}">{{__('No Data Founds!')}}</option>
 
                                                                     @endforelse
                                                                 </select>

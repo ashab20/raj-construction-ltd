@@ -22,11 +22,35 @@ return new class extends Migration
             $table->string('nid_birth_Cirtificate');
             $table->date('dob');
             $table->string('attachment')->nullable();
-            $table->string('present_address',500)->nullable();
-            $table->string('parmanent_address',500)->nullable();
             $table->integer('total_working_day')->nullable()->unsigned();
             $table->time('total_working_hour')->nullable();
             $table->decimal('total_sallary',12,2)->nullable()->unsigned();
+
+
+            
+            //   present address
+            $table->string('present_address')->nullable();
+
+            $table->unsignedBigInteger('present_country_id')->nullable();
+            $table->foreign('present_country_id')->references('id')->on('countries')->onDelete('cascade')->change()->nullable();
+
+            $table->unsignedBigInteger('present_division_id')->nullable();
+            $table->foreign('present_division_id')->references('id')->on('divisions')->onDelete('cascade')->change()->nullable();
+
+            $table->unsignedBigInteger('present_district_id')->nullable();
+            $table->foreign('present_district_id')->references('id')->on('districts')->onDelete('cascade')->change()->nullable();
+
+            $table->string('permanent_address')->nullable();
+
+            $table->unsignedBigInteger('permanent_country_id')->nullable();
+            $table->foreign('permanent_country_id')->references('id')->on('countries')->onDelete('cascade')->change()->nullable();
+
+            $table->unsignedBigInteger('permanent_division_id')->nullable();
+            $table->foreign('permanent_division_id')->references('id')->on('divisions')->onDelete('cascade')->change()->nullable();
+
+            $table->unsignedBigInteger('permanent_district_id')->nullable();
+            $table->foreign('permanent_district_id')->references('id')->on('districts')->onDelete('cascade')->change()->nullable();
+            
              //default
              $table->integer('status')->default(1);
              $table->unsignedBigInteger('created_by');

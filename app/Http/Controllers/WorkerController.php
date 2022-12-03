@@ -14,7 +14,7 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        $workers = Budget::paginate(10);
+        $workers = worker::paginate(10);
         return view('worker.index',compact('workers'));
     }
 
@@ -25,7 +25,8 @@ class WorkerController extends Controller
      */
     public function create()
     {
-        //
+        return view('worker.create');
+        
     }
 
     /**
@@ -36,7 +37,17 @@ class WorkerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $worker = new Worker();
+        
+        $worker->present_country_id = $request->phone;
+        $worker->present_address = $request->phone;
+        $worker->present_division_id = $request->phone;
+        $worker->present_district_id = $request->phone;
+
+        $worker->permanent_address = $request->phone;
+        $worker->permanent_country_id = $request->phone;
+        $worker->permanent_division_id = $request->phone;
+        $worker->permanent_district_id = $request->phone;
     }
 
     /**
@@ -81,6 +92,7 @@ class WorkerController extends Controller
      */
     public function destroy(worker $worker)
     {
-        //
+        $worker->delete();
+        return redirect()->route('worker.index');
     }
 }
