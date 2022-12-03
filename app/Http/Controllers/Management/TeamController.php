@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Management;
 
-use App\Models\Builder\team;
+use App\Http\Controllers\Controller;
+use App\Models\Management\Team;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -14,7 +15,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Team::paginate(10);
+        return view('Team.list',compact('teams'));
     }
 
     /**
@@ -44,7 +46,7 @@ class TeamController extends Controller
      * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show(team $team)
+    public function show(Team $team)
     {
         //
     }
