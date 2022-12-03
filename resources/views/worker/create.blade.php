@@ -42,24 +42,24 @@
                            
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
-                                    <label for="projectname" class="form-label">{{__('Name')}}</label>
-                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}" required>
+                                    <label for="name" class="form-label">{{__('Name')}}</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Enter project name" name="name"  required>
                                 </div>
                                 <div class="col-xl-4 mb-3">
-                                    <label for="projectname" class="form-label">{{__('Father Name')}}</label>
-                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}" required>
+                                    <label for="fname" class="form-label">{{__('Father Name')}}</label>
+                                    <input type="text" id="fname" class="form-control" placeholder="Enter project name" name="fname"  required>
                                 </div>
                                 <div class="col-xl-4 mb-3">
-                                    <label for="projectname" class="form-label">{{__('Mother Name')}}</label>
-                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}" required>
+                                    <label for="mname" class="form-label">{{__('Mother Name')}}</label>
+                                    <input type="text" id="mname" class="form-control" placeholder="Enter project name" name="mname" required>
                                 </div>
                             </div>
 
                             <div class="row">
 
                                 <div class="col-xl-4 mb-3">
-                                    <label for="projectname" class="form-label">{{__('NID/Birth Certificate')}}</label>
-                                    <input type="number" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}" required>
+                                    <label for="nbcertificate" class="form-label">{{__('NID/Birth Certificate')}}</label>
+                                    <input type="number" id="nbcertificate" class="form-control" placeholder="Enter project name" name="nbcertificate" value="{{ old('projectNameInputField')}}" required>
                                 </div>
                                
                                 <div class="col-xl-4 mb-3 position-relative" id="datepicker1">
