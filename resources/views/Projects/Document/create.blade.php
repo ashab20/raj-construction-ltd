@@ -46,22 +46,25 @@
                                             <div class="row">
                                                 <div class="col-xl-6 mb-3 mt-xl-0">
                                                     <label for="project-overview" class="form-label">{{__('Documet name')}}</label>
-                                                    <input type="text" name="" id="" class="form-control">
+                                                    <input type="text" name="docuname" id="" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-xl-6 mb-3 mt-xl-0">
-                                                    <label for="project-overview" class="form-label">{{__('Overview')}}</label>
+                                                    <label for="project-overview" class="form-label">{{__('Description')}}</label>
                                                     <p class="text-muted font-14">Brief about the document</p>
-                                                    <textarea class="form-control" id="documetnOverView" rows="7" placeholder="Enter some brief about project.."></textarea>
+                                                    <textarea class="form-control" name="description" id="documetnOverView" rows="7" placeholder="Enter some brief about project.."></textarea>
                                                 </div>
                                                 <div class="col-xl-6">
                                                     <div class="mb-3 mt-3 mt-xl-0">
                                                         <label for="projectname" class="mb-0">Project Image</label>
                                                         <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
-                                                        <input type="file" multiple  class="dropify" data-max-height="1000" name="documents[]" id="documentFile" data-max-file-size-preview="3M" />
+                                                        <input type="file" multiple="multiple" class="dropify" data-max-height="1000" name="documents[]" id="documentFile" data-max-file-size-preview="3M" />
 
                                                     </div>
+                                                    <!-- Preview -->
+                                                    <span class="text-danger text-center" id="imageData"></span>
+                                                    <div class="dropzone-previews mt-3" id="file-previews"></div>
                                                 </div>
 
 
@@ -88,6 +91,7 @@
 
 
         <script src="{{asset('assets/js/dropify/dropify.min.js')}}"></script>
+
         <!-- <script src="{{asset('assets/js/dropify/dropify-multiple.min.js')}}"></script> -->
 
         <script>
@@ -96,14 +100,24 @@
             });
 
             var drDestroy = $('#input-file-to-destroy').dropify();
-            // let droped = $('.dropify').dropify();
+            let droped = $('.dropify').dropify();
 
-            let images = $('#documentFile');
+            // console.log(droped);
+            let doc = $('#documentFile');
+            console.log(doc);
 
-            images.change((e)=> {
-                console.log(e);
+
+            doc.change((e) => {
+                let images = $('form input[type=file]').get(0).files
+                let filePreviews = $('#imageData');
+                let img;
+                console.log(images);
+                // images.map((image) => {
+                //     console.log();
+                // });
+                return filePreviews.html(images.length + ' Item selected');
+
             })
-            
         </script>
 
         @endpush
