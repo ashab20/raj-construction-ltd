@@ -43,6 +43,7 @@
                                         <form class="form" method="post" enctype="multipart/form-data" action="{{route('document.store')}}">
                                             @csrf
                                             {{-- <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Document')}} :</h5> --}}
+                                            <input type="hidden" name="project_id">
                                             <div class="row">
                                                 <div class="col-xl-6 mb-3 mt-xl-0">
                                                     <label for="project-overview" class="form-label">{{__('Documet name')}}</label>

@@ -45,6 +45,7 @@
                             <x-project.project-test :project="$project" />
                             <x-project.project-design :project="$project" />
                             <x-project.project-management :project="$project" />
+                            <x-project.project-document :project="$project" />
                             {{-- <x-project.project-budget :project="$project" /> --}}
 
                             <!-- Test Budget start-->
@@ -447,6 +448,7 @@
         let projectDesignBtn = $('#project_design_btn');
         let projectBudgetBtn = $('#project_budget_btn');
         let projectManagementBtn = $('#project-management-btn');
+        let projectDocumentsBtn = $('#project_document_btn');
 
         // content 
         let overview = $('#overview');
@@ -455,6 +457,7 @@
         let projectDesign = $('#project_design');
         let projectBudget = $('.project_budget');
         let projectManagement = $('#project-management');
+        let projectDocument = $('#project-document');
 
 
 
@@ -558,6 +561,26 @@
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
         })
+
+        projectDocumentsBtn.click(()=>{
+            projectDocument.removeClass('d-none');
+            projectDocumentsBtn.addClass('bg-light')
+
+            projectManagement.removeClass('bg-light');
+            projectBudgetBtn.addClass('d-none')
+            projectDesign.addClass('d-none');
+            projectDesignBtn.removeClass('bg-light');            
+            overview.addClass('d-none');
+            overbtn.removeClass('bg-light');
+            projectInfo.addClass('d-none');
+            projectInfoBtn.removeClass('bg-light');
+            projectTest.addClass('d-none');
+            projectTestBtn.removeClass('bg-light');
+            projectBudget.addClass('d-none');
+            projectBudgetBtn.removeClass('bg-light');
+        })
+
+        
         // data-leftbar-compact-mode="condensed"
     </script>
 

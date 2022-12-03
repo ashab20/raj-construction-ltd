@@ -65,8 +65,10 @@ class DocumentController extends Controller
             else{
                 return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Document created unsuccessfully'));
             }
+
             $docu->created_by = Crypt::decrypt(session()->get('userId'));
             $docu->status = 1;
+            $docu->project_id = Crypt::decrypt($request->project_id);
             if ($docu->save()) {
                 return redirect($identity . '/document')->with($this->resMessageHtml(true, false, 'Document created successfully'));
             }

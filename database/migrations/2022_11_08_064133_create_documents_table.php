@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            // $table->unsignedBigInteger('land_id');            
-            // $table->foreign('land_id')->references('id')->on('lands')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('project_id');            
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
             $table->string('docu_name');
             $table->json('doc_attachment');
             $table->string('description')->nullable();
