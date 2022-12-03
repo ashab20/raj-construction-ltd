@@ -109,6 +109,7 @@
                                                                 </label>
                                                                 <select name="floorno" id="" class="form-select">
                                                                     <option value="">Select</option>
+                                                                    @if($floor->count() > 0)
                                                                     @forelse ($floor as $flr)
                                                                     <option value="{{$flr->id}}">{{$flr->floor_no}}</option>
 
@@ -116,10 +117,12 @@
                                                                     <option value="{{$flr->id}}">{{__('No Data Founds!')}}</option>
 
                                                                     @endforelse
+                                                                    @endif
                                                                 </select>
                                                             </div>
                                                             <div class="mb-3 d-none" id="piler">
                                                                 @php
+                                                                
                                                                 $foundations = DB::table('foundations')->get()
                                                                 @endphp
                                                                 <label class="form-label d-flex">
@@ -128,13 +131,15 @@
                                                                 </label>
                                                                 <select name="foundation" id="" class="form-select">
                                                                     <option value="">Select</option>
-                                                                    @forelse ($foundations as $f)
-                                                                    <option value="{{$f->id}}">{{$f->piler_name}}</option>
+                                                                    @if($foundations->count() > 0)
+                                                                    @forelse ($foundations as $fnd)
+                                                                    <option value="{{$f->id}}">{{$fnd->piler_name}}</option>
 
                                                                     @empty
                                                                     <option value="{{$f->id}}">{{__('No Data Founds!')}}</option>
 
                                                                     @endforelse
+                                                                    @endif
                                                                 </select>
                                                             </div>
                                                         </div>
