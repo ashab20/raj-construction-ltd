@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Management;
 
-use App\Models\Managment\ContractInformation;
+use App\Http\Controllers\Controller;
+use App\Models\Management\Management;
 use Illuminate\Http\Request;
 
-class ContractInformationController extends Controller
+class ManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class ContractInformationController extends Controller
      */
     public function index()
     {
-        //
+        $managements = Management::paginate(10);
+        return view('Management.list',compact('managements'));
     }
 
     /**
@@ -41,10 +43,10 @@ class ContractInformationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Managment\ContractInformation  $contractInformation
+     * @param  \App\Models\Management  $management
      * @return \Illuminate\Http\Response
      */
-    public function show(ContractInformation $contractInformation)
+    public function show(Management $management)
     {
         //
     }
@@ -52,10 +54,10 @@ class ContractInformationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Managment\ContractInformation  $contractInformation
+     * @param  \App\Models\Management  $management
      * @return \Illuminate\Http\Response
      */
-    public function edit(ContractInformation $contractInformation)
+    public function edit(Management $management)
     {
         //
     }
@@ -64,10 +66,10 @@ class ContractInformationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Managment\ContractInformation  $contractInformation
+     * @param  \App\Models\Management  $management
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContractInformation $contractInformation)
+    public function update(Request $request, Management $management)
     {
         //
     }
@@ -75,10 +77,10 @@ class ContractInformationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Managment\ContractInformation  $contractInformation
+     * @param  \App\Models\Management  $management
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContractInformation $contractInformation)
+    public function destroy(Management $management)
     {
         //
     }
