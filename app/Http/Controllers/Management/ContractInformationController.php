@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Management;
+use App\Models\Management\ContractInformation;
 use Illuminate\Http\Request;
 
-class ManagementController extends Controller
+class ContractInformationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ManagementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Managment\ContractInformation  $contractInformation
      * @return \Illuminate\Http\Response
      */
-    public function show(Management $management)
+    public function show(ContractInformation $contractInformation)
     {
         //
     }
@@ -52,10 +52,10 @@ class ManagementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Managment\ContractInformation  $contractInformation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Management $management)
+    public function edit(ContractInformation $contractInformation)
     {
         //
     }
@@ -64,10 +64,10 @@ class ManagementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Managment\ContractInformation  $contractInformation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Management $management)
+    public function update(Request $request, ContractInformation $contractInformation)
     {
         //
     }
@@ -75,10 +75,10 @@ class ManagementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Managment\ContractInformation  $contractInformation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Management $management)
+    public function destroy(ContractInformation $contractInformation)
     {
         //
     }

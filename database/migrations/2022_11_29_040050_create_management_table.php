@@ -16,8 +16,14 @@ return new class extends Migration
         Schema::create('management', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('project_director')->nullable()->comment('name');
+            $table->foreign('project_director')->references('id')->on('users')->onDelete('cascade')->change();
+
+            $table->unsignedBigInteger('architecture')->nullable()->comment('name');
+            $table->foreign('architecture')->references('id')->on('users')->onDelete('cascade')->change();
+
+            $table->unsignedBigInteger('civil_engineer')->nullable()->comment('name');
+            $table->foreign('civil_engineer')->references('id')->on('users')->onDelete('cascade')->change();
 
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
@@ -25,12 +31,8 @@ return new class extends Migration
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->change();
             
-            $table->unsignedBigInteger('worker_id');
-            $table->foreign('worker_id')->references('id')->on('workers')->onDelete('cascade')->change();
-            
-            $table->unsignedBigInteger('builder_option_id');
-            $table->foreign('builder_option_id')->references('id')->on('builder_options')->onDelete('cascade')->change();
-
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->change();
 
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');

@@ -5,7 +5,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-4">
                         <a href="#" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Project</a>
-                        {{-- <a href="{{ route('testDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Test Detail</a> --}}
+                        {{-- * <a href="{{ route('testDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i>Add Test Detail</a> --}}
                     </div>
                     <div class="col-sm-8">
                         <div class="text-sm-end">
@@ -29,30 +29,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse ($project?->testDetails as $tdetail) --}}
+                            @forelse ($project?->testDetails as $tdetail)
                             <tr>
-                                <td>1</td>
+                                {{-- <td>1</td>
                                 <td>CPDL</td>
                                 <td>Soil</td>
                                 <td>889</td>
                                 <td>Ok</td>
                                 <td>1</td>
-                                <td>l</td>
-                                {{-- <td scope="row">{{ ++$loop->index }}</td>
+                                <td>l</td> --}}
+                                <td scope="row">{{ ++$loop->index }}</td>
                                 <td>{{ $tdetail?->project?->project_name}}</td>
 
                                 <td>{{ $tdetail->test_name}}</td>
                                 <td>{{ $tdetail->test_status}}</td>
-                                <td>{{ $tdetail->comments}}</td> --}}
-                                {{-- <td>
+                                <td>{{ $tdetail->comments}}</td>
+                                <td>
                                     @if ($tdetail->status === 1)
                                     <span class="badge badge-success-lighten">Active</span>
                                     @else                                   
                                         <span class="badge badge-danger-lighten">Blocked</span>
                                     
                                     @endif
-                                </td> --}}
-                                {{-- <td class="table-action">
+                                </td>
+                                <td class="table-action">
                                     <a href="{{ route('testDetail.edit',$tdetail)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
                                     <a href="javascript:void()" onclick="$('#form{{$tdetail->id}}').submit()">
                                         <i class="mdi mdi-delete"></i>
@@ -61,13 +61,13 @@
                                         @csrf
                                         @method('delete')
                                     </form>
-                                </td> --}}
+                                </td>
                             </tr>                                      
-                            {{-- @empty
+                            @empty
                                 <tr>
                                     <td colspan="6" class="text-center">No Data Found</td>
                                 </tr>
-                            @endforelse --}}
+                            @endforelse
                         </tbody>
                     </table>                                          
                 </div> <!-- end preview-->
