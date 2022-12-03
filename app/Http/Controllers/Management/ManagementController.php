@@ -27,7 +27,7 @@ class ManagementController extends Controller
     public function create()
     {
         // |$team = 
-        return view('Management.create');
+        // return view('Management.create');
     }
 
     /**

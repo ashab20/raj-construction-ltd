@@ -37,7 +37,7 @@
                             <div class="col-sm-4">
                                 <button class="btn btn-danger mb-2" onclick="modelAction()">
                                     <i class="mdi mdi-plus-circle me-2"></i>
-                                    {{__('Add Country')}}
+                                    {{__('Add Team')}}
                                 </button>
                             </div>
                             <div class="col-sm-8">
@@ -66,7 +66,7 @@
                                 @forelse ($teams as $team)
                                     <tr>
                                         <td>{{++$loop->index}}</td>
-                                        <td>{{$team->name}}</td>
+                                        <td>{{$team->team_name}}</td>
                                         <td>
                                             <!-- Switch-->
                                             <div>
@@ -104,21 +104,21 @@
                 <div class="modal fade" id="country-modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form class="needs-validation" name="event-form" id="form-event" novalidate method="POST" action="{{route('country.store')}}">
+                            <form class="needs-validation" name="event-form" id="form-event" novalidate method="POST" action="{{route('team.store')}}">
                                 @csrf
                                 @method('POST')
                                 <!-- <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName"> -->
                                 <div class="modal-header py-3 px-4 border-bottom-0">
-                                    <h5 class="modal-title" id="modal-title">Add Country</h5>
+                                    <h5 class="modal-title" id="modal-title">Add Team</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modelAction()"></button>
                                 </div>
                                 <div class="modal-body px-4 pb-4 pt-0">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="mb-3">
-                                                <label class="control-label form-label">Country Name</label>
-                                                <input class="form-control" placeholder="Insert Event Name" type="text" name="countryName" id="countryName" required />
-                                                <div class="invalid-feedback">Please provide a valid event name</div>
+                                                <label class="control-label form-label">Team Name</label>
+                                                <input class="form-control" placeholder="Insert Event Name" type="text" name="teamName" id="teamName" required />
+                                                <div class="invalid-feedback">Please provide a valid name</div>
                                             </div>
                                         </div>
 
@@ -145,7 +145,7 @@
             <div class="modal fade show d-block show" id="country-modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form class="needs-validation" name="event-form" id="form-event" novalidate method="POST" action="{{route('country.update',$countryData)}}">
+                            <form class="needs-validation" name="event-form" id="form-event" novalidate method="POST" action="{{route('team.update',$countryData)}}">
                                 @csrf
                                 @method('PATCH')
                                 <!-- <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName"> -->

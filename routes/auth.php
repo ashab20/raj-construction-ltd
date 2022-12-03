@@ -135,6 +135,6 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         //management
         Route::resource('/management',ManagementController::class);
-        Route::resource('/team',TeamController::class);
+        Route::resource('team',TeamController::class);
     });
 });

@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTraits;
 use App\Models\Management\Team;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class TeamController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +41,23 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $team = new Team();
+            $team->team_name = $request->teamName;            
+
+
+            $team->created_by = Crypt::decrypt(session()->get('userId'));
+            $team->status = 1;
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if($team->save()){
+                return redirect()->back()->with($this->resMessageHtml(true, false, 'Team created successfully'));
+            }
+
+        } catch (Exception $err){
+            dd($err);
+            return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Team, Please try again'));
+        }
     }
 
     /**
@@ -57,9 +77,9 @@ class TeamController extends Controller
      * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(team $team)
+    public function edit()
     {
-        //
+        // return view('Team.list');
     }
 
     /**
