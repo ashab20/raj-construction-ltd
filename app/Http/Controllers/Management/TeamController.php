@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
-use App\Models\Management\Management;
+use App\Models\Management\Team;
 use Illuminate\Http\Request;
 
-class ManagementController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ManagementController extends Controller
      */
     public function index()
     {
-        $managements = Management::paginate(10);
-        return view('Management.list',compact('managements'));
+        $teams = Team::paginate(10);
+        return view('Team.list',compact('teams'));
     }
 
     /**
@@ -26,8 +26,7 @@ class ManagementController extends Controller
      */
     public function create()
     {
-        // |$team = 
-        return view('Management.create');
+        //
     }
 
     /**
@@ -44,10 +43,10 @@ class ManagementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show(Management $management)
+    public function show(Team $team)
     {
         //
     }
@@ -55,10 +54,10 @@ class ManagementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(Management $management)
+    public function edit(team $team)
     {
         //
     }
@@ -67,10 +66,10 @@ class ManagementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Management $management)
+    public function update(Request $request, team $team)
     {
         //
     }
@@ -78,10 +77,10 @@ class ManagementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Management  $management
+     * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Management $management)
+    public function destroy(team $team)
     {
         //
     }

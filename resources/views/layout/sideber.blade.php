@@ -126,6 +126,11 @@
                                                 {{__('Foundation')}}
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('team.index')}}">
+                                                {{__('Team')}}
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

@@ -9,6 +9,7 @@ use App\Http\Traits\ResponseTraits;
 use App\Models\Lands\Document;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class DocumentController extends Controller
 {
@@ -42,23 +43,32 @@ class DocumentController extends Controller
      */
     public function store(AddRequest $request)
     {
-        dd($request);
+
         try {
             $docu = new Document();
             $identity = decrypt(session()->get('roleIdentity'));
             $docu->docu_name = $request->docuname;
             $docu->description = $request->description;
+            $documents = array();
+            if ($request->hasFile('documents')) {
+                
+                foreach ($request->documents as $doc) {
+                    $imageName = rand(111, 999) . time() . '.' . $doc->extension();
+                    $doc->move(public_path('uploads/document'), $imageName);
 
-            if ($request->hasFile('docufile')) {
-                $imageName = rand(111, 999) . time() . '.' . $request->docufile->extension();
-                $request->docufile->move(public_path('uploads/document'), $imageName);
-                $docu->doc_attachment = $imageName;
+                    $documents[] .= $imageName;
+                    
+                }
+                $docu->doc_attachment =  json_encode($documents);
+
             }
-            // else{
-            //     return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Document created unsuccessfully'));
-            // }
+            else{
+                return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Document created unsuccessfully'));
+            }
 
+            $docu->created_by = Crypt::decrypt(session()->get('userId'));
             $docu->status = 1;
+            $docu->project_id = Crypt::decrypt($request->project_id);
             if ($docu->save()) {
                 return redirect($identity . '/document')->with($this->resMessageHtml(true, false, 'Document created successfully'));
             }

@@ -28,6 +28,7 @@ use App\Http\Controllers\Lands\LandController;
 use App\Http\Controllers\Location\DistrictController;
 use App\Http\Controllers\Location\DivisionController;
 use App\Http\Controllers\Management\ManagementController;
+use App\Http\Controllers\Management\TeamController;
 use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Middleware\AdminMiddleware;
@@ -134,5 +135,6 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
 
         //management
         Route::resource('/management',ManagementController::class);
+        Route::resource('/team',TeamController::class);
     });
 });
