@@ -90,7 +90,7 @@ class WorkerController extends Controller
      */
     public function edit(worker $worker)
     {
-        //
+        return view('worker.edit', compact('worker'));
     }
 
     /**

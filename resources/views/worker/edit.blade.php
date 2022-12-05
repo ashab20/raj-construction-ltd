@@ -43,15 +43,15 @@
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="name" class="form-label">{{__('Name')}}</label>
-                                    <input type="text" id="name" class="form-control" placeholder="Enter project name" name="name"  required>
+                                    <input type="text" value="{{ old('name',$worker->name)}}" id="name" class="form-control" placeholder="Enter project name" name="name"  required>
                                 </div>
                                 <div class="col-xl-4 mb-3">
                                     <label for="fname" class="form-label">{{__('Father Name')}}</label>
-                                    <input type="text" id="fname" class="form-control" placeholder="Enter project name" name="fname"  required>
+                                    <input type="text"value="{{ old('fname',$worker->father_name)}}" id="fname" class="form-control" placeholder="Enter project name" name="fname"  required>
                                 </div>
                                 <div class="col-xl-4 mb-3">
                                     <label for="mname" class="form-label">{{__('Mother Name')}}</label>
-                                    <input type="text" id="mname" class="form-control" placeholder="Enter project name" name="mname" required>
+                                    <input type="text" value="{{ old('mname',$worker->mother_name)}}"id="mname" class="form-control" placeholder="Enter project name" name="mname" required>
                                 </div>
                             </div>
 
@@ -59,14 +59,15 @@
 
                                 <div class="col-xl-4 mb-3">
                                     <label for="nbcertificate" class="form-label">{{__('NID/Birth Certificate')}}</label>
-                                    <input type="number" id="nbcertificate" class="form-control" placeholder="Enter project name" name="nbcertificate" value="{{ old('projectNameInputField')}}" required>
+                                    <input type="number" value="{{ old('nbcertificate',$worker->nid_birth_Cirtificate)}}"id="nbcertificate" class="form-control" placeholder="Enter project name" name="nbcertificate" value="{{ old('projectNameInputField')}}" required>
                                 </div>
                                
                                 <div class="col-xl-4 mb-3 position-relative" id="dob">
                                     <label class="dob">{{__('Date of Birth')}}</label>
                                     <input type="date" class="form-control" 
                                     name="dob"
-                                    value="{{ old('parojectStarDate')}}"
+
+                                    value="{{ old('dob',$worker->dob)}}"
                                     >
                                 </div>
                                
@@ -84,7 +85,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="preaddress" class="form-label">{{__('Present Address')}}</label>
-                                        <textarea class="form-control" rows="6" id="preaddress" name="preaddress" placeholder="1234 Main St"></textarea>
+                                        <textarea class="form-control" rows="6" value="{{ old('preaddress',$worker->present_address)}}" id="preaddress" name="preaddress" placeholder="1234 Main St"></textarea>
                                     </div>
                                 </div>
                                  @php
@@ -93,12 +94,14 @@
                                  @endphp
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                    <label for="country" class="form-label">{{__('Country')}}</label>
+                                    <label for="country" class="form-label">
+                                        {{__('Country')}}
+                                    </label>
                                     <select id="inputState" name="country"class="form-select" >
                                        
-                                        <option>{{_('Select Country')}}</option>
+                                        <option>{{old('country,$worker->present_country_id')}}</option>
                                         @forelse ($countires as $country)
-                                        <option value="{{$country->id}}">{{$country->country}}</option>
+                                        <option value="{{$country->id}}" {{old('country,$worker->present_country_id')==$country->id?"selected":""}}>{{$country->country}}</option>
                                             
                                         @empty
                                         <option>No data Found</option>
@@ -153,7 +156,7 @@
                                     <div class="mb-3">
                                         <label for="peraddress" class="form-label">{{__('Permanent Address')}}</label>
                                         <textarea class="form-control" name="peraddress" rows="6" id="inputAddress" placeholder="1234 Main St"> 
-
+                                        {{ old('preaddress',$worker->present_address)}}
                                         </textarea>
                                     </div>
                                 </div>
@@ -163,7 +166,7 @@
                                     <select id="slectcountry" name="slectcountry" class="form-select">
                                         <option>{{_('Select Country')}}</option>
                                         @forelse ($countires as $country)
-                                        <option value="{{$country->id}}">{{$country->country}}</option>
+                                        <option value="{{$country->id}}" >{{$country->country}}</option>
                                             
                                         @empty
                                         <option>No data Found</option>
