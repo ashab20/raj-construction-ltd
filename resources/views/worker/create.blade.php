@@ -62,18 +62,18 @@
                                     <input type="number" id="nbcertificate" class="form-control" placeholder="Enter project name" name="nbcertificate" value="{{ old('projectNameInputField')}}" required>
                                 </div>
                                
-                                <div class="col-xl-4 mb-3 position-relative" id="datepicker1">
-                                    <label class="form-label">{{__('Date of Birth')}}</label>
+                                <div class="col-xl-4 mb-3 position-relative" id="dob">
+                                    <label class="dob">{{__('Date of Birth')}}</label>
                                     <input type="date" class="form-control" 
-                                    name="parojectStarDate"
+                                    name="dob"
                                     value="{{ old('parojectStarDate')}}"
                                     >
                                 </div>
                                
                                 <div class="col-xl-4 mb-3 mt-3 mt-xl-0">
-                                    <label for="projectname" class="mb-0">{{__('Attachment')}} : </label>
+                                    <label for="attachment" class="mb-0">{{__('Attachment')}} : </label>
                                     
-                                        <input class="form-control" type="file" id="inputGroupFile04" name="projectImage"
+                                        <input class="form-control" type="file" id="attachment" name="attachment"
                                         value="{{old('projectImage')}}">
                                         <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
                                 </div>

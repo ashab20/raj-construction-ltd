@@ -36,18 +36,38 @@ class WorkerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
+        dd($request);
+        try {
         $worker = new Worker();
         
-        $worker->present_country_id = $request->phone;
-        $worker->present_address = $request->phone;
-        $worker->present_division_id = $request->phone;
-        $worker->present_district_id = $request->phone;
+        $worker->name = $request->name;
+        $worker->father_name = $request->fname;
+        $worker->mother_name = $request->mname;
+        $worker->nid_birth_Cirtificate = $request->nbcertificate;
+        $worker->dob = $request->dob;
+        $worker->attachment = $request->attachment;
+        $worker->present_address = $request->preaddress;
+        $worker->permanent_address = $request->peraddress;
 
-        $worker->permanent_address = $request->phone;
+        $worker->present_country_id = $request->slectcountry;
+        $worker->present_address = $request->preaddress;
+        $worker->present_division_id = $request->slectdivision;
+        $worker->present_district_id = $request->slectdistrict;
+
+        $worker->permanent_address = $request->peraddress;
         $worker->permanent_country_id = $request->phone;
         $worker->permanent_division_id = $request->phone;
         $worker->permanent_district_id = $request->phone;
+        
+        if(worker->save()){
+            return redirect($identity.'/worker')->with('success','Data saved');
+        }
+        }
+        catch(Exception $e){
+            dd($e);
+            return back()->withInput();
+        }
     }
 
     /**
