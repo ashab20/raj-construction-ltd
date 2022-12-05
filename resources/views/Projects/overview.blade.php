@@ -51,7 +51,7 @@
                             <!-- Test Budget start-->
 
                             {{-- project budget start******  --}}
-                            <div class="row d-none project_budget" id="project_budget">
+                            <div class="row project_budget" id="project_budget">
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-auto">
@@ -481,7 +481,6 @@
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
             projectManagement.addClass('d-none');
-            projectBudgetBtn.removeClass('bg-light')
             projectDocument.addClass('d-none');
             projectDocumentsBtn.removeClass('bg-light')
 
@@ -498,9 +497,8 @@
             projectTest.addClass('d-none');
             projectTestBtn.removeClass('bg-light');
             projectBudget.addClass('d-none');
-            projectBudgetBtn.removeClass('bg-light');
+            projectBudgetBtn.removeClass('bg-light');            
             projectManagement.addClass('d-none');
-            projectBudgetBtn.removeClass('bg-light')
             projectDocument.addClass('d-none');
             projectDocumentsBtn.removeClass('bg-light')
         });
@@ -521,7 +519,6 @@
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
             projectManagement.addClass('d-none');
-            projectBudgetBtn.removeClass('bg-light')
             projectDocument.addClass('d-none');
             projectDocumentsBtn.removeClass('bg-light')
         });
@@ -543,13 +540,13 @@
             projectDocument.addClass('d-none');
             projectDocumentsBtn.removeClass('bg-light')            
             projectManagement.addClass('d-none');
-            projectBudgetBtn.removeClass('bg-light')
         });
 
         // project budget
         projectBudgetBtn.click(function(e) {
-            projectBudget.toggleClass('d-none');
+            projectBudget.removeClass('d-none');
             projectBudgetBtn.addClass('bg-light');
+            
             projectDocument.removeClass('d-none');
             projectDocumentsBtn.addClass('bg-light')
 
@@ -563,7 +560,6 @@
             projectTest.addClass('d-none');
             projectTestBtn.removeClass('bg-light');
             projectManagement.addClass('d-none');
-            projectBudgetBtn.removeClass('bg-light')
             projectDocument.addClass('d-none');
             projectDocumentsBtn.removeClass('bg-light')
 
@@ -571,9 +567,9 @@
 
         projectManagementBtn.click(()=>{
             projectManagement.removeClass('d-none');
-            projectBudgetBtn.addClass('bg-light')
-            projectDocument.removeClass('d-none');
-            projectDocumentsBtn.addClass('bg-light')
+
+            projectDocument.addClass('d-none');
+            projectDocumentsBtn.removeClass('bg-light')
 
             projectDesign.addClass('d-none');
             projectDesignBtn.removeClass('bg-light');
@@ -593,17 +589,20 @@
         projectDocumentsBtn.click(()=>{
             projectDocument.removeClass('d-none');
             projectDocumentsBtn.addClass('bg-light')
+            projectManagement.addClass('d-none');
 
-            projectManagement.removeClass('bg-light');
-            projectBudgetBtn.addClass('d-none')
             projectDesign.addClass('d-none');
-            projectDesignBtn.removeClass('bg-light');            
+            projectDesignBtn.removeClass('bg-light'); 
+
             overview.addClass('d-none');
             overbtn.removeClass('bg-light');
+
             projectInfo.addClass('d-none');
             projectInfoBtn.removeClass('bg-light');
+
             projectTest.addClass('d-none');
             projectTestBtn.removeClass('bg-light');
+
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
         })
