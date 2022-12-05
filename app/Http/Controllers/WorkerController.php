@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\worker;
+use Exception;
 use Illuminate\Http\Request;
 
 class WorkerController extends Controller
@@ -15,7 +16,7 @@ class WorkerController extends Controller
     public function index()
     {
         $workers = worker::paginate(10);
-        return view('worker.index',compact('workers'));
+        return view('worker.index', compact('workers'));
     }
 
     /**
@@ -26,7 +27,6 @@ class WorkerController extends Controller
     public function create()
     {
         return view('worker.create');
-        
     }
 
     /**
@@ -36,35 +36,34 @@ class WorkerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {
         dd($request);
         try {
-        $worker = new Worker();
-        
-        $worker->name = $request->name;
-        $worker->father_name = $request->fname;
-        $worker->mother_name = $request->mname;
-        $worker->nid_birth_Cirtificate = $request->nbcertificate;
-        $worker->dob = $request->dob;
-        $worker->attachment = $request->attachment;
-        $worker->present_address = $request->preaddress;
-        $worker->permanent_address = $request->peraddress;
+            $worker = new Worker();
+            $identity = decrypt(session()->get('roleIdentity'));
+            $worker->name = $request->name;
+            $worker->father_name = $request->fname;
+            $worker->mother_name = $request->mname;
+            $worker->nid_birth_Cirtificate = $request->nbcertificate;
+            $worker->dob = $request->dob;
+            $worker->attachment = $request->attachment;
+            $worker->present_address = $request->preaddress;
+            $worker->permanent_address = $request->peraddress;
 
-        $worker->present_country_id = $request->slectcountry;
-        $worker->present_address = $request->preaddress;
-        $worker->present_division_id = $request->slectdivision;
-        $worker->present_district_id = $request->slectdistrict;
+            $worker->present_country_id = $request->slectcountry;
+            $worker->present_address = $request->preaddress;
+            $worker->present_division_id = $request->slectdivision;
+            $worker->present_district_id = $request->slectdistrict;
 
-        $worker->permanent_address = $request->peraddress;
-        $worker->permanent_country_id = $request->phone;
-        $worker->permanent_division_id = $request->phone;
-        $worker->permanent_district_id = $request->phone;
-        
-        if(worker->save()){
-            return redirect($identity.'/worker')->with('success','Data saved');
-        }
-        }
-        catch(Exception $e){
+            $worker->permanent_address = $request->peraddress;
+            $worker->permanent_country_id = $request->phone;
+            $worker->permanent_division_id = $request->phone;
+            $worker->permanent_district_id = $request->phone;
+
+            if ($worker->save()) {
+                return redirect($identity . '/worker')->with('success', 'Data saved');
+            }
+        } catch (Exception $e) {
             dd($e);
             return back()->withInput();
         }
