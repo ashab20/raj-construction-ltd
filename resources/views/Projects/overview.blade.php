@@ -471,6 +471,8 @@
         overbtn.click(function(e) {
             overview.removeClass('d-none');
             overbtn.addClass('bg-light');
+            projectDocument.removeClass('d-none');
+            projectDocumentsBtn.addClass('bg-light')
 
             projectInfo.addClass('d-none');
             projectInfoBtn.removeClass('bg-light');
@@ -486,6 +488,8 @@
         projectInfoBtn.click(function(e) {
             projectInfo.removeClass('d-none');
             projectInfoBtn.addClass('bg-light');
+            projectDocument.removeClass('d-none');
+            projectDocumentsBtn.addClass('bg-light')
 
             overview.addClass('d-none');
             overbtn.removeClass('bg-light');
@@ -501,6 +505,8 @@
         projectTestBtn.click(function(e) {
             projectTest.removeClass('d-none');
             projectTestBtn.addClass('bg-light');
+            projectDocument.removeClass('d-none');
+            projectDocumentsBtn.addClass('bg-light')
 
             overview.addClass('d-none');
             overbtn.removeClass('bg-light');
@@ -517,6 +523,8 @@
         projectDesignBtn.click(function(e) {
             projectDesign.removeClass('d-none');
             projectDesignBtn.addClass('bg-light');
+            projectDocument.removeClass('d-none');
+            projectDocumentsBtn.addClass('bg-light')
 
             overview.addClass('d-none');
             overbtn.removeClass('bg-light');
@@ -535,6 +543,8 @@
         projectBudgetBtn.click(function(e) {
             projectBudget.toggleClass('d-none');
             projectBudgetBtn.addClass('bg-light');
+            projectDocument.removeClass('d-none');
+            projectDocumentsBtn.addClass('bg-light')
 
             projectDesign.addClass('d-none');
             projectDesignBtn.removeClass('bg-light');
@@ -553,6 +563,8 @@
         projectManagementBtn.click(()=>{
             projectManagement.removeClass('d-none');
             projectBudgetBtn.addClass('bg-light')
+            projectDocument.removeClass('d-none');
+            projectDocumentsBtn.addClass('bg-light')
 
             projectDesign.addClass('d-none');
             projectDesignBtn.removeClass('bg-light');
