@@ -101,28 +101,28 @@
                                     {{$worker->mother_name}}
                                 </td>
                                 <td>
-                                    {{$worker->role->nid_birth_Cirtificate}}
+                                    {{$worker->nid_birth_Cirtificate}}
                                 </td>
                                 <td>
-                                    {{$worker->role->dob}}
+                                    {{$worker->dob}}
                                 </td>
                                 <td>
-                                    {{$worker->role->attachment}}
+                                    {{$worker->attachment}}
                                 </td>
                                 <td>
-                                    {{$worker->role->present_address}}
+                                    {{$worker->present_address}}
                                 </td>
                                 <td>
-                                    {{$worker->role->parmanent_address}}
+                                    {{$worker->parmanent_address}}
                                 </td>
                                 <td>
-                                    {{$worker->role->total_working_day}}
+                                    {{$worker->total_working_day}}
                                 </td>
                                 <td>
-                                    {{$worker->role->total_working_hour}}
+                                    {{$worker->total_working_hour}}
                                 </td>
                                 <td>
-                                    {{$worker->role->total_sallary}}
+                                    {{$worker->total_sallary}}
                                 </td>
                                 <td>
                                     @if ($worker->status === 1)
