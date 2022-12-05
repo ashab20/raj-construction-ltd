@@ -480,6 +480,8 @@
             projectBudgetBtn.removeClass('bg-light');
             projectManagement.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light')
+            projectDocument.addClass('d-none');
+            projectDocumentsBtn.removeClass('bg-light')
 
         });
         // project info
@@ -495,6 +497,8 @@
             projectBudgetBtn.removeClass('bg-light');
             projectManagement.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light')
+            projectDocument.addClass('d-none');
+            projectDocumentsBtn.removeClass('bg-light')
         });
 
         // project test
@@ -512,6 +516,8 @@
             projectBudgetBtn.removeClass('bg-light');
             projectManagement.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light')
+            projectDocument.addClass('d-none');
+            projectDocumentsBtn.removeClass('bg-light')
         });
 
         projectDesignBtn.click(function(e) {
@@ -526,7 +532,8 @@
             projectTestBtn.removeClass('bg-light');
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
-            
+            projectDocument.addClass('d-none');
+            projectDocumentsBtn.removeClass('bg-light')            
             projectManagement.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light')
         });
@@ -547,6 +554,8 @@
             projectTestBtn.removeClass('bg-light');
             projectManagement.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light')
+            projectDocument.addClass('d-none');
+            projectDocumentsBtn.removeClass('bg-light')
 
         });
 
@@ -565,6 +574,8 @@
             projectTestBtn.removeClass('bg-light');
             projectBudget.addClass('d-none');
             projectBudgetBtn.removeClass('bg-light');
+            projectDocument.addClass('d-none');
+            projectDocumentsBtn.removeClass('bg-light')
         })
 
         projectDocumentsBtn.click(()=>{
