@@ -114,7 +114,6 @@ class WorkerController extends Controller
             $worker->attachment = $request->attachment;
             $worker->present_address = $request->preaddress;
             $worker->permanent_address = $request->peraddress;
-
             $worker->present_country_id = $request->slectcountry;
             $worker->present_address = $request->preaddress;
             $worker->present_division_id = $request->slectdivision;

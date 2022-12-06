@@ -102,6 +102,7 @@ class TeamController extends Controller
      */
     public function destroy(team $team)
     {
-        //
+        $team->delete();
+        return redirect()->back();
     }
 }

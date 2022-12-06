@@ -22,7 +22,8 @@ return new class extends Migration
             $table->char('password');
             $table->unsignedBigInteger('role_id');
 
-            $table->unsignedBigInteger('designation_id')->nullable()->foreign()->references('id')->on('designatins')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('designation_id')->nullable();
+            $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade')->change();
 
             $table->string('avatar')->nullable();
             $table->string('language')->default('en');
@@ -31,6 +32,15 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        // DB::table('users')->insert([
+        //     [
+        //         'name'=> 'admin',
+        //         'email'=> 'admin@admin.com',
+        //         'password'=> Crypt::encryptString('admin12345678'.env('APP_SECRET','secrat')),
+        //         'role_id'=> 1,
+        //     ]
+        // ]);
     }
 
     /**
