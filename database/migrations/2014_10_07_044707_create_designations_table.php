@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('designation');
+            $table->decimal('basic_sallary',12,2);
+            $table->integer('yearly_bonus')->unsigned();
+            $table->decimal('percentage_of_bonus',3,2)->comment('%');
+
             // $table->decimal('base_salary',12,2);
              // default
              $table->integer('status')->default(1);
