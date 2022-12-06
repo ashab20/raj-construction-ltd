@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('designation');
-            $table->string('indentify');
+            $table->string('identify');
             $table->decimal('basic_sallary',12,2);
             $table->integer('yearly_bonus')->unsigned();
             $table->decimal('percentage_of_bonus',3,2)->comment('%');
