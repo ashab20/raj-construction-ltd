@@ -35,9 +35,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('worker.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('worker.update',$worker)}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('post')
+                            @method('patch')
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Worker Information')}} :</h5>
                            
                             <div class="row">                            
@@ -98,14 +98,16 @@
                                         {{__('Country')}}
                                     </label>
                                     <select id="inputState" name="country"class="form-select" >
-                                       
-                                        <option>{{old('country,$worker->present_country_id')}}</option>
+                                        
+                                    <option value="">{{__('Select Country')}}</option>
                                         @forelse ($countires as $country)
-                                        <option value="{{$country->id}}" {{old('country,$worker->present_country_id')==$country->id?"selected":""}}>{{$country->country}}</option>
-                                            
+                                        @if($worker->present_country_id===$country->id)
+                                        <option value="{{$country->id}}" selected>{{$country->country}}</option>
+                                        @else
+                                        <option value="{{$country->id}}">{{$country->country}}</option>
+                                        @endif 
                                         @empty
-                                        <option>No data Found</option>
-                                            
+                                        <option>No data Found</option>                                            
                                         @endforelse
                                     </select>
                                 </div>  
@@ -116,12 +118,14 @@
                                 <div class="mb-3">
                                     <label for="division" class="form-label">{{__('Division')}}</label>
                                     <select id="divisons" name="division" class="form-select">
-                                      
-                                        <option>{{_('Select Division')}}</option>
-
-                                    @forelse ($divisions as $division)
-                                    <option value="{{$division->id}}">{{$division->divison}}</option>
                                         
+                                    <option value="">{{__('Select Divison')}}</option>
+                                    @forelse($divisions as $division)
+                                        @if($worker->present_division_id==$division->id)
+                                            <option value="{{$division->id}}" selected>{{$division->divison}}</option>
+                                        @else
+                                        <option value="{{$division->id}}">{{$division->divison}}</option>
+                                        @endif     
                                     @empty
                                     <option>No data Found</option>
                                         
@@ -134,13 +138,15 @@
                                 @endphp
                                 <div class="mb-3">
                                     <label for="district" class="form-label">{{__('District')}}</label>
+                                    
+                                    <option value="">{{__('Select Districts')}}</option>
                                     <select id="district" name="district" class="form-select">
-                                        
-                                        <option>{{_('Select District')}}</option>
-
                                     @forelse ($districts as $district)
-                                    <option value="{{$district->id}}">{{$district->district}}</option>
-                                        
+                                    @if($worker->present_district_id==$district->id)
+                                            <option value="{{$division->id}}" selected>{{$district->district}}</option>
+                                        @else
+                                        <option value="{{$division->id}}">{{$district->district}}</option>
+                                        @endif                                         
                                     @empty
                                     <option>No data Found</option>
                                         
@@ -164,42 +170,51 @@
                                     <div class="mb-3">
                                     <label for="slectcountry" class="form-label">{{__('Country')}}</label>
                                     <select id="slectcountry" name="slectcountry" class="form-select">
-                                        <option>{{_('Select Country')}}</option>
-                                        @forelse ($countires as $country)
-                                        <option value="{{$country->id}}" >{{$country->country}}</option>
-                                            
+                                        
+                                    <option value="">{{__('Select Districts')}}</option>
+                                    @forelse ($countires as $country)
+                                        @if($worker->permanent_country_id===$country->id)
+                                        <option value="{{$country->id}}" selected>{{$country->country}}</option>
+                                        @else
+                                        <option value="{{$country->id}}">{{$country->country}}</option>
+                                        @endif 
                                         @empty
-                                        <option>No data Found</option>
-                                            
+                                        <option>No data Found</option>                                            
                                         @endforelse
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="slectdivision" class="form-label">{{__('Division')}}</label>
                                     <select id="slectdivision" name="slectdivision" class="form-select">
-                                    <option>{{_('Select Division')}}</option>
 
-                                        @forelse ($divisions as $division)
+                                    <option value="">{{__('Select Districts')}}</option>
+                                    @forelse($divisions as $division)
+                                        @if($worker->permanent_division_id==$division->id)
+                                            <option value="{{$division->id}}" selected>{{$division->divison}}</option>
+                                        @else
                                         <option value="{{$division->id}}">{{$division->divison}}</option>
-    
-                                        @empty
-                                            <option>No data Found</option>
-    
-                                        @endforelse
+                                        @endif     
+                                    @empty
+                                    <option>No data Found</option>
+                                        
+                                    @endforelse
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="slectdistrict" class="form-label">{{__('District')}}</label>
                                     <select id="slectdistrict" name="slectdistrict" class="form-select">
-                                        <option>{{_('Select District')}}</option>
+                                        <option value="">{{__('Select Districts')}}</option>
+                                    @forelse ($districts as $district)
+                                    @if($worker->permanent_district_id==$district->id)
+                                            <option value="{{$division->id}}" selected>{{$district->district}}</option>
 
-                                        @forelse ($districts as $district)
-                                            <option value="{{$district->id}}">{{$district->district}}</option>
-    
-                                            @empty
-                                            <option>No data Found</option>
-    
-                                            @endforelse
+                                    @else
+                                        <option value="{{$division->id}}">{{$district->district}}</option>
+                                    @endif                                         
+                                    @empty
+                                    <option>No data Found</option>
+                                        
+                                    @endforelse
                                     </select>
                                 </div>
                                 </div> <!-- end col -->

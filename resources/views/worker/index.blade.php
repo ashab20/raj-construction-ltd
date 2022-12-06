@@ -48,11 +48,13 @@
                         </div>
                     </div><!-- end col-->
                 </div>
-
-                <div class="table-responsive">
                     @if(Session::has('response'))
-                    {!!Session::get('response')['message']!!}
-                    @endif
+                        {!!Session::get('response')['message']!!}
+                    @endif 
+                   
+                <div class="table-responsive">
+                    {{$workers}}
+                  
                     <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                         <thead>
                             <tr>
@@ -80,22 +82,20 @@
                             @forelse ($workers as $worker)
                          
                             <tr>
-                                {{-- <td>
+                                 <td>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="customCheck2">
                                         <label class="form-check-label" for="customCheck2">&nbsp;</label>
                                     </div>
-                                </td> --}}
+                                </td>
                                 <td class="table-user">
-                                    @if ($worker->avatar !== "")
-                                    <img src="{{ asset('uploads/profile/'.$worker->avatar)}}" alt="table-user" class="me-2 rounded-circle">
-                                    @else
-                                    <img src="{{ asset('uploads/profile/avatar.webp')}}" alt="table-user" class="me-2 rounded-circle">
-                                    @endif
                                     <a href="{{route('worker.show',$worker) }}" class="text-body fw-semibold">
                                         {{$worker->name}}
                                     </a>
-                                    {{$worker->father_name}}
+                                   
+                                </td>
+                                <td>
+                                {{$worker->father_name}}
                                 </td>
                                 <td>
                                     {{$worker->mother_name}}
