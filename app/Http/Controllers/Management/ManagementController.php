@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management;
 use App\Http\Controllers\Controller;
 use App\Models\Management\Management;
 use Illuminate\Http\Request;
+use App\Models\Auth\User;
 
 class ManagementController extends Controller
 {
@@ -16,7 +17,8 @@ class ManagementController extends Controller
     public function index()
     {
         $managements = Management::paginate(10);
-        return view('Management.list',compact('managements'));
+        $users = User::whereIn('designation_id', [1,2,3])->get();
+        return view('Management.list',compact('managements','users'));
     }
 
     /**
