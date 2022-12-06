@@ -83,6 +83,7 @@ class ManagementController extends Controller
      */
     public function destroy(Management $management)
     {
-        
+        $management->delete();
+        return redirect()->back();
     }
 }
