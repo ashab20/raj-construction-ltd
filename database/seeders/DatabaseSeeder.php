@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Http\Controllers\Lands\LandController;
-use App\Models\Auth\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,8 +26,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            // DesignationSeeder::class,
-            // UserSeeder::class,
+            DesignationSeeder::class,
+            UserSeeder::class,
             CountrySeeder::class,
             DivisionsSeeder::class,
             DistrictSeeder::class,
@@ -37,6 +35,9 @@ class DatabaseSeeder extends Seeder
             LandsSeeders::class,
             FloorDetailsSeeder::class,
             UnitSeeder::class,
+            WorkerSeeder::class,
+            BuilderOptionSeeder::class,
+            TeamSeeder::class,
         ]);
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('management', function (Blueprint $table) {
+        Schema::create('managements', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_director')->nullable()->comment('name');
@@ -27,9 +27,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
-
-            $table->unsignedBigInteger('team_id');
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->change();
             
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->change();

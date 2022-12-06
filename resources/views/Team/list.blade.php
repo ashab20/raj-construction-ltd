@@ -58,6 +58,9 @@
                                     <tr>
                                         <th>SL</th>
                                         <th>Name</th>
+                                        <th>Team Leader</th>
+                                        <th>Worker</th>
+                                        <th>Builder</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
