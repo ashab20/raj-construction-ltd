@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('managements', function (Blueprint $table) {
+        Schema::create('management', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_director')->nullable()->comment('name');

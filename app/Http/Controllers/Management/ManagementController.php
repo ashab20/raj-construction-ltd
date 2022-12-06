@@ -83,6 +83,6 @@ class ManagementController extends Controller
      */
     public function destroy(Management $management)
     {
-        //
+        
     }
 }

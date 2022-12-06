@@ -28,7 +28,7 @@ return new class extends Migration
             $table->foreign('builder_options_id')->references('id')->on('builder_options')->onDelete('cascade')->change();
             
             $table->unsignedBigInteger('management_id')->nullable();
-            $table->foreign('management_id')->references('id')->on('managements')->onDelete('cascade')->change();
+            $table->foreign('management_id')->references('id')->on('management')->onDelete('cascade')->change();
 
             //default
             $table->integer('status')->default(1);
