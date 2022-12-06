@@ -102,7 +102,7 @@ class WorkerController extends Controller
      */
     public function update(Request $request, worker $worker)
     {
-         // dd($request);
+        //  dd($request);
          try {
 
             $identity = decrypt(session()->get('roleIdentity'));
