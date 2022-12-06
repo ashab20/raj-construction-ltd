@@ -17,9 +17,8 @@ class ManagementController extends Controller
     public function index()
     {
         $managements = Management::paginate(10);
-        $users = User::where('designation_id',1)->where('designation_id',2)->where('designation_id',3);
-        print_r($users);
-        // return view('Management.list',compact('managements','users'));
+        $users = User::whereIn('designation_id', [1,2,3])->get();
+        return view('Management.list',compact('managements','users'));
     }
 
     /**
