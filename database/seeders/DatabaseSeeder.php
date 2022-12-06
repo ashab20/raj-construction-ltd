@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             DesignationSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
             CountrySeeder::class,
             DivisionsSeeder::class,
             DistrictSeeder::class,
@@ -35,6 +35,8 @@ class DatabaseSeeder extends Seeder
             LandsSeeders::class,
             FloorDetailsSeeder::class,
             UnitSeeder::class,
+            WorkerSeeder::class,
+            BuilderOptionSeeder::class,
             TeamSeeder::class,
         ]);
     }
