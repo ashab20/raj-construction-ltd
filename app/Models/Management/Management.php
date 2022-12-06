@@ -27,7 +27,7 @@ class Management extends Model
         return $this->belongsTo(User::class,'architecture','id');
     }
     public function team(){
-        return $this->belongsTo(Team::class,'team_id','id');
+        return $this->hasMany(Team::class,'management_id','id');
     }
 
 }
