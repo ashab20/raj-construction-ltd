@@ -43,7 +43,7 @@
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="name" class="form-label">{{__('Name')}}</label>
-                                    <input type="text" id="name" class="form-control" placeholder="Enter project name" name="name"  required>
+                                    <input type="text" " id="name" class="form-control" placeholder="Enter project name" name="name"  required>
                                 </div>
                                 <div class="col-xl-4 mb-3">
                                     <label for="fname" class="form-label">{{__('Father Name')}}</label>
