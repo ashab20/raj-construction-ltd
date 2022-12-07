@@ -67,9 +67,16 @@
                                 </thead>
                                 <tbody>
                                 @forelse ($teams as $team)
+                                {{$team}}
+
                                     <tr>
                                         <td>{{++$loop->index}}</td>
                                         <td>{{$team->team_name}}</td>
+                                        <td>{{$team->team_name}}</td>
+                                        <td>{{$team->team_name}}</td>
+                                        <td>{{$team->team_name}}</td>
+                                        {{-- <td>{{$teamLeader?->name}}</td> --}}
+                                        {{-- <td>{{$teamLeader?->name}}</td> --}}
                                         <td>
                                             <!-- Switch-->
                                             <div>
