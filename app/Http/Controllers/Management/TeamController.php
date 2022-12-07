@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Management;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTraits;
 use App\Models\Management\Team;
+use App\Models\worker;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -77,9 +78,9 @@ class TeamController extends Controller
      * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Team $team)
     {
-        // return view('Team.list');
+        return view('Team.list',compact('team'));
     }
 
     /**
@@ -102,6 +103,7 @@ class TeamController extends Controller
      */
     public function destroy(team $team)
     {
-        //
+        $team->delete();
+        return redirect()->back();
     }
 }

@@ -42,6 +42,7 @@
                                         <tr>
                                             <th>SL No</th>
                                             <th>Designation Name</th>
+                                            <th>Identify</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -51,6 +52,7 @@
                                         <tr>
                                             <td scope="row">{{ ++$loop->index }}</td>
                                             <td>{{ $desig->designation}}</td>
+                                            <td>{{ $desig->identify}}</td>
                                             <td>
                                             @if ($desig->status === 1)
                                             <span class="badge badge-success-lighten">Active</span>

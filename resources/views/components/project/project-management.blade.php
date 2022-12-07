@@ -29,40 +29,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{$project}}
-                            {{-- @forelse ($project as $management) --}}
-                            <tr>
-                                {{-- <td scope="row">{{ ++$loop->index }}</td> --}}
-                                <td>{{ $project?->project_name}}</td>
-                                {{-- <td>{{ $management?->project?->project_name}}</td> --}}
-
-                                <td>{{ $project->project_director}}</td>
-                                <td>{{ $project->architecture }}</td>
-                                <td>{{ $project->civil_engineer }}</td>
-                                <td>
-                                    @if ($project->status === 1)
-                                    <span class="badge badge-success-lighten">Active</span>
-                                    @else                                   
-                                        <span class="badge badge-danger-lighten">Blocked</span>
-                                    
-                                    @endif
-                                </td>
-                                <td class="table-action">
-                                    <a href="{{ route('testDetail.edit',$project)}}" class="action-icon"> <i class="mdi mdi-pencil"></i> </a>                                            
-                                    <a href="javascript:void()" onclick="$('#form{{$project->id}}').submit()">
-                                        <i class="mdi mdi-delete"></i>
-                                    </a>
-                                    <form id="form{{$project->id}}" action="{{ route('testDetail.destroy',$project->id)}}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                    </form>
-                                </td>
-                            </tr>                                      
-                            {{-- @empty
+                            {{-- {{$project->management[0]->id }} --}}
+                            @forelse ($project->management as $management)
+                            {{-- project_director	architecture    civil_engineer	project_id 	team_id company_id --}}
                                 <tr>
-                                    <td colspan="8" class="text-center">No Data Found</td>
+                                    {{$management}}
+                                    <td>{{ ++$loop->index}}</td>
+                                    <td>{{ $project?->project_name}}</td>
+                                    <td>{{ $management->director?->name}}</td>
+                                    <td>{{ $management->architecht?->name}}</td>
+                                    <td>{{ $management->civilengineer?->name}}</td>
                                 </tr>
-                            @endforelse --}}
+                            @empty
+                                <tr>
+                                    <td colspan="8" class="text-center">Data not found</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>                                          
                 </div> <!-- end preview-->

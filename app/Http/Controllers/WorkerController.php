@@ -90,7 +90,7 @@ class WorkerController extends Controller
      */
     public function edit(worker $worker)
     {
-        //
+        return view('worker.edit', compact('worker'));
     }
 
     /**
@@ -102,7 +102,7 @@ class WorkerController extends Controller
      */
     public function update(Request $request, worker $worker)
     {
-         // dd($request);
+        //  dd($request);
          try {
 
             $identity = decrypt(session()->get('roleIdentity'));
@@ -114,7 +114,6 @@ class WorkerController extends Controller
             $worker->attachment = $request->attachment;
             $worker->present_address = $request->preaddress;
             $worker->permanent_address = $request->peraddress;
-
             $worker->present_country_id = $request->slectcountry;
             $worker->present_address = $request->preaddress;
             $worker->present_division_id = $request->slectdivision;
