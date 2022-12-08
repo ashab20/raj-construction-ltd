@@ -35,10 +35,11 @@
                     <div class="card-body">
                         <div class="row mb-2">
                             <div class="col-sm-4">
-                                <button class="btn btn-danger mb-2" onclick="modelAction()">
+                                <a 
+                                href="{{route('team.create')}}" class="btn btn-danger mb-2" >
                                     <i class="mdi mdi-plus-circle me-2"></i>
                                     {{__('Add Team')}}
-                                </button>
+                                </a>
                             </div>
                             <div class="col-sm-8">
                                 <div class="text-sm-end">
@@ -225,53 +226,5 @@
 <script src="{{asset('assets/js/vendor/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('assets/js/vendor/responsive.bootstrap5.min.js')}}"></script>
 
-<!-- third party js -->
-<script src="{{asset('assets/js/vendor/jquery-ui.min.js')}}"></script>
-<script src="{{asset('assets/js/vendor/fullcalendar.min.js')}}"></script>
-<!-- third party js ends -->
-
-<!-- demo app -->
-<script src="{{asset('assets/js/pages/demo.calendar.js')}}"></script>
-
-
-<script>
-    function modelAction(country=false) {
-        $('#country-modal').toggleClass('d-block show');
-        $('body').toggleClass('modal-open');
-        console.log(country);
-    }
-
-    // function handleSubmit() {
-    //     // e.preventDefault();
-    //     let countryName = $('#countryName').val();
-    //     let authName = $('#authName').val();
-    //     // console.log(countryName);
-    //     const host = `${window.location.origin}`;
-    //     const data = {
-    //         countryName,
-    //         _token: '<?php echo csrf_token() ?>',
-    //         _method:'PATCH',
-    //     }
-
-    //     // console.log('host',host);
-
-    //     $.ajax({
-    //         method: 'GET',
-    //         // headers:{
-    //         //     _token : '<?php echo csrf_token() ?>',
-    //          //       _method:'PATCH',
-    //         //},
-    //         url: host + `/${authName}/country/store`,
-    //         data,
-    //         success: function(data) {
-    //             console.log(data);
-    //         },
-    //         error: function(data) {
-    //             console.log(data);
-    //         }
-    //     });
-
-    // }
-</script>
 
 @endpush

@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Auth\Role');
     }
     public function userdetails(){
-        return $this->hasMany('App\Models\Auth\UserDetails');
+        return $this->hasMany(UserDetails::class,'user_id','id');
     }
 
 

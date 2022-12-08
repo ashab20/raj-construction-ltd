@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTraits;
+use App\Models\Builder\BuilderOption;
 use App\Models\Management\Team;
 use App\Models\worker;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Queue\Worker as QueueWorker;
 use Illuminate\Support\Facades\Crypt;
 
 class TeamController extends Controller
@@ -21,7 +23,7 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::paginate(10);
-        return view('Team.list',compact('teams'));
+        return view('Team.list', compact('teams'));
     }
 
     /**
@@ -31,7 +33,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        $workers = worker::all();
+        $builderOptions = BuilderOption::all();
+        return view('Team.create', compact('workers', 'builderOptions'));
     }
 
     /**
@@ -42,20 +46,19 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        try{
+        try {
             $team = new Team();
-            $team->team_name = $request->teamName;            
+            $team->team_name = $request->teamName;
 
 
             $team->created_by = Crypt::decrypt(session()->get('userId'));
             $team->status = 1;
             $identity = decrypt(session()->get('roleIdentity'));
 
-            if($team->save()){
+            if ($team->save()) {
                 return redirect()->back()->with($this->resMessageHtml(true, false, 'Team created successfully'));
             }
-
-        } catch (Exception $err){
+        } catch (Exception $err) {
             dd($err);
             return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Team, Please try again'));
         }
@@ -80,7 +83,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        return view('Team.list',compact('team'));
+        return view('Team.list', compact('team'));
     }
 
     /**

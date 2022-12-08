@@ -12,6 +12,6 @@ class UserDetails extends Model
 
     public function users()
     {
-        return $this->belongsTo('App\Models\Auth\User');
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }
