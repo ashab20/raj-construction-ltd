@@ -29,6 +29,9 @@ return new class extends Migration
             $table->unsignedBigInteger('management_id')->nullable();
             $table->foreign('management_id')->references('id')->on('management')->onDelete('cascade')->change();
 
+
+            $table->enum('availability',['yes','no'])->default('yes');
+
             //default
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');

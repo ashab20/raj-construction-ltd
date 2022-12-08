@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Management\Management;
 use Illuminate\Http\Request;
 use App\Models\Auth\User;
+use App\Models\Management\Team;
 use Illuminate\Support\Facades\DB;
 
 class ManagementController extends Controller
@@ -39,8 +40,8 @@ class ManagementController extends Controller
             ->select('users.*', 'designations.*')
             ->whereIn('user_details.designation_id', [1,2,3])
             ->get();
-
-        return view('Management.create', compact('users'));
+        $teams = Team::all();
+        return view('Management.create', compact('users','teams'));
     }
 
     /**

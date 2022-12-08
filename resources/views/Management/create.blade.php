@@ -28,7 +28,6 @@
             </div>
         </div>
         <!-- end page title -->
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -43,7 +42,7 @@
                                     <select name="" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
-                                            @if($usr->designation_id === 3)
+                                            @if($usr->identify ==='projectmanager')
                                             <option value="{{$usr->id}}">
                                                 {{$usr->name}}
                                             </option>
@@ -59,7 +58,7 @@
                                     <select name="" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
-                                            @if($usr->designation_id === 1)
+                                            @if($usr->identify === 'architecture')
                                             <option value="{{$usr->id}}">
                                                 {{$usr->name}}
                                             </option>
@@ -76,7 +75,7 @@
                                     <select name="" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
-                                            @if($usr->designation_id === 1)
+                                            @if($usr->identify ==='civilengineer')
                                             <option value="{{$usr->id}}">
                                                 {{$usr->name}}
                                             </option>
@@ -94,10 +93,10 @@
 
                                     <select name="" id="" class="form-control">
                                         <option value="">Select</option>
-                                        @forelse ($users as $usr)
-                                            @if($usr->designation_id === 2)
-                                            <option value="{{$usr->id}}">
-                                                {{$usr->name}}
+                                        @forelse ($teams as $team)
+                                            @if($team->availability === 'yes')
+                                            <option value="{{$team->id}}">
+                                                {{$team->name}}
                                             </option>
                                             @endif
                                         @empty
