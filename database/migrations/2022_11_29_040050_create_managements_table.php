@@ -31,6 +31,9 @@ return new class extends Migration
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->change();
 
+            $table->unsignedBigInteger('team_id');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->change();
+
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();

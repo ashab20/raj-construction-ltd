@@ -32,14 +32,14 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('management.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('management.store')}}" method="POST" >
                             @csrf
 
-                            <input type="hidden" value="{{ $_GET['id']}}" name="project_id" />
+                            <input type="hidden" value="{{ $_GET['id']}}" name="project" />
                             <div class="row">
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectDirector" class="form-label">{{__('Project Director')}}</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="projectmanager" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
                                             @if($usr->identify ==='projectmanager')
@@ -55,7 +55,7 @@
 
                                 <div class="col-xl-4 mb-3">
                                     <label for="architecht" class="form-label">{{__('Architecht Name')}}</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="architecture" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
                                             @if($usr->identify === 'architecture')
@@ -72,7 +72,7 @@
 
                                 <div class="col-xl-4 mb-3">
                                     <label for="civilEngineer" class="form-label">{{__('Civil Engineer')}}</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="civilengineer" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
                                             @if($usr->identify ==='civilengineer')
@@ -91,14 +91,13 @@
                                 <div class="mb-0 col-xl-4 col-6">
                                     <label for="team" class="form-label">{{__('Team Name')}} :</label>
 
-                                    <select name="" id="" class="form-control">
+                                    <select name="team" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($teams as $team)
-                                            @if($team->availability === 'yes')
-                                            <option value="{{$team->id}}">
-                                                {{$team->name}}
+                                            <option value="{{$team->id}}" @if($team->availability === 'no') disabled class="text-danger" @endif>
+                                                {{$team->team_name}} 
                                             </option>
-                                            @endif
+                                            
                                         @empty
                                         <option value="">NO data found!</option>
                                         @endforelse

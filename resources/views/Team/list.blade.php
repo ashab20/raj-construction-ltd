@@ -68,8 +68,6 @@
                                 </thead>
                                 <tbody>
                                 @forelse ($teams as $team)
-                                {{$team}}
-
                                     <tr>
                                         <td>{{++$loop->index}}</td>
                                         <td>{{$team->team_name}}</td>
