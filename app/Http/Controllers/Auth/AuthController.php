@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Auth\User;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
 class AuthController extends Controller

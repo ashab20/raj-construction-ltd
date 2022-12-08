@@ -32,7 +32,7 @@ return new class extends Migration
         DB::table('designations')->insert([
             [
                 'designation'=>'Architecture',
-                'indentify'=>'architecture',
+                'identify'=>'architecture',
                 'basic_sallary'=>30000,
                 'yearly_bonus'=>2,
                 'percentage_of_bonus'=>0.5,
@@ -41,7 +41,7 @@ return new class extends Migration
             ],
             [
                 'designation'=>'Civil Engineer',
-                'indentify'=>'civilengineer',
+                'identify'=>'civilengineer',
                 'basic_sallary'=>30000,
                 'yearly_bonus'=>2,
                 'percentage_of_bonus'=>0.5,
@@ -50,7 +50,7 @@ return new class extends Migration
             ],
             [
                 'designation'=>'Project Manager',                
-                'indentify'=>'projectmanager',
+                'identify'=>'projectmanager',
                 'basic_sallary'=>30000,
                 'yearly_bonus'=>2,
                 'percentage_of_bonus'=>0.5,
