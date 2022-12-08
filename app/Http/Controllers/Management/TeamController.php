@@ -46,12 +46,12 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         try {
             $team = new Team();
             $team->team_name = $request->teamName;
             $team->builder_options_id = $request->builderOptions;
-            $team->team_leader = $request->team_leader;
+            $team->team_leader = $request->teamLeader;
             $team->worker_id = json_encode($request->worker);
 
 
