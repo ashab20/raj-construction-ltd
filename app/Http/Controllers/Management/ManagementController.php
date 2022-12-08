@@ -17,8 +17,9 @@ class ManagementController extends Controller
     public function index()
     {
         $managements = Management::paginate(10);
-        $users = User::whereIn('designation_id', [1,2,3])->get();
-        return view('Management.list',compact('managements','users'));
+        $users = User::whereIn('designation_id', [1, 2, 3])->get();
+        print_r($users);
+        return view('Management.list', compact('managements', 'users'));
     }
 
     /**
@@ -28,8 +29,10 @@ class ManagementController extends Controller
      */
     public function create()
     {
-        // |$team = 
-        return view('Management.create');
+        $managements = Management::paginate(10);
+        $users = User::whereIn('designation_id', [1, 2, 3])->get();
+        // print_r($users);
+        return view('Management.create',compact('users'));
     }
 
     /**
