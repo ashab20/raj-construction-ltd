@@ -12,6 +12,7 @@ use App\Http\Controllers\Builder\DesignationController;
 use App\Http\Controllers\Builder\BuilderOptionController;
 use App\Http\Controllers\Builder\CompanyController;
 use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\WorkingDetailsController;
 
 use App\Http\Controllers\Builder\FlatController;
 use App\Http\Controllers\Builder\FloorDetailsController;
@@ -132,6 +133,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         
         //worker
         Route::resource('/worker',WorkerController::class);
+        Route::resource('/workerdetails',WorkingDetailsController::class);
 
         //management
         Route::resource('/management',ManagementController::class);

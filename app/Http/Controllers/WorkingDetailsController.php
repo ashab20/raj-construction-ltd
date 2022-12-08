@@ -14,7 +14,8 @@ class WorkingDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $Workingdetails = working_details::paginate(10);
+        return view('worker.workerdetails.index', compact('Workingdetails'));
     }
 
     /**
@@ -24,7 +25,7 @@ class WorkingDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('worker.workerdetails.create');
     }
 
     /**
