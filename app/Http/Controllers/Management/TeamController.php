@@ -46,9 +46,13 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         try {
             $team = new Team();
             $team->team_name = $request->teamName;
+            $team->builder_options_id = $request->builderOptions;
+            $team->team_leader = $request->team_leader;
+            $team->worker_id = json_encode($request->worker);
 
 
             $team->created_by = Crypt::decrypt(session()->get('userId'));
@@ -56,7 +60,9 @@ class TeamController extends Controller
             $identity = decrypt(session()->get('roleIdentity'));
 
             if ($team->save()) {
-                return redirect()->back()->with($this->resMessageHtml(true, false, 'Team created successfully'));
+                return redirect(route('team.index'))->with($this->resMessageHtml(true, false, 'Team created successfully'));
+            }else{
+                return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Team, Please try again'));
             }
         } catch (Exception $err) {
             dd($err);

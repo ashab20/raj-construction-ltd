@@ -21,8 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('team_leader')->nullable();
             $table->foreign('team_leader')->references('id')->on('workers')->onDelete('cascade')->change();
 
-            $table->unsignedBigInteger('worker_id')->nullable();
-            $table->foreign('worker_id')->references('id')->on('workers')->onDelete('cascade')->change();
+            $table->json('worker_id');
 
             $table->unsignedBigInteger('builder_options_id')->nullable();
             $table->foreign('builder_options_id')->references('id')->on('builder_options')->onDelete('cascade')->change();
