@@ -109,118 +109,118 @@
                         </div>
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
 <!-- Lands -->
-                            <div class="row">
-                                <div class="mb-3 col-xl-4 form-row">
-                                    <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
-                                    <input type="number" id="squireFeet" name="plotArea" class="form-control" value="{{old('plotArea')}}">
-                                    <select name="plotAreaCounter" id="" class="form-control">
-                                        <option value="Squire Feet" selected>Squire Feet</option>
-                                        <option value="Miter">Miter</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-xl-4 form-row">
-                                    <label for="squireFeet" class="form-label">{{__('Building Area')}} :</label>
-                                    <input type="number" id="squireFeet" name="BuildingArea" class="form-control" value="{{old('BuildingArea')}}">
-                                    <select name="BuildingAreaCounter" id="" class="form-control">
-                                        <option value="Squire Feet" selected>Squire Feet</option>
-                                        <option value="Miter">Miter</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-xl-4 form-row">
-                                    <label for="squireFeet" class="form-label">{{__('Building Height')}} :</label>
-                                    <input type="number" id="squireFeet" name="BuildingHeight" class="form-control" value="{{old('BuildingHeight')}}">
-                                    <select name="BuildingHeightCounter" id="" class="form-control">
-                                        <option value="Miter" selected>Miter</option>
-                                        <option value="Squire Feet">Squire Feet</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">                      
-                                <div class="mb-3 col-xl-4 form-row">
-                                    <label for="houseNo" class="form-label">House No.</label>
-                                    <input type="text" id="houseNo" class="form-control" name="houseNo" value="{{old('houseNo')}}">
-                                </div>
-                                <div class="mb-3 col-xl-4 form-row">
-                                    <label for="block" class="form-label">Block</label>
-                                    <input type="text" id="block" class="form-control" name="block">
-                                </div>
-                                <div class="mb-3 col-xl-4 form-row">
-                                    <label for="roadNo" class="form-label">Road No.</label>
-                                    <input type="text" id="roadNo" class="form-control" name="roadNo">
-                                </div>
-                            </div>
+        <div class="row">
+            <div class="mb-3 col-xl-4 form-row">
+                <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
+                <input type="number" id="squireFeet" name="plotArea" class="form-control" value="{{old('plotArea')}}">
+                <select name="plotAreaCounter" id="" class="form-control">
+                    <option value="Squire Feet" selected>Squire Feet</option>
+                    <option value="Miter">Miter</option>
+                </select>
+            </div>
+            <div class="mb-3 col-xl-4 form-row">
+                <label for="squireFeet" class="form-label">{{__('Building Area')}} :</label>
+                <input type="number" id="squireFeet" name="BuildingArea" class="form-control" value="{{old('BuildingArea')}}">
+                <select name="BuildingAreaCounter" id="" class="form-control">
+                    <option value="Squire Feet" selected>Squire Feet</option>
+                    <option value="Miter">Miter</option>
+                </select>
+            </div>
+            <div class="mb-3 col-xl-4 form-row">
+                <label for="squireFeet" class="form-label">{{__('Building Height')}} :</label>
+                <input type="number" id="squireFeet" name="BuildingHeight" class="form-control" value="{{old('BuildingHeight')}}">
+                <select name="BuildingHeightCounter" id="" class="form-control">
+                    <option value="Miter" selected>Miter</option>
+                    <option value="Squire Feet">Squire Feet</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">                      
+            <div class="mb-3 col-xl-4 form-row">
+                <label for="houseNo" class="form-label">House No.</label>
+                <input type="text" id="houseNo" class="form-control" name="houseNo" value="{{old('houseNo')}}">
+            </div>
+            <div class="mb-3 col-xl-4 form-row">
+                <label for="block" class="form-label">Block</label>
+                <input type="text" id="block" class="form-control" name="block">
+            </div>
+            <div class="mb-3 col-xl-4 form-row">
+                <label for="roadNo" class="form-label">Road No.</label>
+                <input type="text" id="roadNo" class="form-control" name="roadNo">
+            </div>
+        </div>
                            
-                            <div class="row">
+        <div class="row">
 
-                                <!-- <div class="col-xl-6 mb-3">
-                                    <label for="address" class="form-label">Address</label>
-                                    <p class="text-muted font-14">{{__('( House no, Road, Block etc. )')}}</p>
-                                    <textarea class="form-control" id="project-overview" rows="5" placeholder="Enter address" name="address"></textarea>
-                                </div> -->
-                                <!-- <div class="col-xl-6"> -->
-                                    @php
-                                    $countires = DB::table('countries')->get();
+            <!-- <div class="col-xl-6 mb-3">
+                <label for="address" class="form-label">Address</label>
+                <p class="text-muted font-14">{{__('( House no, Road, Block etc. )')}}</p>
+                <textarea class="form-control" id="project-overview" rows="5" placeholder="Enter address" name="address"></textarea>
+            </div> -->
+            <!-- <div class="col-xl-6"> -->
+                @php
+                $countires = DB::table('countries')->get();
 
-                                 @endphp
-                                    <div class="mb-3 col-xl-4 ">
-                                    <label for="country" class="form-label">{{__('Country')}}</label>
-                                    <select id="inputState" name="country"class="form-select" >
-                                       
-                                        <option>{{_('Select Country')}}</option>
-                                        @forelse ($countires as $country)
-                                        <option value="{{$country->id}}">{{$country->country}}</option>
-                                            
-                                        @empty
-                                        <option>No data Found</option>
-                                            
-                                        @endforelse
-                                    </select>
-                                </div>  
-                                @php
-                                    $divisions = DB::table('divisions')->get();
-                                        
-                                @endphp
-                                <div class="col-xl-4">
-                                    <label for="division" class="form-label">{{__('Division')}}</label>
-                                    <select id="divisons" name="division" class="form-select">
-                                      
-                                        <option>{{_('Select Division')}}</option>
+                @endphp
+                <div class="mb-3 col-xl-4 ">
+                <label for="country" class="form-label">{{__('Country')}}</label>
+                <select id="inputState" name="country"class="form-select" >
+                    
+                    <option>{{_('Select Country')}}</option>
+                    @forelse ($countires as $country)
+                    <option value="{{$country->id}}">{{$country->country}}</option>
+                        
+                    @empty
+                    <option>No data Found</option>
+                        
+                    @endforelse
+                </select>
+            </div>  
+            @php
+                $divisions = DB::table('divisions')->get();
+                    
+            @endphp
+            <div class="col-xl-4">
+                <label for="division" class="form-label">{{__('Division')}}</label>
+                <select id="divisons" name="division" class="form-select">
+                    
+                    <option>{{_('Select Division')}}</option>
 
-                                    @forelse ($divisions as $division)
-                                    <option value="{{$division->id}}">{{$division->divison}}</option>
-                                        
-                                    @empty
-                                    <option>No data Found</option>
-                                        
-                                    @endforelse
-                                    </select>
-                                </div>
-                                @php
-                                    $districts = DB::table('districts')->get();
-                                        
-                                @endphp
-                                <div class="col-xl-4">
-                                    <label for="district" class="form-label">{{__('District')}}</label>
-                                    <select id="district" name="district" class="form-select">
-                                        
-                                        <option>{{_('Select District')}}</option>
+                @forelse ($divisions as $division)
+                <option value="{{$division->id}}">{{$division->divison}}</option>
+                    
+                @empty
+                <option>No data Found</option>
+                    
+                @endforelse
+                </select>
+            </div>
+            @php
+                $districts = DB::table('districts')->get();
+                    
+            @endphp
+            <div class="col-xl-4">
+                <label for="district" class="form-label">{{__('District')}}</label>
+                <select id="district" name="district" class="form-select">
+                    
+                    <option>{{_('Select District')}}</option>
 
-                                    @forelse ($districts as $district)
-                                    <option value="{{$district->id}}">{{$district->district}}</option>
-                                        
-                                    @empty
-                                    <option>No data Found</option>
-                                        
-                                    @endforelse
-                                    </select>
-                                    
-                                {{-- </div> --}}
-                            </div>
-                            {{-- <div class="mb-3">
-                                <label for="designId" class="form-label">Design</label>
-                                <input type="files" id="designId" class="form-control" name="designId">
-                            </div> --}}
-                        </div>
+                @forelse ($districts as $district)
+                <option value="{{$district->id}}">{{$district->district}}</option>
+                    
+                @empty
+                <option>No data Found</option>
+                    
+                @endforelse
+                </select>
+                
+            {{-- </div> --}}
+        </div>
+        {{-- <div class="mb-3">
+            <label for="designId" class="form-label">Design</label>
+            <input type="files" id="designId" class="form-control" name="designId">
+        </div> --}}
+    </div>
                         <!-- end row -->
                         <!-- Plot Documents -->
                         <div class="col-10 offset-1 d-flex justify-content-end">

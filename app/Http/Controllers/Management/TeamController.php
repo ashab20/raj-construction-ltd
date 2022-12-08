@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTraits;
+use App\Models\Builder\BuilderOption;
 use App\Models\Management\Team;
 use App\Models\worker;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Queue\Worker as QueueWorker;
 use Illuminate\Support\Facades\Crypt;
 
 class TeamController extends Controller
@@ -31,7 +33,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('Team.create');
+        $workers = worker::all();
+        $builderOptions = BuilderOption::all();
+        return view('Team.create',compact('workers','builderOptions'));
     }
 
     /**

@@ -20,105 +20,107 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Projects</a></li>
-                            <li class="breadcrumb-item active">{{__('Create Project')}}</li>
+                            <li class="breadcrumb-item active">{{__('Create Team')}}</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">{{__('Create Project')}}</h4>
+                    <h4 class="page-title">{{__('Create Team')}}</h4>
                 </div>
             </div>
         </div>
 
 
         <!-- end page title -->
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('management.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('post')
 
-                            <input type="hidden" value="{{ $_GET['id']}}" name="project_id" />
                             <div class="row">
                                 <div class="col-xl-4 mb-3">
-                                    <label for="projectDirector" class="form-label">{{__('Project Director')}}</label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Select</option>
-                                        @forelse ($users as $usr)
-                                            @if($usr->designation_id === 3)
-                                            <option value="{{$usr->id}}">
-                                                {{$usr->name}}
-                                            </option>
-                                            @endif
-                                        @empty
-                                        <option value="">NO data found!</option>
-                                        @endforelse
-                                    </select>
+                                    <label for="projectname" class="form-label">{{__('Team Name')}}</label>
+                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}" required>
                                 </div>
 
                                 <div class="col-xl-4 mb-3">
-                                    <label for="architecht" class="form-label">{{__('Architecht Name')}}</label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Select</option>
-                                        @forelse ($users as $usr)
-                                            @if($usr->designation_id === 1)
-                                            <option value="{{$usr->id}}">
-                                                {{$usr->name}}
-                                            </option>
-                                            @endif
+                                    <label for="projectOwnerShip" class="form-label">{{__('Team Leader')}}:</label>
+                                    <select name="worker[]" id="" class="form-control select2" data-toggle="select2">
+                                        <option value="">Select Team Leader</option>
+                                        @forelse($workers as $worker)
+                                        <option value="{{$worker->id}}">
+                                            {{$worker->name}}
+                                        </option>
                                         @empty
-                                        <option value="">NO data found!</option>
+                                        <option value="">
+                                            {{__('No Data Founds!')}}
+                                        </option>
                                         @endforelse
+                                        <option value="">
+
+                                        </option>
                                     </select>
-
                                 </div>
-
-                                <div class="col-xl-4 mb-3">
-                                    <label for="civilEngineer" class="form-label">{{__('Civil Engineer')}}</label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Select</option>
-                                        @forelse ($users as $usr)
-                                            @if($usr->designation_id === 1)
-                                            <option value="{{$usr->id}}">
-                                                {{$usr->name}}
-                                            </option>
-                                            @endif
+                                <div class="col-xl-4 position-relative" id="datepicker2">
+                                    <label class="form-label">{{__('Building Options')}}</label>
+                                    <select name="worker[]" id="" class="form-control select2" data-toggle="select2">
+                                        <option value="">Select Builder Options</option>
+                                        @forelse($builderOptions as $bo)
+                                        <option value="{{$bo->id}}">
+                                            {{$bo->name}}
+                                        </option>
                                         @empty
-                                        <option value="">NO data found!</option>
+                                        <option value="">
+                                            {{__('No Data Founds!')}}
+                                        </option>
                                         @endforelse
+                                        <option value="">
+
+                                        </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="mb-0 col-xl-4 col-6">
-                                    <label for="team" class="form-label">{{__('Team Name')}} :</label>
-
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Select</option>
-                                        @forelse ($users as $usr)
-                                            @if($usr->designation_id === 2)
-                                            <option value="{{$usr->id}}">
-                                                {{$usr->name}}
-                                            </option>
-                                            @endif
+                                <div class="col-8 position-relative3">
+                                    <label for="project-overview" class="form-label">{{__('Select Workers')}}</label>
+                                    <select name="worker[]" id="" class="form-control select2" data-toggle="select2" multiple>
+                                        <option value="">Select Worker</option>
+                                        @forelse($workers as $worker)
+                                        <option value="{{$worker->id}}">
+                                            {{$worker->name}}
+                                        </option>
                                         @empty
-                                        <option value="">NO data found!</option>
+                                        <option value="">
+                                            {{__('No Data Founds!')}}
+                                        </option>
                                         @endforelse
+                                        <option value="">
+
+                                        </option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-10 offset-1 d-flex justify-content-end">
+                            <!-- <div class="row">
+                                <div class=" mb-3">
+                                    <label for="project-overview" class="form-label">{{__('Workers')}}</label>
+                                    <textarea class="form-control" name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('workers_id')}}</textarea>
+                                </div>
+                            </div> -->
+                    </div>
+                    <!-- end row -->
+                    <!-- Plot Documents -->
+                    <div class="col-10 offset-1 d-flex justify-content-end">
 
-                                <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
-                                <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
-                            </div>
-                        </form>
+                        <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
+                        <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
+                    </div>
+                    </form>
 
-                    </div> <!-- end card-body -->
-                </div> <!-- end card-->
-            </div> <!-- end col-->
-        </div>
+                </div> <!-- end card-body -->
+            </div> <!-- end card-->
+        </div> <!-- end col-->
         <!-- end row-->
 
     </div> <!-- End Content -->
