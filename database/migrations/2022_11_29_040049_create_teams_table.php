@@ -26,8 +26,8 @@ return new class extends Migration
             $table->unsignedBigInteger('builder_options_id')->nullable();
             $table->foreign('builder_options_id')->references('id')->on('builder_options')->onDelete('cascade')->change();
             
-            $table->unsignedBigInteger('management_id')->nullable();
-            $table->foreign('management_id')->references('id')->on('management')->onDelete('cascade')->change();
+            // $table->unsignedBigInteger('management_id')->nullable();
+            // $table->foreign('management_id')->references('id')->on('management')->onDelete('cascade')->change();
 
 
             $table->enum('availability',['yes','no'])->default('yes');
