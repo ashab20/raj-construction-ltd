@@ -1,4 +1,4 @@
-<div class="row d-none" id="project-management">    
+<div class="row d-none" id="project-management">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -15,38 +15,86 @@
                     </div><!-- end col-->
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
+                    <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable table-striped mb-0">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>#SL</th>
                                 <th>Project Name</th>
                                 <th>Project Director</th>
                                 <th>Architecht</th>
                                 <th>Chivil Engneer Name</th>
                                 <th>Team</th>
+                                <th>Total Worker</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- {{$project->management[0]->id }} --}}
-                            @forelse ($project->management as $management)
-                            {{-- project_director	architecture    civil_engineer	project_id 	team_id company_id --}}
-                                <tr>
-                                    {{$management}}
-                                    <td>{{ ++$loop->index}}</td>
-                                    <td>{{ $project?->project_name}}</td>
-                                    <td>{{ $management->director?->name}}</td>
-                                    <td>{{ $management->architecht?->name}}</td>
-                                    <td>{{ $management->civilengineer?->name}}</td>
-                                </tr>
+
+                            @forelse ($project->management as $managed)
+                            <tr>
+                                <td class="table-user">
+                                    <button class="btn  action-icon" onclick="$('#t{{$managed->id}}').toggleClass('d-none')" type="button">
+                                    <i class="uil  uil-plus-circle "></i>
+                                    </button>
+                                </td>
+                                <td>{{ ++$loop->index}}</td>
+                                <td>{{ $project?->project_name}}</td>
+                                <td>{{ $managed->director?->name}}</td>
+                                <td>{{ $managed->architecht?->name}}</td>
+                                <td>{{ $managed->civilengineer?->name}}</td>
+                                <td>{{$managed->teams->team_name}}</td>
+                                <td>
+                                    @php
+                                    $workers = json_decode($managed->teams->worker_id)
+                                    @endphp
+                                    {{count($workers)}}
+                                    print_r($workers);
+                                </td>
+                                <td>{{$managed->status}}</td>
+                                <td class="table-action">
+                                    <a href="#" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i> </a>
+                                    <a href="javascript:void()" onclick="$('#form{{$managed->id}}').submit()">
+                                        <i class="mdi mdi-delete"></i>
+                                    </a>
+                                    <form id="{{$managed->id}}" action="{{ route('management.destroy',$managed->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr id="t{{$managed->id}}" class="d-none">
+                                <td colspan="9">
+                                    <table class="table table-bordered border-primary table-centered mb-0table table-bordered table-centered mb-0">
+                                        <tr>
+                                            <th>Worker Id</th>
+                                            <th>Worker Name</th>
+                                            <th>Father Name</th>
+                                            <th>Address</th>
+                                            <th>Total Working Day</th>
+                                            <th>Attachment</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Rabib</td>
+                                            <td>Father</td>
+                                            <td>Chittagong</td>
+                                            <td>34</td>
+                                            <td class="table-action"> <a href="#" class="action-icon"> <i class="text-info uil-eye"></i> </a>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+
                             @empty
-                                <tr>
-                                    <td colspan="8" class="text-center">Data not found</td>
-                                </tr>
+                            <tr>
+                                <td colspan="8" class="text-center">Data not found</td>
+                            </tr>
                             @endforelse
                         </tbody>
-                    </table>                                          
+                    </table>
                 </div> <!-- end preview-->
             </div> <!-- end tab-content-->
         </div> <!-- end card body-->
