@@ -47,9 +47,10 @@
                                 <td>{{$managed->teams->team_name}}</td>
                                 <td>
                                     @php
-                                    $total = json_decode($managed->teams->worker_id)
+                                    $workers = json_decode($managed->teams->worker_id)
                                     @endphp
-                                    {{count($total)}}
+                                    {{count($workers)}}
+                                    print_r($workers);
                                 </td>
                                 <td>{{$managed->status}}</td>
                                 <td class="table-action">
@@ -74,7 +75,6 @@
                                             <th>Total Working Day</th>
                                             <th>Attachment</th>
                                         </tr>
-
                                         <tr>
                                             <td>1</td>
                                             <td>Rabib</td>
