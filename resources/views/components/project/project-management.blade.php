@@ -34,10 +34,9 @@
 
                             @forelse ($project->management as $managed)
                             <tr>
-
                                 <td class="table-user">
-                                    <button class="btn btn-danger action-icon">
-                                    <i class="mdi uil-plus-square "></i>
+                                    <button class="btn  action-icon" onclick="$('#{{$managed->id}}').removieClass('d-none')" type="button">
+                                    <i class="uil  uil-plus-circle "></i>
                                     </button>
                                 </td>
                                 <td>{{ ++$loop->index}}</td>
@@ -64,7 +63,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="{{$managed->id}}" class="d-none">
                                 <td colspan="9">
                                     <table class="table table-bordered border-primary table-centered mb-0table table-bordered table-centered mb-0">
                                         <tr>
