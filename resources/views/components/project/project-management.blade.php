@@ -47,10 +47,10 @@
                                 <td>{{$managed->teams->team_name}}</td>
                                 <td>
                                     @php
-                                    $workers = json_decode($managed->teams->worker_id)
+                                    $workers_id = json_decode($managed->teams->worker_id);
+                                    
                                     @endphp
-                                    {{count($workers)}}
-                                    print_r($workers);
+                                    {{count($workers_id)}}
                                 </td>
                                 <td>{{$managed->status}}</td>
                                 <td class="table-action">
@@ -65,6 +65,9 @@
                                 </td>
                             </tr>
                             <tr id="t{{$managed->id}}" class="d-none">
+   @php
+         $workers = DB::table('workers')->whereIn('id', $workers_id)->get();
+  @endphp
                                 <td colspan="9">
                                     <table class="table table-bordered border-primary table-centered mb-0table table-bordered table-centered mb-0">
                                         <tr>
@@ -75,14 +78,17 @@
                                             <th>Total Working Day</th>
                                             <th>Attachment</th>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Rabib</td>
-                                            <td>Father</td>
-                                            <td>Chittagong</td>
-                                            <td>34</td>
+                                        @foreach ($workers as $worker)
+                                          <tr>
+                                            <td>{{$worker->id}}</td>
+                                            <td>{{$worker->name}}</td>
+                                            <td>{{$worker->father_name}}</td>
+                                            <td>{{$worker->present_address}},{{$worker->present_district_id}}</td>
+                                            <td>{{$worker->total_working_day}}</td>
                                             <td class="table-action"> <a href="#" class="action-icon"> <i class="text-info uil-eye"></i> </a>
-                                        </tr>
+                                        </tr>  
+                                        @endforeach
+                                        
                                     </table>
                                 </td>
 

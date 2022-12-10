@@ -34,11 +34,7 @@ class ManagementController extends Controller
      */
     public function create()
     {
-        // $users = User::whereIn('designation_id', [1,2,3])->get();
-
-        $sql = "SELECT * From users usr JOIN user_details ud ON usr.id=ud.user_id JOIN designations degi on degi.id=ud.designation_id where degi.id IN(1,2,3)";
-
-        // $users = DB::select($sql);
+        
 
         $users = DB::table('users')
             ->join('user_details', 'users.id', '=', 'user_details.user_id')
@@ -46,6 +42,7 @@ class ManagementController extends Controller
             ->select('users.*', 'designations.*')
             ->whereIn('user_details.designation_id', [1,2,3])
             ->get();
+
         $teams = Team::all();
         return view('Management.create', compact('users','teams'));
     }
