@@ -131,9 +131,10 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        $landOwner = User::where('role_id', 4)->get();
+        return view('Projects.edit',compact('project','landOwner'));
     }
 
     /**
@@ -154,8 +155,9 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->back();
     }
 }
