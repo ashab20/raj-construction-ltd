@@ -14,4 +14,8 @@ class Team extends Model
     public function teamLeader(){
         return $this->belongsTo(worker::class,'team_leader','id');
     }
+
+    public function managment(){
+        return $this->hasMany(Management::class);
+    }
 }
