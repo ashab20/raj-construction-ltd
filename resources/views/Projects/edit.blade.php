@@ -40,6 +40,8 @@
                             @method('post')
                          
                             {{$project}}
+
+                            {{$landOwner}}
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
@@ -50,8 +52,8 @@
 
                                     <select class="form-control select2" data-toggle="select2" name="landownerdata">
                                         <option value="">{{__('Select Name')}}</option>
-                                        @forelse($landOwner as $onwer)
-                                        <option value="{{$onwer->id}}">{{$onwer->name}} - {{$onwer?->email}} - {{$onwer?->phone}}</option>
+                                        @forelse($landOwner as $owner)
+                                        <option value="{{$owner->id}}" {{'landownerdata',$owner->id?"selected":""}}>{{$owner->name}} - {{$owner->email}} - {{$owner->phone}}</option>
 
                                         @empty
                                             <option value="">{{('No data found!')}}</option>
@@ -62,7 +64,7 @@
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectOwnerShip" class="form-label">{{__('Owner Ship ')}} (%):</label>
                                     <input type="text" id="projectOwnerShip-budget" class="form-control" name="projectOwnerShip" placeholder="Eg 40"
-                                    value="{{ old('projectOwnerShip')}}">
+                                    value="{{ old('projectOwnerShip',$project->ownerShip)}}">
                                 </div>
                             </div>
 
@@ -98,7 +100,7 @@
                                             value="{{old('projectImage')}}">
                                             <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
                                     </div>
-                                 {{-- </div> --}}
+                                {{-- </div> --}}
                             </div>
                             <div class="row">
                                 <div class=" mb-3">
@@ -106,7 +108,7 @@
                                     <textarea class="form-control" id="simplemde1"
                                     name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('projectOverview',$project->project_overview)}}</textarea>
                                 </div>
-                             <!-- end col-->
+                            <!-- end col-->
                         </div>
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
                             <!-- Lands -->
