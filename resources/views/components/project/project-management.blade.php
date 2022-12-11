@@ -31,7 +31,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             @forelse ($project->management as $managed)
                             <tr>
                                 <td class="table-user">
@@ -65,9 +64,9 @@
                                 </td>
                             </tr>
                             <tr id="t{{$managed->id}}" class="d-none">
-   @php
-         $workers = DB::table('workers')->whereIn('id', $workers_id)->get();
-  @endphp
+                            @php
+                                    $workers = DB::table('workers')->whereIn('id', $workers_id)->get();
+                            @endphp
                                 <td colspan="9">
                                     <table class="table table-bordered border-primary table-centered mb-0table table-bordered table-centered mb-0">
                                         <tr>
@@ -91,9 +90,7 @@
                                         
                                     </table>
                                 </td>
-
                             </tr>
-
                             @empty
                             <tr>
                                 <td colspan="8" class="text-center">Data not found</td>

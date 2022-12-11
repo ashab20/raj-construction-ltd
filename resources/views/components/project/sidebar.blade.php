@@ -23,7 +23,7 @@
                                 </span>
                             </div>
                             <div class="ms-2">
-                                <h5 class="mt-0 mb-0" >
+                                <h5 class="mt-0 mb-0">
                                     Overview
                                     <span class="badge badge-success-lighten ms-1">On Track</span>
                                 </h5>

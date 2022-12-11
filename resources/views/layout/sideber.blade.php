@@ -4,17 +4,17 @@
             <div class="leftbar-user">
                 <a href="javascript: void(0);">
                     @if(Session::has('avatar'))
-                    <img src="{{  asset('uploads/profile/'.Session::get('avatar')) }}" alt="user-image" height="42" class="rounded-circle shadow-sm">                     
+                    <img src="{{  asset('uploads/profile/'.Session::get('avatar')) }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
                     @endif
                     <span class="leftbar-user-name">
                         @if(Session::has('userName'))
-                                {{ Crypt::decrypt(Session::get('userName')) }}
+                        {{ Crypt::decrypt(Session::get('userName')) }}
                         @endif
                     </span>
                 </a>
             </div>
             <!--- Sidemenu -->
-            <ul class="side-nav">                
+            <ul class="side-nav">
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                         <i class="uil-home-alt"></i>
@@ -24,7 +24,7 @@
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="{{route('member.show',Crypt::decrypt(Session::get('userId')))}}" >Profile</a>
+                                <a href="{{route('member.show',Crypt::decrypt(Session::get('userId')))}}">Profile</a>
                             </li>
                             <li>
                                 <a href="dashboard-crm.html">
@@ -176,7 +176,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li  class="side-nav-item">
+                            <li class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarFloor">
                                     <span>{{__('Floor')}}</span>
                                     <span class="menu-arrow"></span>
@@ -217,105 +217,105 @@
                                     {{__('Test Detail')}}
                                 </a>
                             </li>
-                            </li>
-                            {{-- managements --}}
-                            <li class="side-nav-item">
-                                <a href="{{ route('management.index')}}">
-                                    {{__('Management List')}}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+                {{-- managements --}}
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
-                        <i class="uil-envelope"></i>
-                        <span>{{__('Members')}}</span>
-                        <span class="menu-arrow"></span>
+                    <a href="{{ route('management.index')}}">
+                        {{__('Management List')}}
                     </a>
-                    <div class="collapse" id="sidebarEmail">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{route('member.index')}}">
-                                    {{ _('All Members')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('admins')}}">{{ _('Admins')}}</a>
-                            </li>
-                            <li>
-                                <a href="{{route('admin.moderators')}}">{{ _('Moderators')}}</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
-                <li class="side-nav-title side-nav-item">Apps</li>
+            </ul>
+        </div>
+        </li>
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
+                <i class="uil-envelope"></i>
+                <span>{{__('Members')}}</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarEmail">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{route('member.index')}}">
+                            {{ _('All Members')}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admins')}}">{{ _('Admins')}}</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.moderators')}}">{{ _('Moderators')}}</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="side-nav-title side-nav-item">Apps</li>
 
-                <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
-                        <i class="uil-briefcase"></i>
-                        <span> {{__('Locations')}} </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarProjects">
-                        <ul class="side-nav-second-level">
-                            <li>
-                                <a href="{{ route('country.index')}}">
-                                    {{__('Coutries')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('division.index')}}">
-                                    {{__('Divions/State')}}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('district.index')}}">
-                                    {{_('Districts')}} 
-                                    <span class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span>
-                                </a>
-                            </li>
-                            {{-- <li>
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
+                <i class="uil-briefcase"></i>
+                <span> {{__('Locations')}} </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarProjects">
+                <ul class="side-nav-second-level">
+                    <li>
+                        <a href="{{ route('country.index')}}">
+                            {{__('Coutries')}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('division.index')}}">
+                            {{__('Divions/State')}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('district.index')}}">
+                            {{_('Districts')}}
+                            <span class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span>
+                        </a>
+                    </li>
+                    {{-- <li>
                                 <a href="apps-projects-add.html">Create Project <span class="badge rounded-pill badge-success-lighten font-10 float-end">New</span></a>
                             </li> --}}
-                        </ul>
-                    </div>
-                </li>
-                <li class="side-nav-item"> 
-                    <a data-bs-toggle="collapse" href="#sidebarDesignation" aria-expanded="false" aria-controls="sidebarDesignation" class="side-nav-link">
-                        <i class="uil-rss"></i>
-                        <span> Designations</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarDesignation">
-                        <ul class="side-nav-second-level">
-                            
-                            <li>
-                                <a href="{{ route('designation.index')}}">Designations Details</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="side-nav-item"> 
-                    <a data-bs-toggle="collapse" href="#sidebarWorker" aria-expanded="false" aria-controls="sidebarWorker" class="side-nav-link">
-                        <i class="uil-rss"></i>
-                        <span>Worker</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarWorker">
-                        <ul class="side-nav-second-level">
-                            
-                            <li>
-                                <a href="{{ route('worker.index')}}">Worker Details</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('workerdetails.index')}}">Working Details</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                
-{{--
+                </ul>
+            </div>
+        </li>
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarDesignation" aria-expanded="false" aria-controls="sidebarDesignation" class="side-nav-link">
+                <i class="uil-rss"></i>
+                <span> Designations</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarDesignation">
+                <ul class="side-nav-second-level">
+
+                    <li>
+                        <a href="{{ route('designation.index')}}">Designations Details</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarWorker" aria-expanded="false" aria-controls="sidebarWorker" class="side-nav-link">
+                <i class="uil-rss"></i>
+                <span>Worker</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarWorker">
+                <ul class="side-nav-second-level">
+
+                    <li>
+                        <a href="{{ route('worker.index')}}">Worker Details</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('workerdetails.index')}}">Working Details</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        {{--
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
@@ -815,44 +815,21 @@
                 --}}
             </ul> 
 
-        
+            <!-- Help Box -->
+            {{-- <div class="help-box help-box-light text-center">
+                <a href="javascript: void(0);" class="float-end close-btn text-body">
+                    <i class="mdi mdi-close"></i>
+                </a>
+                <img src="assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
+                <h5 class="mt-3">Unlimited Access</h5>
+                <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
+                <a href="javascript: void(0);" class="btn btn-outline-primary btn-sm">Upgrade</a>
+            </div> --}}
             <!-- end Help Box -->
             <!-- End Sidebar -->
 
-            <div class="clearfix">
-                <button style="position: absolute;right: 0;bottom: 0;" type="button" class="btn btn-light rounded closeBtn float-end" id="condensed-check" onclick="sidebarHandler()">
-                    <i class="mdi mdi-chevron-left-box-outline"></i>
-                </button>
-                <button style="position: absolute;right: 0;bottom: 0;" type="button" class="d-none btn btn-light justify-content-center" id="opentBtn">
-                    <i class="mdi mdi-dock-left"></i>
-                </button>
-            </div>
-
-
-
-        <!-- Sidebar -left -->
+            <div class="clearfix"></div>
+            <!-- Sidebar -left -->
 
         </div>
         <!-- Left Sidebar End -->
-        @push('scripts')
-        <script>
-            let condensed = $('#condensed-check')
-            let fixed = $('#fixed-check')
-
-            function sidebarHandler() {
-                // data-leftbar-compact-mode="condensed"
-                $('body').attr('data-leftbar-compact-mode', 'condensed');
-                $('.closeBtn').toggleClass('d-none');
-                $('#opentBtn').removeClass('d-none');
-            }
-
-            $('#opentBtn').click(() => {
-                $('.closeBtn').removeClass('d-none');
-                $('#opentBtn').addClass('d-none');
-                $('body').removeAttr('data-leftbar-compact-mode');
-            });
-        </script>
-        @endpush
-            <!-- Sidebar -left -->
-
-  
