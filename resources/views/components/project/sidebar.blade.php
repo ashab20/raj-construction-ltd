@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col">
-                <div data-simplebar style="max-height: 535px;">
+                <div data-simplebar style="min-height: 70vh;">
                     <a href="javascript:void(0);" class="text-body">
                         <div class="d-flex bg-light  mt-2 p-2" id="overbtn">
                             <div class="avatar-sm d-table">
@@ -35,7 +35,7 @@
                     </a>
 
                     <a href="javascript:void(0);" class="text-body">
-                        <div class="d-flex p-2" id="project_info_btn">
+                        <div class="d-flex p-2 " id="project_info_btn">
                             <div class="avatar-sm d-table">
                                 <span class="avatar-title bg-success-lighten rounded-circle text-success">
                                     <i class='uil uil-moon-eclipse font-24'></i>

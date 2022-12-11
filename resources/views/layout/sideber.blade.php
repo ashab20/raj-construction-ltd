@@ -1,5 +1,5 @@
         <!-- ========== Left Sidebar Start ========== -->
-        <div class="leftside-menu leftside-menu-detached">
+        <div class="leftside-menu leftside-menu-detached" style="height: 100vh;">
 
             <div class="leftbar-user">
                 <a href="javascript: void(0);">
