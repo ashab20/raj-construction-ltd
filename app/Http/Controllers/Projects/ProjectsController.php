@@ -145,17 +145,16 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project, Land $land)
+    public function update(Request $request, $id)
     {
-        DB::beginTransaction();
         try {
 
             //DB::transaction(function () use ($request) {
 
                 dd($request);
-                $project = $project;
+                $project = Project::find($id);
                 $project->project_name = $request->projectNameInputField;
-                // $project->project_name = $request->landownerdata;
+                $project->project_name = $request->landownerdata;
                 $project->project_overview = $request->projectOverview;
                 $project->ownerShip = $request->projectOwnerShip / 100;
 
@@ -175,37 +174,35 @@ class ProjectsController extends Controller
                 // lands table
                 // user_id 	squire_feet 	house_no 	block 	road_no 	address 	document_id 	design_id 	total_budget 	total_cost 	status
 
-                $land = $land;
-                $land->land_area = $request->plotArea;
-                $land->plot_area_counter = $request->plotAreaCounter;
-                $land->building_area = $request->BuildingArea;
-                $land->Building_area_counter = $request->BuildingAreaCounter;
-                $land->building_height = $request->BuildingHeight;
-                $land->Building_height_counter = $request->BuildingHeightCounter;
-                $land->house_no = $request->houseNo;
-                $land->block = $request->block;
-                $land->road_no = $request->roadNo;
+                
+                // $land = Land::find($id);
+                // $land->land_area = $request->plotArea;
+                // $land->plot_area_counter = $request->plotAreaCounter;
+                // $land->building_area = $request->BuildingArea;
+                // $land->Building_area_counter = $request->BuildingAreaCounter;
+                // $land->building_height = $request->BuildingHeight;
+                // $land->Building_height_counter = $request->BuildingHeightCounter;
+                // $land->house_no = $request->houseNo;
+                // $land->block = $request->block;
+                // $land->road_no = $request->roadNo;
                 // $land->total_budget = $request->squireFeet;
-                $land->created_by = Crypt::decrypt(session()->get('userId'));
-                $land->country_id = $request->country;
-                $land->division_id = $request->division;
-                $land->district_id = $request->district;             
+                // $land->created_by = Crypt::decrypt(session()->get('userId'));
+                // $land->country_id = $request->country;
+                // $land->division_id = $request->division;
+                // $land->district_id = $request->district;             
 
-                if($project->save()){
-                    $land->project_id =  $project->id;
-                    if($land->save()){
+                // if($project->save()){
+                //     $land->project_id =  $project->id;
+                //     if($land->save()){
 
                     
-                    DB::commit();
-                   // return redirect(route('project.index'))->refresh()->with($this->resMessageHtml(true, false, 'Project created successfully'));
-                    return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
-                    }
-                }
+                //    // return redirect(route('project.index'))->refresh()->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                //     return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                //     }
+                // }
                 
-            //});
         } catch (Exception $err) {
             dd($err);
-            DB::rollBack();
             return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Project, Please try again'));
         }
     }
@@ -216,9 +213,9 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        $project->delete();
+        Project::find($id)->delete();
         return redirect()->back();
     }
 }
