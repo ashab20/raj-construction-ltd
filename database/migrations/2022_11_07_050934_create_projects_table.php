@@ -33,8 +33,8 @@ return new class extends Migration
             // $table->bigIncrements('team_id')->nullable();
             // $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade')->change();
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->unsignedBigInteger('land_owner_id');
+            $table->foreign('land_owner_id')->references('id')->on('users')->onDelete('cascade')->change();
 
             // default
             $table->integer('status')->default(1);

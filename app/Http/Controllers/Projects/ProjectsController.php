@@ -134,8 +134,8 @@ class ProjectsController extends Controller
     public function edit(Project $project)
     {
         $landOwner = User::where('role_id', 4)->get();
-        $land = Land::where('project_id',$project->id)->first();
-        return view('Projects.edit',compact('project','landOwner','land'));
+        // $land = Land::where('project_id',$project->id)->first();
+        return view('Projects.edit',compact('project','landOwner'));
     }
 
     /**
@@ -151,20 +151,19 @@ class ProjectsController extends Controller
 
             //DB::transaction(function () use ($request) {
 
-                dd($request);
+                // dd($request);
                 $project = Project::find($id);
                 $project->project_name = $request->projectNameInputField;
-                $project->project_name = $request->landownerdata;
+                $project->land_owner_id = $request->landownerdata;
                 $project->project_overview = $request->projectOverview;
                 $project->ownerShip = $request->projectOwnerShip / 100;
 
                 $project->start_date = $request->parojectStarDate;
                 $project->end_date = $request->parojectEndDate;
                 $project->budget = $request->totalBudget;
-                $project->user_id = $request->landownerdata;
                 $project->stage_id = 1;
                 $project->status = 1;
-                $project->created_by = Crypt::decrypt(session()->get('userId'));
+                $project->updated_by = Crypt::decrypt(session()->get('userId'));
                 if ($request->hasFile('projectImage')) {
                     // dd($request->projectImage);
                     $imageName = rand(111, 999) . time() . '.' . $request->projectImage->extension();
@@ -191,15 +190,15 @@ class ProjectsController extends Controller
                 // $land->division_id = $request->division;
                 // $land->district_id = $request->district;             
 
-                // if($project->save()){
+               if($project->save()){
                 //     $land->project_id =  $project->id;
                 //     if($land->save()){
 
                     
                 //    // return redirect(route('project.index'))->refresh()->with($this->resMessageHtml(true, false, 'Project created successfully'));
-                //     return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
-                //     }
-                // }
+                     return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                    
+                }
                 
         } catch (Exception $err) {
             dd($err);
