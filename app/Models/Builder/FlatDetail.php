@@ -20,6 +20,6 @@ class FlatDetail extends Model
     }
 
     public function totalBudget(){
-        return $this->belongsTo(FloorBudgetDetails::class,'floor_budget_id','id');
+        return $this->belongsTo(FloorBudget::class,'floor_budget_id','id');
     }
 }

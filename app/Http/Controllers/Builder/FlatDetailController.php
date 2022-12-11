@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Builder;
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Flat;
 use App\Models\Builder\FlatDetail;
+use App\Models\Builder\Material;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -19,7 +20,7 @@ class FlatDetailController extends Controller
     public function index()
     {
         $fdetail=FlatDetail::paginate(10);
-        return view('flatDetail.index',compact('fdetail'));
+        return view('Flat/flatDetail.index',compact('fdetail'));
     }
 
     /**
@@ -29,8 +30,9 @@ class FlatDetailController extends Controller
      */
     public function create()
     {
+        $matName = Material::all();
         $flatName = Flat::all();
-        return view('flatDetail.create',compact('flatName'));
+        return view('Flat/flatDetail.create',compact('flatName','matName'));
     }
 
     /**
@@ -81,7 +83,8 @@ class FlatDetailController extends Controller
      */
     public function edit(FlatDetail $flatDetail)
     {
-        return view('flatDetail.edit',compact('flatDetail'));
+        $matName = Material::all();
+        return view('Flat/flatDetail.edit',compact('flatDetail','matName'));
     }
 
     /**

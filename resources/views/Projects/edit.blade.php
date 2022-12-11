@@ -38,6 +38,7 @@
                         <form action="{{route('project.update',$project)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
+                                {{$project->land_owner_id}}
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
@@ -49,8 +50,10 @@
                                     <select class="form-control select2" data-toggle="select2" name="landownerdata">
                                         <option value="">{{__('Select Name')}}</option>
                                         @forelse($landOwner as $onwer)
-                                        <option value="{{$onwer->id}}">{{$onwer->name}} - {{$onwer?->email}} - {{$onwer?->phone}}</option>
-
+                                        <option value="{{$onwer->id}}" {{$project->land_owner_id == $onwer->id?"selected":""}}>{{$onwer->name}} </option>
+                                        
+{{-- - {{$onwer?->email}} - {{$onwer?->phone}} --}}
+                                        {{-- <option value="{{$uName->id}}" {{ old('uname',$material->unit_id)==$uName->id?"selected":""}}> {{ $uName->name}}</option> --}}
                                         @empty
                                             <option value="">{{('No data found!')}}</option>
                                         @endforelse
@@ -60,7 +63,7 @@
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectOwnerShip" class="form-label">{{__('Owner Ship ')}} (%):</label>
                                     <input type="text" id="projectOwnerShip-budget" class="form-control" name="projectOwnerShip" placeholder="Eg 40"
-                                    value="{{ old('projectOwnerShip')}}">
+                                    value="{{ old('projectOwnerShip',$project->ownerShip)}}">
                                 </div>
                             </div>
 
