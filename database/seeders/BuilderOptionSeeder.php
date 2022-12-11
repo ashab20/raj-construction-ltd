@@ -17,17 +17,17 @@ class BuilderOptionSeeder extends Seeder
     {
         $builderOption=[
             [
-                'name' => 'Arisa Construction Ltd.',
+                'name' => 'Constructions.',
                 'status' => 1,
                 'created_by' => 1,
             ],
             [
-                'name' => 'Tutul Construction Ltd.',
+                'name' => 'Electricity.',
                 'status' => 1,
                 'created_by' => 2,
             ],
             [
-                'name' => 'Tanim Construction Ltd.',
+                'name' => 'Plumbing.',
                 'status' => 1,
                 'created_by' => 3,
             ],

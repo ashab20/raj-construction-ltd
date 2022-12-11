@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ResponseTraits;
+use App\Models\Builder\BuilderOption;
 use App\Models\Management\Team;
+use App\Models\worker;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Queue\Worker as QueueWorker;
 use Illuminate\Support\Facades\Crypt;
 
 class TeamController extends Controller
@@ -20,7 +23,7 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::paginate(10);
-        return view('Team.list',compact('teams'));
+        return view('Team.list', compact('teams'));
     }
 
     /**
@@ -30,7 +33,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        $workers = worker::all();
+        $builderOptions = BuilderOption::all();
+        return view('Team.create', compact('workers', 'builderOptions'));
     }
 
     /**
@@ -41,20 +46,25 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        try{
+        // dd($request);
+        try {
             $team = new Team();
-            $team->team_name = $request->teamName;            
+            $team->team_name = $request->teamName;
+            $team->builder_options_id = $request->builderOptions;
+            $team->team_leader = $request->teamLeader;
+            $team->worker_id = json_encode($request->worker);
 
 
             $team->created_by = Crypt::decrypt(session()->get('userId'));
             $team->status = 1;
             $identity = decrypt(session()->get('roleIdentity'));
 
-            if($team->save()){
-                return redirect()->back()->with($this->resMessageHtml(true, false, 'Team created successfully'));
+            if ($team->save()) {
+                return redirect(route('team.index'))->with($this->resMessageHtml(true, false, 'Team created successfully'));
+            }else{
+                return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Team, Please try again'));
             }
-
-        } catch (Exception $err){
+        } catch (Exception $err) {
             dd($err);
             return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Team, Please try again'));
         }
@@ -77,9 +87,9 @@ class TeamController extends Controller
      * @param  \App\Models\Builder\team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Team $team)
     {
-        // return view('Team.list');
+        return view('Team.list', compact('team'));
     }
 
     /**

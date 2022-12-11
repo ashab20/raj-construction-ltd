@@ -308,6 +308,9 @@
                             <li>
                                 <a href="{{ route('worker.index')}}">Worker Details</a>
                             </li>
+                            <li>
+                                <a href="{{ route('workerdetails.index')}}">Working Details</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

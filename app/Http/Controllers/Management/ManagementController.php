@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTraits;
 use App\Models\Management\Management;
 use Illuminate\Http\Request;
 use App\Models\Auth\User;
+use App\Models\Management\Team;
+use Exception;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class ManagementController extends Controller
 {
+    use ResponseTraits;
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +23,8 @@ class ManagementController extends Controller
     public function index()
     {
         $managements = Management::paginate(10);
-        $users = User::whereIn('designation_id', [1,2,3])->get();
-        return view('Management.list',compact('managements','users'));
+        // $users = User::whereIn('designation_id', [1, 2, 3])->get();
+        return view('Management.list', compact('managements', ));
     }
 
     /**
@@ -28,8 +34,17 @@ class ManagementController extends Controller
      */
     public function create()
     {
-        // |$team = 
-        return view('Management.create');
+        
+
+        $users = DB::table('users')
+            ->join('user_details', 'users.id', '=', 'user_details.user_id')
+            ->join('designations', 'designations.id', '=', 'user_details.designation_id')
+            ->select('users.*', 'designations.*')
+            ->whereIn('user_details.designation_id', [1,2,3])
+            ->get();
+
+        $teams = Team::all();
+        return view('Management.create', compact('users','teams'));
     }
 
     /**
@@ -40,7 +55,28 @@ class ManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{        
+        $management = New Management();
+        $management->project_director = $request->projectmanager;
+        $management->architecture = $request->architecture;
+        $management->civil_engineer = $request->civilengineer;
+        $management->project_id = decrypt($request->project);
+        // $management->company_id = $request->company;
+        $management->team_id = $request->team;
+
+        $management->created_by = Crypt::decrypt(session()->get('userId'));
+            $management->status = 1;
+            $identity = decrypt(session()->get('roleIdentity'));
+
+            if ($management->save()) {
+                return redirect(route('project.show',$management->project_id))->with($this->resMessageHtml(true, false, 'management created successfully'));
+            }else{
+                return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create management, Please try again'));
+            }
+        } catch (Exception $err) {
+            dd($err);
+            return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create management, Please try again'));
+        }
     }
 
     /**

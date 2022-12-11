@@ -22,8 +22,8 @@ return new class extends Migration
             $table->char('password');
             $table->unsignedBigInteger('role_id');
 
-            $table->unsignedBigInteger('designation_id')->nullable();
-            $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade')->change();
+            // $table->unsignedBigInteger('designation_id')->nullable();
+            // $table->foreign('designation_id')->references('id')->on('designations')->onDelete('cascade')->change();
 
             $table->string('avatar')->nullable();
             $table->string('language')->default('en');

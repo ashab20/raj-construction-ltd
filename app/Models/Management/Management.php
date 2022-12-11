@@ -26,8 +26,8 @@ class Management extends Model
     public function civilengineer(){
         return $this->belongsTo(User::class,'architecture','id');
     }
-    public function team(){
-        return $this->belongsTo(Team::class,'team_id','id');
+    public function teams(){
+        return $this->belongsTo(Team::class,'team_id');
     }
 
 }

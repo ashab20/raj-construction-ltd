@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Models\Auth;
+namespace App\Models\worker;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class UserDetails extends Model
+class working_details extends Model
 {
     use HasFactory,SoftDeletes;
-
-    public function users()
-    {
-        return $this->belongsTo(User::class,'user_id','id');
-    }
 }
