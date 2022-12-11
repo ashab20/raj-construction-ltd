@@ -151,3 +151,8 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script>
+    $('body').attr('data-leftbar-compact-mode', 'condensed');
+</script>
+@endpush

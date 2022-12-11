@@ -812,23 +812,47 @@
                         </ul>
                     </div>
                 </li>
-            </ul> --}}
+                --}}
+            </ul> 
 
-            <!-- Help Box -->
-            {{-- <div class="help-box help-box-light text-center">
-                <a href="javascript: void(0);" class="float-end close-btn text-body">
-                    <i class="mdi mdi-close"></i>
-                </a>
-                <img src="assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
-                <h5 class="mt-3">Unlimited Access</h5>
-                <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                <a href="javascript: void(0);" class="btn btn-outline-primary btn-sm">Upgrade</a>
-            </div> --}}
+        
             <!-- end Help Box -->
             <!-- End Sidebar -->
 
-            <div class="clearfix"></div>
-            <!-- Sidebar -left -->
+            <div class="clearfix">
+                <button style="position: absolute;right: 0;bottom: 0;" type="button" class="btn btn-light rounded closeBtn float-end" id="condensed-check" onclick="sidebarHandler()">
+                    <i class="mdi mdi-chevron-left-box-outline"></i>
+                </button>
+                <button style="position: absolute;right: 0;bottom: 0;" type="button" class="d-none btn btn-light justify-content-center" id="opentBtn">
+                    <i class="mdi mdi-dock-left"></i>
+                </button>
+            </div>
+
+
+
+        <!-- Sidebar -left -->
 
         </div>
         <!-- Left Sidebar End -->
+        @push('scripts')
+        <script>
+            let condensed = $('#condensed-check')
+            let fixed = $('#fixed-check')
+
+            function sidebarHandler() {
+                // data-leftbar-compact-mode="condensed"
+                $('body').attr('data-leftbar-compact-mode', 'condensed');
+                $('.closeBtn').toggleClass('d-none');
+                $('#opentBtn').removeClass('d-none');
+            }
+
+            $('#opentBtn').click(() => {
+                $('.closeBtn').removeClass('d-none');
+                $('#opentBtn').addClass('d-none');
+                $('body').removeAttr('data-leftbar-compact-mode');
+            });
+        </script>
+        @endpush
+            <!-- Sidebar -left -->
+
+  
