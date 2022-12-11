@@ -35,11 +35,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('project.update',$project)}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('post')
-                         
-                            {{$project}}
+                            @method('patch')
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
@@ -106,9 +104,9 @@
                                     <textarea class="form-control" id="simplemde1"
                                     name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('projectOverview',$project->project_overview)}}</textarea>
                                 </div>
-                             <!-- end col-->
-                        </div>
-                            <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
+                                <!-- end col-->
+                            </div>
+                            {{-- <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
                             <!-- Lands -->
                             <div class="row">
                                 <div class="mb-3 col-xl-4 form-row">
@@ -220,8 +218,8 @@
                             {{-- <div class="mb-3">
                                 <label for="designId" class="form-label">Design</label>
                                 <input type="files" id="designId" class="form-control" name="designId">
-                            </div> --}}
-                        </div>
+                            </div>
+                        </div> --}}
                         <!-- end row -->
                         <!-- Plot Documents -->
                         <div class="col-10 offset-1 d-flex justify-content-end">
