@@ -812,18 +812,10 @@
                         </ul>
                     </div>
                 </li>
-            </ul> --}}
+                --}}
+            </ul> 
 
-            <!-- Help Box -->
-            {{-- <div class="help-box help-box-light text-center">
-                <a href="javascript: void(0);" class="float-end close-btn text-body">
-                    <i class="mdi mdi-close"></i>
-                </a>
-                <img src="assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
-                <h5 class="mt-3">Unlimited Access</h5>
-                <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                <a href="javascript: void(0);" class="btn btn-outline-primary btn-sm">Upgrade</a>
-            </div> --}}
+        
             <!-- end Help Box -->
             <!-- End Sidebar -->
 
@@ -863,5 +855,4 @@
         @endpush
             <!-- Sidebar -left -->
 
-        </div>
-        <!-- Left Sidebar End -->
+  
