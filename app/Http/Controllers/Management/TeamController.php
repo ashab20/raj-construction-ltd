@@ -23,7 +23,7 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::paginate(10);
-        return view('Team.list', compact('teams'));
+        return view('Management/Team.list', compact('teams'));
     }
 
     /**
@@ -35,7 +35,7 @@ class TeamController extends Controller
     {
         $workers = worker::all();
         $builderOptions = BuilderOption::all();
-        return view('Team.create', compact('workers', 'builderOptions'));
+        return view('Management/Team.create', compact('workers', 'builderOptions'));
     }
 
     /**
@@ -89,7 +89,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        return view('Team.list', compact('team'));
+        return view('Management/Team.list', compact('team'));
     }
 
     /**

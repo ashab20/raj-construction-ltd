@@ -12,12 +12,10 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active">Form Elements</li>
-
                             <li class="breadcrumb-item active">Design Edit</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Form Elements</h4>
+                    <h4 class="page-title">Design Edit</h4>
                 </div>                     
             </div>
         </div>                                                                  

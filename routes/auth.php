@@ -112,7 +112,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         
         // budget
         Route::resource('/budget', BudgetController::class);
-        Route::resource('/floorBudgetDetail', BudgetDetailsController::class);
+        Route::resource('/BudgetDetail', BudgetDetailsController::class);
         
         // project budget
         Route::post('budget',[BudgetController::class,'store'])->name('budget.store');

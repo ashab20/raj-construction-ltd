@@ -18,7 +18,7 @@ class FoundationController extends Controller
     public function index()
     {
         $foundations = Foundation::paginate(10);
-        return view('foundation.index',compact('foundations'));
+        return view('Floor/foundation.index',compact('foundations'));
     }
 
     /**
@@ -28,7 +28,7 @@ class FoundationController extends Controller
      */
     public function create()
     {
-        return view('foundation.create');
+        return view('Floor/foundation.create');
     }
 
     /**
@@ -78,7 +78,7 @@ class FoundationController extends Controller
      */
     public function edit(Foundation $foundation)
     {
-        return view('foundation.edit',compact('foundation'));
+        return view('Floor/foundation.edit',compact('foundation'));
     }
 
     /**
