@@ -106,7 +106,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('floorBudgetDetail.index')}}">
+                                            <a href="{{ route('BudgetDetail.index')}}">
                                                 {{__('Budget Details')}}
                                             </a>
                                         </li>

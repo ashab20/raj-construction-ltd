@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="{{route('floorBudgetDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Floor Budget</a>
+                            <a href="{{route('BudgetDetail.create')}}" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Floor Budget</a>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-end">
@@ -72,12 +72,12 @@
                                             @endif
                                         </td>
                                         <td class="table-action">
-                                            <a href="{{ route('floorBudgetDetail.edit',$fBudgetDetails->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
+                                            <a href="{{ route('BudgetDetail.edit',$fBudgetDetails->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i><a>
                                                 
                                             <a href="javascript:void()" onclick="$('#form{{$fBudgetDetails->id}}').submit()">
                                                 <i class="mdi mdi-delete"></i>
                                             </a>
-                                            <form id="form{{$fBudgetDetails->id}}" action="{{ route('floorBudgetDetail.destroy',$fBudgetDetails->id)}}" method="post">
+                                            <form id="form{{$fBudgetDetails->id}}" action="{{ route('BudgetDetail.destroy',$fBudgetDetails->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                             </form>

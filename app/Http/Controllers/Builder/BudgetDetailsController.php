@@ -21,7 +21,7 @@ class BudgetDetailsController extends Controller
     public function index()
     {
         $BudgetDetails= BudgetDetails::paginate(10);
-        return view('BudgetDetails.index',compact('BudgetDetails'));
+        return view('budget/BudgetDetails.index',compact('BudgetDetails'));
     }
 
     /**
@@ -34,7 +34,7 @@ class BudgetDetailsController extends Controller
         $buildingName = Project::all();
         $floorNo = FloorDetails::all();
         $unitName = Unit::all();
-        return view('BudgetDetails.create',compact('buildingName', 'floorNo', 'unitName'));
+        return view('budget/BudgetDetails.create',compact('buildingName', 'floorNo', 'unitName'));
     }
 
     /**
@@ -60,7 +60,7 @@ class BudgetDetailsController extends Controller
             $fBDetails->created_by = Crypt::decrypt(session()->get('userId'));
             $identity = decrypt(session()->get('roleIdentity'));
             if($fBDetails->save()){
-                return redirect($identity.'/floorBudgetDetail')->with('success', 'Data saved');
+                return redirect($identity.'/BudgetDetail')->with('success', 'Data saved');
             }
 
         }catch(Exception $err){
@@ -86,12 +86,12 @@ class BudgetDetailsController extends Controller
      * @param  \App\Models\BudgetDetails  $BudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(BudgetDetails $floorBudgetDetail)
+    public function edit(BudgetDetails $BudgetDetail)
     {
         $buildingName = Project::all();
         $floorNo = FloorDetails::all();
         $unitName = Unit::all();
-        return view('BudgetDetails.edit',compact('floorBudgetDetail','buildingName', 'floorNo', 'unitName'));
+        return view('budget/BudgetDetails.edit',compact('BudgetDetail','buildingName', 'floorNo', 'unitName'));
     }
 
     /**
@@ -101,10 +101,10 @@ class BudgetDetailsController extends Controller
      * @param  \App\Models\BudgetDetails  $BudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BudgetDetails $floorBudgetDetail)
+    public function update(Request $request, BudgetDetails $BudgetDetail)
     {
         try{
-            $fBDetails = $floorBudgetDetail;
+            $fBDetails = $BudgetDetail;
             $fBDetails->project_id = $request->buildingName;
             $fBDetails->floor_details_id = $request->floorNo;
             $fBDetails->units_id = $request->unitName;
@@ -117,7 +117,7 @@ class BudgetDetailsController extends Controller
             $fBDetails->updated_by = Crypt::decrypt(session()->get('userId'));
             $identity = decrypt(session()->get('roleIdentity'));
             if($fBDetails->save()){
-                return redirect($identity.'/floorBudgetDetail')->with('success', 'Data saved');
+                return redirect($identity.'/BudgetDetail')->with('success', 'Data saved');
             }
 
         }catch(Exception $err){
@@ -132,9 +132,9 @@ class BudgetDetailsController extends Controller
      * @param  \App\Models\BudgetDetails  $BudgetDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BudgetDetails $floorBudgetDetail)
+    public function destroy(BudgetDetails $BudgetDetail)
     {
-        $floorBudgetDetail->delete();
+        $BudgetDetail->delete();
         return redirect()->back();
     }
 }
