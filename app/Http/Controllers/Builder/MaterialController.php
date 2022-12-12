@@ -19,7 +19,7 @@ class MaterialController extends Controller
     public function index()
     {
         $materials=Material::paginate(10);
-        return view('material.index',compact('materials'));
+        return view('budget.material.index',compact('materials'));
     }
 
     /**
@@ -30,7 +30,7 @@ class MaterialController extends Controller
     public function create()
     {
         $unitname = Unit::all();
-        return view('material.create',compact('unitname'));
+        return view('budget.material.create',compact('unitname'));
     }
 
     /**
@@ -84,7 +84,7 @@ class MaterialController extends Controller
     public function edit(Material $material)
     {
         $unitname = Unit::all();
-        return view('material.edit',compact('material','unitname'));
+        return view('budget.material.edit',compact('material','unitname'));
     }
 
     /**

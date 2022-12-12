@@ -19,7 +19,7 @@ class FloorbudgetController extends Controller
     public function index()
     {
         $floorbudget= FloorBudget::paginate(10);
-        return view('floorBudget.index',compact('floorbudget'));
+        return view('Floor.floorBudget.index',compact('floorbudget'));
     }
 
     /**
@@ -30,7 +30,7 @@ class FloorbudgetController extends Controller
     public function create()
     {
         $floorbudget=FloorDetails::paginate(10);
-        return view('floorBudget.create',compact('floorbudget'));
+        return view('Floor.floorBudget.create',compact('floorbudget'));
     }
 
     /**
@@ -81,7 +81,7 @@ class FloorbudgetController extends Controller
     public function edit(Floorbudget $floorBudget)
     {
         $fbudgets=FloorDetails::all();
-        return view('floorBudget.edit',compact('floorBudget','fbudgets'));
+        return view('Floor.floorBudget.edit',compact('floorBudget','fbudgets'));
     }
 
     /**
