@@ -168,11 +168,6 @@
                                                 {{__('Material')}}
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="{{ route('unit.index')}}">
-                                                {{__('Unit')}}
-                                            </a>
-                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -225,7 +220,22 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-title side-nav-item">HR</li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarDesignation" aria-expanded="false" aria-controls="sidebarDesignation" class="side-nav-link">
+                        <i class="uil-rss"></i>
+                        <span> Designations</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarDesignation">
+                        <ul class="side-nav-second-level">
 
+                            <li>
+                                <a href="{{ route('designation.index')}}">Designations Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail" class="side-nav-link">
                         <i class="uil-envelope"></i>
@@ -248,6 +258,25 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarWorker" aria-expanded="false" aria-controls="sidebarWorker" class="side-nav-link">
+                        <i class="uil-rss"></i>
+                        <span>Workers</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarWorker">
+                        <ul class="side-nav-second-level">
+
+                            <li>
+                                <a href="{{ route('worker.index')}}">Worker Details</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('workerdetails.index')}}">Working Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="side-nav-title side-nav-item">Base Setup</li>
 
                 <li class="side-nav-item">
@@ -280,38 +309,19 @@
                         </ul>
                     </div>
                 </li>
+
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarDesignation" aria-expanded="false" aria-controls="sidebarDesignation" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="{{ route('team.index')}} aria-expanded=" false" aria-controls="sidebarDesignation" class="side-nav-link">
                         <i class="uil-rss"></i>
-                        <span> Designations</span>
+                        <span> {{__('Team')}}</span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarDesignation">
-                        <ul class="side-nav-second-level">
-
-                            <li>
-                                <a href="{{ route('designation.index')}}">Designations Details</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarWorker" aria-expanded="false" aria-controls="sidebarWorker" class="side-nav-link">
+                    <a href="{{ route('unit.index')}}" class="side-nav-link">
                         <i class="uil-rss"></i>
-                        <span>Worker</span>
-                        <span class="menu-arrow"></span>
+                        <span> {{__('Unit')}}</span>
                     </a>
-                    <div class="collapse" id="sidebarWorker">
-                        <ul class="side-nav-second-level">
-
-                            <li>
-                                <a href="{{ route('worker.index')}}">Worker Details</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('workerdetails.index')}}">Working Details</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
                 <li class="side-nav-title side-nav-item">Apps</li>
