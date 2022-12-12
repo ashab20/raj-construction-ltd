@@ -27,17 +27,17 @@
                                 <a href="{{route('member.show',Crypt::decrypt(Session::get('userId')))}}">Profile</a>
                             </li>
                             <li>
-                                <a href="dashboard-crm.html">
+                                <a href="#">
                                     Change Password
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html">
+                                <a href="#">
                                     Update Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="dashboard-projects.html">Projects</a>
+                                <a href="#">Projects</a>
                             </li>
                         </ul>
                     </div>
