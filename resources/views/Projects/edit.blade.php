@@ -35,10 +35,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('project.update',$project)}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('post')
-                            {{$landOwner}}
+                            @method('patch')
+                                {{$project->land_owner_id}}
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
@@ -49,9 +49,11 @@
 
                                     <select class="form-control select2" data-toggle="select2" name="landownerdata">
                                         <option value="">{{__('Select Name')}}</option>
-                                        @forelse($landOwner as $owner)
-                                        <option value="{{$owner->id}}" {{'landownerdata',$owner->id?"selected":""}}>{{$owner->name}} - {{$owner->email}} - {{$owner->phone}}</option>
-
+                                        @forelse($landOwner as $onwer)
+                                        <option value="{{$onwer->id}}" {{$project->land_owner_id == $onwer->id?"selected":""}}>{{$onwer->name}} </option>
+                                        
+{{-- - {{$onwer?->email}} - {{$onwer?->phone}} --}}
+                                        {{-- <option value="{{$uName->id}}" {{ old('uname',$material->unit_id)==$uName->id?"selected":""}}> {{ $uName->name}}</option> --}}
                                         @empty
                                             <option value="">{{('No data found!')}}</option>
                                         @endforelse
@@ -97,7 +99,7 @@
                                             value="{{old('projectImage')}}">
                                             <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
                                     </div>
-                                {{-- </div> --}}
+                                 {{-- </div> --}}
                             </div>
                             <div class="row">
                                 <div class=" mb-3">
@@ -105,15 +107,14 @@
                                     <textarea class="form-control" id="simplemde1"
                                     name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('projectOverview',$project->project_overview)}}</textarea>
                                 </div>
-                            <!-- end col-->
-                        </div>
-                            <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
+                                <!-- end col-->
+                            </div>
+                            {{-- <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
                             <!-- Lands -->
-                            {{$land}}
                             <div class="row">
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
-                                    <input type="number" id="squireFeet" name="plotArea" class="form-control" value="{{old('plotArea',$land->land_area)}}">
+                                    <input type="number" id="squireFeet" name="plotArea" class="form-control" value="{{old('plotArea')}}">
                                     <select name="plotAreaCounter" id="" class="form-control">
                                         <option value="Squire Feet" selected>Squire Feet</option>
                                         <option value="Miter">Miter</option>
@@ -121,7 +122,7 @@
                                 </div>
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Building Area')}} :</label>
-                                    <input type="number" id="squireFeet" name="BuildingArea" class="form-control" value="{{old('BuildingArea',$land->building_area)}}">
+                                    <input type="number" id="squireFeet" name="BuildingArea" class="form-control" value="{{old('BuildingArea')}}">
                                     <select name="BuildingAreaCounter" id="" class="form-control">
                                         <option value="Squire Feet" selected>Squire Feet</option>
                                         <option value="Miter">Miter</option>
@@ -129,7 +130,7 @@
                                 </div>
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Building Height')}} :</label>
-                                    <input type="number" id="squireFeet" name="BuildingHeight" class="form-control" value="{{old('BuildingHeight',$land->building_height)}}">
+                                    <input type="number" id="squireFeet" name="BuildingHeight" class="form-control" value="{{old('BuildingHeight')}}">
                                     <select name="BuildingHeightCounter" id="" class="form-control">
                                         <option value="Miter" selected>Miter</option>
                                         <option value="Squire Feet">Squire Feet</option>
@@ -139,17 +140,18 @@
                             <div class="row">                      
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="houseNo" class="form-label">House No.</label>
-                                    <input type="text" id="houseNo" class="form-control" name="houseNo" value="{{old('houseNo',$land->house_no)}}">
+                                    <input type="text" id="houseNo" class="form-control" name="houseNo" value="{{old('houseNo')}}">
                                 </div>
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="block" class="form-label">Block</label>
-                                    <input type="text" id="block" class="form-control" name="block" value="{{old('houseNo',$land->block)}}">
+                                    <input type="text" id="block" class="form-control" name="block">
                                 </div>
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="roadNo" class="form-label">Road No.</label>
-                                    <input type="text" id="roadNo" class="form-control" name="roadNo" value="{{old('houseNo',$land->road_no)}}">
+                                    <input type="text" id="roadNo" class="form-control" name="roadNo">
                                 </div>
                             </div>
+                           
                             <div class="row">
 
                                 <!-- <div class="col-xl-6 mb-3">
@@ -161,15 +163,18 @@
                                     @php
                                     $countires = DB::table('countries')->get();
 
-                                @endphp
+                                 @endphp
                                     <div class="mb-3 col-xl-4 ">
                                     <label for="country" class="form-label">{{__('Country')}}</label>
                                     <select id="inputState" name="country"class="form-select" >
+                                       
                                         <option>{{_('Select Country')}}</option>
                                         @forelse ($countires as $country)
                                         <option value="{{$country->id}}">{{$country->country}}</option>
+                                            
                                         @empty
                                         <option>No data Found</option>
+                                            
                                         @endforelse
                                     </select>
                                 </div>  
@@ -180,7 +185,7 @@
                                 <div class="col-xl-4">
                                     <label for="division" class="form-label">{{__('Division')}}</label>
                                     <select id="divisons" name="division" class="form-select">
-
+                                      
                                         <option>{{_('Select Division')}}</option>
 
                                     @forelse ($divisions as $division)
@@ -216,8 +221,8 @@
                             {{-- <div class="mb-3">
                                 <label for="designId" class="form-label">Design</label>
                                 <input type="files" id="designId" class="form-control" name="designId">
-                            </div> --}}
-                        </div>
+                            </div>
+                        </div> --}}
                         <!-- end row -->
                         <!-- Plot Documents -->
                         <div class="col-10 offset-1 d-flex justify-content-end">

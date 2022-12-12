@@ -57,14 +57,13 @@ class ProjectsController extends Controller
 
                 $project = new Project();
                 $project->project_name = $request->projectNameInputField;
-                // $project->project_name = $request->landownerdata;
                 $project->project_overview = $request->projectOverview;
                 $project->ownerShip = $request->projectOwnerShip / 100;
 
                 $project->start_date = $request->parojectStarDate;
                 $project->end_date = $request->parojectEndDate;
                 $project->budget = $request->totalBudget;
-                $project->user_id = $request->landownerdata;
+                $project->land_owner_id = $request->landownerdata;
                 $project->stage_id = 1;
                 $project->status = 1;
                 $project->created_by = Crypt::decrypt(session()->get('userId'));
