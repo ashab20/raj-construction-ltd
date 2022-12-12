@@ -248,7 +248,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="side-nav-title side-nav-item">Apps</li>
+                <li class="side-nav-title side-nav-item">Base Setup</li>
 
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects" class="side-nav-link">
@@ -314,7 +314,7 @@
                     </div>
                 </li>
 
-
+                <li class="side-nav-title side-nav-item">Apps</li>
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks" class="side-nav-link">
                         <i class="uil-clipboard-alt"></i>
