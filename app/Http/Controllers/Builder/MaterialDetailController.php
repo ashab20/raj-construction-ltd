@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
+use App\Models\Builder\Material;
 use App\Models\Builder\MaterialDetail;
 use App\Models\Builder\Unit;
 use Exception;
