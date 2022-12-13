@@ -10,6 +10,7 @@ use App\Models\Store;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class MaterialController extends Controller
 {
@@ -44,6 +45,8 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
+        DB::beginTransaction();
         try{
             $material = new Material();
             $material->unit_id = $request->unitName;
@@ -57,10 +60,6 @@ class MaterialController extends Controller
 
             if($material->save()){
                 $materialDetail = New MaterialDetail();
-                $materialDetail->material_id = $request->unitName;
-                $materialDetail->quantity = $request->unit;
-                $materialDetail->brand_name = $request->brandName;
-                $materialDetail->cost_per_items = $request->perunitprice;
                 // $materialDetail->voucher_image = $request->voucherImage;
                 $materialDetail->status = 1;
                 $materialDetail->created_by = Crypt::decrypt(session()->get('userId'));
@@ -68,6 +67,7 @@ class MaterialController extends Controller
 
                 if($materialDetail->save()){
                     $stock = new Store();
+                    $materialDetail->id;
                     $stock->unit_id = $request->unitName;
                     $stock->material_id = $request->unit;
 
@@ -77,13 +77,15 @@ class MaterialController extends Controller
                     $identity = decrypt(session()->get('roleIdentity'));
 
                     if($stock->save()){
-
+ 
+                        DB::commit();
                         return redirect($identity.'/material')->with('success','Data saved');
                     }
                 }
             }
         }catch(Exception $err){
             dd($err);
+            DB::rollBack();
             return back()->withInput();
         }
 
