@@ -87,11 +87,6 @@
                                     {{__('Flat Details')}}
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('document.index')}}">
-                                    {{__('Documents')}}
-                                </a>
-                            </li>
                             {{-- budget --}}
                             <li class="side-nav-item">
                                 <a data-bs-toggle="collapse" href="#sidebarbudget" aria-expanded="false" aria-controls="sidebarbudget">
@@ -190,27 +185,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
-                            <li class="side-nav-item">
-                                <a data-bs-toggle="collapse" href="#sidebarBuilder">
-                                    <span>{{__('Builder')}}</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse ml-3" id="sidebarBuilder">
-                                    <ul class="side-nav-second-level">
-                                        <li>
-                                            <a href="{{ route('builder.index')}}">
-                                                {{__('Builder Details')}}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            {{-- Test Details --}}
-                            <li class="side-nav-item">
-                                <a href="{{ route('testDetail.index')}}">
-                                    {{__('Test Detail')}}
-                                </a>
                             </li>
                             <li class="side-nav-item">
                                 <a href="{{ route('management.index')}}">
@@ -314,7 +288,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('district.index')}}">
+                                <a href="{{route('district.index')}} " class="side-nav-link">
                                     {{_('Districts')}}
                                     <span class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span>
                                 </a>
@@ -325,9 +299,15 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-item">
+                    <a  href="{{ route('builder.index')}}" class="side-nav-link">
+                        <i class="uil-rss"></i>
+                        <span>   {{__('Builder Details')}}</span>
+                    </a>
+                </li>
 
                 <li class="side-nav-item">
-                    <a data-bs-toggle="collapse" href="{{ route('team.index')}} aria-expanded=" false" aria-controls="sidebarDesignation" class="side-nav-link">
+                    <a data-bs-toggle="collapse" href="{{ route('team.index')}} aria-expanded="false" aria-controls="sidebarDesignation" class="side-nav-link">
                         <i class="uil-rss"></i>
                         <span> {{__('Team')}}</span>
                         <span class="menu-arrow"></span>
