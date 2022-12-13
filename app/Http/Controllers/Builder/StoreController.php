@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Builder;
 
+use App\Http\Controllers\Controller;
 use App\Models\Store;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class StoreController extends Controller
      */
     public function index()
     {
-        //
+        $stores = Store::paginate(10);
+        return view('store.index',compact('stores'));
     }
 
     /**

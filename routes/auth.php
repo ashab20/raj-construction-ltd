@@ -22,6 +22,7 @@ use App\Http\Controllers\Builder\FoundationController;
 use App\Http\Controllers\Builder\TestDetailController;
 use App\Http\Controllers\Builder\MaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
+use App\Http\Controllers\Builder\StoreController;
 use App\Http\Controllers\Builder\UnitController;
 use App\Http\Controllers\Constructions\ConstructControlller;
 use App\Http\Controllers\Location\CountryController;
@@ -105,6 +106,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/unit', UnitController::class);
         Route::resource('/material', MaterialController::class);
         Route::resource('/materialDetails', MaterialDetailController::class);
+        Route::resource('/store', StoreController::class);
         
         // floor
         Route::resource('/floorDetails', FloorDetailsController::class);
