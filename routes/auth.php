@@ -22,7 +22,6 @@ use App\Http\Controllers\Builder\FoundationController;
 use App\Http\Controllers\Builder\TestDetailController;
 use App\Http\Controllers\Builder\MaterialController;
 use App\Http\Controllers\Builder\MaterialDetailController;
-use App\Http\Controllers\Builder\StoreController;
 use App\Http\Controllers\Builder\UnitController;
 use App\Http\Controllers\Constructions\ConstructControlller;
 use App\Http\Controllers\Location\CountryController;
@@ -34,6 +33,7 @@ use App\Http\Controllers\Management\TeamController;
 use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Stock\PurchaseController;
+use App\Http\Controllers\Stock\StoreController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 

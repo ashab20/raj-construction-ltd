@@ -20,17 +20,10 @@
                 </div>
                 <div class="col-3 mr-2">
                     <!-- <div class="p-0"> -->
+                        {{-- unit (rod) quantiry(pelam) --}}
                         <select name="tid" class="form-select" onchange="product_add(this)">
                             <option value="">Select Item</option>
-                            <?php
-
-                            foreach($testData as $test){
-                                ?>
-                            <option data-testid="<?= $test['id']?>" data-price="<?= $test['rate'] ?>" value="<?= $test['id'] ?>" data-description="<?= $test['description'] ?>">
-                                <?= $test['test_name'] ?>
-                            </option>
-                            <?php }
-                                ?>
+                           
                         </select>
                     <!-- </div> -->
                 </div>                               
@@ -55,4 +48,24 @@
         </div>
         
     </div>
-    </div>
+</div>
+@push('scripts')
+<script src="{{asset('assets/js/jquery.repeater.min.js')}}"></script>
+<script>
+      $(document).ready(function () {
+        $('.repeater').repeater({
+            // (Required if there is a nested repeater)
+            // Specify the configuration of the nested repeaters.
+            // Nested configuration follows the same format as the base configuration,
+            // supporting options "defaultValues", "show", "hide", etc.
+            // Nested repeaters additionally require a "selector" field.
+            repeaters: [{
+                // (Required)
+                // Specify the jQuery selector for this nested repeater
+                selector: '.inner-repeater'
+            }]
+        });
+    });
+</script>
+    
+@endpush
