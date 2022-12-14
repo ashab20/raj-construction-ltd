@@ -33,6 +33,7 @@ use App\Http\Controllers\Management\ManagementController;
 use App\Http\Controllers\Management\TeamController;
 use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
+use App\Http\Controllers\Stock\PurchaseController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -140,5 +141,9 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         //management
         Route::resource('/management',ManagementController::class);
         Route::resource('/team',TeamController::class);
+        
+        // store
+        Route::resource('/purchase',PurchaseController::class);
+
     });
 });

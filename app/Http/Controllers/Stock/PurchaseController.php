@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Stock;
 
-use App\Models\Purchase;
+use App\Http\Controllers\Controller;
+use App\Models\Stock\Purchase;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -14,7 +15,8 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        //
+        $purchases = Purchase::paginate(10);
+        return view('stock.purchase.index',compact('purchases'));
     }
 
     /**

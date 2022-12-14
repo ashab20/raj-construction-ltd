@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Stock;
 
 use App\Models\Builder\Material;
 use App\Models\Builder\MaterialDetail;
 use App\Models\Builder\Unit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Store extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
     public function unit(){
         return $this->belongsTo(Unit::class, 'unit_id','id');

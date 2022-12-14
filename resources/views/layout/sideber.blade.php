@@ -203,6 +203,11 @@
                     <div class="collapse" id="sidebarStore">
                         <ul class="side-nav-second-level">
                             <li>
+                                <a href="{{ route('purchase.index')}}">
+                                    {{__('Purchase')}}
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('store.index')}}">
                                     {{__('Store')}}
                                 </a>
