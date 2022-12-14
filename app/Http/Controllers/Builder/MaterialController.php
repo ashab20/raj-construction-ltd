@@ -45,7 +45,6 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         DB::beginTransaction();
         try{
             $material = new Material();
@@ -61,10 +60,12 @@ class MaterialController extends Controller
             if($material->save()){
                 $materialDetail = New MaterialDetail();
                 $materialDetail->material_id = $material->id;
+
                 $materialDetail->material_id = $request->unitName;
                 $materialDetail->quantity = $request->unit;
                 $materialDetail->brand_name = $request->brandName;
                 $materialDetail->cost_per_items = $request->perunitprice;
+
                 // $materialDetail->voucher_image = $request->voucherImage;
                 $materialDetail->status = 1;
                 $materialDetail->created_by = Crypt::decrypt(session()->get('userId'));
@@ -72,7 +73,10 @@ class MaterialController extends Controller
 
                 if($materialDetail->save()){
                     $stock = new Store();
-                    $materialDetail->id;
+                    $stock->material_id = $material->id;
+
+                    
+                    // dd($material);
                     $stock->unit_id = $request->unitName;
                     $stock->material_id = $request->unit;
 
@@ -82,7 +86,6 @@ class MaterialController extends Controller
                     $identity = decrypt(session()->get('roleIdentity'));
 
                     if($stock->save()){
- 
                         DB::commit();
                         return redirect($identity.'/material')->with('success','Data saved');
                     }
