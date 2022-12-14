@@ -20,7 +20,7 @@ class FloorDetailsController extends Controller
     public function index()
     {
         $floorDetails=FloorDetails::paginate(10);
-        return view('floorDetails.index',compact('floorDetails'));
+        return view('Floor.floorDetails.index',compact('floorDetails'));
     }
 
     /**
@@ -30,7 +30,7 @@ class FloorDetailsController extends Controller
      */
     public function create()
     {
-        return view('floorDetails.create');
+        return view('Floor.floorDetails.create');
     }
 
     /**
@@ -84,7 +84,7 @@ class FloorDetailsController extends Controller
     {
 
         $floorDetails=FloorDetails::find(decrypt($id));
-        return view('floorDetails.edit',compact('floorDetails'));
+        return view('Floor.floorDetails.edit',compact('floorDetails'));
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    
+
 <div class="content-page">
     <div class="content">
         <!-- start page title -->
@@ -43,7 +43,7 @@
                                 <h3 class="mt-3 mb-3">36,254</h3>
                                 <p class="mb-0 text-muted">
                                     <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 5.27%</span>
-                                    <span class="text-nowrap">Since last month</span>  
+                                    <span class="text-nowrap">Since last month</span>
                                 </p>
                             </div> <!-- end card-body-->
                         </div> <!-- end card-->
@@ -125,7 +125,7 @@
                         <div dir="ltr">
                             <div id="high-performing-product" class="apex-charts" data-colors="#536de6,#e3eaef"></div>
                         </div>
-                            
+
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
 
@@ -185,7 +185,7 @@
                         <div dir="ltr">
                             <div id="revenue-chart" class="apex-charts mt-3" data-colors="#536de6,#10c469"></div>
                         </div>
-                        
+
                     </div> <!-- end card-body-->
                 </div> <!-- end card-->
             </div> <!-- end col-->
@@ -381,9 +381,8 @@
                         </div>
                         <h4 class="header-title">Total Sales</h4>
 
-                        <div id="average-sales" class="apex-charts mb-4 mt-4"
-                            data-colors="#536de6,#10c469,#ff5b5b,#f9c851"></div>
-                    
+                        <div id="average-sales" class="apex-charts mb-4 mt-4" data-colors="#536de6,#10c469,#ff5b5b,#f9c851"></div>
+
 
                         <div class="chart-widget-list">
                             <p>
@@ -427,7 +426,7 @@
                         </div>
                         <h4 class="header-title mb-2">Recent Activity</h4>
 
-                        <div data-simplebar style="max-height: 419px;"> 
+                        <div data-simplebar style="max-height: 419px;">
                             <div class="timeline-alt pb-0">
                                 <div class="timeline-item">
                                     <i class="mdi mdi-upload bg-info-lighten text-info timeline-icon"></i>
@@ -525,7 +524,7 @@
             </div>
             <!-- end col -->
         </div>
-        <!-- end row -->    
+        <!-- end row -->
     </div> <!-- End Content -->
 
     <!-- Footer Start -->
@@ -533,7 +532,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <script>document.write(new Date().getFullYear())</script> @include('layout.footer_content')
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> @include('layout.footer_content')
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-end footer-links d-none d-md-block">
@@ -548,4 +549,9 @@
     <!-- end Footer -->
 
 </div>
+<!-- third party js -->
+<script src="{{ asset('assets/js/vendor/apexcharts.min.js') }}"></script>
+<!-- demo app -->
+<script src="{{ asset('assets/js/pages/demo.dashboard.js') }}"></script>
+<!-- end demo js-->
 @endsection

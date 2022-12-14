@@ -189,13 +189,13 @@ class ProjectsController extends Controller
                 // $land->division_id = $request->division;
                 // $land->district_id = $request->district;             
 
-               if($project->save()){
+                if($project->save()){
                 //     $land->project_id =  $project->id;
                 //     if($land->save()){
 
                     
                 //    // return redirect(route('project.index'))->refresh()->with($this->resMessageHtml(true, false, 'Project created successfully'));
-                     return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                    return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
                     
                 }
                 

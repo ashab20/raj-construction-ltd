@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
+use App\Models\Builder\Material;
 use App\Models\Builder\MaterialDetail;
 use App\Models\Builder\Unit;
 use Exception;
@@ -19,7 +20,7 @@ class MaterialDetailController extends Controller
     public function index()
     {
         $materialDetail=MaterialDetail::paginate(10);
-        return view('materialDetails.index',compact('materialDetail'));
+        return view('budget.materialDetails.index',compact('materialDetail'));
     }
 
     /**
@@ -30,7 +31,7 @@ class MaterialDetailController extends Controller
     public function create()
     {
         $matName = Unit::all();
-        return view('materialDetails.create',compact('matName'));
+        return view('budget.materialDetails.create',compact('matName'));
     }
 
     /**
@@ -86,7 +87,7 @@ class MaterialDetailController extends Controller
     public function edit(MaterialDetail $materialDetail)
     {
         $matName=Unit::all();
-        return view('materialDetails.edit',compact('materialDetail','matName'));
+        return view('budget.materialDetails.edit',compact('materialDetail','matName'));
     }
 
     /**
