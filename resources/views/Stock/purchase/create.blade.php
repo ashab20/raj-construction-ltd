@@ -61,29 +61,29 @@
                                     <div class="row p-0 m-0">
                                       <div class="col-6">
                                         <div>
-                                            <label for="note" class="form-label text-success">Note:</label>
+                                            <label for="note" class="form-label">Note:</label>
                                             <textarea class="form-control" id="note" placeholder="Enter Note" rows="12" name="note"></textarea>
                                         </div>                                        
                                       </div>
                                       <div class="col-6">
                                         <div>
-                                          <label for="sub_amount" class="form-label text-success">Sub Amount:</label>
-                                          <input type="number" class="form-control" id="sub_amount" placeholder="Enter Sub Amount" name="subtotal">
+                                          <label for="sub_amount" class="form-label">Sub Amount:</label>
+                                          <input type="number" class="form-control" id="sub_amount" placeholder="Enter Sub Amount" name="subtotal" disabled>
                                         </div>
                                         <div>
-                                          <label for="discount" class="form-label text-success">Discount:</label>
-                                          <input type="number" class="form-control" id="discount" placeholder="Enter Discount" name="discount" value="0">
+                                          <label for="discount" class="form-label">Discount:</label>
+                                          <input type="number" class="form-control" id="discount" placeholder="Enter Discount" name="discount" value="0" onkeyup="totalCounter()">
                                         </div>
                                         <div>
-                                          <label for="tax" class="form-label text-success">Tax (%):</label>
-                                          <input type="number" class="form-control" id="tax" placeholder="Enter Tax" name="tax"  value="0" >
+                                          <label for="tax" class="form-label">Tax (%):</label>
+                                          <input type="number" class="form-control" id="tax" placeholder="Enter Tax" name="tax"  value="0" onkeyup="totalCounter()" >
                                         </div>
                                         <div>
-                                          <label for="total_amount" class="form-label text-success">Total Amount:</label>
-                                          <input type="number" value="0" class="form-control" id="total_amount" placeholder="Enter Total Amount" name="total">
+                                          <label for="total_amount" class="form-label">Total Amount:</label>
+                                          <input type="number" value="0" class="form-control" id="total_amount" placeholder="Enter Total Amount" name="total" disabled>
                                         </div>
                                         <div>
-                                          <label for="payment" class="form-label text-success">Pay Amount:</label>
+                                          <label for="payment" class="form-label">Pay Amount:</label>
                                           <input type="number" value="0" class="form-control" id="payment" placeholder="Enter Pay Amount" name="payment">
                                         </div>
                                       </div>
@@ -98,3 +98,89 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    
+<script>
+    // scuffholding
+    let rate = $('.rate');
+    let qty = $('.qty');
+    let price = $('.price');
+    let subtotalField = $('#sub_amount');
+
+    // default value
+    parseFloat(qty.val(1));
+    parseFloat(price.val(0));
+    parseFloat(subtotalField.val(0));
+
+    // action
+    // totalCounter
+    function totalCounter(){
+        let subTotal = parseFloat(subtotalField.val());
+        let discount = parseFloat($('#discount').val());
+        let tax = parseFloat($('#tax').val());
+
+        if(!sub_amount)subTotal=0;
+        if(!discount)discount=0;
+        if(tax>0){
+            tax = subTotal*(tax/100)
+        }else{
+            tax = 0;
+        }
+        let total = Math.round(subTotal - discount + tax);
+
+        
+
+         total = $('#total_amount').val(total);
+    }
+
+
+
+    // subtotalcount
+    function subtotalCounter(){
+        let subTotal = 0 
+        $('.purdata').find('.price').each(function(e){
+            subTotal += parseFloat($(this).val())
+        })
+
+        subtotalField.val(subTotal);
+        totalCounter();
+    }
+
+   
+
+    // price handle change
+    function getRateHandler(e){ 
+        let quantity = $(e).closest('.row').find('.qty').val();
+        let priceFielt = $(e).closest('.row').find('.price');
+
+        amount =  parseFloat(e.value * quantity);
+        priceFielt.val(amount);
+        subtotalCounter();
+        totalCounter();
+    }
+
+
+    // quantity handle changes
+    function getQuntityHandler(e){   
+        let rate = $(e).closest('.row').find('.rate').val();
+        let priceFielt = $(e).closest('.row').find('.price');
+
+        amount =  parseFloat(rate * e.value );
+
+        priceFielt.val(amount);
+        subtotalCounter();
+    }
+
+    function handleUnitChange(e){
+        $(e).closest('.row').find('.rate').val(0);
+        $(e).closest('.row').find('.qty').val(1);
+        $(e).closest('.row').find('.price').val(0);
+    
+
+    }
+
+
+</script>
+
+@endpush
