@@ -18,7 +18,7 @@
             <div class="col-1 mx-2">
                     <button class="btn bg-danger text-white btn-sm mt-1" data-repeater-delete type="button">
                         <i class="mdi mdi-minus-circle"></i>
-                </button>
+                </button> 
                 </div>
                 <div class="col-3 mr-2">
                     <!-- <div class="p-0"> -->
