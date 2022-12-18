@@ -52,41 +52,41 @@
                                     <div  class="col-lg-4"></div>
                                     <div class="mb-3 col-lg-4">
                                         <label class="form-label">Date</label>
-                                        <input type="text" class="form-control date">
+                                        <input type="text" class="form-control date" name="date">
                                     </div>
                                 </div>
                                 <x-Stock.repeater />
                                 {{-- price 	discount 	tax 	 --}}
                                 <div class="form-group my-4">
                                     <div class="row p-0 m-0">
-                                      <div class="col-6">
-                                        <div>
-                                            <label for="note" class="form-label">Note:</label>
-                                            <textarea class="form-control" id="note" placeholder="Enter Note" rows="12" name="note"></textarea>
-                                        </div>                                        
-                                      </div>
-                                      <div class="col-6">
-                                        <div>
-                                          <label for="sub_amount" class="form-label">Sub Amount:</label>
-                                          <input type="number" class="form-control" id="sub_amount" placeholder="Enter Sub Amount" name="subtotal" disabled>
+                                        <div class="col-6">
+                                            <div>
+                                                <label for="note" class="form-label">Note:</label>
+                                                <textarea class="form-control" id="note" placeholder="Enter Note" rows="12" name="note"></textarea>
+                                            </div>                                        
                                         </div>
-                                        <div>
-                                          <label for="discount" class="form-label">Discount:</label>
-                                          <input type="number" class="form-control" id="discount" placeholder="Enter Discount" name="discount" value="0" onkeyup="totalCounter()">
+                                        <div class="col-6">
+                                            <div>
+                                                <label for="sub_amount" class="form-label">Sub Amount:</label>
+                                                <input type="number" class="form-control" id="sub_amount" placeholder="Enter Sub Amount" name="subtotal" disabled>
+                                            </div>
+                                            <div>
+                                                <label for="discount" class="form-label">Discount:</label>
+                                                <input type="number" class="form-control" id="discount" placeholder="Enter Discount" name="discount" value="0" onkeyup="totalCounter()">
+                                            </div>
+                                            <div>
+                                                <label for="tax" class="form-label">Tax (%):</label>
+                                                <input type="number" class="form-control" id="tax" placeholder="Enter Tax" name="tax"  value="0" onkeyup="totalCounter()" >
+                                            </div>
+                                            <div>
+                                                <label for="total_amount" class="form-label">Total Amount:</label>
+                                                <input type="number" value="0" class="form-control" id="total_amount" placeholder="Enter Total Amount" name="total" disabled>
+                                            </div>
+                                            <div>
+                                                <label for="payment" class="form-label">Pay Amount:</label>
+                                                <input type="number" value="0" class="form-control" id="payment" placeholder="Enter Pay Amount" name="payment">
+                                            </div>
                                         </div>
-                                        <div>
-                                          <label for="tax" class="form-label">Tax (%):</label>
-                                          <input type="number" class="form-control" id="tax" placeholder="Enter Tax" name="tax"  value="0" onkeyup="totalCounter()" >
-                                        </div>
-                                        <div>
-                                          <label for="total_amount" class="form-label">Total Amount:</label>
-                                          <input type="number" value="0" class="form-control" id="total_amount" placeholder="Enter Total Amount" name="total" disabled>
-                                        </div>
-                                        <div>
-                                          <label for="payment" class="form-label">Pay Amount:</label>
-                                          <input type="number" value="0" class="form-control" id="payment" placeholder="Enter Pay Amount" name="payment">
-                                        </div>
-                                      </div>
                                     </div>
                                 </div>
                             </form>
@@ -176,6 +176,7 @@
         $(e).closest('.row').find('.rate').val(0);
         $(e).closest('.row').find('.qty').val(1);
         $(e).closest('.row').find('.price').val(0);
+        $(e).closest('.row').find('.type').val();
     
 
     }

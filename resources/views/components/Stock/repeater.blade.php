@@ -24,7 +24,7 @@
                 <div class="col-2 pr-1">
                     <!-- <div class="p-0"> -->
                         {{-- unit (rod) quantiry(pelam) --}}
-                        <select name="unit" class="form-select" onchange="handleUnitChange(this)">
+                        <select name="name" class="form-select" onchange="handleUnitChange(this)">
                             <option value="">{{_('Select Item')}}</option>
                             @forelse ($units as $unit)
                                 <option value="{{$unit->id}}" data-qty-name="{{$unit->quantity_name}}">{{$unit->name}}</option>
@@ -42,13 +42,13 @@
                     <input type="text" class="form-control rate " name="per_unit_price"  onkeyup="getRateHandler(this)" value="0">
                 </div>
                 <div class="col-1 px-1">
-                    <input type="text" class="form-control qty " name="unit" onkeyup="getQuntityHandler(this)" value="0">
+                    <input type="text" class="form-control qty " name="qty" onkeyup="getQuntityHandler(this)" value="0">
                 </div>
                 <div class="col-2 px-1">
                     <input type="text" readonly class="form-control price" name="price" value="0">
                 </div>
                 <div class="col-2 px-1">
-                    <input type="text" class="form-control type " name="type">
+                    <input type="text" class="form-control type" name="type">
                 </div>
             
             </div>
