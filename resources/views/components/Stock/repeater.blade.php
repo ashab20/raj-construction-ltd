@@ -8,19 +8,20 @@
         <div class="col-2"><label for="" class="form-label text-muted">Price</label></div>
         <div class="col-2"><label for="" class="form-label text-muted">Type</label></div>
     </div>
-
-    {{-- purchase_date 	voucher 	tax 	discount 	total_cost 	payment 	note  $purchases--}}
-
     <!-- outer repeater -->
     <div class="repeater">
         <div data-repeater-list="outer-list">
-            <div  data-repeater-item class="row mt-2">
-            <div class="col-1 mx-2">
+            <div  data-repeater-item class="row purdata mt-2">
+                <div class="col-1 px-1">
                     <button class="btn bg-danger text-white btn-sm mt-1" data-repeater-delete type="button">
                         <i class="mdi mdi-minus-circle"></i>
-                </button> 
+                </button>
                 </div>
-                <div class="col-3 mr-2">
+                @php
+                    $units = DB::table('units')->get();
+                @endphp
+                {{-- ","name":"Rod","quantity":"1","quantity_name":"kg","builder_options_id":null, --}}
+                <div class="col-2 pr-1">
                     <!-- <div class="p-0"> -->
                         {{-- unit (rod) quantiry(pelam) --}}
                         <select name="name" class="form-select" onchange="handleUnitChange(this)">
@@ -34,16 +35,17 @@
                         </select>
                     <!-- </div> -->
                 </div>                               
-                <div class="col-2 p-0 mx-2">
-                <input type="text" class="form-control descirbe" name="describtion" onkeyup="get_count(this)">
+                <div class="col-2 px-1">
+                    <input type="text" class="form-control descirbe" name="brand">
+                </div>                
+                <div class="col-2 px-1 text-center">
+                    <input type="text" class="form-control rate " name="per_unit_price"  onkeyup="getRateHandler(this)" value="0">
                 </div>
                 <div class="col-1 px-1">
                     <input type="text" class="form-control qty " name="qty" onkeyup="getQuntityHandler(this)" value="0">
                 </div>
-                <!-- <input type="text" hidden  class="test_id" name="test_id"> -->
-
-                <div class="col-2 p-0 mx-2">
-                    <input readonly type="text" class="form-control sub bg-white" name="sub">
+                <div class="col-2 px-1">
+                    <input type="text" readonly class="form-control price" name="price" value="0">
                 </div>
                 <div class="col-2 px-1">
                     <input type="text" class="form-control type" name="type">
@@ -57,12 +59,6 @@
             {{-- <i class="mdi mdi-plus-circle"></i> --}}
             Add Item
           </button>
-        </div>
-
-        <div class="col-10 offset-1 d-flex justify-content-end">
-
-            <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
-            <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
         </div>
         
     </div>
