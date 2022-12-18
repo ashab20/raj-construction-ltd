@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('unit_id')->nullable();
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade')->change();
             $table->string('brand');
-            $table->integer('unit');
+            $table->integer('qty');
             $table->decimal('per_unit_price',12,2);
             $table->string('note',5000)->nullable();
 

@@ -1,30 +1,12 @@
 <div class="form-group">
     <div class="row bg-light p-2 rounded-top">
         <div class="col-1"></div>  
-        <div class="col-2 text-center">
-            <label for="">Name</label>
-        </div>
-        <div class="col-2 text-center">
-            <label for="">Date</label>
-        </div>
-        <div class="col-1 text-center">
-            <label for="">Tax</label>
-        </div>
-        <div class="col-1 text-center">
-            <label for="">Discount</label>
-        </div>
-        <div class="col-1 text-center">
-            <label for="">Total Cost</label>
-        </div>
-        <div class="col-1 text-center">
-            <label for="">Payment</label>
-        </div>
-        <div class="col-2 text-center">
-            <label for="">Note</label>
-        </div>
-        <div class="col-1 text-center">
-            <label for="">Voucher</label>
-        </div>
+        <div class="col-2"><label for="" class="form-label text-muted">Item</label></div>
+        <div class="col-2"><label for="" class="form-label text-muted">Brand</label></div>
+        <div class="col-2"><label for="" class="form-label text-muted">Rate</label></div>
+        <div class="col-1"><label for="" class="form-label text-muted">Quantity</label></div>
+        <div class="col-2"><label for="" class="form-label text-muted">Price</label></div>
+        <div class="col-2"><label for="" class="form-label text-muted">Type</label></div>
     </div>
 
     {{-- purchase_date 	voucher 	tax 	discount 	total_cost 	payment 	note  $purchases--}}
@@ -33,55 +15,39 @@
     <div class="repeater">
         <div data-repeater-list="outer-list">
             <div  data-repeater-item class="row mt-2">
-                <div class="col-1 mx-2">
+            <div class="col-1 mx-2">
                     <button class="btn bg-danger text-white btn-sm mt-1" data-repeater-delete type="button">
                         <i class="mdi mdi-minus-circle"></i>
-                    </button>
+                </button>
                 </div>
-
-                @php
-                    $units = DB::table('units')->get();                        
-                @endphp
-
-                <div class="col-2 mx-1">
+                <div class="col-3 mr-2">
                     <!-- <div class="p-0"> -->
-                    {{-- unit (rod) quantiry(pelam) --}}
-                    <select name="unitName" class="form-select" onchange="product_add(this)">
-                        <option value="">Select Name</option>
-                        @forelse ($units as $uName)
-                            <option value="{{$uName->id}}">{{ $uName->name }}</option>
-                        @empty
-                            <option>No data found</option>
-                        @endforelse
-                    </select>
+                        {{-- unit (rod) quantiry(pelam) --}}
+                        <select name="tid" class="form-select" onchange="product_add(this)">
+                            <option value="">Select Item</option>
+
+                        </select>
                     <!-- </div> -->
                 </div>                               
-                <div class="col-2 p-0 mx-1">
-                    {{-- <input type="date" class="form-control descirbe" name="date" onkeyup="get_count(this)"> --}}
+                <div class="col-2 p-0 mx-2">
+                <input type="text" class="form-control descirbe" name="describtion" onkeyup="get_count(this)">
                 </div>
-                <div class="col-1 p-0 mx-1">
-                    <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="tax[]">
+                <div class="col-2 p-0 mx-2">
+                    <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="price">
                 </div>
-                <div class="col-1 p-0 mx-1">
-                    <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="discount[]">
+                <!-- <input type="text" hidden  class="test_id" name="test_id"> -->
+
+                <div class="col-2 p-0 mx-2">
+                    <input readonly type="text" class="form-control sub bg-white" name="sub">
                 </div>
-                <div class="col-1 p-0 mx-1">
-                    <input readonly type="text" class="form-control sub bg-white" name="total">
-                </div>
-                <div class="col-1 p-0 mx-1">
-                    <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="payment">
-                </div>
-                <div class="col-1 p-0 mx-1">
-                    <input type="text" class="form-control descirbe" name="note" onkeyup="get_count(this)">
-                </div>                
-                <div class="col-1 p-0 mx-1">
-                    <input type="file" class="form-control descirbe" name="voucher" onkeyup="get_count(this)">
-                </div>                
+                
             </div>
+            
         </div>
-        <div class="col-2" >
-          <button class="btn bg-primary m-2 text-white btn-sm" data-repeater-create type="button">
-            <i class="mdi mdi-plus-circle"></i>
+        <div class="p-0 float-end" >
+          <button class="btn m-0 bg-primary m-1 text-white btn-sm" data-repeater-create type="button">
+            {{-- <i class="mdi mdi-plus-circle"></i> --}}
+            Add Item
           </button>
         </div>
 
@@ -95,8 +61,10 @@
 </div>
 @push('scripts')
 <script src="{{asset('assets/js/jquery.repeater.min.js')}}"></script>
+
 <script>
       $(document).ready(function () {
+
         $('.repeater').repeater({
             // (Required if there is a nested repeater)
             // Specify the configuration of the nested repeaters.
@@ -106,7 +74,10 @@
             repeaters: [{
                 // (Required)
                 // Specify the jQuery selector for this nested repeater
-                selector: '.inner-repeater'
+                selector: '.inner-repeater',
+                show: function (e) {
+                    console.log($(e));
+            },
             }]
         });
     });
