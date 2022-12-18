@@ -23,8 +23,13 @@
                 <div class="col-3 mr-2">
                     <!-- <div class="p-0"> -->
                         {{-- unit (rod) quantiry(pelam) --}}
-                        <select name="tid" class="form-select" onchange="product_add(this)">
-                            <option value="">Select Item</option>
+                        <select name="name" class="form-select" onchange="handleUnitChange(this)">
+                            <option value="">{{_('Select Item')}}</option>
+                            @forelse ($units as $unit)
+                                <option value="{{$unit->id}}" data-qty-name="{{$unit->quantity_name}}">{{$unit->name}}</option>
+                            @empty
+                                <option value="">No data found</option>
+                            @endforelse
 
                         </select>
                     <!-- </div> -->
@@ -32,15 +37,18 @@
                 <div class="col-2 p-0 mx-2">
                 <input type="text" class="form-control descirbe" name="describtion" onkeyup="get_count(this)">
                 </div>
-                <div class="col-2 p-0 mx-2">
-                    <input type="text" onkeyup="get_pricecount(this)" class="form-control price" name="price">
+                <div class="col-1 px-1">
+                    <input type="text" class="form-control qty " name="qty" onkeyup="getQuntityHandler(this)" value="0">
                 </div>
                 <!-- <input type="text" hidden  class="test_id" name="test_id"> -->
 
                 <div class="col-2 p-0 mx-2">
                     <input readonly type="text" class="form-control sub bg-white" name="sub">
                 </div>
-                
+                <div class="col-2 px-1">
+                    <input type="text" class="form-control type" name="type">
+                </div>
+            
             </div>
             
         </div>
