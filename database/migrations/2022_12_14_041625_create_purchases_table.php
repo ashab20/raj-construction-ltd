@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('unit_id');
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade')->change();
+            
             $table->date('purchase_date');
             $table->string('voucher')->nullable();
             $table->integer('tax')->nullable()->default(0);
