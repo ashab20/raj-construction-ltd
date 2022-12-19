@@ -55,10 +55,10 @@
             
         </div>
         <div class="p-0 float-end" >
-          <button class="btn m-0 bg-primary m-1 text-white btn-sm" data-repeater-create type="button">
-            {{-- <i class="mdi mdi-plus-circle"></i> --}}
-            Add Item
-          </button>
+            <button class="btn m-0 bg-primary m-1 text-white btn-sm" data-repeater-create type="button">
+                {{-- <i class="mdi mdi-plus-circle"></i> --}}
+                Add Item
+            </button>
         </div>
         
     </div>
@@ -67,7 +67,7 @@
 <script src="{{asset('assets/js/jquery.repeater.min.js')}}"></script>
 
 <script>
-      $(document).ready(function () {
+    $(document).ready(function () {
 
         $('.repeater').repeater({
             // (Required if there is a nested repeater)
@@ -81,7 +81,7 @@
                 selector: '.inner-repeater',
                 show: function (e) {
                     console.log($(e));
-            },
+                },
             }]
         });
     });

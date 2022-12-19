@@ -39,7 +39,9 @@
                                 </div>
                             </div><!-- end col-->
                         </div>
-        
+        @php
+            print_r($purchases);    
+        @endphp
                         <div class="table-responsive">
                             @if(Session::has('response'))
                             {!!Session::get('response')['message']!!}
@@ -50,12 +52,13 @@
                                     {{-- purchase_date 	voucher 	tax 	discount 	total_cost 	payment 	note  $purchases--}}
                                     <tr>
                                         <th>Date</th>
-                                        <th>Tax</th>
-                                        <th>Discount</th>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
                                         <th>Total Cost</th>
                                         <th>Payment</th>
-                                        <th>Note</th>
+                                        <th>Purchase By</th>
                                         <th>Voucher</th>
+                                        <th>Note</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -65,11 +68,12 @@
                                     @forelse ($purchases as $purchase)
                                         <tr>
                                             <td>{{ $purchase->purchase_date }}</td>
-                                            <td>{{ $purchase->voucher }}</td>
-                                            <td>{{ $purchase->tax }}</td>
-                                            <td>{{ $purchase->discount }}</td>
+                                            <td>{{ $purchase->name}}</td>
+                                            <td>{{ $purchase->quantity}} {{$purchase->quantity_name}}</td>
                                             <td>{{ $purchase->total_cost }}</td>
                                             <td>{{ $purchase->payment }}</td>
+                                            <td>{{ $purchase->purchase_by }}</td>
+                                            <td>{{ $purchase->voucher }}</td>
                                             <td>{{ $purchase->note }}</td>
                                             <td></td>
                                         </tr>

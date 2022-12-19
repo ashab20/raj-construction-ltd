@@ -143,7 +143,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/team',TeamController::class);
         
         // store
-        Route::resource('/purchase',PurchaseController::class);
+        Route::resource('purchase',PurchaseController::class);
 
     });
 });

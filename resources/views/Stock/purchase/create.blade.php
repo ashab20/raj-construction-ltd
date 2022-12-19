@@ -28,7 +28,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row mb-2">
-                            <form action="">
+                            <form action="{{ route('purchase.store')}}" enctype="multipart/form-data" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-floating mb-3">
@@ -39,7 +40,7 @@
                                             </div>
                                         </div>
                                     </div>
-{{-- 
+                                    {{--
                                     <div class="col-xl-4 mb-3 mt-3 mt-xl-0">
                                         <label for="projectname" class="mb-0">{{__('Project thumbnail')}} : </label>
                                         
@@ -52,7 +53,7 @@
                                     <div  class="col-lg-4"></div>
                                     <div class="mb-3 col-lg-4">
                                         <label class="form-label">Date</label>
-                                        <input type="text" class="form-control date" name="date">
+                                        <input type="date" class="form-control date" name="date">
                                     </div>
                                 </div>
                                 <x-Stock.repeater />
@@ -68,7 +69,7 @@
                                         <div class="col-6">
                                             <div>
                                                 <label for="sub_amount" class="form-label">Sub Amount:</label>
-                                                <input type="number" class="form-control" id="sub_amount" placeholder="Enter Sub Amount" name="subtotal" disabled>
+                                                <input type="number" class="form-control" id="sub_amount" placeholder="Enter Sub Amount" name="subtotal" readonly>
                                             </div>
                                             <div>
                                                 <label for="discount" class="form-label">Discount:</label>
@@ -80,7 +81,7 @@
                                             </div>
                                             <div>
                                                 <label for="total_amount" class="form-label">Total Amount:</label>
-                                                <input type="number" value="0" class="form-control" id="total_amount" placeholder="Enter Total Amount" name="total" disabled>
+                                                <input type="number" value="0" class="form-control" id="total_amount" placeholder="Enter Total Amount" name="total" readonly>
                                             </div>
                                             <div>
                                                 <label for="payment" class="form-label">Pay Amount:</label>
@@ -88,6 +89,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-10 offset-1 d-flex justify-content-end">
+
+                                    <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
+                                    <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
                                 </div>
                             </form>
                         </div>
