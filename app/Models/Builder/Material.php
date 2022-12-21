@@ -15,8 +15,8 @@ class Material extends Model
         return $this->belongsTo(Unit::class,'unit_id','id');
     }
 
-    public function material(){
-        return $this->hasMany(Store::class, 'material_id','id');
-    }
+    // public function material(){
+    //     return $this->hasMany(Store::class, 'material_id','id');
+    // }
 
 }

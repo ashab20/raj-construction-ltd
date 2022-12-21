@@ -7,6 +7,7 @@ use App\Http\Traits\ResponseTraits;
 use App\Models\Builder\Material;
 use App\Models\Stock\Purchase;
 use App\Models\Stock\PurchaseDetails;
+use App\Models\Stock\Store;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -97,9 +98,21 @@ class PurchaseController extends Controller
                             $purchaseDetails->sub_total = $request->subtotal;
                             $purchaseDetails->status = 1;
                             $purchaseDetails->created_by = Crypt::decrypt(session()->get('userId'));
+
                             if($purchaseDetails->save()){
-                                DB::commit();
-                                return redirect(route('purchase.index'))->with($this->resMessageHtml(true, false, 'Purchase created successfully'));
+
+                                // dd($materials);
+                                // $stocks = new Store();
+                                // $stocks->material_id = $materials->id;
+                                // $stocks->unit_id =  $materials->id;
+                                // $stocks->material_id = $material['name'];
+                                // $stocks->status = 1;
+                                // $stocks->created_by = Crypt::decrypt(session()->get('userId'));
+                                // if($stocks->save()){
+
+                                    DB::commit();
+                                    return redirect(route('purchase.index'))->with($this->resMessageHtml(true, false, 'Purchase created successfully'));
+                                // }
                             }  
                         } 
                     }

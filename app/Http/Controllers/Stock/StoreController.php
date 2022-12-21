@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Stock;
 
 use App\Http\Controllers\Controller;
-use App\Models\Stock\Store;
+use App\Models\Builder\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StoreController extends Controller
 {
@@ -15,73 +16,28 @@ class StoreController extends Controller
      */
     public function index()
     {
-        $stores = Store::paginate(10);
+
+
+        $stores = DB::query("SELECT *, (
+            CASE
+                WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
+            ) as total_qty 
+        from materials JOIN units on units.id = materials.unit_id
+        GROUP BY materials.qty,unit_id");
+
+        // $stores = DB::table('materials')->selectRaw(" *, (
+        //     CASE
+        //         WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
+        //     ) as total_qty 
+        // from materials JOIN units on units.id = materials.unit_id
+        // GROUP BY materials.qty,unit_id");
+
+
+        $stores = DB::table("*, (
+            CASE
+                WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
+            ) as total_qty")->join('units','units.id','=','materials.unit_id')->groupBy(['materials.qty','unit_id'])->get();
+
         return view('Stock.index',compact('stores'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Store $store)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Store $store)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Store $store)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Store  $store
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Store $store)
-    {
-        //
     }
 }

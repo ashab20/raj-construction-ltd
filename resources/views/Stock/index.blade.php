@@ -69,6 +69,9 @@
                                         </button> 
                                     </div>
                                 </div>
+                                @php
+                                    print_r($stores)
+                                @endphp
                                 <div class="col-sm-12 col-md-4">
                                     <div id="datatable-buttons_filter" class="dataTables_filter d-flex">
                                         <label class=" ">Search:
@@ -79,44 +82,37 @@
                             </div>
                         </div>
                     </div>
-
-{{-- table start --}}
-<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start date</th>
-            <th>Salary</th>
-        </tr>
-    </thead>
-
-
-    <tbody>
-        <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011/04/25</td>
-            <td>$320,800</td>
-        </tr>
-        <tr>
-            <td>Garrett Winters</td>
-            <td>Accountant</td>
-            <td>Tokyo</td>
-            <td>63</td>
-            <td>2011/07/25</td>
-            <td>$170,750</td>
-        </tr>
-    </tbody>
-</table>
-{{-- table close --}}
-
+    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Material</th>
+                            <th>Brand</th>
+                            <th>Quntity</th>
+                            <th>Stock In</th>
+                            <th></th>
+                        </tr>
+                        <tbody>
+                            @forelse($stores as $item)
+                            <tr>
+                                <td></td>
+                               {{-- <td>{{$item?->name}}</td>
+                                <td>{{$item->brand}}</td>
+                                <td>{{$item->qty}} {{$item?->quantity_name}}</td> --}}
+                                <td></td>
+                                <td>0</td>
+                                <td>$320,800</td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td class="text-center">No Data Founds!</td>
+                            </tr>
+                            @endforelse
+                    </tbody>
+                </table>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
