@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+            $table->unsignedBigInteger('purchase_id')->nullable();
+            $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade')->change();
+
             $table->unsignedBigInteger('unit_id')->nullable();
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade')->change();
             $table->string('brand');

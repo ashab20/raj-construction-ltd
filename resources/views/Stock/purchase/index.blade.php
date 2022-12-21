@@ -68,8 +68,8 @@
                                     @forelse ($purchases as $purchase)
                                         <tr>
                                             <td>{{ $purchase->purchase_date }}</td>
-                                            <td>{{ $purchase->name}}</td>
-                                            <td>{{ $purchase->quantity}} {{$purchase->quantity_name}}</td>
+                                            <td>{{ $purchase->name }}</td>
+                                            <td>{{ $purchase->quantity }} {{ $purchase->quantity_name }}</td>
                                             <td>{{ $purchase->total_cost }}</td>
                                             <td>{{ $purchase->payment }}</td>
                                             <td>{{ $purchase->purchase_by }}</td>
