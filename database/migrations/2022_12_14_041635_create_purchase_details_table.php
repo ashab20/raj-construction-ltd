@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('discount')->nullable()->default(0);
             $table->integer('tax')->nullable()->default(0);
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->integer('quantitiy');
             $table->integer('sub_total');
             
