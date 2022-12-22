@@ -2,6 +2,7 @@
 
 namespace App\Models\Builder;
 
+use App\Models\Stock\Purchase;
 use App\Models\Store;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,8 +16,8 @@ class Material extends Model
         return $this->belongsTo(Unit::class,'unit_id','id');
     }
 
-    // public function material(){
-    //     return $this->hasMany(Store::class, 'material_id','id');
-    // }
+    public function materials(){
+        return $this->belongsTo(Purchase::class, 'purchase_id','id');
+    }
 
 }
