@@ -21,7 +21,7 @@ class StoreController extends Controller
         $stores = DB::query("SELECT *, (
             CASE
                 WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
-            ) as total_qty 
+            ) as total_qty
         from materials JOIN units on units.id = materials.unit_id
         GROUP BY materials.qty,unit_id");
 
@@ -33,10 +33,10 @@ class StoreController extends Controller
         // GROUP BY materials.qty,unit_id");
 
 
-        $stores = DB::table("*, (
-            CASE
-                WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
-            ) as total_qty")->join('units','units.id','=','materials.unit_id')->groupBy(['materials.qty','unit_id'])->get();
+        // $stores = DB::table("SELECT *, (
+        //     CASE
+        //         WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
+        //     ) as total_qty")->join('units','units.id','=','materials.unit_id')->groupBy(['materials.qty','unit_id'])->get();
 
         return view('Stock.index',compact('stores'));
     }

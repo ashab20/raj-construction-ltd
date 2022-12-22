@@ -69,9 +69,9 @@
                                         </button> 
                                     </div>
                                 </div>
-                                @php
+                                {{-- @php
                                     print_r($stores)
-                                @endphp
+                                @endphp --}}
                                 <div class="col-sm-12 col-md-4">
                                     <div id="datatable-buttons_filter" class="dataTables_filter d-flex">
                                         <label class=" ">Search:
@@ -82,34 +82,34 @@
                             </div>
                         </div>
                     </div>
-    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                    <thead>
-                        <tr>
-                            <th>SL</th>
-                            <th>Material</th>
-                            <th>Brand</th>
-                            <th>Quntity</th>
-                            <th>Stock In</th>
-                            <th></th>
-                        </tr>
-                        <tbody>
-                            @forelse($stores as $item)
+                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                        <thead>
                             <tr>
-                                <td></td>
-                               {{-- <td>{{$item?->name}}</td>
-                                <td>{{$item->brand}}</td>
-                                <td>{{$item->qty}} {{$item?->quantity_name}}</td> --}}
-                                <td></td>
-                                <td>0</td>
-                                <td>$320,800</td>
+                                <th>SL</th>
+                                <th>Material</th>
+                                <th>Brand</th>
+                                <th>Quntity</th>
+                                <th>Stock In</th>
+                                <th></th>
                             </tr>
-                            @empty
-                            <tr>
-                                <td class="text-center">No Data Founds!</td>
-                            </tr>
-                            @endforelse
-                    </tbody>
-                </table>
+                            <tbody>
+                                @forelse($stores as $item=>$d)
+                                <tr>
+                                    <td>{{$d }}</td>
+                                    <td>{{$item?->name}}</td>
+                                    <td>{{$item->brand}}</td>
+                                    <td>{{$item->qty}} {{$item?->quantity_name}}</td>
+                                    <td></td>
+                                    <td>0</td>
+                                    <td>$320,800</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td class="text-center">No Data Founds!</td>
+                                </tr>
+                                @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
             

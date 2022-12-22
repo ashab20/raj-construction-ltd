@@ -75,48 +75,49 @@ class PurchaseController extends Controller
             $purchase->purchase_by = Crypt::decrypt(session()->get('userId'));
             $identity = decrypt(session()->get('roleIdentity'));
             // materials
-                if($purchase->save()){
+            if($purchase->save()){
+                foreach($request['outer-list'] as $material){
+                    
+                    // dd($material);
+                    $materials = new Material();
+                    $materials->purchase_id =  $purchase->id;
+                    $materials->brand = $material['brand'];
+                    $materials->unit_id = $material['name'];
+                    $materials->qty = $material['qty'];
+                    $materials->per_unit_price = $material['per_unit_price'];
+                    $materials->created_by = Crypt::decrypt(session()->get('userId'));
+                    $materials->status = 1;
 
-                    foreach($request['outer-list'] as $material){
-                        $materials = new Material();
-                        $materials->purchase_id =  $purchase->id;
-                        $materials->brand = $material['brand'];
-                        $materials->unit_id = $material['name'];
-                        $materials->qty = $material['qty'];
-                        $materials->per_unit_price = $material['per_unit_price'];
-                        $materials->created_by = Crypt::decrypt(session()->get('userId'));
-                        $materials->status = 1;
+                    if($materials->save()){
 
-                        if($materials->save()){
+                        $purchaseDetails = new PurchaseDetails();
+                        $purchaseDetails->material_id = $materials->id;
+                        $purchaseDetails->purchase_id = $purchase->id;        
+                        $purchaseDetails->price = $material['price'];
+                        $purchaseDetails->tax = $request->tax;
+                        $purchaseDetails->discount = $request->discount;
+                        $purchaseDetails->sub_total = $request->subtotal;
+                        $purchaseDetails->status = 1;
+                        $purchaseDetails->created_by = Crypt::decrypt(session()->get('userId'));
 
-                            $purchaseDetails = new PurchaseDetails();
-                            $purchaseDetails->material_id = $materials->id;
-                            $purchaseDetails->purchase_id = $purchase->id;        
-                            $purchaseDetails->price = $material['price'];
-                            $purchaseDetails->tax = $request->tax;
-                            $purchaseDetails->discount = $request->discount;
-                            $purchaseDetails->sub_total = $request->subtotal;
-                            $purchaseDetails->status = 1;
-                            $purchaseDetails->created_by = Crypt::decrypt(session()->get('userId'));
+                        if($purchaseDetails->save()){
 
-                            if($purchaseDetails->save()){
+                            DB::commit();
+                            return redirect(route('purchase.index'))->with($this->resMessageHtml(true, false, 'Purchase created successfully'));
+                            
+                            // dd($materials);
+                            // $stocks = new Store();
+                            // $stocks->material_id = $materials->id;
+                            // $stocks->unit_id =  $materials->id;
+                            // $stocks->material_id = $material['name'];
+                            // $stocks->status = 1;
+                            // $stocks->created_by = Crypt::decrypt(session()->get('userId'));
+                            // if($stocks->save()){
 
-                                // dd($materials);
-                                // $stocks = new Store();
-                                // $stocks->material_id = $materials->id;
-                                // $stocks->unit_id =  $materials->id;
-                                // $stocks->material_id = $material['name'];
-                                // $stocks->status = 1;
-                                // $stocks->created_by = Crypt::decrypt(session()->get('userId'));
-                                // if($stocks->save()){
-
-                                    DB::commit();
-                                    return redirect(route('purchase.index'))->with($this->resMessageHtml(true, false, 'Purchase created successfully'));
-                                // }
-                            }  
-                        } 
-                    }
-                } 
+                        }  
+                    } 
+                }
+            } 
             }catch(Exception $err){
                 dd($err);
                 DB::rollBack();

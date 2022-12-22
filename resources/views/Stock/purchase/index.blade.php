@@ -39,9 +39,6 @@
                                 </div>
                             </div><!-- end col-->
                         </div>
-        @php
-            print_r($purchases);    
-        @endphp
                         <div class="table-responsive">
                             @if(Session::has('response'))
                             {!!Session::get('response')['message']!!}
