@@ -69,10 +69,17 @@
                                             <td>{{ $purchase->quantity }} {{ $purchase->quantity_name }}</td>
                                             <td>{{ $purchase->total_cost }}</td>
                                             <td>{{ $purchase->payment }}</td>
-                                            <td>{{ $purchase->purchase_by }}</td>
+                                            <td>{{ $purchase->purchase?->name }}</td>
                                             <td>{{ $purchase->voucher }}</td>
                                             <td>{{ $purchase->note }}</td>
-                                            <td></td>
+                                            <td class="d-flex">
+                                                {{-- <a href="{{route('purchaseDetails.index',$purchase)}}" class="action-icon">
+                                                    <i class="uil-list-ul"></i>
+                                                </a> --}}
+                                                <button href="#" data-bs-toggle="modal" data-bs-target="#add-new-task-modal" class="btn btn-sm" onclick="getPurchase({{$purchase}})">
+                                                    <i class="mdi mdi-clipboard-text-outline"></i>
+                                                </a></h4>
+                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -89,4 +96,52 @@
         </div>
     </div>
 </div>
+
+
+
+  <!--  Add new task modal -->
+  <div class="modal fade task-modal-content" id="add-new-task-modal" tabindex="-1" role="dialog" aria-labelledby="NewTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="NewTaskModalLabel">Create New Task</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl</th>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="materialData">
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 @endsection
+
+@push('scripts')
+    <script>
+        function getPurchase(data){
+            console.log(data);
+            content = `
+                    <tr>
+                        <td>${data.name}</td>
+                    </tr>
+                `;
+
+            $('#materialData').html(content);
+        }
+    </script>
+@endpush

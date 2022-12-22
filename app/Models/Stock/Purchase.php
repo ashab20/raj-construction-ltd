@@ -2,6 +2,8 @@
 
 namespace App\Models\Stock;
 
+use App\Models\Auth\User;
+use App\Models\Builder\Material;
 use App\Models\Builder\Unit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,5 +15,13 @@ class Purchase extends Model
 
     public function name(){
         return $this->belongsTo(Unit::class,'unit_id','id');
+    }
+
+    public function purchase(){
+        return $this->belongsTo(User::class,'purchase_by','id');
+    }
+
+    public function materials(){
+        return $this->belongsTo(Material::class,)
     }
 }

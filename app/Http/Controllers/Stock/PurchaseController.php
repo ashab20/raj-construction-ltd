@@ -7,7 +7,6 @@ use App\Http\Traits\ResponseTraits;
 use App\Models\Builder\Material;
 use App\Models\Stock\Purchase;
 use App\Models\Stock\PurchaseDetails;
-use App\Models\Stock\Store;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -104,7 +103,7 @@ class PurchaseController extends Controller
 
                             DB::commit();
                             return redirect(route('purchase.index'))->with($this->resMessageHtml(true, false, 'Purchase created successfully'));
-                            
+
                             // dd($materials);
                             // $stocks = new Store();
                             // $stocks->material_id = $materials->id;
@@ -113,7 +112,6 @@ class PurchaseController extends Controller
                             // $stocks->status = 1;
                             // $stocks->created_by = Crypt::decrypt(session()->get('userId'));
                             // if($stocks->save()){
-
                         }  
                     } 
                 }
@@ -125,48 +123,4 @@ class PurchaseController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Purchase $purchase)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Purchase $purchase)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Purchase $purchase)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Purchase $purchase)
-    {
-        //
-    }
 }

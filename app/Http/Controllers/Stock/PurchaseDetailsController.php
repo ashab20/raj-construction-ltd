@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Stock;
 
-use App\Models\PurchaseDetails;
+use App\Http\Controllers\Controller;
+use App\Models\Stock\PurchaseDetails;
 use Illuminate\Http\Request;
 
 class PurchaseDetailsController extends Controller

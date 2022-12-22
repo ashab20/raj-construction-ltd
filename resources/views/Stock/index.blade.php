@@ -69,9 +69,6 @@
                                         </button> 
                                     </div>
                                 </div>
-                                {{-- @php
-                                    print_r($stores)
-                                @endphp --}}
                                 <div class="col-sm-12 col-md-4">
                                     <div id="datatable-buttons_filter" class="dataTables_filter d-flex">
                                         <label class=" ">Search:
@@ -88,19 +85,16 @@
                                 <th>SL</th>
                                 <th>Material</th>
                                 <th>Brand</th>
-                                <th>Quntity</th>
                                 <th>Stock In</th>
                                 <th></th>
                             </tr>
                             <tbody>
-                                @forelse($stores as $item=>$d)
+                                @forelse($stores as $item)
                                 <tr>
-                                    <td>{{$d }}</td>
-                                    <td>{{$item?->name}}</td>
+                                    <td>{{++$loop->index}}</td>
+                                    <td>{{$item->name}}</td>
                                     <td>{{$item->brand}}</td>
-                                    <td>{{$item->qty}} {{$item?->quantity_name}}</td>
-                                    <td></td>
-                                    <td>0</td>
+                                    <td>{{$item->total_qty}} {{$item->quantity_name}}</td>
                                     <td>$320,800</td>
                                 </tr>
                                 @empty

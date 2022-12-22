@@ -18,7 +18,7 @@ class StoreController extends Controller
     {
 
 
-        $stores = DB::query("SELECT *, (
+        $stores = DB::select("SELECT *, (
             CASE
                 WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
             ) as total_qty
