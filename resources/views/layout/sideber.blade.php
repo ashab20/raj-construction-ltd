@@ -42,17 +42,10 @@
                         </ul>
                     </div>
                 </li>
-                <li class="side-nav-title side-nav-item">Quick Access</li>
                 <li class="side-nav-item">
                     <a href="{{route('admin.dashboard')}}" class="side-nav-link">
                         <i class="uil-comments-alt"></i>
                         <span> {{__('Dashaboard')}} </span>
-                    </a>
-                </li>
-                <li class="side-nav-item">
-                    <a href="#" class="side-nav-link">
-                        <i class="uil-comments-alt"></i>
-                        <span> {{__('Quick Search')}} </span>
                     </a>
                 </li>
 

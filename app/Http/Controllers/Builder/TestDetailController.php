@@ -40,6 +40,7 @@ class TestDetailController extends Controller
      */
     public function store(Request $request)
     {
+        $project = decrypt($request->project);
         try{
             $testdetail=new TestDetail();
             $identity = decrypt(session()->get('roleIdentity'));           
@@ -50,7 +51,7 @@ class TestDetailController extends Controller
             $testdetail->comments=$request->com;       
             $testdetail->status = 1;
             if($testdetail->save()){
-                return redirect($identity.'/testDetail')->with('success','Data saved');
+                return redirect('project.show',$project)->with('success','Data saved');
             }
         }
         catch(Exception $e){

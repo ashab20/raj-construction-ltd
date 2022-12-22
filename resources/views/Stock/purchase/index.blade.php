@@ -59,8 +59,12 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                            
-                            
+                                @php
+                                    $materials = DB::table('materials')->get();
+                                @endphp
+                                
+                                    {{$materials}}
+                                {{-- {{$materials as $material->qty}} --}}
                                 <tbody>
                                     @forelse ($purchases as $purchase)
                                         <tr>
