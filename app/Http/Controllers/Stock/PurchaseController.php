@@ -65,6 +65,7 @@ class PurchaseController extends Controller
                 $purchase->voucher = $imageName;
             }
             $purchase->purchase_date = $request->date;
+            $purchase->note = $request->note;
             $purchase->tax = $request->tax;
             $purchase->discount = $request->discount;
             $purchase->total_cost = $request->total;
@@ -116,10 +117,10 @@ class PurchaseController extends Controller
                     } 
                 }
             } 
-            }catch(Exception $err){
-                dd($err);
-                DB::rollBack();
-                return back()->withInput();
+        }catch(Exception $err){
+            dd($err);
+            DB::rollBack();
+            return back()->withInput();
         }
     }
 
