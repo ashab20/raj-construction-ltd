@@ -35,18 +35,18 @@
                                         @method('POST')
                                         <input type="text" name="project" value="{{$id}}" id="" hidden>
                                         <div class="row">
-                                           <div class="mb-3 col-xl-4">
-                                            <label for="desiname" class="form-label">{{__('Designer')}}: </label>
-                                            <select  class="form-control select2" data-toggle="select2" name="desiname" required>
-                                                <option value="" >Select</option>
-                                                @forelse ($employee as $em)
-                                                <option value="{{$em->id}}">{{$em->name}}</option>
-                                                
-                                                @empty
-                                                <option value="" disabled>{{__('Not found!')}}</option>
+                                            <div class="mb-3 col-xl-4">
+                                                <label for="desiname" class="form-label">{{__('Designer')}}: </label>
+                                                <select  class="form-control select2" data-toggle="select2" name="desiname" required>
+                                                    <option value="" >Select</option>
+                                                    @forelse ($employee as $em)
+                                                    <option value="{{$em->id}}">{{$em->name}}</option>
                                                     
-                                                @endforelse
-                                            </select>
+                                                    @empty
+                                                    <option value="" disabled>{{__('Not found!')}}</option>
+                                                        
+                                                    @endforelse
+                                                </select>
                                             </div> 
                                             <div class="mb-3 col-xl-4">
                                                 <label for="bsfeet" class="form-label">Building squire feet</label>

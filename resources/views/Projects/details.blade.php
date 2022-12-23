@@ -128,15 +128,15 @@
                                 </div>
                             </div>
                         </span>
-
                         <div class="border border-1 ">
-                            @if($project->design->count() > 0)
-                            <img src="{{asset('uploads/design/'.$project->design->first()->document)}}" alt="image" width="100%" class="">
+                            @if($project->project_image)
+                            
+                            <img src="{{asset('uploads/projects/'.$project->project_image)}}" alt="image" width="100%" class="">
                             @else
                             <p clas="text-muted text-center">
                                 No Design Found!
                             </p>
-                            <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class="opacity-25">
+                            {{-- <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class="opacity-25"> --}}
                             @endif
 
                         </div>
