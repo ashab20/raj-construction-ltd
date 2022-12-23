@@ -40,7 +40,7 @@
                                             <select  class="form-control select2" data-toggle="select2" name="desiname" required>
                                                 <option value="" >Select</option>
                                                 @forelse ($employee as $em)
-                                                <option value="{{$em->id}}">{{$em->name}} - {{$em->email}} - {{$em->phone}}</option>
+                                                <option value="{{$em->id}}">{{$em->name}}</option>
                                                 
                                                 @empty
                                                 <option value="" disabled>{{__('Not found!')}}</option>
