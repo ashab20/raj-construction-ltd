@@ -523,8 +523,6 @@ class CountrySeeder extends Seeder
 
         ];
 
-          
-
         foreach ($countries as $key => $value) {
 
             Country::create($value);

@@ -38,7 +38,6 @@
                         <form action="{{route('project.update',$project)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
-                                {{$project->land_owner_id}}
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
