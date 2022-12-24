@@ -13,19 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('stores', function (Blueprint $table) {
+        Schema::create('project_stores', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            
-            $table->unsignedBigInteger('unit_id')->nullable();
+
+            $table->unsignedBigInteger('unit_id');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade')->change();
             
-            $table->unsignedBigInteger('purchase_id')->nullable();
+            $table->unsignedBigInteger('purchase_id');
             $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade')->change();
             
-            $table->unsignedBigInteger('material_id')->nullable();
+            $table->unsignedBigInteger('material_id');
             $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade')->change();
-            
+
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->change();
+            $table->integer('qty');
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->change();
@@ -43,6 +46,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stores');
+        Schema::dropIfExists('project_stores');
     }
 };

@@ -32,6 +32,7 @@ use App\Http\Controllers\Management\ManagementController;
 use App\Http\Controllers\Management\TeamController;
 use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
+use App\Http\Controllers\Stock\ProjectStoreController;
 use App\Http\Controllers\Stock\PurchaseController;
 use App\Http\Controllers\Stock\PurchaseDetailsController;
 use App\Http\Controllers\Stock\StoreController;
@@ -108,7 +109,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/unit', UnitController::class);
         Route::resource('/material', MaterialController::class);
         Route::resource('/materialDetails', MaterialDetailController::class);
-        Route::resource('/store', StoreController::class);
+        Route::get('projectStores',[ProjectStoreController::class]);
         
         // floor
         Route::resource('/floorDetails', FloorDetailsController::class);
