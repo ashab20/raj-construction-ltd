@@ -104,10 +104,10 @@
                                     <textarea class="form-control" id="simplemde1"
                                     name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('projectOverview')}}</textarea>
                                 </div>
-                             <!-- end col-->
-                        </div>
+                                <!-- end col-->
+                            </div>
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
-<!-- Lands -->
+                            <!-- Lands -->
                             <div class="row">
                                 <div class="mb-3 col-xl-4 form-row">
                                     <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
@@ -213,21 +213,20 @@
                                     @endforelse
                                     </select>
                                     
-                                {{-- </div> --}}
+                                </div>
+                                {{-- <div class="mb-3">
+                                    <label for="designId" class="form-label">Design</label>
+                                    <input type="files" id="designId" class="form-control" name="designId">
+                                </div> --}}
                             </div>
-                            {{-- <div class="mb-3">
-                                <label for="designId" class="form-label">Design</label>
-                                <input type="files" id="designId" class="form-control" name="designId">
-                            </div> --}}
-                        </div>
-                        <!-- end row -->
-                        <!-- Plot Documents -->
-                        <div class="col-10 offset-1 d-flex justify-content-end">
+                            <!-- end row -->
+                            <!-- Plot Documents -->
+                            <div class="col-10 offset-1 d-flex justify-content-end">
 
-                            <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
-                            <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
-                        </div>
-                    </form>
+                                <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
+                                <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
+                            </div>
+                        </form>
 
                     </div> <!-- end card-body -->
                 </div> <!-- end card-->
