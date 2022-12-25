@@ -30,15 +30,16 @@
                 <!-- project card -->
                 <div class="card d-block">
                     <div class="card-body">
+                        
                         <div class="dropdown float-end">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="dripicons-dots-3"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                <a href="#" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                                <a href="#" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a>
                                 <!-- item-->
@@ -127,15 +128,15 @@
                                 </div>
                             </div>
                         </span>
-
                         <div class="border border-1 ">
-                            @if($project->design->count() > 0)
-                            <img src="{{asset('uploads/design/'.$project->design->first()->document)}}" alt="image" width="100%" class="">
+                            @if($project->project_image)
+                            
+                            <img src="{{asset('uploads/projects/'.$project->project_image)}}" alt="image" width="100%" class="">
                             @else
                             <p clas="text-muted text-center">
                                 No Design Found!
                             </p>
-                            <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class="opacity-25">
+                            {{-- <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class="opacity-25"> --}}
                             @endif
 
                         </div>

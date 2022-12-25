@@ -13,6 +13,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Auth\Role;
 use App\Models\Auth\UserDetails;
 use App\Models\Builder\Designation;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
@@ -98,7 +99,7 @@ class UserController extends Controller
 
             if($request->hasFile('userAvatar')){
                 $imageName = rand(111,999).time().'.'.$request->userAvatar->extension();  
-                $request->userAvatar->move(public_path('uploads/document'), $imageName);
+                $request->userAvatar->move(public_path('uploads/profile'), $imageName);
                 $store->avatar=$imageName;
             }else{
                 $store->avatar='avatar.png';
@@ -114,10 +115,19 @@ class UserController extends Controller
                     $UserDetails->created_by = $store->id;
                     
                 }
+
                 
                 $UserDetails->status = 1;  
                 $UserDetails->user_id = $store->id;
-                $UserDetails->save();  
+                $UserDetails->save(); 
+                if($store->id == $request->session()->get('userId')){
+                     request()->session()->put(
+                    [
+                        'avatar' => $store->avatar
+                    ]
+                );
+                }
+               
                 return redirect(route('member.index'))->with($this->resMessageHtml(true, false, 'User created successfully'));
             }
         } catch (Exception $error) {
@@ -134,7 +144,7 @@ class UserController extends Controller
      */
     public function show(User $member)
     {
-        return view('profile.account',compact('member'));
+        return view('Users.profile.account',compact('member'));
         
     }
 

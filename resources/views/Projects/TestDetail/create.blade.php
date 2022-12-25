@@ -33,7 +33,7 @@
                                     <form class="form" enctype="multipart/form-data" method="post" action="{{ route('testDetail.store')}}">
                                         @csrf
                                         <div class="row">
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-3">
                                                 <h4 class="mt-0">Project Name</h4>
 
                                                 <select class="form-control select2" data-toggle="select2" name="projectname" id="projectname">
@@ -46,17 +46,15 @@
                                                 </select>
                                                 
                                             </div>
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-3">
                                                 <h4 class="mt-0">Test Name</h4>
                                                 <input type="text" id="tname" name="tname" class="form-control">
                                             </div>
-                                            <div class="mb-3 col-md-4">
+                                            <div class="mb-3 col-md-3">
                                                 <h4 class="mt-0">Test Status</h4>
                                                 <input type="text" id="tstatus" name="tstatus" class="form-control">
-                                            </div>                                            
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
+                                            </div> 
+                                            <div class="mb-3 col-md-3">
                                                 <h4 class="mt-0">Comments</h4>
                                                 <input type="text" id="com" name="com" class="form-control">
                                             </div>

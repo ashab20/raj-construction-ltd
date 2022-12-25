@@ -58,7 +58,7 @@ class AuthController extends Controller
                 'roleIdentity' => encrypt($user->role->identify),
                 'language' => encrypt($user->language),
                 'companyId' => encrypt($user->company_id),
-                'avatar' => $user->avatar ? $user->avatar : 'avatar.png'
+                'avatar' => $user->avatar ? $user->avatar : 'avatar.png' 
             ]
         );
     }

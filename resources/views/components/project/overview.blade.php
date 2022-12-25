@@ -134,6 +134,7 @@
                     </div> <!-- end row-->
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
+            {{$project->total_cost}}
         </div> <!-- end col -->
         <div class="col-lg-4 col-xl-4">
             <div class="card">

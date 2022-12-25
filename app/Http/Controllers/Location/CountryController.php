@@ -19,7 +19,7 @@ class CountryController extends Controller
     public function index()
     {
         $coutries = Country::paginate(20);
-        return view('Locations.countries',compact('coutries'));
+        return view('Locations.countries', compact('coutries'));
     }
 
     /**
@@ -40,20 +40,21 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        try{
+        try {
 
             $store = new Country();
             $store->country = $request->countryName;
+            $store->code = $request->countryCode;
             $store->created_by = decrypt(session()->get('userId'));
             $store->status = 1;
             if ($store->save()) {
                 return redirect()->back()->with($this->resMessageHtml(true, false, 'Country data saved'));
+                // return response()->json(['msg' => 'success', 'data' => $store,'total'=>$store->count()], 200);
             }
-        }catch(Exception $error){
+        } catch (Exception $error) {
             return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot create floor details'));
-
+            // return response()->json(['error' => 'Error'], 500);
         }
-        
     }
 
     /**
@@ -78,7 +79,7 @@ class CountryController extends Controller
         //
         $coutries = Country::all();
         $countryData  = $country;
-        return view('Locations.countries',compact(['coutries','countryData']));
+        return view('Locations.countries', compact(['coutries', 'countryData']));
     }
 
     /**
@@ -90,19 +91,18 @@ class CountryController extends Controller
      */
     public function update(Request $request, country $country)
     {
-        
-        try{
+
+        try {
             $identity = decrypt(session()->get('roleIdentity'));
             $update = $country;
             $update->country = $request->countryName;
             $update->created_by = decrypt(session()->get('userId'));
             $update->status = 1;
             if ($update->save()) {
-                return redirect($identity.'/country')->with($this->resMessageHtml(true, false, 'Country data updated'));
+                return redirect($identity . '/country')->with($this->resMessageHtml(true, false, 'Country data updated'));
             }
-        }catch(Exception $error){
+        } catch (Exception $error) {
             return redirect()->back()->with($this->resMessage(false, 'error', 'Cannot update'));
-
         }
     }
 
@@ -118,5 +118,4 @@ class CountryController extends Controller
         $country->delete();
         return redirect()->back();
     }
-    }
-
+}

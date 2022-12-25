@@ -12,6 +12,7 @@ use App\Http\Controllers\Builder\DesignationController;
 use App\Http\Controllers\Builder\BuilderOptionController;
 use App\Http\Controllers\Builder\CompanyController;
 use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\WorkingDetailsController;
 
 use App\Http\Controllers\Builder\FlatController;
 use App\Http\Controllers\Builder\FloorDetailsController;
@@ -31,6 +32,10 @@ use App\Http\Controllers\Management\ManagementController;
 use App\Http\Controllers\Management\TeamController;
 use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
+use App\Http\Controllers\Stock\ProjectStoreController;
+use App\Http\Controllers\Stock\PurchaseController;
+use App\Http\Controllers\Stock\PurchaseDetailsController;
+use App\Http\Controllers\Stock\StoreController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -104,6 +109,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         Route::resource('/unit', UnitController::class);
         Route::resource('/material', MaterialController::class);
         Route::resource('/materialDetails', MaterialDetailController::class);
+        Route::get('projectStores',[ProjectStoreController::class]);
         
         // floor
         Route::resource('/floorDetails', FloorDetailsController::class);
@@ -111,7 +117,7 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         
         // budget
         Route::resource('/budget', BudgetController::class);
-        Route::resource('/floorBudgetDetail', BudgetDetailsController::class);
+        Route::resource('/BudgetDetail', BudgetDetailsController::class);
         
         // project budget
         Route::post('budget',[BudgetController::class,'store'])->name('budget.store');
@@ -132,9 +138,15 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         
         //worker
         Route::resource('/worker',WorkerController::class);
+        Route::resource('/workerdetails',WorkingDetailsController::class);
 
         //management
         Route::resource('/management',ManagementController::class);
         Route::resource('/team',TeamController::class);
+        
+        // store
+        Route::resource('purchase',PurchaseController::class);
+        Route::resource('purchaseDetails',PurchaseDetailsController::class);
+
     });
 });

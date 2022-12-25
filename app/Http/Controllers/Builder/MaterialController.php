@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Builder;
 
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Material;
+use App\Models\Builder\MaterialDetail;
 use App\Models\Builder\Unit;
+use App\Models\Stock\Store;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class MaterialController extends Controller
 {
@@ -19,7 +22,7 @@ class MaterialController extends Controller
     public function index()
     {
         $materials=Material::paginate(10);
-        return view('material.index',compact('materials'));
+        return view('budget.material.index',compact('materials'));
     }
 
     /**
@@ -30,7 +33,7 @@ class MaterialController extends Controller
     public function create()
     {
         $unitname = Unit::all();
-        return view('material.create',compact('unitname'));
+        return view('budget.material.create',compact('unitname'));
     }
 
     /**
@@ -42,6 +45,7 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
+        DB::beginTransaction();
         try{
             $material = new Material();
             $material->unit_id = $request->unitName;
@@ -49,16 +53,47 @@ class MaterialController extends Controller
             $material->unit = $request->unit;
             $material->per_unit_price = $request->perunitprice;
             $material->note = $request->note;
-
             $material->status = 1;
             $material->created_by = Crypt::decrypt(session()->get('userId'));
             $identity = decrypt(session()->get('roleIdentity'));
 
             if($material->save()){
-                return redirect($identity.'/material')->with('success','Data saved');
+                $materialDetail = New MaterialDetail();
+                $materialDetail->material_id = $material->id;
+
+                $materialDetail->material_id = $request->unitName;
+                $materialDetail->quantity = $request->unit;
+                $materialDetail->brand_name = $request->brandName;
+                $materialDetail->cost_per_items = $request->perunitprice;
+
+                // $materialDetail->voucher_image = $request->voucherImage;
+                $materialDetail->status = 1;
+                $materialDetail->created_by = Crypt::decrypt(session()->get('userId'));
+                $identity = decrypt(session()->get('roleIdentity'));
+
+                if($materialDetail->save()){
+                    $stock = new Store();
+                    $stock->material_id = $material->id;
+
+                    
+                    // dd($material);
+                    $stock->unit_id = $request->unitName;
+                    $stock->material_id = $request->unit;
+
+                    
+                    $stock->status = 1;
+                    $stock->created_by = Crypt::decrypt(session()->get('userId'));
+                    $identity = decrypt(session()->get('roleIdentity'));
+
+                    if($stock->save()){
+                        DB::commit();
+                        return redirect($identity.'/material')->with('success','Data saved');
+                    }
+                }
             }
         }catch(Exception $err){
             dd($err);
+            DB::rollBack();
             return back()->withInput();
         }
 
@@ -84,7 +119,7 @@ class MaterialController extends Controller
     public function edit(Material $material)
     {
         $unitname = Unit::all();
-        return view('material.edit',compact('material','unitname'));
+        return view('budget.material.edit',compact('material','unitname'));
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Models\Auth;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Stock\Purchase;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,7 +52,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Auth\Role');
     }
     public function userdetails(){
-        return $this->hasMany('App\Models\Auth\UserDetails');
+        return $this->hasMany(UserDetails::class,'user_id','id');
+    }
+
+    public function purchase(){
+        return $this->hasMany(Purchase::class,'purchase_by','id');
     }
 
 

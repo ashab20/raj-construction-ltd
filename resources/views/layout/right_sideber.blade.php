@@ -46,7 +46,9 @@
                 <label class="form-check-label" for="condensed-check">Condensed</label>
             </div>
 
-            
+            <div class="d-grid mt-4">
+                <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+            </div>
         </div> <!-- end padding-->
 
     </div>

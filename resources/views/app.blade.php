@@ -1,7 +1,6 @@
 @include('layout.header')
 
-    
-<body class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <body class="loading" data-layout="detached" data-layout-config='{"leftSidebarCondensed":false,"darkMode":false, "showRightSidebarOnStart": true}'>
     
 @include('layout.navbar')
         
@@ -20,11 +19,10 @@
             <!-- content-page -->
     
         </div> <!-- end wrapper-->
-    </div>
-    <!-- END Container -->
-
+    </div> <!-- END Container -->
 
         <!-- Right Sidebar -->
+
         @include('layout.right_sideber')
 
         <div class="rightbar-overlay"></div>

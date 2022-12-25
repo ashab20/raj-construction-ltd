@@ -23,29 +23,26 @@
                             <li class="breadcrumb-item active">{{__('Create Project')}}</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">{{__('Create Project')}}</h4>
+                    <h4 class="page-title">{{__('Create Managment')}}</h4>
                 </div>
             </div>
         </div>
-
-
         <!-- end page title -->
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('management.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('management.store')}}" method="POST" >
                             @csrf
 
-                            <input type="hidden" value="{{ $_GET['id']}}" name="project_id" />
+                            <input type="hidden" value="{{ $_GET['id']}}" name="project" />
                             <div class="row">
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectDirector" class="form-label">{{__('Project Director')}}</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="projectmanager" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
-                                            @if($usr->designation_id === 3)
+                                            @if($usr->identify ==='projectmanager')
                                             <option value="{{$usr->id}}">
                                                 {{$usr->name}}
                                             </option>
@@ -58,10 +55,10 @@
 
                                 <div class="col-xl-4 mb-3">
                                     <label for="architecht" class="form-label">{{__('Architecht Name')}}</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="architecture" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
-                                            @if($usr->designation_id === 1)
+                                            @if($usr->identify === 'architecture')
                                             <option value="{{$usr->id}}">
                                                 {{$usr->name}}
                                             </option>
@@ -75,10 +72,10 @@
 
                                 <div class="col-xl-4 mb-3">
                                     <label for="civilEngineer" class="form-label">{{__('Civil Engineer')}}</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="civilengineer" id="" class="form-control">
                                         <option value="">Select</option>
                                         @forelse ($users as $usr)
-                                            @if($usr->designation_id === 1)
+                                            @if($usr->identify ==='civilengineer')
                                             <option value="{{$usr->id}}">
                                                 {{$usr->name}}
                                             </option>
@@ -94,14 +91,13 @@
                                 <div class="mb-0 col-xl-4 col-6">
                                     <label for="team" class="form-label">{{__('Team Name')}} :</label>
 
-                                    <select name="" id="" class="form-control">
+                                    <select name="team" id="" class="form-control">
                                         <option value="">Select</option>
-                                        @forelse ($users as $usr)
-                                            @if($usr->designation_id === 2)
-                                            <option value="{{$usr->id}}">
-                                                {{$usr->name}}
+                                        @forelse ($teams as $team)
+                                            <option value="{{$team->id}}" @if($team->availability === 'no') disabled class="text-danger" @endif>
+                                                {{$team->team_name}} 
                                             </option>
-                                            @endif
+                                            
                                         @empty
                                         <option value="">NO data found!</option>
                                         @endforelse
@@ -162,47 +158,4 @@
 <script src="{{asset('assets/js/vendor/simplemde.min.js')}}"></script>
 <!-- SimpleMDE demo -->
 <script src="{{asset('assets/js/pages/demo.simplemde.js')}}"></script>
-
-
-
-
-<script>
-    function modelAction() {
-        $('#division-modal').toggleClass('d-block show');
-        $('body').toggleClass('modal-open');
-
-    }
-
-    // function handleSubmit() {
-    //     // e.preventDefault();
-    //     let countryName = $('#countryName').val();
-    //     let authName = $('#authName').val();
-    //     // console.log(countryName);
-    //     const host = `${window.location.origin}`;
-    //     const data = {
-    //         countryName,
-    //         _token: '<?php echo csrf_token() ?>',
-    //         _method:'PATCH',
-    //     }
-
-    // console.log('host',host);
-
-    //     $.ajax({
-    //         method: 'GET',
-    // headers:{
-    //     _token : '<?php echo csrf_token() ?>',
-    //       _method:'PATCH',
-    //},
-    //         url: host + `/${authName}/country/store`,
-    //         data,
-    //         success: function(data) {
-    //             console.log(data);
-    //         },
-    //         error: function(data) {
-    //             console.log(data);
-    //         }
-    //     });
-
-    // }
-</script>
 @endpush

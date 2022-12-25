@@ -57,14 +57,13 @@ class ProjectsController extends Controller
 
                 $project = new Project();
                 $project->project_name = $request->projectNameInputField;
-                // $project->project_name = $request->landownerdata;
                 $project->project_overview = $request->projectOverview;
                 $project->ownerShip = $request->projectOwnerShip / 100;
 
                 $project->start_date = $request->parojectStarDate;
                 $project->end_date = $request->parojectEndDate;
                 $project->budget = $request->totalBudget;
-                $project->user_id = $request->landownerdata;
+                $project->land_owner_id = $request->landownerdata;
                 $project->stage_id = 1;
                 $project->status = 1;
                 $project->created_by = Crypt::decrypt(session()->get('userId'));
@@ -131,9 +130,11 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        $landOwner = User::where('role_id', 4)->get();
+        // $land = Land::where('project_id',$project->id)->first();
+        return view('Projects.edit',compact('project','landOwner'));
     }
 
     /**
@@ -145,7 +146,63 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+
+            //DB::transaction(function () use ($request) {
+
+                // dd($request);
+                $project = Project::find($id);
+                $project->project_name = $request->projectNameInputField;
+                $project->land_owner_id = $request->landownerdata;
+                $project->project_overview = $request->projectOverview;
+                $project->ownerShip = $request->projectOwnerShip / 100;
+
+                $project->start_date = $request->parojectStarDate;
+                $project->end_date = $request->parojectEndDate;
+                $project->budget = $request->totalBudget;
+                $project->stage_id = 1;
+                $project->status = 1;
+                $project->updated_by = Crypt::decrypt(session()->get('userId'));
+                if ($request->hasFile('projectImage')) {
+                    // dd($request->projectImage);
+                    $imageName = rand(111, 999) . time() . '.' . $request->projectImage->extension();
+                    $request->projectImage->move(public_path('uploads/projects'), $imageName);
+                    $project->project_image = $imageName;
+                }
+                // lands table
+                // user_id 	squire_feet 	house_no 	block 	road_no 	address 	document_id 	design_id 	total_budget 	total_cost 	status
+
+                
+                // $land = Land::find($id);
+                // $land->land_area = $request->plotArea;
+                // $land->plot_area_counter = $request->plotAreaCounter;
+                // $land->building_area = $request->BuildingArea;
+                // $land->Building_area_counter = $request->BuildingAreaCounter;
+                // $land->building_height = $request->BuildingHeight;
+                // $land->Building_height_counter = $request->BuildingHeightCounter;
+                // $land->house_no = $request->houseNo;
+                // $land->block = $request->block;
+                // $land->road_no = $request->roadNo;
+                // $land->total_budget = $request->squireFeet;
+                // $land->created_by = Crypt::decrypt(session()->get('userId'));
+                // $land->country_id = $request->country;
+                // $land->division_id = $request->division;
+                // $land->district_id = $request->district;             
+
+                if($project->save()){
+                //     $land->project_id =  $project->id;
+                //     if($land->save()){
+
+                    
+                //    // return redirect(route('project.index'))->refresh()->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                    return redirect(route('project.index'))->with($this->resMessageHtml(true, false, 'Project created successfully'));
+                    
+                }
+                
+        } catch (Exception $err) {
+            dd($err);
+            return redirect()->back()->with($this->resMessageHtml(false, 'error', 'Cannot create Project, Please try again'));
+        }
     }
 
     /**
@@ -156,6 +213,7 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Project::find($id)->delete();
+        return redirect()->back();
     }
 }

@@ -55,7 +55,7 @@
                     @if($project->project_image)
                     <img class="" src="{{asset('/uploads/projects/'.$project->project_image)}}" alt="project image cap"  width="100%" height="250px">
                     @else
-                    <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class=" opacity-25 height="250px">
+                    <img src="{{asset('assets/images/construction.svg')}}" alt="image" width="100%" class="opacity-25" height="250px">
 
                     @endif
                     <div class="card-img-overlay">
@@ -74,9 +74,16 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                <a href="{{ route('project.edit',$project)}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+
+                                <a href="javascript:void(0);" class="dropdown-item" onclick="$('#form{{$project->id}}').submit()"><i class="mdi mdi-delete me-1"></i>Delete</a>
+
+                                <form id="form{{$project->id}}" action="{{ route('project.destroy',$project->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                                
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a>
                                 <!-- item-->

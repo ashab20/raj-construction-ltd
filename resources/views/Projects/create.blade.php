@@ -38,7 +38,6 @@
                         <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('post')
-                         
                             <div class="row">                            
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Project Name')}}</label>
@@ -105,50 +104,50 @@
                                     <textarea class="form-control" id="simplemde1"
                                     name="projectOverview" rows="5" placeholder="Enter some brief about project..">{{old('projectOverview')}}</textarea>
                                 </div>
-                             <!-- end col-->
-                        </div>
+                                <!-- end col-->
+                            </div>
                             <h5 class="mb-3 text-uppercase bg-light p-2 mt-4"><i class="mdi mdi-office-building me-1"></i> {{__('Plot Information')}} :</h5>
 <!-- Lands -->
-        <div class="row">
-            <div class="mb-3 col-xl-4 form-row">
-                <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
-                <input type="number" id="squireFeet" name="plotArea" class="form-control" value="{{old('plotArea')}}">
-                <select name="plotAreaCounter" id="" class="form-control">
-                    <option value="Squire Feet" selected>Squire Feet</option>
-                    <option value="Miter">Miter</option>
-                </select>
-            </div>
-            <div class="mb-3 col-xl-4 form-row">
-                <label for="squireFeet" class="form-label">{{__('Building Area')}} :</label>
-                <input type="number" id="squireFeet" name="BuildingArea" class="form-control" value="{{old('BuildingArea')}}">
-                <select name="BuildingAreaCounter" id="" class="form-control">
-                    <option value="Squire Feet" selected>Squire Feet</option>
-                    <option value="Miter">Miter</option>
-                </select>
-            </div>
-            <div class="mb-3 col-xl-4 form-row">
-                <label for="squireFeet" class="form-label">{{__('Building Height')}} :</label>
-                <input type="number" id="squireFeet" name="BuildingHeight" class="form-control" value="{{old('BuildingHeight')}}">
-                <select name="BuildingHeightCounter" id="" class="form-control">
-                    <option value="Miter" selected>Miter</option>
-                    <option value="Squire Feet">Squire Feet</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">                      
-            <div class="mb-3 col-xl-4 form-row">
-                <label for="houseNo" class="form-label">House No.</label>
-                <input type="text" id="houseNo" class="form-control" name="houseNo" value="{{old('houseNo')}}">
-            </div>
-            <div class="mb-3 col-xl-4 form-row">
-                <label for="block" class="form-label">Block</label>
-                <input type="text" id="block" class="form-control" name="block">
-            </div>
-            <div class="mb-3 col-xl-4 form-row">
-                <label for="roadNo" class="form-label">Road No.</label>
-                <input type="text" id="roadNo" class="form-control" name="roadNo">
-            </div>
-        </div>
+                            <div class="row">
+                                <div class="mb-3 col-xl-4 form-row">
+                                    <label for="squireFeet" class="form-label">{{__('Plot Area')}} :</label>
+                                    <input type="number" id="squireFeet" name="plotArea" class="form-control" value="{{old('plotArea')}}">
+                                    <select name="plotAreaCounter" id="" class="form-control">
+                                        <option value="Squire Feet" selected>Squire Feet</option>
+                                        <option value="Miter">Miter</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-xl-4 form-row">
+                                    <label for="squireFeet" class="form-label">{{__('Building Area')}} :</label>
+                                    <input type="number" id="squireFeet" name="BuildingArea" class="form-control" value="{{old('BuildingArea')}}">
+                                    <select name="BuildingAreaCounter" id="" class="form-control">
+                                        <option value="Squire Feet" selected>Squire Feet</option>
+                                        <option value="Miter">Miter</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-xl-4 form-row">
+                                    <label for="squireFeet" class="form-label">{{__('Building Height')}} :</label>
+                                    <input type="number" id="squireFeet" name="BuildingHeight" class="form-control" value="{{old('BuildingHeight')}}">
+                                    <select name="BuildingHeightCounter" id="" class="form-control">
+                                        <option value="Miter" selected>Miter</option>
+                                        <option value="Squire Feet">Squire Feet</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">                      
+                                <div class="mb-3 col-xl-4 form-row">
+                                    <label for="houseNo" class="form-label">House No.</label>
+                                    <input type="text" id="houseNo" class="form-control" name="houseNo" value="{{old('houseNo')}}">
+                                </div>
+                                <div class="mb-3 col-xl-4 form-row">
+                                    <label for="block" class="form-label">Block</label>
+                                    <input type="text" id="block" class="form-control" name="block">
+                                </div>
+                                <div class="mb-3 col-xl-4 form-row">
+                                    <label for="roadNo" class="form-label">Road No.</label>
+                                    <input type="text" id="roadNo" class="form-control" name="roadNo">
+                                </div>
+                            </div>
                            
         <div class="row">
 
@@ -205,30 +204,30 @@
                     
                     <option>{{_('Select District')}}</option>
 
-                @forelse ($districts as $district)
-                <option value="{{$district->id}}">{{$district->district}}</option>
-                    
-                @empty
-                <option>No data Found</option>
-                    
-                @endforelse
-                </select>
-                
-            {{-- </div> --}}
-        </div>
-        {{-- <div class="mb-3">
-            <label for="designId" class="form-label">Design</label>
-            <input type="files" id="designId" class="form-control" name="designId">
-        </div> --}}
-    </div>
+                                    @forelse ($districts as $district)
+                                    <option value="{{$district->id}}">{{$district->district}}</option>
+                                        
+                                    @empty
+                                    <option>No data Found</option>
+                                        
+                                    @endforelse
+                                    </select>
+                                    
+                                {{-- </div> --}}
+                            </div>
+                            {{-- <div class="mb-3">
+                                <label for="designId" class="form-label">Design</label>
+                                <input type="files" id="designId" class="form-control" name="designId">
+                            </div> --}}
+                        </div>
                         <!-- end row -->
                         <!-- Plot Documents -->
                         <div class="col-10 offset-1 d-flex justify-content-end">
 
-                            <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
-                            <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
-                        </div>
-                    </form>
+                                <button type="reset" class="btn btn-warning mt-2 mx-1"><i class="mdi mdi-content-save"></i> Reset</button>
+                                <button type="submit" class="btn btn-success mt-2"><i class="mdi mdi-content-save mx-1"></i> Save</button>
+                            </div>
+                        </form>
 
                     </div> <!-- end card-body -->
                 </div> <!-- end card-->

@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <div class="row mb-2">
                             <div class="col-sm-4">
-                                <button class="btn btn-danger mb-2" onclick="modelAction()">
+                                <button class="btn btn-danger mb-2" onclick=" $('#country-modal').toggleClass('d-block show'); $('body').toggleClass('modal-open');">
                                     <i class="mdi mdi-plus-circle me-2"></i>
                                     {{__('Add Country')}}
                                 </button>
@@ -65,13 +65,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @forelse ($coutries as $country)
+                                    @forelse ($coutries as $country)
                                     <tr>
                                         <td>{{++$loop->index}}</td>
                                         <td>{{$country->country}}</td>
                                         <td>{{$country->divisions->count()}}</td>
                                         <td>
-                                            
+
                                         </td>
                                         <td>
                                             <!-- Switch-->
@@ -116,7 +116,7 @@
                                 <!-- <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName"> -->
                                 <div class="modal-header py-3 px-4 border-bottom-0">
                                     <h5 class="modal-title" id="modal-title">Add Country</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modelAction()"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="$('#country-modal').removeClass('d-block show'); $('body').removeClass('modal-open');"></button>
                                 </div>
                                 <div class="modal-body px-4 pb-4 pt-0">
                                     <div class="row">
@@ -130,11 +130,21 @@
 
                                     </div>
                                     <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="control-label form-label">Country Code</label>
+                                                <input class="form-control" placeholder="Insert Event Name" type="text" name="countryCode" id="countryCode" required />
+                                                <div class="invalid-feedback">Please provide a valid event name</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
                                         <div class="col-6">
                                             <button type="button" class="btn btn-danger" id="btn-delete-event">Delete</button>
                                         </div>
                                         <div class="col-6 text-end">
-                                            <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal" onclick="modelAction()">Close</button>
+                                            <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal" onclick="$('#country-modal').removeClass('d-block show'); $('body').removeClass('modal-open');">Close</button>
                                             <button type="submit" class="btn btn-success" id="">Save</button>
                                         </div>
                                     </div>
@@ -149,41 +159,41 @@
 
             @if(isset($countryData))
             <div class="modal fade show d-block show" id="country-modal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form class="needs-validation" name="event-form" id="form-event" novalidate method="POST" action="{{route('country.update',$countryData)}}">
-                                @csrf
-                                @method('PATCH')
-                                <!-- <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName"> -->
-                                <div class="modal-header py-3 px-4 border-bottom-0">
-                                    <h5 class="modal-title" id="modal-title">Add Country</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modelAction()"></button>
-                                </div>
-                                <div class="modal-body px-4 pb-4 pt-0">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label class="control-label form-label">Country Name</label>
-                                                <input class="form-control" placeholder="Insert Event Name" type="text" name="countryName" id="countryName" required value="{{$countryData->country}}"/>
-                                                <div class="invalid-feedback">Please provide a valid event name</div>
-                                            </div>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form class="needs-validation" name="event-form" id="form-event" novalidate method="POST" action="{{route('country.update',$countryData)}}">
+                            @csrf
+                            @method('PATCH')
+                            <!-- <input type="text" hidden value="{{decrypt(session()->get('roleIdentity'))}}" id="authName"> -->
+                            <div class="modal-header py-3 px-4 border-bottom-0">
+                                <h5 class="modal-title" id="modal-title">Add Country</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="modelAction()"></button>
+                            </div>
+                            <div class="modal-body px-4 pb-4 pt-0">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="control-label form-label">Country Name</label>
+                                            <input class="form-control" placeholder="Insert Event Name" type="text" name="countryName" id="countryName" required value="{{$countryData->country}}" />
+                                            <div class="invalid-feedback">Please provide a valid event name</div>
                                         </div>
+                                    </div>
 
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-danger" id="btn-delete-event">Delete</button>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <button type="button" class="btn btn-danger" id="btn-delete-event">Delete</button>
-                                        </div>
-                                        <div class="col-6 text-end">
-                                            <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal" onclick="modelAction()">Close</button>
-                                            <button type="submit" class="btn btn-success" id="" onclick="modelAction()">Save</button>
-                                        </div>
+                                    <div class="col-6 text-end">
+                                        <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal" onclick="$('#country-modal').removeClass('d-block show'); $('body').removeClass('modal-open');">Close</button>
+                                        <button type="submit" class="btn btn-success" id="">Save</button>
                                     </div>
                                 </div>
-                            </form>
-                        </div> <!-- end modal-content-->
-                    </div> <!-- end modal dialog-->
-                </div>
+                            </div>
+                        </form>
+                    </div> <!-- end modal-content-->
+                </div> <!-- end modal dialog-->
+            </div>
             @endif
         </div>
         <!-- end row -->
@@ -229,45 +239,68 @@
 <!-- demo app -->
 <script src="{{asset('assets/js/pages/demo.calendar.js')}}"></script>
 
+<!-- 
 
 <script>
-    function modelAction(country=false) {
-        $('#country-modal').toggleClass('d-block show');
-        $('body').toggleClass('modal-open');
-        console.log(country);
-    }
+    $(document).ready(function() {
 
-    // function handleSubmit() {
-    //     // e.preventDefault();
-    //     let countryName = $('#countryName').val();
-    //     let authName = $('#authName').val();
-    //     // console.log(countryName);
-    //     const host = `${window.location.origin}`;
-    //     const data = {
-    //         countryName,
-    //         _token: '<?php echo csrf_token() ?>',
-    //         _method:'PATCH',
-    //     }
+        function modelAction(country = false) {
+            $('#country-modal').toggleClass('d-block show');
+            $('body').toggleClass('modal-open');
+            console.log(country);
+        }
 
-    //     // console.log('host',host);
+        $('form').on('submit', (e) => {
+            e.preventDefault();
+            let countryName = $('#countryName').val();
+            let countryCode = $('#countryCode').val();
+            let authName = $('#authName').val();
+            const data = {
+                countryName,
+                countryCode
+            }
+            // console.log(decrypt(session()->get('roleIdentity')));
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="_token"]').attr('content')
+                }
+            });
+            $.post({
+                // autoFocus:true,
+                url: "{{route('country.store')}}",
+                dataType: 'json',
+                data,
+                success: function(res) {
+                    if (res) {
+                        modelAction();
 
-    //     $.ajax({
-    //         method: 'GET',
-    //         // headers:{
-    //         //     _token : '<?php echo csrf_token() ?>',
-    //          //       _method:'PATCH',
-    //         //},
-    //         url: host + `/${authName}/country/store`,
-    //         data,
-    //         success: function(data) {
-    //             console.log(data);
-    //         },
-    //         error: function(data) {
-    //             console.log(data);
-    //         }
-    //     });
+                        console.log(res);
+                        let content = `<tr>
+                                        <td></td>
+                                        <td>{{$country->country}}</td>
+                                        <td>{{$country->divisions->count()}}</td>
+                                        <td>
 
-    // }
-</script>
+                                        </td>
+                                        <td>
+                                            <div>
+                                               
+                                            </div>
+                                        </td>
+                                        <td class="d-flex">
+                                            
+                                        </td>
+                                    </tr>`;
+                        $('table tbody tr').html(content);
+                    }
+                },
+                error: function(e) {
+                    console.log(e);
+                }
+            });
+        })
+    });
+</script> -->
+
 
 @endpush

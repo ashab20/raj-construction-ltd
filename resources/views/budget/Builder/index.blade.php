@@ -12,7 +12,7 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active">Form Elements</li>
+                            <li class="breadcrumb-item active">Builder</li>
                         </ol>
                     </div>
                     <h4 class="page-title">Builder</h4>

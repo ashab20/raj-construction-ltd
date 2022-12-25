@@ -17,7 +17,7 @@ class TestDetailController extends Controller
     public function index()
     {
         $testdetail=TestDetail::paginate(10);
-        return view('TestDetail.index',compact('testdetail'));
+        return view('Projects.TestDetail.index',compact('testdetail'));
         
     }
 
@@ -29,7 +29,7 @@ class TestDetailController extends Controller
     public function create()
     {
         $projectName = Project::all();
-        return view('TestDetail.create',compact('projectName'));
+        return view('Projects.TestDetail.create',compact('projectName'));
     }
 
     /**
@@ -40,6 +40,7 @@ class TestDetailController extends Controller
      */
     public function store(Request $request)
     {
+        $project = decrypt($request->project);
         try{
             $testdetail=new TestDetail();
             $identity = decrypt(session()->get('roleIdentity'));           
@@ -50,7 +51,7 @@ class TestDetailController extends Controller
             $testdetail->comments=$request->com;       
             $testdetail->status = 1;
             if($testdetail->save()){
-                return redirect($identity.'/testDetail')->with('success','Data saved');
+                return redirect('project.show',$project)->with('success','Data saved');
             }
         }
         catch(Exception $e){
@@ -78,7 +79,7 @@ class TestDetailController extends Controller
      */
     public function edit(TestDetail $testDetail)
     {
-        return view ('Testdetail.edit',compact('testDetail'));
+        return view ('Projects.Testdetail.edit',compact('testDetail'));
     }
 
     /**

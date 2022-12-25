@@ -34,19 +34,19 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('team.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('post')
 
                             <div class="row">
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectname" class="form-label">{{__('Team Name')}}</label>
-                                    <input type="text" id="projectname" class="form-control" placeholder="Enter project name" name="projectNameInputField" value="{{ old('projectNameInputField')}}" required>
+                                    <input type="text" id="teamName" class="form-control" placeholder="Enter project name" name="teamName" value="{{ old('projectNameInputField')}}" required>
                                 </div>
 
                                 <div class="col-xl-4 mb-3">
                                     <label for="projectOwnerShip" class="form-label">{{__('Team Leader')}}:</label>
-                                    <select name="worker[]" id="" class="form-control select2" data-toggle="select2">
+                                    <select name="teamLeader" id="" class="form-control select2" data-toggle="select2">
                                         <option value="">Select Team Leader</option>
                                         @forelse($workers as $worker)
                                         <option value="{{$worker->id}}">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-xl-4 position-relative" id="datepicker2">
                                     <label class="form-label">{{__('Building Options')}}</label>
-                                    <select name="worker[]" id="" class="form-control select2" data-toggle="select2">
+                                    <select name="builderOptions" id="" class="form-control select2" data-toggle="select2">
                                         <option value="">Select Builder Options</option>
                                         @forelse($builderOptions as $bo)
                                         <option value="{{$bo->id}}">
@@ -85,7 +85,7 @@
                             <div class="row">
                                 <div class="col-8 position-relative3">
                                     <label for="project-overview" class="form-label">{{__('Select Workers')}}</label>
-                                    <select name="worker[]" id="" class="form-control select2" data-toggle="select2" multiple>
+                                    <select name="worker[]" id="" class="form-control select2" data-toggle="select2" multiple value="{{old('worker')}}">
                                         <option value="">Select Worker</option>
                                         @forelse($workers as $worker)
                                         <option value="{{$worker->id}}">
@@ -172,9 +172,7 @@
     function modelAction() {
         $('#division-modal').toggleClass('d-block show');
         $('body').toggleClass('modal-open');
-
     }
-
     // function handleSubmit() {
     //     // e.preventDefault();
     //     let countryName = $('#countryName').val();
@@ -186,9 +184,7 @@
     //         _token: '<?php echo csrf_token() ?>',
     //         _method:'PATCH',
     //     }
-
     // console.log('host',host);
-
     //     $.ajax({
     //         method: 'GET',
     // headers:{
@@ -204,7 +200,6 @@
     //             console.log(data);
     //         }
     //     });
-
     // }
 </script>
 @endpush

@@ -17,7 +17,7 @@ class BuilderOptionController extends Controller
     public function index()
     {
         $builders=BuilderOption::paginate(10);
-        return view('Builder.index',compact('builders'));
+        return view('budget.Builder.index',compact('builders'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BuilderOptionController extends Controller
      */
     public function create()
     {
-        return view('Builder.create');  
+        return view('budget/Builder.create');  
     }
 
     /**
@@ -44,7 +44,7 @@ class BuilderOptionController extends Controller
             
             $builder->created_by=decrypt(session()->get('userId'));
             $builder->name=$request->buildername;
-           
+        
             
             $builder->status = 1;
             if($builder->save()){
@@ -76,7 +76,7 @@ class BuilderOptionController extends Controller
      */
     public function edit(BuilderOption $builder)
     {
-        return view ('Builder.edit',compact('builder'));
+        return view ('budget/Builder.edit',compact('builder'));
     }
 
     /**

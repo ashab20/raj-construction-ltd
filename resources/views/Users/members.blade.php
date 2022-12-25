@@ -114,12 +114,12 @@
                                 <td class="d-flex">
                                     <a 
                                     href="{{route('member.edit',$member)}}"
-                                     class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                     <form action="{{route('member.destroy',$member)}}" method="POST">
+                                    class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                    <form action="{{route('member.destroy',$member)}}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button class="btn action-icon"><i class="mdi mdi-delete"></i></button>
-                                     </form>
+                                    </form>
                                 </td>
                             </tr>
                         
