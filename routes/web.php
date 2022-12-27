@@ -20,5 +20,5 @@ Route::get('react',function(){
 
 Route::get('property',function(){
     return view('Properties.index');
-});
+})->name('properties');
 

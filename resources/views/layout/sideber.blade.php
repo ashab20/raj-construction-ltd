@@ -187,6 +187,12 @@
                         </ul>
                     </div>
                 </li>
+                <li class="side-nav-item">
+                    <a href="{{route('properties')}}" class="side-nav-link">
+                        <i class="uil-comments-alt"></i>
+                        <span> {{__('Properties')}} </span>
+                    </a>
+                </li>
                 <li class="side-nav-title side-nav-item">HR</li>
                 <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarDesignation" aria-expanded="false" aria-controls="sidebarDesignation" class="side-nav-link">
