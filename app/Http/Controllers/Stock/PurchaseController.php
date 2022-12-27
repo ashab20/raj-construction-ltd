@@ -34,7 +34,7 @@ class PurchaseController extends Controller
 
         $purchases = Purchase::join('materials','purchases.id','=','materials.purchase_id')->join('units','materials.unit_id','=','units.id')->select('purchases.*','units.name','units.quantity_name','units.quantity','purchases.total_cost','purchases.payment','purchases.purchase_date')->paginate(10);
 
-        return view('stock.purchase.index',compact('purchaseDetails','purchases'));
+        return view('Stock.purchase.index',compact('purchaseDetails','purchases'));
     }
 
     /**
@@ -44,7 +44,7 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        return view('stock.purchase.create');
+        return view('Stock.purchase.create');
     }
 
     /**
