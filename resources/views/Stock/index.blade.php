@@ -86,7 +86,6 @@
                                 <th>Material</th>
                                 <th>Brand</th>
                                 <th>Stock In</th>
-                                <th></th>
                             </tr>
                             <tbody>
                                 @forelse($stores as $item)
@@ -99,7 +98,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td class="text-center">No Data Founds!</td>
+                                    <td colspan="4" class="text-center">No Data Founds!</td>
                                 </tr>
                                 @endforelse
                         </tbody>

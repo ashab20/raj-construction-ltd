@@ -192,6 +192,36 @@
                         <i class="uil-comments-alt"></i>
                         <span> {{__('Properties')}} </span>
                     </a>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPurchase" aria-expanded="false" aria-controls="sidebarPurchase" class="side-nav-link">
+                        <i class="uil-rss"></i>
+                        <span> {{__('Purchase')}}</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPurchase">
+                        <ul class="side-nav-second-level">
+
+                            <li>
+                                <a href="{{ route('purchase.index')}}">{{__('List')}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarStore" aria-expanded="false" aria-controls="sidebarStore" class="side-nav-link">
+                        <i class="uil-rss"></i>
+                        <span> {{__('Stock')}}</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarStore">
+                        <ul class="side-nav-second-level">
+
+                            <li>
+                                <a href="{{ route('store.index')}}">{{__('List')}}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="side-nav-title side-nav-item">HR</li>
                 <li class="side-nav-item">
@@ -313,7 +343,7 @@
                     <div class="collapse" id="sidebarTasks">
                         <ul class="side-nav-second-level">
                             <li>
-                                <a href="#">List</a>
+                                <a href="{{ route('task.index')}}">List</a>
                             </li>
                             <li>
                                 <a href="#">Details</a>

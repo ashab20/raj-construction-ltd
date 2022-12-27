@@ -63,7 +63,7 @@
                                     $materials = DB::table('materials')->get();
                                 @endphp
                                 
-                                    {{$materials}}
+                                    {{-- {{$materials}} --}}
                                 {{-- {{$materials as $material->qty}} --}}
                                 <tbody>
                                     @forelse ($purchases as $purchase)
