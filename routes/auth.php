@@ -28,14 +28,19 @@ use App\Http\Controllers\Location\CountryController;
 use App\Http\Controllers\Lands\LandController;
 use App\Http\Controllers\Location\DistrictController;
 use App\Http\Controllers\Location\DivisionController;
+
 use App\Http\Controllers\Management\ManagementController;
+use App\Http\Controllers\Management\TaskController;
 use App\Http\Controllers\Management\TeamController;
+
 use App\Http\Controllers\Projects\CommonProject;
 use App\Http\Controllers\Projects\ProjectsController;
+
 use App\Http\Controllers\Stock\ProjectStoreController;
 use App\Http\Controllers\Stock\PurchaseController;
 use App\Http\Controllers\Stock\PurchaseDetailsController;
 use App\Http\Controllers\Stock\StoreController;
+
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -143,8 +148,10 @@ Route::group(['middleware' => AdminMiddleware::class], function () {
         //management
         Route::resource('/management',ManagementController::class);
         Route::resource('/team',TeamController::class);
+        Route::resource('task',TaskController::class);
         
         // store
+        Route::resource('store',StoreController::class);
         Route::resource('purchase',PurchaseController::class);
         Route::resource('purchaseDetails',PurchaseDetailsController::class);
 

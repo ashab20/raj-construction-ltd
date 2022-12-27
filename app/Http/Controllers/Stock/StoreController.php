@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Stock;
 
 use App\Http\Controllers\Controller;
-use App\Models\Builder\Material;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StoreController extends Controller
@@ -16,8 +14,6 @@ class StoreController extends Controller
      */
     public function index()
     {
-
-
         $stores = DB::select("SELECT *, (
             CASE
                 WHEN units.id = materials.unit_id THEN SUM(materials.qty) ELSE 0 END
