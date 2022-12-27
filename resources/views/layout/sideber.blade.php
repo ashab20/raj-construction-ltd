@@ -189,6 +189,21 @@
                 </li>
 
                 <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPurchase" aria-expanded="false" aria-controls="sidebarPurchase" class="side-nav-link">
+                        <i class="uil-rss"></i>
+                        <span> {{__('Purchase')}}</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPurchase">
+                        <ul class="side-nav-second-level">
+
+                            <li>
+                                <a href="{{ route('purchase.index')}}">{{__('List')}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="side-nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarStore" aria-expanded="false" aria-controls="sidebarStore" class="side-nav-link">
                         <i class="uil-rss"></i>
                         <span> {{__('Stock')}}</span>
