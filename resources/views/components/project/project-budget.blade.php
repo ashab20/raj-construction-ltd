@@ -1,5 +1,5 @@
 {{--  project budget start --}}
-<div class="row d-none project_budget" id="project_budget">
+<div class="row project_budget" id="project_budget">
     <div class="col-12">
         <div class="row">
             <div class="col-auto">
