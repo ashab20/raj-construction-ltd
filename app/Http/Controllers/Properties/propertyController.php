@@ -17,8 +17,8 @@ class propertyController extends Controller
     }
     public function getSinglePropertyData($id)
     {
-        $property = Property::findOrFail('id',1);
-        return response(json_encode($property),201);
+        $property = Property::find($id)->first();
+        return $property;
     }
 
     public function storePropertyData(Request $request)

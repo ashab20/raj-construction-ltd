@@ -17,3 +17,8 @@ Route::get('react',function(){
     return view('index');
 });
 
+
+Route::get('property',function(){
+    return view('Properties.index');
+});
+

@@ -6,12 +6,12 @@ import Header from './Components/Header';
 import Layout from './Components/Layout';
 import Main from './Components/Main';
 
-export default function App(){
+export default function Properies(){
     return(
         <div>Properies</div>
     );
 }
 
 if(document.getElementById('property')){
-    createRoot(document.getElementById('property')).render(<App />)
+    createRoot(document.getElementById('property')).render(<Properies />)
 }
