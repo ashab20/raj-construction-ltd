@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Builder\FloorDetailsController;
+use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Properties\propertyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +26,6 @@ Route::get('properties',[propertyController::class,'getAllPropertyData'])->name(
 Route::post('properties/new',[propertyController::class,'storePropertyData'])->name('addproperties');
 
 Route::get('property/{id}',[propertyController::class,'getSinglePropertyData'])->name('getSingleProperty');
+
+Route::get('projects',[ProjectsController::class,'projectsApi']);
+Route::get('flootdetails',[FloorDetailsController::class,'floorDetailsApi']);

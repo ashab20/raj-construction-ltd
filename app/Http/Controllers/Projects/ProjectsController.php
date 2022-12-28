@@ -26,6 +26,12 @@ class ProjectsController extends Controller
         $projects = Project::paginate(10);
         return view('Projects.list',compact('projects'));
     }
+    public function projectsApi()
+    {
+
+        $projects = Project::paginate(10);
+        return response($projects,200);
+    }
 
 
     /**

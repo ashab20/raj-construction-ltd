@@ -8,12 +8,16 @@ import BaseUrl from "./Utils/BaseUrl";
 
 export default function Properies() {
     const [properies, setProperties] = useState([]);
+    const [loadding, setLoadding] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [Error, setError] = useState("");
+    const [page, setPage] = useState([]);
 
     // @SERVER side Rendering
     const getPeoperties = async () => {
         try {
             const { data } = await BaseUrl.get("/properties");
-            console.log(data);
+            setProperties(data.data);
         } catch (error) {
             console.log(error);
         }
@@ -25,17 +29,25 @@ export default function Properies() {
     }, []);
 
     // Start Content
-
-    const content = ``;
+    let content;
+    content = loadding && <p className="text-xl bg-primary">Loadding...</p>;
+    content = isError && error.length > 0 && (
+        <p className="text-danger">{error}</p>
+    );
+    content =
+        !loadding &&
+        !isError &&
+        properies.length > 0 &&
+        properies.map((property) => {
+            return <Card key={property.id} property={property} />;
+        });
 
     return (
         <>
             <Layout>
                 <TopFilter />
-                <div class="row">
-                    <div class="col-md-6 col-xxl-3">
-                        <Card />
-                    </div>
+                <div class="row">                    
+                        {content}
                 </div>
             </Layout>
             <Modal />

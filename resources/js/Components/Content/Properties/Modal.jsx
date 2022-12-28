@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import BaseUrl from "../../../Utils/BaseUrl";
 
 const Modal = () => {
+    const [loadding,setLoadding] = useState(false);
+    const [isError,setIsError] = useState(false);
+    const [error,setError] = useState('');
+    const [projects,setProjects] = useState([]);
+    const [floorDetails,setFloorDetails] = useState([]);
+  
+    async function getProjects(){
+        setLoadding(true);
+        try {
+            const {data} = await BaseUrl.get('/projects');
+            // console.log(data);
+            setProjects(data.data);
+        } catch (error) {
+            setError(error);
+        }
+        setLoadding(false);
+    }
+    async function getFloorDetails(){
+        setLoadding(true);
+        try {
+            const {data} = await BaseUrl.get('/floordetials');
+            // console.log(data);
+            setProjects(data.data);
+        } catch (error) {
+            setError(error);
+        }
+        setLoadding(false);
+    }
+
+    useEffect(()=> {
+        getProjects();
+    },[])
+  
+//   constent
+
+const projectContent = !loadding && projects.length > 0 && projects.map((project)=>{
+    return <option key={project.id} value={project.project_name}>{project.project_name}</option>
+})
+  
+  
     return (
         <div
             class="modal fade task-modal-content"
@@ -14,7 +55,7 @@ const Modal = () => {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="NewTaskModalLabel">
-                            Create New Task
+                            Add New Property
                         </h4>
                         <button
                             type="button"
@@ -29,9 +70,7 @@ const Modal = () => {
                                 <label class="form-label">Project</label>
                                 <select class="form-select form-control-light">
                                     <option>Select</option>
-                                    <option>Hyper - Admin Dashboard</option>
-                                    <option>CRM - Design & Development</option>
-                                    <option>iOS - App Design</option>
+                                    {projectContent}
                                 </select>
                             </div>
 

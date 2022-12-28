@@ -14,6 +14,7 @@ class propertyController extends Controller
     {
 
         return Property::paginate(15);
+        // return DB::select("SELECT * FROM `properties` JOIN projects on properties.project_id=projects.id")->paginate(15);
     }
     public function getSinglePropertyData($id)
     {

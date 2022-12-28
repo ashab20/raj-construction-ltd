@@ -10,6 +10,7 @@ use App\Models\Lands\Document;
 use App\Models\Lands\Land;
 use App\Models\Management\Management;
 use App\Models\Projects\Stage;
+use App\Models\property;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -41,6 +42,9 @@ class Project extends Model
 
     public function document(){
         return $this->hasMany(Document::class,'project_id','id');
+    }
+    public function property(){
+        return $this->hasMany(property::class,'project_id','id');
     }
 
     public function budgets(){

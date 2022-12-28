@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Builder;
 use App\Http\Controllers\Controller;
 use App\Models\Builder\Flat;
 use App\Models\Builder\FlatDetail;
+use App\Models\Builder\FloorDetails;
 use App\Models\Builder\Material;
 use Exception;
 use Illuminate\Http\Request;
@@ -21,6 +22,10 @@ class FlatDetailController extends Controller
     {
         $fdetail=FlatDetail::paginate(10);
         return view('Flat/flatDetail.index',compact('fdetail'));
+    }
+    public function floorDetailsApi()
+    {
+        return response(FloorDetails::paginate(10),200);
     }
 
     /**
