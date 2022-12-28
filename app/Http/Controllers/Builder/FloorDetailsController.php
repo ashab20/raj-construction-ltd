@@ -23,6 +23,11 @@ class FloorDetailsController extends Controller
         return view('Floor.floorDetails.index',compact('floorDetails'));
     }
 
+    public function floorDetailsApi()
+    {
+        return response(FloorDetails::all(),200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

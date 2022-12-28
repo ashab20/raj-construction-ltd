@@ -23,10 +23,7 @@ class FlatDetailController extends Controller
         $fdetail=FlatDetail::paginate(10);
         return view('Flat/flatDetail.index',compact('fdetail'));
     }
-    public function floorDetailsApi()
-    {
-        return response(FloorDetails::paginate(10),200);
-    }
+   
 
     /**
      * Show the form for creating a new resource.

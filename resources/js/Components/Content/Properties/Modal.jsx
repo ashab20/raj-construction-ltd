@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import BaseUrl from "../../../Utils/BaseUrl";
 
 const Modal = () => {
-    const [loadding,setLoadding] = useState(false);
-    const [isError,setIsError] = useState(false);
-    const [error,setError] = useState('');
-    const [projects,setProjects] = useState([]);
-    const [floorDetails,setFloorDetails] = useState([]);
-  
-    async function getProjects(){
+    const [loadding, setLoadding] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [error, setError] = useState("");
+    const [projects, setProjects] = useState([]);
+    const [floorDetails, setFloorDetails] = useState([]);
+
+    // form state
+    const [totalSquireFeet,setTotalSquireFeet] = useState('');
+
+    async function getProjects() {
         setLoadding(true);
         try {
-            const {data} = await BaseUrl.get('/projects');
+            const { data } = await BaseUrl.get("/projects");
             // console.log(data);
             setProjects(data.data);
         } catch (error) {
@@ -19,29 +22,53 @@ const Modal = () => {
         }
         setLoadding(false);
     }
-    async function getFloorDetails(){
+    async function getFloorDetails() {
         setLoadding(true);
         try {
-            const {data} = await BaseUrl.get('/floordetials');
-            // console.log(data);
-            setProjects(data.data);
-        } catch (error) {
-            setError(error);
+            const { data } = await BaseUrl.get("/flootdetails");
+            setFloorDetails(data);
+        } catch (err) {
+            setError(err);
         }
         setLoadding(false);
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         getProjects();
-    },[])
-  
-//   constent
+        getFloorDetails();
+    }, []);
 
-const projectContent = !loadding && projects.length > 0 && projects.map((project)=>{
-    return <option key={project.id} value={project.project_name}>{project.project_name}</option>
-})
-  
-  
+    // function
+
+    const handleFloorChange = (e)=> {
+        console.log(totalSquireFeet)
+        console.log(e);
+    }
+
+    //   constent
+
+    const projectContent =
+        !loadding &&
+        projects.length > 0 &&
+        projects.map((project) => {
+            return (
+                <option key={project.id} value={project.id} >
+                    {project.project_name}
+                </option>
+            );
+        });
+
+    const floorDetailsContent =
+        !loadding &&
+        floorDetails.length > 0 &&
+        floorDetails.map((floor) => {
+            return (
+                <option key={floor.id} value={floor.id} >
+                    {floor.floor_no}
+                </option>
+            );
+        });
+
     return (
         <div
             class="modal fade task-modal-content"
@@ -66,12 +93,21 @@ const projectContent = !loadding && projects.length > 0 && projects.map((project
                     </div>
                     <div class="modal-body">
                         <form class="p-2">
-                            <div class="mb-3">
-                                <label class="form-label">Project</label>
-                                <select class="form-select form-control-light">
-                                    <option>Select</option>
-                                    {projectContent}
-                                </select>
+                            <div className="row">
+                                <div class="mb-3">
+                                    <label class="form-label">Project</label>
+                                    <select class="form-select form-control-light">
+                                        <option>Select</option>
+                                        {projectContent}
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Floor</label>
+                                    <select class="form-select form-control-light" onChange={(e)=>handleFloorChange(e)}>
+                                        <option>Select</option>
+                                        {floorDetailsContent}
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="row">

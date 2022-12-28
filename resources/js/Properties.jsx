@@ -10,17 +10,21 @@ export default function Properies() {
     const [properies, setProperties] = useState([]);
     const [loadding, setLoadding] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [Error, setError] = useState("");
+    const [error, setError] = useState("");
     const [page, setPage] = useState([]);
 
     // @SERVER side Rendering
     const getPeoperties = async () => {
+        setLoadding(true);
         try {
             const { data } = await BaseUrl.get("/properties");
-            setProperties(data.data);
-        } catch (error) {
-            console.log(error);
+            // console.log(data)
+            setProperties(data);
+        } catch (err) {
+            setError(err);
+            // console.log(error);
         }
+        setLoadding(false);
     };
 
     // * Handelling Effect

@@ -7,14 +7,15 @@ use Exception;
 use Illuminate\Http\Request;
 use App\Models\property as Property;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 
 class propertyController extends Controller
 {
     public function getAllPropertyData()
     {
 
-        return Property::paginate(15);
-        // return DB::select("SELECT * FROM `properties` JOIN projects on properties.project_id=projects.id")->paginate(15);
+        // return Property::paginate(15);
+        return DB::select("SELECT * FROM `properties` JOIN projects on properties.project_id=projects.id");
     }
     public function getSinglePropertyData($id)
     {
