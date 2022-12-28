@@ -46,7 +46,7 @@
                             <x-project.project-design :project="$project" />
                             <x-project.project-management :project="$project" />
                             <x-project.project-document :project="$project" />
-                            <x-project.project-budget :project="$project" />
+                            {{-- <x-project.project-budget :project="$project" /> --}}
 
                             <!-- Test Budget start-->
 
