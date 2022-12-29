@@ -279,8 +279,8 @@
             console.log(data);
             content = `${data.purchase_date}`;
             $('#materialData').html(content);
-            content = `${data.note}`;
 
+            content = `${data.note}`;
             $('#materialnote').html(content);
 
             content = `${data.name}`;
