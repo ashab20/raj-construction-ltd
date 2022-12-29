@@ -66,16 +66,16 @@
                                 @php
                                     $purchase_details = DB::table('purchase_details')->get();
                                 @endphp
-                                {{$purchase_details}}
+                                {{-- {{$purchase_details}} --}}
 
 
                                 @forelse ($purchase_details as $item)
-                                    <br><h3>{{$item->sub_total}}</h3>
+                                    {{-- <br><h3>{{$item->sub_total}}</h3> --}}
                                 @empty
                                     <br>
                                 @endforelse
                                 
-                                    {{$materials}}
+                                    {{-- {{$materials}} --}}
                                 {{-- {{$materials as $material->qty}} --}}
                                 <tbody>
                                     @forelse ($purchases as $purchase)
@@ -250,7 +250,7 @@
                         </div> <!-- end card -->
                     </div> <!-- end col-->
                 </div>
-                <table>
+                {{-- <table>
                     <thead>
                         <tr>
                             <th>Sl</th>
@@ -263,7 +263,7 @@
                             <td></td>
                         </tr>
                     </tbody>
-                </table>
+                </table> --}}
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -279,8 +279,10 @@
             console.log(data);
             content = `${data.purchase_date}`;
             $('#materialData').html(content);
+            content = `
+                    ${data.note}
+                `;
 
-            content = `${data.note}`;
             $('#materialnote').html(content);
 
             content = `${data.name}`;
